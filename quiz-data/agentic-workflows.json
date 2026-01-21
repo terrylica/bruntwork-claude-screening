@@ -1,0 +1,159 @@
+{
+  "title": "Agentic Workflows Assessment",
+  "description": "Assessment covering task delegation, multi-agent coordination, autonomous operation patterns, and efficient workflow design in Claude Code.",
+  "isQuiz": true,
+  "domain": "Agentic Patterns",
+  "weight": 0.25,
+  "questions": [
+    {
+      "questionNumber": 0,
+      "questionText": "When should you use the Task tool to spawn a subagent instead of doing work directly?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "For any task that takes more than one tool call",
+        "For complex multi-step tasks or open-ended exploration",
+        "Always - subagents are more efficient",
+        "Never - direct tool calls are always better"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "For complex multi-step tasks or open-ended exploration",
+      "explanation": "Task tool is for complex tasks requiring multiple rounds of exploration. Simple tasks should use direct tool calls."
+    },
+    {
+      "questionNumber": 1,
+      "questionText": "What is the key benefit of running multiple Task tool calls in parallel?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Reduces token usage",
+        "Maximizes efficiency by concurrent execution",
+        "Makes the output cleaner",
+        "Avoids context pollution"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Maximizes efficiency by concurrent execution",
+      "explanation": "When tasks are independent, running them in parallel completes work faster than sequential execution."
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "When spawning an Explore agent, what should your prompt include?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Just the file path to look at",
+        "The question to answer and thoroughness level (quick/medium/thorough)",
+        "A complete list of all files to read",
+        "The expected answer format"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "The question to answer and thoroughness level (quick/medium/thorough)",
+      "explanation": "Explore agents need clear questions and thoroughness guidance to search effectively."
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "What is the TodoWrite tool primarily used for?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Creating permanent project documentation",
+        "Tracking task progress and planning complex multi-step work",
+        "Sending notifications to the user",
+        "Logging errors and warnings"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Tracking task progress and planning complex multi-step work",
+      "explanation": "TodoWrite helps track progress on complex tasks and provides visibility to users on what's being done."
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "When should you mark a todo as 'in_progress'?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "When you add it to the list",
+        "After completing the previous task",
+        "Before beginning work on that task",
+        "Only when the user asks about progress"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Before beginning work on that task",
+      "explanation": "Mark tasks in_progress BEFORE starting. This gives users real-time visibility into current work."
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "How many todos should be 'in_progress' at any given time?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "As many as are being worked on in parallel",
+        "Exactly one",
+        "Zero until all are complete",
+        "No limit"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Exactly one",
+      "explanation": "Only ONE task should be in_progress at a time. Complete current tasks before starting new ones."
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "When a user asks you to implement a non-trivial feature, what tool should you consider using first?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Write tool to start coding immediately",
+        "EnterPlanMode to design the approach first",
+        "Task tool to spawn multiple agents",
+        "Read tool to look at existing code"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "EnterPlanMode to design the approach first",
+      "explanation": "For non-trivial implementations, planning first prevents wasted effort and ensures alignment with user expectations."
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "What happens when you use AskUserQuestion tool?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "The conversation pauses until the user responds",
+        "A background process waits for input",
+        "The question is logged for later review",
+        "Multiple questions are batched together"
+      ],
+      "correctAnswerIndex": 0,
+      "correctAnswer": "The conversation pauses until the user responds",
+      "explanation": "AskUserQuestion is synchronous - use it when you need clarification before proceeding."
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "When should you NOT use the TodoWrite tool?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "For complex multi-step tasks",
+        "When the user provides multiple requirements",
+        "For a single, straightforward task that takes one step",
+        "When planning implementation strategy"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "For a single, straightforward task that takes one step",
+      "explanation": "Skip TodoWrite for trivial single-step tasks. Just do the work directly."
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "What is the correct approach when you encounter an error during task execution?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Mark the todo as completed and move on",
+        "Keep the task in_progress, investigate and fix the error",
+        "Delete the todo and start over",
+        "Ask the user what to do"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Keep the task in_progress, investigate and fix the error",
+      "explanation": "Never mark tasks complete if errors occurred. Keep in_progress while investigating and fixing."
+    }
+  ]
+}

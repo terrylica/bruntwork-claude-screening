@@ -1,0 +1,45 @@
+# Logs
+logs/
+*.jsonl
+*.log
+
+# Dependencies
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Mise local (secrets)
+.mise.local.toml
+
+# Secrets (never commit)
+.env
+.env.local
+*.key
+*.pem
+credentials.json
+token.json
+
+# Google Forms API
+google-forms-setup/credentials.json
+google-forms-setup/token.json
+
+# npm
+package-lock.json
+
+# Generated files
+google-forms-setup/created_forms.json

@@ -1,0 +1,104 @@
+# mise.toml - Root orchestrator for BruntWork Claude Code Screening
+#
+# Hierarchy: Root = [tools] + [env] + orchestration
+# Pattern: polyglot monorepo with Python (Google Forms API) + Bun (validation)
+
+[env]
+# CORRECT: read_file() - no subprocess spawning (prevents process storms)
+GH_TOKEN = "{{ read_file(path=env.HOME ~ '/.claude/.secrets/gh-token-terrylica') | trim }}"
+GITHUB_TOKEN = "{{ read_file(path=env.HOME ~ '/.claude/.secrets/gh-token-terrylica') | trim }}"
+
+# Project-specific
+LOG_DIR = "{{config_root}}/logs"
+QUIZ_DATA_DIR = "{{config_root}}/quiz-data"
+ENV = "dev"
+
+[tools]
+python = "3.12"
+node = "lts"
+bun = "latest"
+uv = "latest"
+
+# === Quiz Management Tasks ===
+
+[tasks."quiz:validate"]
+description = "Validate quiz JSON files against schema"
+sources = ["quiz-data/*.json", "scripts/validate-quiz.py"]
+outputs = ["logs/quiz-validation.log"]
+run = "uv run scripts/validate-quiz.py"
+
+[tasks."quiz:list"]
+description = "List all available quizzes"
+run = "ls -la quiz-data/*.json"
+
+# === Google Forms Tasks ===
+
+[tasks."forms:create"]
+description = "Create Google Forms from quiz JSON"
+depends = ["quiz:validate"]
+sources = ["quiz-data/*.json", "google-forms-setup/create_forms.py"]
+outputs = ["google-forms-setup/created_forms.json"]
+run = "uv run google-forms-setup/create_forms.py --all"
+
+[tasks."forms:create-single"]
+description = "Create single Google Form (pass quiz name as arg)"
+run = "uv run google-forms-setup/create_forms.py --quiz"
+
+[tasks."forms:audit"]
+description = "Generate audit report for created forms"
+sources = ["google-forms-setup/created_forms.json"]
+outputs = ["google-forms-setup/audit-reports/MASTER-SUMMARY.md"]
+run = "uv run google-forms-setup/audit_forms.py"
+
+# === Release Tasks (file-based in .mise/tasks/release/) ===
+
+[tasks."release:preflight"]
+description = "Phase 1: Validate prerequisites for release"
+run = "bash .mise/tasks/release/preflight"
+
+[tasks."release:version"]
+description = "Phase 2: Run semantic-release"
+run = "bash .mise/tasks/release/version"
+
+[tasks."release:full"]
+description = "Complete release workflow"
+depends = ["release:preflight"]
+run = "mise run release:version"
+
+# === Development Tasks ===
+
+[tasks.dev]
+description = "Start development environment"
+run = """
+echo "📋 BruntWork Claude Code Screening"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+echo "Available commands:"
+echo "  mise run quiz:validate   - Validate quiz JSON files"
+echo "  mise run forms:create    - Deploy quizzes to Google Forms"
+echo "  mise run forms:audit     - Generate audit reports"
+echo "  mise run release:full    - Release new version"
+echo ""
+"""
+
+[tasks.clean]
+description = "Clean generated files"
+run = """
+rm -rf logs/*.log
+rm -f google-forms-setup/created_forms.json
+rm -f google-forms-setup/token.json
+echo "✓ Cleaned generated files"
+"""
+
+# === Watch Mode for Development ===
+# Usage: mise watch quiz:validate
+
+[tasks."watch:quiz"]
+description = "Watch quiz-data for changes and validate"
+run = "mise watch quiz:validate"
+
+# === Hooks ===
+
+[hooks.enter]
+# Load secrets from .mise.local.toml on directory entry
+# .mise.local.toml is gitignored and contains 1Password references

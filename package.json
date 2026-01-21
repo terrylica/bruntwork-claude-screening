@@ -1,0 +1,30 @@
+{
+  "name": "bruntwork-claude-screening",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Google Forms-based screening system for BruntWork VA candidates assessing Claude Code proficiency",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/terrylica/bruntwork-claude-screening.git"
+  },
+  "author": "terrylica",
+  "license": "MIT",
+  "scripts": {
+    "release:preflight": "test -z \"$(git status --porcelain)\" || (echo '❌ Working directory not clean' && git status --short && exit 1)",
+    "release": "npm run release:preflight && semantic-release --no-ci",
+    "release:dry": "npm run release:preflight && semantic-release --no-ci --dry-run"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.1",
+    "ajv": "^8.17.1",
+    "semantic-release": "^25.0.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

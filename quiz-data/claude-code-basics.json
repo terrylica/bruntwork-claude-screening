@@ -1,0 +1,159 @@
+{
+  "title": "Claude Code Basics Assessment",
+  "description": "Foundational assessment covering Claude Code CLI tool usage, basic commands, and essential workflows for virtual assistant candidates.",
+  "isQuiz": true,
+  "domain": "Tool Mastery",
+  "weight": 0.25,
+  "questions": [
+    {
+      "questionNumber": 0,
+      "questionText": "Which tool should you use to read the contents of a file in Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Read tool",
+        "cat command via Bash",
+        "Open tool",
+        "File tool"
+      ],
+      "correctAnswerIndex": 0,
+      "correctAnswer": "Read tool",
+      "explanation": "The Read tool is the dedicated file reading tool in Claude Code. Using Bash with cat is discouraged."
+    },
+    {
+      "questionNumber": 1,
+      "questionText": "When you need to make a small change to an existing file, which tool is most appropriate?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Write tool (rewrite entire file)",
+        "Edit tool (targeted replacement)",
+        "Bash with sed",
+        "Create a new file and delete the old one"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Edit tool (targeted replacement)",
+      "explanation": "Edit tool performs targeted string replacements, preserving the rest of the file. More efficient than rewriting."
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "Before using the Edit tool on a file, what must you do first?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Nothing, Edit works on any file",
+        "Run a backup command",
+        "Read the file using the Read tool",
+        "Check file permissions"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Read the file using the Read tool",
+      "explanation": "Edit tool requires that you've read the file first in the conversation to ensure you know the current contents."
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "What is the correct way to search for files by name pattern in Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "find command via Bash",
+        "ls command with grep",
+        "Glob tool",
+        "Search tool"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Glob tool",
+      "explanation": "Glob tool is the dedicated file pattern matching tool. Avoid using find via Bash."
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "When searching for text content within files, which tool should you use?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "grep command via Bash",
+        "Grep tool",
+        "Find tool",
+        "Search tool"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Grep tool",
+      "explanation": "Grep tool is optimized for content searching with proper permissions. Don't use grep via Bash."
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "The Bash tool should primarily be used for:",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Reading file contents",
+        "Searching for files",
+        "Terminal operations like git, npm, docker",
+        "Editing files"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Terminal operations like git, npm, docker",
+      "explanation": "Bash tool is for actual system commands. File operations have dedicated tools (Read, Write, Edit, Glob, Grep)."
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "What happens if you try to Edit a file with an old_string that appears multiple times?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "All occurrences are replaced",
+        "Only the first occurrence is replaced",
+        "The edit fails - old_string must be unique",
+        "You're prompted to select which occurrence"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "The edit fails - old_string must be unique",
+      "explanation": "Edit requires unique old_string. Provide more context to make it unique, or use replace_all parameter."
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "When creating a new file with the Write tool, what should you verify first?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "That the parent directory exists",
+        "That you have admin privileges",
+        "That the file doesn't already exist",
+        "Both A and C"
+      ],
+      "correctAnswerIndex": 3,
+      "correctAnswer": "Both A and C",
+      "explanation": "Write overwrites existing files. Always verify the parent directory exists and the file doesn't exist (unless intentional overwrite)."
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "What is the purpose of the Task tool in Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Creating todo lists",
+        "Spawning specialized subagents for complex tasks",
+        "Scheduling commands to run later",
+        "Managing background processes"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Spawning specialized subagents for complex tasks",
+      "explanation": "Task tool launches specialized agents (Explore, Plan, Bash, etc.) for complex, multi-step operations."
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "When you need to explore a codebase to answer a question (not a specific file lookup), which approach is recommended?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Run multiple Glob and Grep commands directly",
+        "Use Task tool with subagent_type=Explore",
+        "Ask the user where to look",
+        "Read every file in the directory"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Use Task tool with subagent_type=Explore",
+      "explanation": "For open-ended exploration, the Explore agent is optimized to search across the codebase efficiently."
+    }
+  ]
+}

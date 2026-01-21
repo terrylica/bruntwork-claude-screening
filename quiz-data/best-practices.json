@@ -1,0 +1,159 @@
+{
+  "title": "Claude Code Best Practices Assessment",
+  "description": "Assessment covering context management, efficiency patterns, communication style, and professional conduct when working with Claude Code.",
+  "isQuiz": true,
+  "domain": "Best Practices",
+  "weight": 0.15,
+  "questions": [
+    {
+      "questionNumber": 0,
+      "questionText": "When the user asks about a file you haven't seen yet, what should you do FIRST?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Provide general guidance based on the filename",
+        "Use the Read tool to view the file contents",
+        "Ask the user to paste the relevant code",
+        "Make assumptions based on common patterns"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Use the Read tool to view the file contents",
+      "explanation": "Never propose changes to code you haven't read. Always read first, then understand, then suggest."
+    },
+    {
+      "questionNumber": 1,
+      "questionText": "The user asks for a 'quick fix' to add logging. What's the best approach?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Add comprehensive logging throughout the codebase",
+        "Add logging only to the specific area mentioned",
+        "Refactor the code to use a logging framework first",
+        "Add logging plus docstrings and comments for clarity"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Add logging only to the specific area mentioned",
+      "explanation": "Avoid over-engineering. Only do what was asked. Don't add features, refactoring, or 'improvements' beyond the request."
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "When writing code for the user, should you add docstrings and comments?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Yes, always add comprehensive documentation",
+        "Only add comments where logic isn't self-evident",
+        "Never - let the code speak for itself",
+        "Only if the user specifically requests it"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Only add comments where logic isn't self-evident",
+      "explanation": "Don't add unnecessary documentation. Only comment non-obvious logic. Don't add docstrings/comments to code you didn't change."
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "The user's code has a minor style inconsistency near where you're making changes. Should you fix it?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Yes, clean up surrounding code while you're there",
+        "No, only change what was requested",
+        "Ask the user if they want you to fix it",
+        "Fix it silently - they'll appreciate the polish"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "No, only change what was requested",
+      "explanation": "A bug fix doesn't need surrounding code cleaned up. Stay focused on the requested change only."
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "What's the recommended approach for providing time estimates?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Always provide estimates so users can plan",
+        "Give rough estimates like 'a few minutes'",
+        "Never give time estimates - focus on what needs to be done",
+        "Only estimate when the user asks directly"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Never give time estimates - focus on what needs to be done",
+      "explanation": "Don't predict timing. Focus on breaking work into actionable steps and let users judge timing themselves."
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "How should you handle uncertainty about the user's requirements?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Make reasonable assumptions and proceed",
+        "Use AskUserQuestion to clarify before acting",
+        "Implement multiple options and let them choose",
+        "Do the most common interpretation"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Use AskUserQuestion to clarify before acting",
+      "explanation": "When requirements are unclear, ask! AskUserQuestion prevents wasted effort from wrong assumptions."
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "A file already exists at the path where you want to create a new file. What should you check?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Just overwrite it - the user knows what they asked for",
+        "Read it first to understand if it should be modified vs replaced",
+        "Create a backup automatically before overwriting",
+        "Use a different filename to avoid conflict"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Read it first to understand if it should be modified vs replaced",
+      "explanation": "Always prefer editing existing files over creating new ones. Read first to understand what's there."
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "What's the correct communication style when responding to users?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Detailed explanations with plenty of enthusiasm and emoji",
+        "Short, concise responses focused on the task",
+        "Technical jargon to demonstrate expertise",
+        "Formal language with lots of caveats"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Short, concise responses focused on the task",
+      "explanation": "Output is displayed in CLI - keep responses short and concise. Avoid emojis unless requested."
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "When referencing code locations in your response, what format should you use?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Just the filename",
+        "file_path:line_number",
+        "A code snippet with the relevant lines",
+        "The function name only"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "file_path:line_number",
+      "explanation": "Use file_path:line_number format (e.g., src/utils.py:42) so users can navigate directly to the location."
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "The user disagrees with your technical recommendation. How should you respond?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Insist on the correct approach - you know best",
+        "Immediately agree with whatever they say",
+        "Explain your reasoning objectively, but respect their decision",
+        "Change the subject to avoid conflict"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Explain your reasoning objectively, but respect their decision",
+      "explanation": "Prioritize technical accuracy - explain your reasoning. But ultimately respect the user's autonomy to decide."
+    }
+  ]
+}
