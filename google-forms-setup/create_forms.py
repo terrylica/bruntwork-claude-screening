@@ -146,7 +146,12 @@ def create_form_from_quiz(quiz_data: dict, forms_service, drive_service) -> dict
     # Enable quiz mode if specified
     if quiz_data.get("isQuiz", True):
         requests.append(
-            {"updateSettings": {"settings": {"quizSettings": {"isQuiz": True}}}}
+            {
+                "updateSettings": {
+                    "settings": {"quizSettings": {"isQuiz": True}},
+                    "updateMask": "quizSettings.isQuiz",
+                }
+            }
         )
 
     # Add questions
@@ -185,12 +190,8 @@ def build_question_request(q: dict, index: int) -> dict | None:
         options = q.get("options", [])
         correct_index = q.get("correctAnswerIndex", 0)
 
-        choices = []
-        for i, opt in enumerate(options):
-            choice = {"value": opt}
-            if i == correct_index:
-                choice["isCorrect"] = True
-            choices.append(choice)
+        # Build options - correct answer is specified via grading.correctAnswers, not on options
+        choices = [{"value": opt} for opt in options]
 
         return {
             "createItem": {
