@@ -18,7 +18,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Use the Read tool to view the file contents",
-      "explanation": "Never propose changes to code you haven't read. Always read first, then understand, then suggest."
+      "explanation": "Never propose changes to code you haven't read. Always read first, then understand, then suggest.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code System Prompt - Doing tasks",
+              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "section": "Doing tasks",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "NEVER propose changes to code you haven't read. If a user asks about or wants you to modify a file, read it first. Understand existing code before suggesting modifications."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 1,
@@ -33,7 +52,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Add logging only to the specific area mentioned",
-      "explanation": "Avoid over-engineering. Only do what was asked. Don't add features, refactoring, or 'improvements' beyond the request."
+      "explanation": "Avoid over-engineering. Only do what was asked. Don't add features, refactoring, or 'improvements' beyond the request.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code System Prompt - Doing tasks",
+              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "section": "Avoid over-engineering",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Avoid over-engineering. Only make changes that are directly requested or clearly necessary. Keep solutions simple and focused. Don't add features, refactor code, or make 'improvements' beyond what was asked."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 2,
@@ -48,7 +86,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Only add comments where logic isn't self-evident",
-      "explanation": "Don't add unnecessary documentation. Only comment non-obvious logic. Don't add docstrings/comments to code you didn't change."
+      "explanation": "Don't add unnecessary documentation. Only comment non-obvious logic. Don't add docstrings/comments to code you didn't change.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code System Prompt - Doing tasks",
+              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "section": "Avoid over-engineering",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Only add comments where the logic isn't self-evident. Don't add docstrings, comments, or type annotations to code you didn't change."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 3,
@@ -63,7 +120,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "No, only change what was requested",
-      "explanation": "A bug fix doesn't need surrounding code cleaned up. Stay focused on the requested change only."
+      "explanation": "A bug fix doesn't need surrounding code cleaned up. Stay focused on the requested change only.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code System Prompt - Doing tasks",
+              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "section": "Avoid over-engineering",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "A bug fix doesn't need surrounding code cleaned up. A simple feature doesn't need extra configurability."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 4,
@@ -78,7 +154,26 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Never give time estimates - focus on what needs to be done",
-      "explanation": "Don't predict timing. Focus on breaking work into actionable steps and let users judge timing themselves."
+      "explanation": "Don't predict timing. Focus on breaking work into actionable steps and let users judge timing themselves.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code System Prompt - No time estimates",
+              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "section": "No time estimates",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Never give time estimates or predictions for how long tasks will take, whether for your own work or for users planning their projects. Focus on what needs to be done, not how long it might take."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 5,
@@ -93,7 +188,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Use AskUserQuestion to clarify before acting",
-      "explanation": "When requirements are unclear, ask! AskUserQuestion prevents wasted effort from wrong assumptions."
+      "explanation": "When requirements are unclear, ask! AskUserQuestion prevents wasted effort from wrong assumptions.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code AskUserQuestion Tool Reference",
+              "url": "file://~/.claude/docs/tools/askuserquestion.md",
+              "section": "Description",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Use this tool when you need to ask the user questions during execution. This allows you to: Clarify ambiguous instructions"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 6,
@@ -108,7 +222,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Read it first to understand if it should be modified vs replaced",
-      "explanation": "Always prefer editing existing files over creating new ones. Read first to understand what's there."
+      "explanation": "Always prefer editing existing files over creating new ones. Read first to understand what's there.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Write Tool Reference",
+              "url": "file://~/.claude/docs/tools/write.md",
+              "section": "Usage",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "ALWAYS prefer editing existing files in the codebase. NEVER write new files unless explicitly required. If this is an existing file, you MUST use the Read tool first to read the file's contents."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 7,
@@ -123,7 +256,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Short, concise responses focused on the task",
-      "explanation": "Output is displayed in CLI - keep responses short and concise. Avoid emojis unless requested."
+      "explanation": "Output is displayed in CLI - keep responses short and concise. Avoid emojis unless requested.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code System Prompt - Tone and style",
+              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "section": "Tone and style",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Your output will be displayed on a command line interface. Your responses should be short and concise. Only use emojis if the user explicitly requests it."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 8,
@@ -138,7 +290,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "file_path:line_number",
-      "explanation": "Use file_path:line_number format (e.g., src/utils.py:42) so users can navigate directly to the location."
+      "explanation": "Use file_path:line_number format (e.g., src/utils.py:42) so users can navigate directly to the location.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code System Prompt - Code References",
+              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "section": "Code References",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "When referencing specific functions or pieces of code include the pattern file_path:line_number to allow the user to easily navigate to the source code location."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 9,
@@ -153,7 +324,26 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Explain your reasoning objectively, but respect their decision",
-      "explanation": "Prioritize technical accuracy - explain your reasoning. But ultimately respect the user's autonomy to decide."
+      "explanation": "Prioritize technical accuracy - explain your reasoning. But ultimately respect the user's autonomy to decide.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code System Prompt - Professional objectivity",
+              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "section": "Professional objectivity",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Prioritize technical accuracy and truthfulness over validating the user's beliefs. It is best for the user if Claude honestly applies the same rigorous standards to all ideas and disagrees when necessary, even if it may not be what the user wants to hear."
+          }
+        ]
+      }
     }
   ]
 }

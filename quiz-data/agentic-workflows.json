@@ -18,7 +18,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "For complex multi-step tasks or open-ended exploration",
-      "explanation": "Task tool is for complex tasks requiring multiple rounds of exploration. Simple tasks should use direct tool calls."
+      "explanation": "Task tool is for complex tasks requiring multiple rounds of exploration. Simple tasks should use direct tool calls.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Task Tool Reference",
+              "url": "file://~/.claude/docs/tools/task.md",
+              "section": "When NOT to use the Task tool",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Launch a new agent to handle complex, multi-step tasks autonomously... When NOT to use the Task tool: If you want to read a specific file path, use the Read or Glob tool instead"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 1,
@@ -33,7 +52,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Maximizes efficiency by concurrent execution",
-      "explanation": "When tasks are independent, running them in parallel completes work faster than sequential execution."
+      "explanation": "When tasks are independent, running them in parallel completes work faster than sequential execution.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Task Tool Reference",
+              "url": "file://~/.claude/docs/tools/task.md",
+              "section": "Usage notes",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Launch multiple agents concurrently whenever possible, to maximize performance; to do that, use a single message with multiple tool uses"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 2,
@@ -48,7 +86,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "The question to answer and thoroughness level (quick/medium/thorough)",
-      "explanation": "Explore agents need clear questions and thoroughness guidance to search effectively."
+      "explanation": "Explore agents need clear questions and thoroughness guidance to search effectively.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Task Tool Reference",
+              "url": "file://~/.claude/docs/tools/task.md",
+              "section": "Available agent types",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Explore: Fast agent specialized for exploring codebases... When calling this agent, specify the desired thoroughness level: 'quick' for basic searches, 'medium' for moderate exploration, or 'very thorough' for comprehensive analysis"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 3,
@@ -63,7 +120,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Tracking task progress and planning complex multi-step work",
-      "explanation": "TodoWrite helps track progress on complex tasks and provides visibility to users on what's being done."
+      "explanation": "TodoWrite helps track progress on complex tasks and provides visibility to users on what's being done.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code TodoWrite Tool Reference",
+              "url": "file://~/.claude/docs/tools/todowrite.md",
+              "section": "Description",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Use this tool to create and manage a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 4,
@@ -78,7 +154,26 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Before beginning work on that task",
-      "explanation": "Mark tasks in_progress BEFORE starting. This gives users real-time visibility into current work."
+      "explanation": "Mark tasks in_progress BEFORE starting. This gives users real-time visibility into current work.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code TodoWrite Tool Reference",
+              "url": "file://~/.claude/docs/tools/todowrite.md",
+              "section": "Task States and Management",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "When you start working on a task - Mark it as in_progress BEFORE beginning work. Ideally you should only have one todo as in_progress at a time"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 5,
@@ -93,7 +188,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Exactly one",
-      "explanation": "Only ONE task should be in_progress at a time. Complete current tasks before starting new ones."
+      "explanation": "Only ONE task should be in_progress at a time. Complete current tasks before starting new ones.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code TodoWrite Tool Reference",
+              "url": "file://~/.claude/docs/tools/todowrite.md",
+              "section": "Task Management",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Exactly ONE task must be in_progress at any time (not less, not more). Complete current tasks before starting new ones"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 6,
@@ -108,7 +222,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "EnterPlanMode to design the approach first",
-      "explanation": "For non-trivial implementations, planning first prevents wasted effort and ensures alignment with user expectations."
+      "explanation": "For non-trivial implementations, planning first prevents wasted effort and ensures alignment with user expectations.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code EnterPlanMode Tool Reference",
+              "url": "file://~/.claude/docs/tools/enterplanmode.md",
+              "section": "When to Use This Tool",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Use this tool proactively when you're about to start a non-trivial implementation task. Getting user sign-off on your approach before writing code prevents wasted effort and ensures alignment."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 7,
@@ -123,7 +256,26 @@
       ],
       "correctAnswerIndex": 0,
       "correctAnswer": "The conversation pauses until the user responds",
-      "explanation": "AskUserQuestion is synchronous - use it when you need clarification before proceeding."
+      "explanation": "AskUserQuestion is synchronous - use it when you need clarification before proceeding.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code AskUserQuestion Tool Reference",
+              "url": "file://~/.claude/docs/tools/askuserquestion.md",
+              "section": "Description",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Use this tool when you need to ask the user questions during execution. This allows you to: Gather user preferences or requirements, Clarify ambiguous instructions, Get decisions on implementation choices as you work"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 8,
@@ -138,7 +290,26 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "For a single, straightforward task that takes one step",
-      "explanation": "Skip TodoWrite for trivial single-step tasks. Just do the work directly."
+      "explanation": "Skip TodoWrite for trivial single-step tasks. Just do the work directly.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code TodoWrite Tool Reference",
+              "url": "file://~/.claude/docs/tools/todowrite.md",
+              "section": "When NOT to Use This Tool",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "When NOT to Use This Tool: Skip using this tool when: There is only a single, straightforward task. The task is trivial and tracking it provides no organizational benefit. The task can be completed in less than 3 trivial steps."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 9,
@@ -153,7 +324,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Keep the task in_progress, investigate and fix the error",
-      "explanation": "Never mark tasks complete if errors occurred. Keep in_progress while investigating and fixing."
+      "explanation": "Never mark tasks complete if errors occurred. Keep in_progress while investigating and fixing.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code TodoWrite Tool Reference",
+              "url": "file://~/.claude/docs/tools/todowrite.md",
+              "section": "Task Completion Requirements",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "ONLY mark a task as completed when you have FULLY accomplished it. If you encounter errors, blockers, or cannot finish, keep the task as in_progress. When blocked, create a new task describing what needs to be resolved."
+          }
+        ]
+      }
     }
   ]
 }

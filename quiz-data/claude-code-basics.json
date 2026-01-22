@@ -18,7 +18,26 @@
       ],
       "correctAnswerIndex": 0,
       "correctAnswer": "Read tool",
-      "explanation": "The Read tool is the dedicated file reading tool in Claude Code. Using Bash with cat is discouraged."
+      "explanation": "The Read tool is the dedicated file reading tool in Claude Code. Using Bash with cat is discouraged.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code System Prompt - Tool Usage Policy",
+              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "section": "Bash Tool Usage Policy",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Avoid using Bash with the find, grep, cat, head, tail, sed, awk, or echo commands... Read files: Use Read (NOT cat/head/tail)"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 1,
@@ -33,7 +52,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Edit tool (targeted replacement)",
-      "explanation": "Edit tool performs targeted string replacements, preserving the rest of the file. More efficient than rewriting."
+      "explanation": "Edit tool performs targeted string replacements, preserving the rest of the file. More efficient than rewriting.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Edit Tool Reference",
+              "url": "file://~/.claude/docs/tools/edit.md",
+              "section": "Description",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Performs exact string replacements in files... Edit files: Use Edit (NOT sed/awk)"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 2,
@@ -48,7 +86,26 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Read the file using the Read tool",
-      "explanation": "Edit tool requires that you've read the file first in the conversation to ensure you know the current contents."
+      "explanation": "Edit tool requires that you've read the file first in the conversation to ensure you know the current contents.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Edit Tool Reference",
+              "url": "file://~/.claude/docs/tools/edit.md",
+              "section": "Usage",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "You must use your Read tool at least once in the conversation before editing. This tool will error if you attempt an edit without reading the file."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 3,
@@ -63,7 +120,26 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Glob tool",
-      "explanation": "Glob tool is the dedicated file pattern matching tool. Avoid using find via Bash."
+      "explanation": "Glob tool is the dedicated file pattern matching tool. Avoid using find via Bash.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Glob Tool Reference",
+              "url": "file://~/.claude/docs/tools/glob.md",
+              "section": "Description",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Fast file pattern matching tool that works with any codebase size... File search: Use Glob (NOT find or ls)"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 4,
@@ -78,7 +154,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Grep tool",
-      "explanation": "Grep tool is optimized for content searching with proper permissions. Don't use grep via Bash."
+      "explanation": "Grep tool is optimized for content searching with proper permissions. Don't use grep via Bash.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Grep Tool Reference",
+              "url": "file://~/.claude/docs/tools/grep.md",
+              "section": "Description",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "ALWAYS use Grep for search tasks. NEVER invoke grep or rg as a Bash command. The Grep tool has been optimized for correct permissions and access."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 5,
@@ -93,7 +188,26 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Terminal operations like git, npm, docker",
-      "explanation": "Bash tool is for actual system commands. File operations have dedicated tools (Read, Write, Edit, Glob, Grep)."
+      "explanation": "Bash tool is for actual system commands. File operations have dedicated tools (Read, Write, Edit, Glob, Grep).",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Bash Tool Reference",
+              "url": "file://~/.claude/docs/tools/bash.md",
+              "section": "Description",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "IMPORTANT: This tool is for terminal operations like git, npm, docker, etc. DO NOT use it for file operations (reading, writing, editing, searching, finding files) - use the specialized tools for this instead."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 6,
@@ -108,7 +222,26 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "The edit fails - old_string must be unique",
-      "explanation": "Edit requires unique old_string. Provide more context to make it unique, or use replace_all parameter."
+      "explanation": "Edit requires unique old_string. Provide more context to make it unique, or use replace_all parameter.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Edit Tool Reference",
+              "url": "file://~/.claude/docs/tools/edit.md",
+              "section": "Usage",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "The edit will FAIL if old_string is not unique in the file. Either provide a larger string with more surrounding context to make it unique or use replace_all to change every instance of old_string."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 7,
@@ -123,7 +256,26 @@
       ],
       "correctAnswerIndex": 3,
       "correctAnswer": "Both A and C",
-      "explanation": "Write overwrites existing files. Always verify the parent directory exists and the file doesn't exist (unless intentional overwrite)."
+      "explanation": "Write overwrites existing files. Always verify the parent directory exists and the file doesn't exist (unless intentional overwrite).",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Write Tool Reference",
+              "url": "file://~/.claude/docs/tools/write.md",
+              "section": "Usage",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "This tool will overwrite the existing file if there is one at the provided path. If this is an existing file, you MUST use the Read tool first to read the file's contents."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 8,
@@ -138,7 +290,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Spawning specialized subagents for complex tasks",
-      "explanation": "Task tool launches specialized agents (Explore, Plan, Bash, etc.) for complex, multi-step operations."
+      "explanation": "Task tool launches specialized agents (Explore, Plan, Bash, etc.) for complex, multi-step operations.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Task Tool Reference",
+              "url": "file://~/.claude/docs/tools/task.md",
+              "section": "Description",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Launch a new agent to handle complex, multi-step tasks autonomously. The Task tool launches specialized agents (subprocesses) that autonomously handle complex tasks."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 9,
@@ -153,7 +324,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Use Task tool with subagent_type=Explore",
-      "explanation": "For open-ended exploration, the Explore agent is optimized to search across the codebase efficiently."
+      "explanation": "For open-ended exploration, the Explore agent is optimized to search across the codebase efficiently.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Task Tool Reference",
+              "url": "file://~/.claude/docs/tools/task.md",
+              "section": "Tool Usage Policy",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "When exploring the codebase to gather context or to answer a question that is not a needle query for a specific file/class/function, it is CRITICAL that you use the Task tool with subagent_type=Explore instead of running search commands directly."
+          }
+        ]
+      }
     }
   ]
 }
