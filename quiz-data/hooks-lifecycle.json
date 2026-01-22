@@ -1,0 +1,349 @@
+{
+  "title": "Claude Code Hooks Lifecycle Assessment",
+  "description": "Assessment covering Claude Code hooks architecture, lifecycle events, blocking mechanisms, and implementation best practices for virtual assistant candidates.",
+  "isQuiz": true,
+  "domain": "Hooks & Automation",
+  "weight": 0.20,
+  "questions": [
+    {
+      "questionNumber": 0,
+      "questionText": "How many hook event types does Claude Code support?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "5 hook types",
+        "7 hook types",
+        "10 hook types",
+        "12 hook types"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "10 hook types",
+      "explanation": "Claude Code supports exactly 10 hook event types: SessionStart, UserPromptSubmit, PreToolUse, PermissionRequest, PostToolUse, Notification, SubagentStop, Stop, PreCompact, and SessionEnd.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Hooks Lifecycle Reference",
+              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
+              "section": "Hook Events Reference",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Valid hook types (exhaustive list): SessionStart, UserPromptSubmit, PreToolUse, PermissionRequest, PostToolUse, Notification, SubagentStop, Stop, PreCompact, SessionEnd"
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 1,
+      "questionText": "When does the UserPromptSubmit hook fire?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "After Claude processes the prompt",
+        "When you submit a prompt, BEFORE Claude processes it",
+        "When Claude finishes responding",
+        "When the session ends"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "When you submit a prompt, BEFORE Claude processes it",
+      "explanation": "UserPromptSubmit fires when the user presses Enter, before Claude begins processing. This allows validation, capture, or blocking of prompts.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Introduction to Claude Code Hooks",
+              "url": "file://~/.claude/docs/hooks/00-INTRODUCTION.md",
+              "section": "UserPromptSubmit",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "**Fires**: When you submit a prompt to Claude (before processing)"
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "Which hooks CAN block execution (prevent an action from proceeding)?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Only PreToolUse and PostToolUse",
+        "UserPromptSubmit, PreToolUse, PermissionRequest, PostToolUse, SubagentStop, and Stop",
+        "All 10 hook types can block",
+        "Only Stop and SessionEnd"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "UserPromptSubmit, PreToolUse, PermissionRequest, PostToolUse, SubagentStop, and Stop",
+      "explanation": "Six hooks can block: UserPromptSubmit (hard), PreToolUse (hard), PermissionRequest (hard), PostToolUse (soft - tool already ran), SubagentStop (hard), and Stop (hard). SessionStart, PreCompact, Notification, and SessionEnd cannot block.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Hooks Lifecycle Reference",
+              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
+              "section": "Blocking vs Non-Blocking Hooks",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "**CAN BLOCK** — These hooks can prevent or modify execution: UserPromptSubmit (Hard), PreToolUse (Hard), PermissionRequest (Hard), PostToolUse (Soft), SubagentStop (Hard), Stop (Hard)"
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "How do hooks receive their input data?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Via environment variables like $TOOL_NAME and $COMMAND",
+        "Via command-line arguments",
+        "Via stdin as a JSON object",
+        "Via a configuration file"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Via stdin as a JSON object",
+      "explanation": "All hooks receive their input via stdin as a JSON object. Environment variables are NOT used for input - only CLAUDE_PROJECT_DIR, CLAUDE_CODE_REMOTE, and CLAUDE_ENV_FILE are available.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Hooks Lifecycle Reference",
+              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
+              "section": "Hook Input Delivery Mechanism",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "All hooks receive their input data via **stdin as a JSON object**. ... **Critical**: Hook inputs are NOT passed via environment variables."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "What is the CORRECT way to reference a hook script in settings.json?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "\"command\": \"uv run $HOME/.claude/hooks/script.py\"",
+        "\"command\": \"python3 $HOME/.claude/hooks/script.py\"",
+        "\"command\": \"$HOME/.claude/hooks/script.py\"",
+        "\"command\": \"./hooks/script.py\""
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "\"command\": \"$HOME/.claude/hooks/script.py\"",
+      "explanation": "Hooks must use direct executable paths without wrappers. Never use 'uv run', 'python3', or relative paths. The script must have a shebang and be executable (chmod +x).",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Hook Best Practices",
+              "url": "file://~/.claude/docs/hooks/HOOK_BEST_PRACTICES.md",
+              "section": "Use Direct Executable Paths",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.90
+            },
+            "quotedText": "**Rule**: Never wrap executables with command prefixes like `uv run`, `python3`, or similar. **Why**: Hook parser expects single-token commands (direct executable paths). Multi-token commands cause \"Found 0 hook matchers\" failures."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "When does PostToolUse hook fire?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "After any tool completes (success or failure)",
+        "After a tool completes successfully ONLY (NOT on errors)",
+        "Before a tool executes",
+        "When the user submits a prompt"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "After a tool completes successfully ONLY (NOT on errors)",
+      "explanation": "PostToolUse ONLY fires after successful tool completion. Failed Bash commands (exit ≠ 0) do NOT trigger PostToolUse. There is no PostToolUseError hook.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Hooks Lifecycle Reference",
+              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
+              "section": "CRITICAL: Non-Existent Hook Types",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "PostToolUse fires for all tool completions | **Only fires on SUCCESS** | Failed Bash commands (exit ≠ 0) do NOT trigger PostToolUse"
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "For PostToolUse hooks, what is required for Claude to see your message?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Output {\"reason\": \"your message\"}",
+        "Output {\"additionalContext\": \"your message\"}",
+        "Output {\"decision\": \"block\", \"reason\": \"your message\"}",
+        "Write to stdout with plain text"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Output {\"decision\": \"block\", \"reason\": \"your message\"}",
+      "explanation": "Counterintuitively, PostToolUse requires 'decision: block' for Claude to see the reason - but this does NOT actually block anything since the tool already ran. Without this field, Claude sees nothing.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Hooks Lifecycle Reference",
+              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
+              "section": "PostToolUse: Visibility Requires decision: block",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "**Counterintuitive but documented**: Claude only sees `reason` when `decision: \"block\"` is present. ... **Key insight**: The `decision: \"block\"` is required for visibility, but it does NOT actually block anything - the tool already ran."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "What is the recommended execution time for hooks?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Under 1 second",
+        "Under 100 milliseconds",
+        "Under 5 seconds",
+        "No time limit"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Under 100 milliseconds",
+      "explanation": "Hooks should execute quickly (< 100ms) using the fire-and-forget pattern. Long-running hooks degrade user experience and risk timeouts.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Hook Best Practices",
+              "url": "file://~/.claude/docs/hooks/HOOK_BEST_PRACTICES.md",
+              "section": "Keep Hook Execution < 100ms",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.90
+            },
+            "quotedText": "**Rule**: Hooks should execute quickly (< 100ms) using fire-and-forget pattern. **Why**: Blocks Claude Code session start/stop if too slow. Poor user experience with noticeable delays."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "What does exit code 2 mean in a hook script?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Success - allow the action",
+        "Non-blocking error",
+        "Hard block - cannot be bypassed",
+        "Soft block - user can override"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Hard block - cannot be bypassed",
+      "explanation": "Exit code 2 is a hard block that cannot be bypassed. Exit 0 is success, and other exit codes are non-blocking errors.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Hooks Lifecycle Reference",
+              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
+              "section": "Exit Codes",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "**0** — Success/allow (JSON output processed) | **2** — Hard block, cannot bypass (stderr only) | **Other** — Non-blocking error"
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "In Stop hooks, what does {\"continue\": false} actually do?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Allows Claude to stop normally",
+        "Prevents Claude from stopping (forces continuation)",
+        "Halts Claude entirely (emergency stop)",
+        "Has no effect"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Halts Claude entirely (emergency stop)",
+      "explanation": "continue: false is an ACTIVE intervention to halt Claude entirely - it does NOT mean 'allow stop'. To allow normal stop, output an empty object {}. To force continuation, use decision: block.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Hooks Lifecycle Reference",
+              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
+              "section": "Stop Hook Schema",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "**Key insight**: `{\"continue\": false}` means \"HARD STOP Claude entirely\" - it does NOT mean \"allow normal stop\". ... **Allow stop**: `{}` (empty object) | **Continue session**: `{\"decision\": \"block\", \"reason\": \"...\"}` | **Hard stop**: `{\"continue\": false, \"stopReason\": \"...\"}`"
+          }
+        ]
+      }
+    }
+  ]
+}

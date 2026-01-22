@@ -43,15 +43,27 @@ bruntwork-claude-screening/
 
 ## Quiz Domains
 
-Assessment covers 5 domains for Claude Code VA proficiency:
+Assessment covers 6 domains for Claude Code VA proficiency (50 questions total):
 
-| Domain               | Weight | Focus Areas                               |
-| -------------------- | ------ | ----------------------------------------- |
-| **Tool Mastery**     | 25%    | Read, Edit, Write, Bash, Grep, Glob usage |
-| **Agentic Patterns** | 25%    | Task delegation, multi-agent coordination |
-| **Error Handling**   | 20%    | Recovery strategies, debugging workflows  |
-| **Best Practices**   | 15%    | Context management, efficiency patterns   |
-| **Safety**           | 15%    | Sandbox awareness, permission boundaries  |
+| Domain                 | Weight | Questions | Focus Areas                                |
+| ---------------------- | ------ | --------- | ------------------------------------------ |
+| **Tool Mastery**       | 20%    | 10        | Read, Edit, Write, Bash, Grep, Glob usage  |
+| **Agentic Patterns**   | 20%    | 10        | Task delegation, multi-agent coordination  |
+| **Error Handling**     | 15%    | 10        | Recovery strategies, debugging workflows   |
+| **Best Practices**     | 15%    | 10        | Context management, efficiency patterns    |
+| **Safety**             | 10%    | 10        | Sandbox awareness, permission boundaries   |
+| **Hooks & Automation** | 20%    | 10        | Lifecycle events, blocking, implementation |
+
+### Citation Schema
+
+All questions include embedded authoritative citations with:
+
+- Source URL and section reference
+- Authority tier (1=Official Anthropic, 2=cc-skills, 3=Community)
+- Exact quoted text from source
+- Access date for validation
+
+→ See [docs/design/quiz-citation-schema.md](docs/design/quiz-citation-schema.md)
 
 ## Workflow Protocol
 
