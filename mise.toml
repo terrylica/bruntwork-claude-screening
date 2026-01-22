@@ -50,6 +50,19 @@ sources = ["google-forms-setup/created_forms.json"]
 outputs = ["google-forms-setup/audit-reports/MASTER-SUMMARY.md"]
 run = "uv run google-forms-setup/audit_forms.py"
 
+[tasks."forms:fetch-responses"]
+description = "Fetch responses from created forms"
+run = "uv run google-forms-setup/fetch_responses.py"
+
+[tasks."forms:add-fields"]
+description = "Add candidate info fields to forms"
+run = "uv run google-forms-setup/add_candidate_fields.py"
+
+[tasks."quiz:validate-citations"]
+description = "Validate citation URLs and access dates"
+sources = ["quiz-data/*.json", "scripts/validate-citations.py"]
+run = "uv run scripts/validate-citations.py"
+
 # === Release Tasks (file-based in .mise/tasks/release/) ===
 
 [tasks."release:preflight"]

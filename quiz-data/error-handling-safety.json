@@ -18,7 +18,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Stop and acknowledge the failure, diagnose, then fix",
-      "explanation": "Never ignore non-zero exits. Acknowledge, diagnose from stderr, fix the root cause, then verify success."
+      "explanation": "Never ignore non-zero exits. Acknowledge, diagnose from stderr, fix the root cause, then verify success.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Python Silent Failure Principles",
+              "url": "file://~/.claude/docs/hooks/silent-failure-guard.md",
+              "section": "Error Handling Principles",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "ALWAYS use subprocess.run(..., check=True) - without check=True, non-zero exits are silent. Fix each pattern to make failures VISIBLE and ACTIONABLE, not silent."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 1,
@@ -33,7 +52,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "cd /path/to/dir || exit 1",
-      "explanation": "cd can fail silently. Always handle with || exit 1 or || { echo 'Failed'; exit 1; }"
+      "explanation": "cd can fail silently. Always handle with || exit 1 or || { echo 'Failed'; exit 1; }",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Bash Tool Reference",
+              "url": "file://~/.claude/docs/tools/bash.md",
+              "section": "Directory Verification",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "If the command will create new directories or files, first use ls to verify the parent directory exists and is the correct location"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 2,
@@ -48,7 +86,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "except Exception: pass",
-      "explanation": "Bare 'except: pass' swallows all errors silently, hiding bugs. Always catch specific exceptions and handle/log them."
+      "explanation": "Bare 'except: pass' swallows all errors silently, hiding bugs. Always catch specific exceptions and handle/log them.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Python Silent Failure Principles",
+              "url": "file://~/.claude/docs/hooks/silent-failure-guard.md",
+              "section": "Python Silent Failure Principles",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "NEVER use bare 'except:' - it catches KeyboardInterrupt, SystemExit, and hides real bugs. NEVER use 'except: pass' - errors must be logged, re-raised, or explicitly handled. CATCH SPECIFIC exceptions."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 3,
@@ -63,7 +120,26 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Non-zero exit codes are silently ignored",
-      "explanation": "Without check=True, subprocess.run() returns normally even on failure. Always use check=True."
+      "explanation": "Without check=True, subprocess.run() returns normally even on failure. Always use check=True.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Python Silent Failure Principles",
+              "url": "file://~/.claude/docs/hooks/silent-failure-guard.md",
+              "section": "Subprocess Rules",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "ALWAYS use subprocess.run(..., check=True) - without check=True, non-zero exits are silent. PLW1510: subprocess.run() without check= silently ignores command failures"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 4,
@@ -78,7 +154,26 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "You can access the filesystem but with user-level permissions",
-      "explanation": "Claude Code has filesystem access with user permissions. You can read/write files the user can access."
+      "explanation": "Claude Code has filesystem access with user permissions. You can read/write files the user can access.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Read Tool Reference",
+              "url": "file://~/.claude/docs/tools/read.md",
+              "section": "Description",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Reads a file from the local filesystem. You can access any file directly by using this tool. Assume this tool is able to read all files on the machine."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 5,
@@ -93,7 +188,26 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "git push --force, git reset --hard",
-      "explanation": "Destructive git operations (force push, hard reset) can lose work. Only do these when explicitly requested."
+      "explanation": "Destructive git operations (force push, hard reset) can lose work. Only do these when explicitly requested.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code System Prompt - Git Safety Protocol",
+              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "section": "Git Safety Protocol",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "NEVER run destructive git commands (push --force, reset --hard, checkout ., restore ., clean -f, branch -D) unless the user explicitly requests these actions. Taking unauthorized destructive actions is unhelpful and can result in lost work"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 6,
@@ -108,7 +222,26 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Only when the user explicitly asks",
-      "explanation": "Never commit proactively. Users may want to review changes or have their own commit workflow."
+      "explanation": "Never commit proactively. Users may want to review changes or have their own commit workflow.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code System Prompt - Git Safety Protocol",
+              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "section": "Git Safety Protocol",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Only create commits when requested by the user. If unclear, ask first... NEVER commit changes unless the user explicitly asks you to. It is VERY IMPORTANT to only commit when explicitly asked"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 7,
@@ -123,7 +256,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Point it out and offer to fix it",
-      "explanation": "Always flag security issues. Be helpful by offering to fix, but don't modify without acknowledgment."
+      "explanation": "Always flag security issues. Be helpful by offering to fix, but don't modify without acknowledgment.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code System Prompt - Doing tasks",
+              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "section": "Doing tasks",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "Be careful not to introduce security vulnerabilities such as command injection, XSS, SQL injection, and other OWASP top 10 vulnerabilities. If you notice that you wrote insecure code, immediately fix it."
+          }
+        ]
+      }
     },
     {
       "questionNumber": 8,
@@ -138,7 +290,26 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Explain the scope and get confirmation from the user",
-      "explanation": "For bulk operations, explain what will be affected and confirm before proceeding. Users need to understand scope."
+      "explanation": "For bulk operations, explain what will be affected and confirm before proceeding. Users need to understand scope.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code System Prompt - Git Safety Protocol",
+              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "section": "Committing changes with git",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "When staging files, prefer adding specific files by name rather than using 'git add -A' or 'git add .', which can accidentally include sensitive files (.env, credentials) or large binaries"
+          }
+        ]
+      }
     },
     {
       "questionNumber": 9,
@@ -153,7 +324,26 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Inform the user and ask how to proceed",
-      "explanation": "Don't assume. Let the user know the path doesn't exist and ask whether to create it or use a different path."
+      "explanation": "Don't assume. Let the user know the path doesn't exist and ask whether to create it or use a different path.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Bash Tool Reference",
+              "url": "file://~/.claude/docs/tools/bash.md",
+              "section": "Directory Verification",
+              "accessDate": "2026-01-22"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "cc-skills",
+              "confidence": 0.95
+            },
+            "quotedText": "If the command will create new directories or files, first use ls to verify the parent directory exists and is the correct location. For example, before running 'mkdir foo/bar', first use 'ls foo' to check that 'foo' exists"
+          }
+        ]
+      }
     }
   ]
 }
