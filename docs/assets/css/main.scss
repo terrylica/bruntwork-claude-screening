@@ -8,84 +8,38 @@
 @import "minimal-mistakes";
 
 // ============================================
-// FULL-WIDTH LAYOUT OVERRIDES
-// Must use media queries to override theme's
-// responsive breakpoints
+// FULL-WIDTH LAYOUT - NUCLEAR OPTION
+// Use html body prefix for highest specificity
 // ============================================
 
-// Base overrides
-.initial-content,
-.page,
-.archive {
-  max-width: 100% !important;
-  width: 100% !important;
-  float: none !important;
-}
-
-// Remove left sidebar completely
-.sidebar {
-  display: none !important;
-  opacity: 0 !important;
-  width: 0 !important;
-}
-
-// Override at 64em breakpoint
-@media (min-width: 64em) {
-  #main {
-    max-width: 100% !important;
+html body {
+  // Remove all max-width constraints
+  #main,
+  .initial-content,
+  .page,
+  .archive,
+  .page__inner-wrap,
+  .page__content,
+  .masthead,
+  .masthead__inner-wrap {
+    max-width: none !important;
     width: 100% !important;
+  }
+
+  #main {
     padding-left: 2em !important;
     padding-right: 2em !important;
   }
 
-  .page {
-    width: 100% !important;
-    padding-left: 0 !important;
-  }
-}
-
-// Override at 80em breakpoint (this is where 1280px max-width is set)
-@media (min-width: 80em) {
-  #main {
-    max-width: 100% !important;
-    width: 100% !important;
-    padding-left: 3em !important;
-    padding-right: 3em !important;
+  // Hide left sidebar
+  .sidebar:not(.sidebar__right) {
+    display: none !important;
   }
 
-  .masthead__inner-wrap {
-    max-width: 100% !important;
-    padding-left: 3em !important;
-    padding-right: 3em !important;
+  // TOC stays on right
+  .sidebar__right {
+    float: right !important;
+    width: 250px !important;
+    margin-left: 1em !important;
   }
-}
-
-// Inner wrap full width
-.page__inner-wrap {
-  max-width: 100% !important;
-  width: 100% !important;
-}
-
-// Content area
-.page__content {
-  max-width: 100% !important;
-  width: 100% !important;
-}
-
-// Sticky TOC - keep on right but inline
-.sidebar__right {
-  position: relative !important;
-  float: right !important;
-  width: 300px !important;
-  margin-left: 1em !important;
-  margin-bottom: 1em !important;
-}
-
-// Masthead full width
-.masthead {
-  max-width: 100% !important;
-}
-
-.masthead__inner-wrap {
-  max-width: 100% !important;
 }
