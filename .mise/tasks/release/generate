@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+#MISE description="Phase 2: Auto-generate review page and forms from quiz SSoT"
+set -euo pipefail
+
+echo "═══════════════════════════════════════════════════════════"
+echo "  Phase 2: GENERATE (SSoT → docs + forms)"
+echo "═══════════════════════════════════════════════════════════"
+
+# Step 1: Generate review page
+echo "→ Generating review page..."
+uv run scripts/generate-review-page.py
+echo "  ✓ docs/review.md updated"
+
+# Step 2: Create/update Google Forms
+echo "→ Creating Google Forms..."
+uv run google-forms-setup/create_forms.py --all
+echo "  ✓ Forms created/updated"
+
+# Step 3: Add candidate fields
+echo "→ Adding candidate fields to forms..."
+uv run google-forms-setup/add_candidate_fields.py
+echo "  ✓ Candidate fields added"
+
+# Step 4: Check if generated files changed
+echo "→ Checking for changes..."
+if [[ -n "$(git status --porcelain docs/review.md)" ]]; then
+    echo "  ⚠ docs/review.md has uncommitted changes"
+    echo "    Run: git add docs/review.md && git commit --amend --no-edit"
+    echo ""
+    echo "  Generated files should be committed before release."
+    echo "  Would you like to auto-commit? (semantic-release will handle this)"
+
+    # Auto-stage the generated file
+    git add docs/review.md
+    echo "  ✓ Staged docs/review.md"
+fi
+
+echo ""
+echo "✓ Generation phase complete"
+echo ""
