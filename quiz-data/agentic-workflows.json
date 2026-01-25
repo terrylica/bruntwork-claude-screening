@@ -25,7 +25,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Subagents Reference",
-              "url": "file://~/.claude/docs/tools/task.md",
+              "url": "https://code.claude.com/docs/en/sub-agents",
               "onlineUrl": "https://code.claude.com/docs/en/sub-agents",
               "section": "Choose between subagents and main conversation",
               "accessDate": "2026-01-24"
@@ -60,7 +60,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Subagents Reference",
-              "url": "file://~/.claude/docs/tools/task.md",
+              "url": "https://code.claude.com/docs/en/sub-agents",
               "onlineUrl": "https://code.claude.com/docs/en/sub-agents",
               "section": "Run parallel research",
               "accessDate": "2026-01-24"
@@ -95,7 +95,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Subagents Reference",
-              "url": "file://~/.claude/docs/tools/task.md",
+              "url": "https://code.claude.com/docs/en/sub-agents",
               "onlineUrl": "https://code.claude.com/docs/en/sub-agents",
               "section": "Built-in subagents - Explore",
               "accessDate": "2026-01-24"
@@ -130,7 +130,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code CLI Reference",
-              "url": "file://~/.claude/docs/tools/todowrite.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
               "section": "TaskCreate tool",
               "accessDate": "2026-01-24"
@@ -165,7 +165,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code CLI Reference",
-              "url": "file://~/.claude/docs/tools/todowrite.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
               "section": "TaskUpdate tool",
               "accessDate": "2026-01-24"
@@ -200,7 +200,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code CLI Reference",
-              "url": "file://~/.claude/docs/tools/todowrite.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
               "section": "TaskUpdate tool",
               "accessDate": "2026-01-24"
@@ -235,7 +235,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code CLI Reference",
-              "url": "file://~/.claude/docs/tools/enterplanmode.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
               "section": "EnterPlanMode tool",
               "accessDate": "2026-01-24"
@@ -270,7 +270,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code CLI Reference",
-              "url": "file://~/.claude/docs/tools/askuserquestion.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
               "section": "AskUserQuestion tool",
               "accessDate": "2026-01-24"
@@ -305,7 +305,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code CLI Reference",
-              "url": "file://~/.claude/docs/tools/todowrite.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
               "section": "TaskCreate tool - When NOT to Use",
               "accessDate": "2026-01-24"
@@ -340,7 +340,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code CLI Reference",
-              "url": "file://~/.claude/docs/tools/todowrite.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
               "section": "TaskUpdate tool - Completion",
               "accessDate": "2026-01-24"

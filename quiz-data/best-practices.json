@@ -23,17 +23,17 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
-              "onlineUrl": "https://code.claude.com/docs/en/best-practices",
+              "type": "community",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Doing tasks",
-              "accessDate": "2026-01-24"
+              "accessDate": "2026-01-25"
             },
             "authority": {
-              "tier": 1,
-              "organization": "Anthropic",
-              "confidence": 0.95
+              "tier": 3,
+              "organization": "Community",
+              "confidence": 0.90
             },
             "quotedText": "NEVER propose changes to code you haven't read. If a user asks about or wants you to modify a file, read it first."
           }
@@ -58,17 +58,17 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
-              "onlineUrl": "https://code.claude.com/docs/en/best-practices",
+              "type": "community",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Doing tasks",
-              "accessDate": "2026-01-24"
+              "accessDate": "2026-01-25"
             },
             "authority": {
-              "tier": 1,
-              "organization": "Anthropic",
-              "confidence": 0.95
+              "tier": 3,
+              "organization": "Community",
+              "confidence": 0.90
             },
             "quotedText": "Avoid over-engineering. Only make changes that are directly requested or clearly necessary. Keep solutions simple and focused."
           }
@@ -93,17 +93,17 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
-              "onlineUrl": "https://code.claude.com/docs/en/best-practices",
+              "type": "community",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Doing tasks",
-              "accessDate": "2026-01-24"
+              "accessDate": "2026-01-25"
             },
             "authority": {
-              "tier": 1,
-              "organization": "Anthropic",
-              "confidence": 0.95
+              "tier": 3,
+              "organization": "Community",
+              "confidence": 0.90
             },
             "quotedText": "Only add comments where the logic isn't self-evident. Don't add docstrings, comments, or type annotations to code you didn't change."
           }
@@ -128,17 +128,17 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
-              "onlineUrl": "https://code.claude.com/docs/en/best-practices",
+              "type": "community",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Doing tasks",
-              "accessDate": "2026-01-24"
+              "accessDate": "2026-01-25"
             },
             "authority": {
-              "tier": 1,
-              "organization": "Anthropic",
-              "confidence": 0.95
+              "tier": 3,
+              "organization": "Community",
+              "confidence": 0.90
             },
             "quotedText": "A bug fix doesn't need surrounding code cleaned up. A simple feature doesn't need extra configurability."
           }
@@ -163,17 +163,17 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
-              "onlineUrl": "https://code.claude.com/docs/en/best-practices",
+              "type": "community",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "No time estimates",
-              "accessDate": "2026-01-24"
+              "accessDate": "2026-01-25"
             },
             "authority": {
-              "tier": 1,
-              "organization": "Anthropic",
-              "confidence": 0.95
+              "tier": 3,
+              "organization": "Community",
+              "confidence": 0.90
             },
             "quotedText": "Never give time estimates or predictions for how long tasks will take. Focus on what needs to be done, not how long it might take."
           }
@@ -198,17 +198,17 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "documentation",
+              "type": "community",
               "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/tools/askuserquestion.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/best-practices",
               "section": "AskUserQuestion tool",
-              "accessDate": "2026-01-24"
+              "accessDate": "2026-01-25"
             },
             "authority": {
-              "tier": 1,
-              "organization": "Anthropic",
-              "confidence": 0.95
+              "tier": 3,
+              "organization": "Community",
+              "confidence": 0.90
             },
             "quotedText": "Use this tool when you need to ask the user questions during execution. This allows you to: Clarify ambiguous instructions."
           }
@@ -233,17 +233,17 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
-              "onlineUrl": "https://code.claude.com/docs/en/best-practices",
+              "type": "community",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Edit tool",
-              "accessDate": "2026-01-24"
+              "accessDate": "2026-01-25"
             },
             "authority": {
-              "tier": 1,
-              "organization": "Anthropic",
-              "confidence": 0.95
+              "tier": 3,
+              "organization": "Community",
+              "confidence": 0.90
             },
             "quotedText": "ALWAYS prefer editing existing files in the codebase. NEVER write new files unless explicitly required."
           }
@@ -268,17 +268,17 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
-              "onlineUrl": "https://code.claude.com/docs/en/best-practices",
+              "type": "community",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Tone and style",
-              "accessDate": "2026-01-24"
+              "accessDate": "2026-01-25"
             },
             "authority": {
-              "tier": 1,
-              "organization": "Anthropic",
-              "confidence": 0.95
+              "tier": 3,
+              "organization": "Community",
+              "confidence": 0.90
             },
             "quotedText": "Your output will be displayed on a command line interface. Your responses should be short and concise. Only use emojis if the user explicitly requests it."
           }
@@ -303,17 +303,17 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
-              "onlineUrl": "https://code.claude.com/docs/en/best-practices",
+              "type": "community",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Code References",
-              "accessDate": "2026-01-24"
+              "accessDate": "2026-01-25"
             },
             "authority": {
-              "tier": 1,
-              "organization": "Anthropic",
-              "confidence": 0.95
+              "tier": 3,
+              "organization": "Community",
+              "confidence": 0.90
             },
             "quotedText": "When referencing specific functions or pieces of code include the pattern file_path:line_number to allow the user to easily navigate to the source code location."
           }
@@ -338,17 +338,17 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
-              "onlineUrl": "https://code.claude.com/docs/en/best-practices",
+              "type": "community",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Professional objectivity",
-              "accessDate": "2026-01-24"
+              "accessDate": "2026-01-25"
             },
             "authority": {
-              "tier": 1,
-              "organization": "Anthropic",
-              "confidence": 0.95
+              "tier": 3,
+              "organization": "Community",
+              "confidence": 0.90
             },
             "quotedText": "Prioritize technical accuracy and truthfulness over validating the user's beliefs. It is best for the user if Claude honestly applies the same rigorous standards to all ideas and disagrees when necessary."
           }

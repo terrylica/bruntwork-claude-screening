@@ -59,7 +59,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Hooks Reference",
-              "url": "file://~/.claude/docs/hooks/00-INTRODUCTION.md",
+              "url": "https://code.claude.com/docs/en/hooks",
               "onlineUrl": "https://code.claude.com/docs/en/hooks",
               "section": "UserPromptSubmit",
               "accessDate": "2026-01-24"
@@ -94,7 +94,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Hooks Reference",
-              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
+              "url": "https://code.claude.com/docs/en/hooks",
               "onlineUrl": "https://code.claude.com/docs/en/hooks",
               "section": "Exit Code 2 Behavior",
               "accessDate": "2026-01-24"
@@ -129,7 +129,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Hooks Reference",
-              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
+              "url": "https://code.claude.com/docs/en/hooks",
               "onlineUrl": "https://code.claude.com/docs/en/hooks",
               "section": "Hook Input",
               "accessDate": "2026-01-24"
@@ -164,7 +164,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Hooks Reference",
-              "url": "file://~/.claude/docs/hooks/HOOK_BEST_PRACTICES.md",
+              "url": "https://code.claude.com/docs/en/hooks",
               "onlineUrl": "https://code.claude.com/docs/en/hooks",
               "section": "Project-Specific Hook Scripts",
               "accessDate": "2026-01-24"
@@ -199,7 +199,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Hooks Reference",
-              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
+              "url": "https://code.claude.com/docs/en/hooks",
               "onlineUrl": "https://code.claude.com/docs/en/hooks",
               "section": "PostToolUse",
               "accessDate": "2026-01-24"
@@ -234,7 +234,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Hooks Reference",
-              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
+              "url": "https://code.claude.com/docs/en/hooks",
               "onlineUrl": "https://code.claude.com/docs/en/hooks",
               "section": "PostToolUse Decision Control",
               "accessDate": "2026-01-24"
@@ -269,7 +269,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Hooks Reference",
-              "url": "file://~/.claude/docs/hooks/HOOK_BEST_PRACTICES.md",
+              "url": "https://code.claude.com/docs/en/hooks",
               "onlineUrl": "https://code.claude.com/docs/en/hooks",
               "section": "Hook Execution Details",
               "accessDate": "2026-01-24"
@@ -304,7 +304,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Hooks Reference",
-              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
+              "url": "https://code.claude.com/docs/en/hooks",
               "onlineUrl": "https://code.claude.com/docs/en/hooks",
               "section": "Simple: Exit Code",
               "accessDate": "2026-01-24"
@@ -339,7 +339,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Hooks Reference",
-              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
+              "url": "https://code.claude.com/docs/en/hooks",
               "onlineUrl": "https://code.claude.com/docs/en/hooks",
               "section": "Stop/SubagentStop Decision Control",
               "accessDate": "2026-01-24"

@@ -8,7 +8,7 @@ toc_sticky: true
 > This page contains all correct answers with explanations and authoritative citations.
 > Use this as a learning resource alongside the [assessment quizzes](./).
 
-*Generated: 2026-01-25 11:42*
+*Generated: 2026-01-25 11:55*
 
 ---
 
@@ -19,9 +19,9 @@ toc_sticky: true
 | Total Questions | 66 |
 | Domains | 6 |
 | Citation Coverage | 100% |
-| Tier 1 (Official) | 100% |
+| Tier 1 (Official) | 82% |
 | Tier 2 (Internal) | 0% |
-| Tier 3 (Community) | 0% |
+| Tier 3 (Community) | 18% |
 
 ---
 
@@ -56,8 +56,8 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Tool usage policy<br>
 <strong>Access Date</strong>: 2026-01-24<br>
 <blockquote>"Use specialized tools instead of bash commands when possible. For file operations, use dedicated tools: Read for reading files."</blockquote>
@@ -80,8 +80,8 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Edit tool<br>
 <strong>Access Date</strong>: 2026-01-24<br>
 <blockquote>"Performs exact string replacements in files."</blockquote>
@@ -104,8 +104,8 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Edit tool<br>
 <strong>Access Date</strong>: 2026-01-24<br>
 <blockquote>"You must use your Read tool at least once in the conversation before editing. This tool will error if you attempt an edit without reading the file."</blockquote>
@@ -128,8 +128,8 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Glob tool<br>
 <strong>Access Date</strong>: 2026-01-24<br>
 <blockquote>"Fast file pattern matching tool that works with any codebase size."</blockquote>
@@ -150,13 +150,13 @@ toc_sticky: true
 **Explanation**: Grep tool is optimized for content searching with proper permissions. Don't use grep via Bash.
 
 <details>
-<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+<summary>Citation [Tier 3 - Community] (90% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
-<strong>Section</strong>: Grep tool<br>
-<strong>Access Date</strong>: 2026-01-24<br>
-<blockquote>"ALWAYS use Grep for search tasks. NEVER invoke grep or rg as a Bash command."</blockquote>
+<strong>Source</strong>: Claude Code GitHub Issue #6971<br>
+<strong>URL</strong>: <a href="https://github.com/anthropics/claude-code/issues/6971">Claude Code GitHub Issue #6971</a><br>
+<strong>Section</strong>: Problem Description<br>
+<strong>Access Date</strong>: 2026-01-25<br>
+<blockquote>"USAGE: ALWAYS use Grep for search tasks. NEVER invoke grep or rg as a Bash command. The Grep tool has been optimized for correct permissions and access."</blockquote>
 
 </details>
 
@@ -174,13 +174,13 @@ toc_sticky: true
 **Explanation**: Bash tool is for actual system commands. File operations have dedicated tools (Read, Write, Edit, Glob, Grep).
 
 <details>
-<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+<summary>Citation [Tier 3 - Community] (90% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
-<strong>Section</strong>: Bash tool<br>
-<strong>Access Date</strong>: 2026-01-24<br>
-<blockquote>"This tool is for terminal operations like git, npm, docker, etc. DO NOT use it for file operations."</blockquote>
+<strong>Source</strong>: Claude Code GitHub Issue #6971<br>
+<strong>URL</strong>: <a href="https://github.com/anthropics/claude-code/issues/6971">Claude Code GitHub Issue #6971</a><br>
+<strong>Section</strong>: Problem Description<br>
+<strong>Access Date</strong>: 2026-01-25<br>
+<blockquote>"VERY IMPORTANT: You MUST avoid using search commands like find and grep. Instead use Grep, Glob, or Task to search."</blockquote>
 
 </details>
 
@@ -200,8 +200,8 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Edit tool<br>
 <strong>Access Date</strong>: 2026-01-24<br>
 <blockquote>"The edit will FAIL if old_string is not unique in the file. Either provide a larger string with more surrounding context to make it unique or use replace_all to change every instance."</blockquote>
@@ -224,8 +224,8 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Write tool<br>
 <strong>Access Date</strong>: 2026-01-24<br>
 <blockquote>"This tool will overwrite the existing file if there is one at the provided path. If this is an existing file, you MUST use the Read tool first."</blockquote>
@@ -544,12 +544,12 @@ toc_sticky: true
 **Explanation**: Never propose changes to code you haven't read. Always read first, then understand, then suggest.
 
 <details>
-<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+<summary>Citation [Tier 3 - Community] (90% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Doing tasks<br>
-<strong>Access Date</strong>: 2026-01-24<br>
+<strong>Access Date</strong>: 2026-01-25<br>
 <blockquote>"NEVER propose changes to code you haven't read. If a user asks about or wants you to modify a file, read it first."</blockquote>
 
 </details>
@@ -568,12 +568,12 @@ toc_sticky: true
 **Explanation**: Avoid over-engineering. Only do what was asked. Don't add features, refactoring, or 'improvements' beyond the request.
 
 <details>
-<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+<summary>Citation [Tier 3 - Community] (90% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Doing tasks<br>
-<strong>Access Date</strong>: 2026-01-24<br>
+<strong>Access Date</strong>: 2026-01-25<br>
 <blockquote>"Avoid over-engineering. Only make changes that are directly requested or clearly necessary. Keep solutions simple and focused."</blockquote>
 
 </details>
@@ -592,12 +592,12 @@ toc_sticky: true
 **Explanation**: Don't add unnecessary documentation. Only comment non-obvious logic. Don't add docstrings/comments to code you didn't change.
 
 <details>
-<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+<summary>Citation [Tier 3 - Community] (90% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Doing tasks<br>
-<strong>Access Date</strong>: 2026-01-24<br>
+<strong>Access Date</strong>: 2026-01-25<br>
 <blockquote>"Only add comments where the logic isn't self-evident. Don't add docstrings, comments, or type annotations to code you didn't change."</blockquote>
 
 </details>
@@ -616,12 +616,12 @@ toc_sticky: true
 **Explanation**: A bug fix doesn't need surrounding code cleaned up. Stay focused on the requested change only.
 
 <details>
-<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+<summary>Citation [Tier 3 - Community] (90% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Doing tasks<br>
-<strong>Access Date</strong>: 2026-01-24<br>
+<strong>Access Date</strong>: 2026-01-25<br>
 <blockquote>"A bug fix doesn't need surrounding code cleaned up. A simple feature doesn't need extra configurability."</blockquote>
 
 </details>
@@ -640,12 +640,12 @@ toc_sticky: true
 **Explanation**: Don't predict timing. Focus on breaking work into actionable steps and let users judge timing themselves.
 
 <details>
-<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+<summary>Citation [Tier 3 - Community] (90% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: No time estimates<br>
-<strong>Access Date</strong>: 2026-01-24<br>
+<strong>Access Date</strong>: 2026-01-25<br>
 <blockquote>"Never give time estimates or predictions for how long tasks will take. Focus on what needs to be done, not how long it might take."</blockquote>
 
 </details>
@@ -664,12 +664,12 @@ toc_sticky: true
 **Explanation**: When requirements are unclear, ask! AskUserQuestion prevents wasted effort from wrong assumptions.
 
 <details>
-<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+<summary>Citation [Tier 3 - Community] (90% confidence)</summary>
 
 <strong>Source</strong>: Claude Code System Prompt<br>
 <strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
 <strong>Section</strong>: AskUserQuestion tool<br>
-<strong>Access Date</strong>: 2026-01-24<br>
+<strong>Access Date</strong>: 2026-01-25<br>
 <blockquote>"Use this tool when you need to ask the user questions during execution. This allows you to: Clarify ambiguous instructions."</blockquote>
 
 </details>
@@ -688,12 +688,12 @@ toc_sticky: true
 **Explanation**: Always prefer editing existing files over creating new ones. Read first to understand what's there.
 
 <details>
-<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+<summary>Citation [Tier 3 - Community] (90% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Edit tool<br>
-<strong>Access Date</strong>: 2026-01-24<br>
+<strong>Access Date</strong>: 2026-01-25<br>
 <blockquote>"ALWAYS prefer editing existing files in the codebase. NEVER write new files unless explicitly required."</blockquote>
 
 </details>
@@ -712,12 +712,12 @@ toc_sticky: true
 **Explanation**: Output is displayed in CLI - keep responses short and concise. Avoid emojis unless requested.
 
 <details>
-<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+<summary>Citation [Tier 3 - Community] (90% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Tone and style<br>
-<strong>Access Date</strong>: 2026-01-24<br>
+<strong>Access Date</strong>: 2026-01-25<br>
 <blockquote>"Your output will be displayed on a command line interface. Your responses should be short and concise. Only use emojis if the user explicitly requests it."</blockquote>
 
 </details>
@@ -736,12 +736,12 @@ toc_sticky: true
 **Explanation**: Use file_path:line_number format (e.g., src/utils.py:42) so users can navigate directly to the location.
 
 <details>
-<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+<summary>Citation [Tier 3 - Community] (90% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Code References<br>
-<strong>Access Date</strong>: 2026-01-24<br>
+<strong>Access Date</strong>: 2026-01-25<br>
 <blockquote>"When referencing specific functions or pieces of code include the pattern file_path:line_number to allow the user to easily navigate to the source code location."</blockquote>
 
 </details>
@@ -760,12 +760,12 @@ toc_sticky: true
 **Explanation**: Prioritize technical accuracy - explain your reasoning. But ultimately respect the user's autonomy to decide.
 
 <details>
-<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+<summary>Citation [Tier 3 - Community] (90% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt<br>
-<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Source</strong>: Claude Code System Prompt Archive<br>
+<strong>URL</strong>: <a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md">Claude Code System Prompt Archive</a><br>
 <strong>Section</strong>: Professional objectivity<br>
-<strong>Access Date</strong>: 2026-01-24<br>
+<strong>Access Date</strong>: 2026-01-25<br>
 <blockquote>"Prioritize technical accuracy and truthfulness over validating the user's beliefs. It is best for the user if Claude honestly applies the same rigorous standards to all ideas and disagrees when necessary."</blockquote>
 
 </details>
