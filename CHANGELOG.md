@@ -1,3 +1,19 @@
+# [1.2.0](https://github.com/terrylica/bruntwork-claude-screening/compare/v1.1.1...v1.2.0) (2026-01-25)
+
+
+### Bug Fixes
+
+* **citations:** correct source attribution and quotedText accuracy ([c8bde17](https://github.com/terrylica/bruntwork-claude-screening/commit/c8bde175cd5aec7072c510bd2510c0e96bcd9466))
+* **docs:** widen collapsible TOC panel to 400px ([5532104](https://github.com/terrylica/bruntwork-claude-screening/commit/5532104cd673491c05d6aab6653717ff4737b0fa))
+* **review:** use HTML formatting inside details blocks for Jekyll ([5d11572](https://github.com/terrylica/bruntwork-claude-screening/commit/5d11572689415c4f599cdfa45f57fa29f7308372))
+
+
+### Features
+
+* **docs:** collapsible floating TOC panel ([2e3f3dd](https://github.com/terrylica/bruntwork-claude-screening/commit/2e3f3dd4ff56586047cb6ee61fb32532a02d6fb3))
+* **quiz:** add Agents Deep Dive quiz and dual URL citation schema ([382c488](https://github.com/terrylica/bruntwork-claude-screening/commit/382c4884ce95dc28dfd8131b981bc3c5298a9f92))
+* **release:** add auto-generation phase to release workflow ([681d946](https://github.com/terrylica/bruntwork-claude-screening/commit/681d9460bb0525b671f809f15f5886160842c6ef))
+
 ## [1.1.1](https://github.com/terrylica/bruntwork-claude-screening/compare/v1.1.0...v1.1.1) (2026-01-25)
 
 
