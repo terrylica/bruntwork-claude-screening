@@ -22,13 +22,12 @@ from pathlib import Path
 from typing import Any
 
 # Quiz file order (determines display order)
+# v2.0: Consolidated into principle-based assessments
 QUIZ_ORDER = [
-    "claude-code-basics.json",
-    "agentic-workflows.json",
-    "best-practices.json",
-    "error-handling-safety.json",
-    "hooks-lifecycle.json",
+    "effective-prompting.json",
+    "safety-autonomy.json",
     "agents-deep-dive.json",
+    "hooks-lifecycle.json",
 ]
 
 

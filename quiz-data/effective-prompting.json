@@ -1,0 +1,359 @@
+{
+  "title": "Effective Claude Code Prompting Assessment",
+  "description": "Assessment covering context clarity, CLAUDE.md best practices, autonomy levels, and effective prompting patterns for vibe coding with Claude Code v2.1+.",
+  "isQuiz": true,
+  "domain": "Prompting & Context",
+  "weight": 0.35,
+  "questions": [
+    {
+      "questionNumber": 0,
+      "questionText": "What is the most important factor for Claude Code's success rate according to Anthropic?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Specifying which tools to use",
+        "Clear, specific instructions about what you want",
+        "Using the latest model version",
+        "Running in a specific environment"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Clear, specific instructions about what you want",
+      "explanation": "WHY THIS MATTERS: Claude Code v2.1+ autonomously selects tools based on context - you don't need to micromanage. What matters is WHAT you want, not HOW to do it. According to Anthropic: 'Claude Code's success rate improves significantly with more specific instructions, especially on first attempts.' Focus your energy on describing outcomes clearly, not on directing implementation details.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code: Best practices for agentic coding",
+              "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "onlineUrl": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "section": "Be specific in your instructions",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Claude Code's success rate improves significantly with more specific instructions, especially on first attempts. Giving clear directions upfront reduces the need for course corrections later."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 1,
+      "questionText": "What is CLAUDE.md and why is it important?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "A log file that records all Claude Code sessions",
+        "A special file automatically pulled into context at session start",
+        "A configuration file for Claude Code CLI settings",
+        "A markdown template for documentation"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "A special file automatically pulled into context at session start",
+      "explanation": "WHY THIS MATTERS: CLAUDE.md is your project's 'memory' - it persists across sessions and automatically loads into context. This is where you put project conventions, common commands, code style guidelines, and testing instructions. It's the difference between repeating yourself every session and having Claude understand your project from the start. This single file can dramatically improve Claude's effectiveness on your specific codebase.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code: Best practices for agentic coding",
+              "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "onlineUrl": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "section": "Use CLAUDE.md for context",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "CLAUDE.md is a special file that Claude automatically pulls into context when starting a conversation. This makes it an ideal place for documenting repository etiquette, developer environment setup, and any unexpected behaviors particular to the project."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "When Claude 4.5 seems too brief or skips actions, what should you do?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Switch to a different model",
+        "Add more explicit instructions for the behavior you want",
+        "Use more technical jargon",
+        "Report a bug to Anthropic"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Add more explicit instructions for the behavior you want",
+      "explanation": "WHY THIS MATTERS: Claude 4.5 models are trained for precise instruction following - they do what you ask, not what you might mean. If you want detailed explanations, ask for them. If you want Claude to implement changes rather than suggest them, say 'make these changes' not 'can you suggest changes?' This precise behavior is a feature - it gives you control - but requires being explicit about your expectations.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude 4.x Prompting Best Practices",
+              "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices",
+              "onlineUrl": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-4-best-practices",
+              "section": "Be explicit with your instructions",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Claude 4.x models respond well to clear, explicit instructions. Being specific about your desired output can help enhance results. Customers who desire the 'above and beyond' behavior from previous Claude models might need to more explicitly request these behaviors."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "What's the recommended approach when you want Claude to make changes to code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Say 'can you suggest some changes?'",
+        "Say 'make these changes' or 'change this function to...'",
+        "Paste the code and wait",
+        "Always use specific tool names"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Say 'make these changes' or 'change this function to...'",
+      "explanation": "WHY THIS MATTERS: Claude 4.5 follows instructions precisely. 'Can you suggest changes?' results in suggestions. 'Make these changes' results in actual edits. This isn't a limitation - it's intentional design that lets users choose between analysis and action. In vibe coding, you typically want action: 'Fix this bug', 'Add logging here', 'Refactor this function'. Be direct about your intent.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude 4.x Prompting Best Practices",
+              "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices",
+              "onlineUrl": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-4-best-practices",
+              "section": "Tool usage patterns",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "If you say 'can you suggest some changes,' it will sometimes provide suggestions rather than implementing them—even if making changes might be what you intended. For Claude to take action, be more explicit: 'Change this function to improve its performance.'"
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "Why should you explain WHY you want something, not just WHAT?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "It makes the prompt longer which is better",
+        "Claude can generalize from the explanation to similar situations",
+        "It's required for tool access",
+        "It improves response speed"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Claude can generalize from the explanation to similar situations",
+      "explanation": "WHY THIS MATTERS: Providing context about motivation helps Claude understand your goals beyond the literal request. If you say 'never use ellipses because this will be read by text-to-speech,' Claude understands the underlying constraint (audio output) and can apply similar judgment to other formatting decisions. Context is currency in vibe coding - it compounds into better decisions throughout your session.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude 4.x Prompting Best Practices",
+              "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices",
+              "onlineUrl": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-4-best-practices",
+              "section": "Add context to improve performance",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Providing context or motivation behind your instructions, such as explaining to Claude why such behavior is important, can help Claude 4.x models better understand your goals. Claude is smart enough to generalize from the explanation."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "What should you NOT worry about when using Claude Code effectively?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Being specific about what you want",
+        "Providing project context in CLAUDE.md",
+        "Specifying which internal tools Claude should use",
+        "Explaining your constraints and goals"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Specifying which internal tools Claude should use",
+      "explanation": "WHY THIS MATTERS: Claude Code v2.1+ has 'significantly improved native subagent orchestration capabilities' - it recognizes when tasks benefit from delegation and does so proactively. Telling Claude 'use the Grep tool' or 'spawn an Explore agent' is micromanagement that adds no value. Let Claude decide HOW while you focus on WHAT and WHY. This represents a fundamental shift from early AI coding tools.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude 4.x Prompting Best Practices",
+              "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices",
+              "onlineUrl": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-4-best-practices",
+              "section": "Subagent orchestration",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Claude 4.5 models demonstrate significantly improved native subagent orchestration capabilities. These models can recognize when tasks would benefit from delegating work to specialized subagents and do so proactively without requiring explicit instruction."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "What does 'vibe coding' mean in the context of Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Writing code while listening to music",
+        "Describing projects in natural language instead of writing code directly",
+        "A specific programming language",
+        "A debugging technique"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Describing projects in natural language instead of writing code directly",
+      "explanation": "WHY THIS MATTERS: Vibe coding, coined by Andrej Karpathy in February 2025, represents a paradigm shift. Instead of writing code line-by-line, you describe what you want and let AI handle implementation. Claude Code transformed this from concept to practice: 'You just tell it to do something, and it works.' Understanding this paradigm helps you work WITH the tool rather than fighting it.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "news",
+              "title": "Anthropic's Claude Code transforms vibe coding",
+              "url": "https://www.axios.com/2026/01/07/anthropics-claude-code-vibe-coding",
+              "onlineUrl": "https://www.axios.com/2026/01/07/anthropics-claude-code-vibe-coding",
+              "section": "Overview",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "Axios",
+              "confidence": 0.90
+            },
+            "quotedText": "The term vibe coding—describing projects in natural language instead of code—was coined by Andrej Karpathy on February 3, 2025. Claude Code changed this by letting users talk directly to an agent. 'You just tell it to do something, and it works.'"
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "What should you ask Claude to do BEFORE it starts implementing a complex feature?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "List all the tools it will use",
+        "Make a plan and wait for your confirmation before coding",
+        "Estimate how long it will take",
+        "Show its system prompt"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Make a plan and wait for your confirmation before coding",
+      "explanation": "WHY THIS MATTERS: For complex tasks, alignment before implementation saves massive rework. Explicitly tell Claude 'don't code until you've confirmed the plan looks good.' This creates a checkpoint where you can catch misunderstandings before they become 500 lines of wrong code. It's the difference between steering and chasing. Course corrections mid-implementation are always more expensive.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code: Best practices for agentic coding",
+              "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "onlineUrl": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "section": "Ask Claude to make a plan",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Ask Claude to make a plan before coding. Explicitly tell it not to code until you've confirmed its plan looks good."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "For long-running autonomous tasks, what should you provide to Claude?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "A strict time limit",
+        "A way to verify results without human feedback",
+        "Detailed step-by-step instructions",
+        "Access to external APIs"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "A way to verify results without human feedback",
+      "explanation": "WHY THIS MATTERS: Autonomous operation requires a verification loop. If you want Claude to run for hours without supervision, it needs to know if it's on track. Tests, linters, type checkers - these provide objective feedback. Without verification, autonomous work drifts. The write-test cycle (write code, run it, check output, repeat) is what makes extended autonomous operation reliable.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code: Best practices for agentic coding",
+              "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "onlineUrl": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "section": "Autonomous workflows",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "If you want Claude Code to run something autonomously, you need to give it a way to verify results. The key is completing the write-test cycle: write code, run it, check the output, and repeat."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "What belongs in CLAUDE.md for your project?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "API keys and credentials",
+        "Project conventions, common commands, code style, testing instructions",
+        "Full conversation history",
+        "Debug logs from previous sessions"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Project conventions, common commands, code style, testing instructions",
+      "explanation": "WHY THIS MATTERS: CLAUDE.md is your project's knowledge base - information that should persist across all sessions. Include branch naming conventions, how to run tests, which compilers work, unusual project behaviors. Don't include secrets (use environment variables) or transient data. A well-maintained CLAUDE.md turns every Claude Code session into one with a developer who already knows your project.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code: Best practices for agentic coding",
+              "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "onlineUrl": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "section": "Using CLAUDE.md",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "CLAUDE.md is an ideal place for documenting repository etiquette (branch naming, merge vs. rebase), developer environment setup (pyenv use, which compilers work), common bash commands, core files and utility functions, code style guidelines, and testing instructions."
+          }
+        ]
+      }
+    }
+  ]
+}
