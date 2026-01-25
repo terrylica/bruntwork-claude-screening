@@ -228,8 +228,6 @@ def generate_review_page(quizzes: list[dict]) -> str:
         "toc_sticky: true",
         "---",
         "",
-        "# Quiz Answer Key & Review",
-        "",
         "> This page contains all correct answers with explanations and authoritative citations.",
         "> Use this as a learning resource alongside the [assessment quizzes](./).",
         "",
