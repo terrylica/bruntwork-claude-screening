@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/terrylica/bruntwork-claude-screening/compare/v1.2.0...v1.2.1) (2026-01-25)
+
+
+### Bug Fixes
+
+* **quiz:** remove 6 unverifiable questions from agents-deep-dive ([dfe88f4](https://github.com/terrylica/bruntwork-claude-screening/commit/dfe88f49935f4e45d51c9509f0b01fc629a837f5))
+
 # [1.2.0](https://github.com/terrylica/bruntwork-claude-screening/compare/v1.1.1...v1.2.0) (2026-01-25)
 
 
