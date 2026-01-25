@@ -24,17 +24,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Task Tool Reference",
+              "title": "Claude Code Subagents Reference",
               "url": "file://~/.claude/docs/tools/task.md",
-              "section": "When NOT to use the Task tool",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/sub-agents",
+              "section": "Choose between subagents and main conversation",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "Launch a new agent to handle complex, multi-step tasks autonomously... When NOT to use the Task tool: If you want to read a specific file path, use the Read or Glob tool instead"
+            "quotedText": "Use subagents when: The task produces verbose output you don't need in your main context. You want to enforce specific tool restrictions or permissions. The work is self-contained and can return a summary."
           }
         ]
       }
@@ -58,17 +59,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Task Tool Reference",
+              "title": "Claude Code Subagents Reference",
               "url": "file://~/.claude/docs/tools/task.md",
-              "section": "Usage notes",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/sub-agents",
+              "section": "Run parallel research",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "Launch multiple agents concurrently whenever possible, to maximize performance; to do that, use a single message with multiple tool uses"
+            "quotedText": "For independent investigations, spawn multiple subagents to work simultaneously. Each subagent explores its area independently, then Claude synthesizes the findings."
           }
         ]
       }
@@ -92,17 +94,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Task Tool Reference",
+              "title": "Claude Code Subagents Reference",
               "url": "file://~/.claude/docs/tools/task.md",
-              "section": "Available agent types",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/sub-agents",
+              "section": "Built-in subagents - Explore",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "Explore: Fast agent specialized for exploring codebases... When calling this agent, specify the desired thoroughness level: 'quick' for basic searches, 'medium' for moderate exploration, or 'very thorough' for comprehensive analysis"
+            "quotedText": "When invoking Explore, Claude specifies a thoroughness level: quick for targeted lookups, medium for balanced exploration, or very thorough for comprehensive analysis."
           }
         ]
       }
@@ -126,17 +129,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code TodoWrite Tool Reference",
+              "title": "Claude Code CLI Reference",
               "url": "file://~/.claude/docs/tools/todowrite.md",
-              "section": "Description",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "TaskCreate tool",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "Use this tool to create and manage a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user."
+            "quotedText": "Use this tool to create a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user."
           }
         ]
       }
@@ -160,17 +164,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code TodoWrite Tool Reference",
+              "title": "Claude Code CLI Reference",
               "url": "file://~/.claude/docs/tools/todowrite.md",
-              "section": "Task States and Management",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "TaskUpdate tool",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "When you start working on a task - Mark it as in_progress BEFORE beginning work. Ideally you should only have one todo as in_progress at a time"
+            "quotedText": "When you start working on a task - Mark it as in_progress BEFORE beginning work."
           }
         ]
       }
@@ -181,10 +186,10 @@
       "type": "multiple_choice",
       "required": true,
       "options": [
-        "As many as are being worked on in parallel",
+        "One per subagent spawned (multiply by agent count)",
         "Exactly one",
-        "Zero until all are complete",
-        "No limit"
+        "Zero until the final task is ready",
+        "Up to three for complex workflows"
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Exactly one",
@@ -194,17 +199,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code TodoWrite Tool Reference",
+              "title": "Claude Code CLI Reference",
               "url": "file://~/.claude/docs/tools/todowrite.md",
-              "section": "Task Management",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "TaskUpdate tool",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "Exactly ONE task must be in_progress at any time (not less, not more). Complete current tasks before starting new ones"
+            "quotedText": "Status progresses: `pending` → `in_progress` → `completed`. Mark task as in progress when starting work."
           }
         ]
       }
@@ -228,14 +234,15 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code EnterPlanMode Tool Reference",
+              "title": "Claude Code CLI Reference",
               "url": "file://~/.claude/docs/tools/enterplanmode.md",
-              "section": "When to Use This Tool",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "EnterPlanMode tool",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
             "quotedText": "Use this tool proactively when you're about to start a non-trivial implementation task. Getting user sign-off on your approach before writing code prevents wasted effort and ensures alignment."
@@ -262,17 +269,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code AskUserQuestion Tool Reference",
+              "title": "Claude Code CLI Reference",
               "url": "file://~/.claude/docs/tools/askuserquestion.md",
-              "section": "Description",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "AskUserQuestion tool",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "Use this tool when you need to ask the user questions during execution. This allows you to: Gather user preferences or requirements, Clarify ambiguous instructions, Get decisions on implementation choices as you work"
+            "quotedText": "Use this tool when you need to ask the user questions during execution. This allows you to: Gather user preferences or requirements, Clarify ambiguous instructions, Get decisions on implementation choices as you work."
           }
         ]
       }
@@ -296,17 +304,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code TodoWrite Tool Reference",
+              "title": "Claude Code CLI Reference",
               "url": "file://~/.claude/docs/tools/todowrite.md",
-              "section": "When NOT to Use This Tool",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "TaskCreate tool - When NOT to Use",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "When NOT to Use This Tool: Skip using this tool when: There is only a single, straightforward task. The task is trivial and tracking it provides no organizational benefit. The task can be completed in less than 3 trivial steps."
+            "quotedText": "When NOT to Use This Tool: Skip using this tool when there is only a single, straightforward task. The task is trivial and tracking it provides no organizational benefit."
           }
         ]
       }
@@ -317,10 +326,10 @@
       "type": "multiple_choice",
       "required": true,
       "options": [
-        "Mark the todo as completed and move on",
+        "Create a new task for error investigation, mark original complete",
         "Keep the task in_progress, investigate and fix the error",
-        "Delete the todo and start over",
-        "Ask the user what to do"
+        "Roll back changes and restart the task from scratch",
+        "Immediately escalate to the user before any investigation"
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Keep the task in_progress, investigate and fix the error",
@@ -330,17 +339,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code TodoWrite Tool Reference",
+              "title": "Claude Code CLI Reference",
               "url": "file://~/.claude/docs/tools/todowrite.md",
-              "section": "Task Completion Requirements",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "TaskUpdate tool - Completion",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "ONLY mark a task as completed when you have FULLY accomplished it. If you encounter errors, blockers, or cannot finish, keep the task as in_progress. When blocked, create a new task describing what needs to be resolved."
+            "quotedText": "ONLY mark a task as completed when you have FULLY accomplished it. If you encounter errors, blockers, or cannot finish, keep the task as in_progress."
           }
         ]
       }

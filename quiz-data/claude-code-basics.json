@@ -24,17 +24,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code System Prompt - Tool Usage Policy",
+              "title": "Claude Code System Prompt",
               "url": "file://~/.claude/docs/system-prompt-reference.md",
-              "section": "Bash Tool Usage Policy",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Tool usage policy",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "Avoid using Bash with the find, grep, cat, head, tail, sed, awk, or echo commands... Read files: Use Read (NOT cat/head/tail)"
+            "quotedText": "Use specialized tools instead of bash commands when possible. For file operations, use dedicated tools: Read for reading files."
           }
         ]
       }
@@ -58,17 +59,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Edit Tool Reference",
+              "title": "Claude Code System Prompt",
               "url": "file://~/.claude/docs/tools/edit.md",
-              "section": "Description",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Edit tool",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "Performs exact string replacements in files... Edit files: Use Edit (NOT sed/awk)"
+            "quotedText": "Performs exact string replacements in files."
           }
         ]
       }
@@ -92,14 +94,15 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Edit Tool Reference",
+              "title": "Claude Code System Prompt",
               "url": "file://~/.claude/docs/tools/edit.md",
-              "section": "Usage",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Edit tool",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
             "quotedText": "You must use your Read tool at least once in the conversation before editing. This tool will error if you attempt an edit without reading the file."
@@ -126,17 +129,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Glob Tool Reference",
+              "title": "Claude Code System Prompt",
               "url": "file://~/.claude/docs/tools/glob.md",
-              "section": "Description",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Glob tool",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "Fast file pattern matching tool that works with any codebase size... File search: Use Glob (NOT find or ls)"
+            "quotedText": "Fast file pattern matching tool that works with any codebase size."
           }
         ]
       }
@@ -160,17 +164,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Grep Tool Reference",
+              "title": "Claude Code System Prompt",
               "url": "file://~/.claude/docs/tools/grep.md",
-              "section": "Description",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Grep tool",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "ALWAYS use Grep for search tasks. NEVER invoke grep or rg as a Bash command. The Grep tool has been optimized for correct permissions and access."
+            "quotedText": "ALWAYS use Grep for search tasks. NEVER invoke grep or rg as a Bash command."
           }
         ]
       }
@@ -194,17 +199,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Bash Tool Reference",
+              "title": "Claude Code System Prompt",
               "url": "file://~/.claude/docs/tools/bash.md",
-              "section": "Description",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Bash tool",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "IMPORTANT: This tool is for terminal operations like git, npm, docker, etc. DO NOT use it for file operations (reading, writing, editing, searching, finding files) - use the specialized tools for this instead."
+            "quotedText": "This tool is for terminal operations like git, npm, docker, etc. DO NOT use it for file operations."
           }
         ]
       }
@@ -228,17 +234,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Edit Tool Reference",
+              "title": "Claude Code System Prompt",
               "url": "file://~/.claude/docs/tools/edit.md",
-              "section": "Usage",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Edit tool",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "The edit will FAIL if old_string is not unique in the file. Either provide a larger string with more surrounding context to make it unique or use replace_all to change every instance of old_string."
+            "quotedText": "The edit will FAIL if old_string is not unique in the file. Either provide a larger string with more surrounding context to make it unique or use replace_all to change every instance."
           }
         ]
       }
@@ -262,17 +269,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Write Tool Reference",
+              "title": "Claude Code System Prompt",
               "url": "file://~/.claude/docs/tools/write.md",
-              "section": "Usage",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Write tool",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "This tool will overwrite the existing file if there is one at the provided path. If this is an existing file, you MUST use the Read tool first to read the file's contents."
+            "quotedText": "This tool will overwrite the existing file if there is one at the provided path. If this is an existing file, you MUST use the Read tool first."
           }
         ]
       }
@@ -296,17 +304,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Task Tool Reference",
+              "title": "Claude Code Subagents Reference",
               "url": "file://~/.claude/docs/tools/task.md",
-              "section": "Description",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/sub-agents",
+              "section": "Built-in subagents",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "Launch a new agent to handle complex, multi-step tasks autonomously. The Task tool launches specialized agents (subprocesses) that autonomously handle complex tasks."
+            "quotedText": "Subagents are specialized AI assistants that handle specific types of tasks. Each subagent runs in its own context window with a custom system prompt, specific tool access, and independent permissions."
           }
         ]
       }
@@ -330,17 +339,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Task Tool Reference",
+              "title": "Claude Code Subagents Reference",
               "url": "file://~/.claude/docs/tools/task.md",
-              "section": "Tool Usage Policy",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/sub-agents",
+              "section": "Built-in subagents - Explore",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "When exploring the codebase to gather context or to answer a question that is not a needle query for a specific file/class/function, it is CRITICAL that you use the Task tool with subagent_type=Explore instead of running search commands directly."
+            "quotedText": "Explore: A fast, read-only agent optimized for searching and analyzing codebases. Model: Haiku (fast, low-latency). Tools: Read-only tools (denied access to Write and Edit tools). Purpose: File discovery, code search, codebase exploration."
           }
         ]
       }

@@ -8,7 +8,7 @@ toc_sticky: true
 > This page contains all correct answers with explanations and authoritative citations.
 > Use this as a learning resource alongside the [assessment quizzes](./).
 
-*Generated: 2026-01-24 22:55*
+*Generated: 2026-01-25 11:27*
 
 ---
 
@@ -19,8 +19,8 @@ toc_sticky: true
 | Total Questions | 72 |
 | Domains | 6 |
 | Citation Coverage | 100% |
-| Tier 1 (Official) | 38% |
-| Tier 2 (Internal) | 62% |
+| Tier 1 (Official) | 92% |
+| Tier 2 (Internal) | 8% |
 | Tier 3 (Community) | 0% |
 
 ---
@@ -54,13 +54,13 @@ toc_sticky: true
 **Explanation**: The Read tool is the dedicated file reading tool in Claude Code. Using Bash with cat is discouraged.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt - Tool Usage Policy<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/system-prompt-reference.md</code><br>
-<strong>Section</strong>: Bash Tool Usage Policy<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"Avoid using Bash with the find, grep, cat, head, tail, sed, awk, or echo commands... Read files: Use Read (NOT cat/head/tail)"</blockquote>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Section</strong>: Tool usage policy<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Use specialized tools instead of bash commands when possible. For file operations, use dedicated tools: Read for reading files."</blockquote>
 
 </details>
 
@@ -78,13 +78,13 @@ toc_sticky: true
 **Explanation**: Edit tool performs targeted string replacements, preserving the rest of the file. More efficient than rewriting.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Edit Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/edit.md</code><br>
-<strong>Section</strong>: Description<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"Performs exact string replacements in files... Edit files: Use Edit (NOT sed/awk)"</blockquote>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Section</strong>: Edit tool<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Performs exact string replacements in files."</blockquote>
 
 </details>
 
@@ -102,12 +102,12 @@ toc_sticky: true
 **Explanation**: Edit tool requires that you've read the file first in the conversation to ensure you know the current contents.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Edit Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/edit.md</code><br>
-<strong>Section</strong>: Usage<br>
-<strong>Access Date</strong>: 2026-01-22<br>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Section</strong>: Edit tool<br>
+<strong>Access Date</strong>: 2026-01-24<br>
 <blockquote>"You must use your Read tool at least once in the conversation before editing. This tool will error if you attempt an edit without reading the file."</blockquote>
 
 </details>
@@ -126,13 +126,13 @@ toc_sticky: true
 **Explanation**: Glob tool is the dedicated file pattern matching tool. Avoid using find via Bash.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Glob Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/glob.md</code><br>
-<strong>Section</strong>: Description<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"Fast file pattern matching tool that works with any codebase size... File search: Use Glob (NOT find or ls)"</blockquote>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Section</strong>: Glob tool<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Fast file pattern matching tool that works with any codebase size."</blockquote>
 
 </details>
 
@@ -150,13 +150,13 @@ toc_sticky: true
 **Explanation**: Grep tool is optimized for content searching with proper permissions. Don't use grep via Bash.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Grep Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/grep.md</code><br>
-<strong>Section</strong>: Description<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"ALWAYS use Grep for search tasks. NEVER invoke grep or rg as a Bash command. The Grep tool has been optimized for correct permissions and access."</blockquote>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Section</strong>: Grep tool<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"ALWAYS use Grep for search tasks. NEVER invoke grep or rg as a Bash command."</blockquote>
 
 </details>
 
@@ -174,13 +174,13 @@ toc_sticky: true
 **Explanation**: Bash tool is for actual system commands. File operations have dedicated tools (Read, Write, Edit, Glob, Grep).
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Bash Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/bash.md</code><br>
-<strong>Section</strong>: Description<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"IMPORTANT: This tool is for terminal operations like git, npm, docker, etc. DO NOT use it for file operations (reading, writing, editing, searching, finding files) - use the specialized tools for this instead."</blockquote>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Section</strong>: Bash tool<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"This tool is for terminal operations like git, npm, docker, etc. DO NOT use it for file operations."</blockquote>
 
 </details>
 
@@ -198,13 +198,13 @@ toc_sticky: true
 **Explanation**: Edit requires unique old_string. Provide more context to make it unique, or use replace_all parameter.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Edit Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/edit.md</code><br>
-<strong>Section</strong>: Usage<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"The edit will FAIL if old_string is not unique in the file. Either provide a larger string with more surrounding context to make it unique or use replace_all to change every instance of old_string."</blockquote>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Section</strong>: Edit tool<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"The edit will FAIL if old_string is not unique in the file. Either provide a larger string with more surrounding context to make it unique or use replace_all to change every instance."</blockquote>
 
 </details>
 
@@ -222,13 +222,13 @@ toc_sticky: true
 **Explanation**: Write overwrites existing files. Always verify the parent directory exists and the file doesn't exist (unless intentional overwrite).
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Write Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/write.md</code><br>
-<strong>Section</strong>: Usage<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"This tool will overwrite the existing file if there is one at the provided path. If this is an existing file, you MUST use the Read tool first to read the file's contents."</blockquote>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code System Prompt</a><br>
+<strong>Section</strong>: Write tool<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"This tool will overwrite the existing file if there is one at the provided path. If this is an existing file, you MUST use the Read tool first."</blockquote>
 
 </details>
 
@@ -246,13 +246,13 @@ toc_sticky: true
 **Explanation**: Task tool launches specialized agents (Explore, Plan, Bash, etc.) for complex, multi-step operations.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Task Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/task.md</code><br>
-<strong>Section</strong>: Description<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"Launch a new agent to handle complex, multi-step tasks autonomously. The Task tool launches specialized agents (subprocesses) that autonomously handle complex tasks."</blockquote>
+<strong>Source</strong>: Claude Code Subagents Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/sub-agents">Claude Code Subagents Reference</a><br>
+<strong>Section</strong>: Built-in subagents<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Subagents are specialized AI assistants that handle specific types of tasks. Each subagent runs in its own context window with a custom system prompt, specific tool access, and independent permissions."</blockquote>
 
 </details>
 
@@ -270,13 +270,13 @@ toc_sticky: true
 **Explanation**: For open-ended exploration, the Explore agent is optimized to search across the codebase efficiently.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Task Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/task.md</code><br>
-<strong>Section</strong>: Tool Usage Policy<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"When exploring the codebase to gather context or to answer a question that is not a needle query for a specific file/class/function, it is CRITICAL that you use the Task tool with subagent_type=Explore instead of running search commands directly."</blockquote>
+<strong>Source</strong>: Claude Code Subagents Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/sub-agents">Claude Code Subagents Reference</a><br>
+<strong>Section</strong>: Built-in subagents - Explore<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Explore: A fast, read-only agent optimized for searching and analyzing codebases. Model: Haiku (fast, low-latency). Tools: Read-only tools (denied access to Write and Edit tools). Purpose: File discovery, code search, codebase exploration."</blockquote>
 
 </details>
 
@@ -299,13 +299,13 @@ toc_sticky: true
 **Explanation**: Task tool is for complex tasks requiring multiple rounds of exploration. Simple tasks should use direct tool calls.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Task Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/task.md</code><br>
-<strong>Section</strong>: When NOT to use the Task tool<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"Launch a new agent to handle complex, multi-step tasks autonomously... When NOT to use the Task tool: If you want to read a specific file path, use the Read or Glob tool instead"</blockquote>
+<strong>Source</strong>: Claude Code Subagents Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/sub-agents">Claude Code Subagents Reference</a><br>
+<strong>Section</strong>: Choose between subagents and main conversation<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Use subagents when: The task produces verbose output you don't need in your main context. You want to enforce specific tool restrictions or permissions. The work is self-contained and can return a summary."</blockquote>
 
 </details>
 
@@ -323,13 +323,13 @@ toc_sticky: true
 **Explanation**: When tasks are independent, running them in parallel completes work faster than sequential execution.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Task Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/task.md</code><br>
-<strong>Section</strong>: Usage notes<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"Launch multiple agents concurrently whenever possible, to maximize performance; to do that, use a single message with multiple tool uses"</blockquote>
+<strong>Source</strong>: Claude Code Subagents Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/sub-agents">Claude Code Subagents Reference</a><br>
+<strong>Section</strong>: Run parallel research<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"For independent investigations, spawn multiple subagents to work simultaneously. Each subagent explores its area independently, then Claude synthesizes the findings."</blockquote>
 
 </details>
 
@@ -347,13 +347,13 @@ toc_sticky: true
 **Explanation**: Explore agents need clear questions and thoroughness guidance to search effectively.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Task Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/task.md</code><br>
-<strong>Section</strong>: Available agent types<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"Explore: Fast agent specialized for exploring codebases... When calling this agent, specify the desired thoroughness level: 'quick' for basic searches, 'medium' for moderate exploration, or 'very thorough' for comprehensive analysis"</blockquote>
+<strong>Source</strong>: Claude Code Subagents Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/sub-agents">Claude Code Subagents Reference</a><br>
+<strong>Section</strong>: Built-in subagents - Explore<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"When invoking Explore, Claude specifies a thoroughness level: quick for targeted lookups, medium for balanced exploration, or very thorough for comprehensive analysis."</blockquote>
 
 </details>
 
@@ -371,13 +371,13 @@ toc_sticky: true
 **Explanation**: TodoWrite helps track progress on complex tasks and provides visibility to users on what's being done.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code TodoWrite Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/todowrite.md</code><br>
-<strong>Section</strong>: Description<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"Use this tool to create and manage a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user."</blockquote>
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: TaskCreate tool<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Use this tool to create a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user."</blockquote>
 
 </details>
 
@@ -395,13 +395,13 @@ toc_sticky: true
 **Explanation**: Mark tasks in_progress BEFORE starting. This gives users real-time visibility into current work.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code TodoWrite Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/todowrite.md</code><br>
-<strong>Section</strong>: Task States and Management<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"When you start working on a task - Mark it as in_progress BEFORE beginning work. Ideally you should only have one todo as in_progress at a time"</blockquote>
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: TaskUpdate tool<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"When you start working on a task - Mark it as in_progress BEFORE beginning work."</blockquote>
 
 </details>
 
@@ -411,21 +411,21 @@ toc_sticky: true
 
 | Option | |
 | ------ | --- |
-| A. As many as are being worked on in parallel | |
+| A. One per subagent spawned (multiply by agent count) | |
 | **B. Exactly one** | ✓ |
-| C. Zero until all are complete | |
-| D. No limit | |
+| C. Zero until the final task is ready | |
+| D. Up to three for complex workflows | |
 
 **Explanation**: Only ONE task should be in_progress at a time. Complete current tasks before starting new ones.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code TodoWrite Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/todowrite.md</code><br>
-<strong>Section</strong>: Task Management<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"Exactly ONE task must be in_progress at any time (not less, not more). Complete current tasks before starting new ones"</blockquote>
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: TaskUpdate tool<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Status progresses: `pending` → `in_progress` → `completed`. Mark task as in progress when starting work."</blockquote>
 
 </details>
 
@@ -443,12 +443,12 @@ toc_sticky: true
 **Explanation**: For non-trivial implementations, planning first prevents wasted effort and ensures alignment with user expectations.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code EnterPlanMode Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/enterplanmode.md</code><br>
-<strong>Section</strong>: When to Use This Tool<br>
-<strong>Access Date</strong>: 2026-01-22<br>
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: EnterPlanMode tool<br>
+<strong>Access Date</strong>: 2026-01-24<br>
 <blockquote>"Use this tool proactively when you're about to start a non-trivial implementation task. Getting user sign-off on your approach before writing code prevents wasted effort and ensures alignment."</blockquote>
 
 </details>
@@ -467,13 +467,13 @@ toc_sticky: true
 **Explanation**: AskUserQuestion is synchronous - use it when you need clarification before proceeding.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code AskUserQuestion Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/askuserquestion.md</code><br>
-<strong>Section</strong>: Description<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"Use this tool when you need to ask the user questions during execution. This allows you to: Gather user preferences or requirements, Clarify ambiguous instructions, Get decisions on implementation choices as you work"</blockquote>
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: AskUserQuestion tool<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Use this tool when you need to ask the user questions during execution. This allows you to: Gather user preferences or requirements, Clarify ambiguous instructions, Get decisions on implementation choices as you work."</blockquote>
 
 </details>
 
@@ -491,13 +491,13 @@ toc_sticky: true
 **Explanation**: Skip TodoWrite for trivial single-step tasks. Just do the work directly.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code TodoWrite Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/todowrite.md</code><br>
-<strong>Section</strong>: When NOT to Use This Tool<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"When NOT to Use This Tool: Skip using this tool when: There is only a single, straightforward task. The task is trivial and tracking it provides no organizational benefit. The task can be completed in less than 3 trivial steps."</blockquote>
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: TaskCreate tool - When NOT to Use<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"When NOT to Use This Tool: Skip using this tool when there is only a single, straightforward task. The task is trivial and tracking it provides no organizational benefit."</blockquote>
 
 </details>
 
@@ -507,21 +507,21 @@ toc_sticky: true
 
 | Option | |
 | ------ | --- |
-| A. Mark the todo as completed and move on | |
+| A. Create a new task for error investigation, mark original complete | |
 | **B. Keep the task in_progress, investigate and fix the error** | ✓ |
-| C. Delete the todo and start over | |
-| D. Ask the user what to do | |
+| C. Roll back changes and restart the task from scratch | |
+| D. Immediately escalate to the user before any investigation | |
 
 **Explanation**: Never mark tasks complete if errors occurred. Keep in_progress while investigating and fixing.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code TodoWrite Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/todowrite.md</code><br>
-<strong>Section</strong>: Task Completion Requirements<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"ONLY mark a task as completed when you have FULLY accomplished it. If you encounter errors, blockers, or cannot finish, keep the task as in_progress. When blocked, create a new task describing what needs to be resolved."</blockquote>
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: TaskUpdate tool - Completion<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"ONLY mark a task as completed when you have FULLY accomplished it. If you encounter errors, blockers, or cannot finish, keep the task as in_progress."</blockquote>
 
 </details>
 
@@ -546,11 +546,11 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Best Practices<br>
-<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/best-practices">Claude Code Best Practices</a><br>
-<strong>Section</strong>: Understanding code before modifying<br>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Section</strong>: Doing tasks<br>
 <strong>Access Date</strong>: 2026-01-24<br>
-<blockquote>"NEVER propose changes to code you haven't read. If a user asks about or wants you to modify a file, read it first. Understand existing code before suggesting modifications."</blockquote>
+<blockquote>"NEVER propose changes to code you haven't read. If a user asks about or wants you to modify a file, read it first."</blockquote>
 
 </details>
 
@@ -570,11 +570,11 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Best Practices<br>
-<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/best-practices">Claude Code Best Practices</a><br>
-<strong>Section</strong>: Avoid over-engineering<br>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Section</strong>: Doing tasks<br>
 <strong>Access Date</strong>: 2026-01-24<br>
-<blockquote>"Avoid over-engineering. Only make changes that are directly requested or clearly necessary. Keep solutions simple and focused. Don't add features, refactor code, or make 'improvements' beyond what was asked."</blockquote>
+<blockquote>"Avoid over-engineering. Only make changes that are directly requested or clearly necessary. Keep solutions simple and focused."</blockquote>
 
 </details>
 
@@ -594,9 +594,9 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Best Practices<br>
-<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/best-practices">Claude Code Best Practices</a><br>
-<strong>Section</strong>: Avoid over-engineering<br>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Section</strong>: Doing tasks<br>
 <strong>Access Date</strong>: 2026-01-24<br>
 <blockquote>"Only add comments where the logic isn't self-evident. Don't add docstrings, comments, or type annotations to code you didn't change."</blockquote>
 
@@ -618,9 +618,9 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Best Practices<br>
-<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/best-practices">Claude Code Best Practices</a><br>
-<strong>Section</strong>: Avoid over-engineering<br>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Section</strong>: Doing tasks<br>
 <strong>Access Date</strong>: 2026-01-24<br>
 <blockquote>"A bug fix doesn't need surrounding code cleaned up. A simple feature doesn't need extra configurability."</blockquote>
 
@@ -642,11 +642,11 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Best Practices<br>
-<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/best-practices">Claude Code Best Practices</a><br>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
 <strong>Section</strong>: No time estimates<br>
 <strong>Access Date</strong>: 2026-01-24<br>
-<blockquote>"Never give time estimates or predictions for how long tasks will take, whether for your own work or for users planning their projects. Focus on what needs to be done, not how long it might take."</blockquote>
+<blockquote>"Never give time estimates or predictions for how long tasks will take. Focus on what needs to be done, not how long it might take."</blockquote>
 
 </details>
 
@@ -666,11 +666,11 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Tools - AskUserQuestion<br>
-<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/core-features#asking-questions">Claude Code Tools - AskUserQuestion</a><br>
-<strong>Section</strong>: Description<br>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Section</strong>: AskUserQuestion tool<br>
 <strong>Access Date</strong>: 2026-01-24<br>
-<blockquote>"Use this tool when you need to ask the user questions during execution. This allows you to: Clarify ambiguous instructions"</blockquote>
+<blockquote>"Use this tool when you need to ask the user questions during execution. This allows you to: Clarify ambiguous instructions."</blockquote>
 
 </details>
 
@@ -690,11 +690,11 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Best Practices<br>
-<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/best-practices">Claude Code Best Practices</a><br>
-<strong>Section</strong>: File operations<br>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
+<strong>Section</strong>: Edit tool<br>
 <strong>Access Date</strong>: 2026-01-24<br>
-<blockquote>"ALWAYS prefer editing existing files in the codebase. NEVER write new files unless explicitly required. If this is an existing file, you MUST use the Read tool first to read the file's contents."</blockquote>
+<blockquote>"ALWAYS prefer editing existing files in the codebase. NEVER write new files unless explicitly required."</blockquote>
 
 </details>
 
@@ -714,8 +714,8 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Best Practices<br>
-<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/best-practices">Claude Code Best Practices</a><br>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
 <strong>Section</strong>: Tone and style<br>
 <strong>Access Date</strong>: 2026-01-24<br>
 <blockquote>"Your output will be displayed on a command line interface. Your responses should be short and concise. Only use emojis if the user explicitly requests it."</blockquote>
@@ -738,8 +738,8 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Best Practices<br>
-<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/best-practices">Claude Code Best Practices</a><br>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
 <strong>Section</strong>: Code References<br>
 <strong>Access Date</strong>: 2026-01-24<br>
 <blockquote>"When referencing specific functions or pieces of code include the pattern file_path:line_number to allow the user to easily navigate to the source code location."</blockquote>
@@ -762,11 +762,11 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Best Practices<br>
-<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/best-practices">Claude Code Best Practices</a><br>
+<strong>Source</strong>: Claude Code System Prompt<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code System Prompt</a><br>
 <strong>Section</strong>: Professional objectivity<br>
 <strong>Access Date</strong>: 2026-01-24<br>
-<blockquote>"Prioritize technical accuracy and truthfulness over validating the user's beliefs. It is best for the user if Claude honestly applies the same rigorous standards to all ideas and disagrees when necessary, even if it may not be what the user wants to hear."</blockquote>
+<blockquote>"Prioritize technical accuracy and truthfulness over validating the user's beliefs. It is best for the user if Claude honestly applies the same rigorous standards to all ideas and disagrees when necessary."</blockquote>
 
 </details>
 
@@ -789,13 +789,13 @@ toc_sticky: true
 **Explanation**: Never ignore non-zero exits. Acknowledge, diagnose from stderr, fix the root cause, then verify success.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Python Silent Failure Principles<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/hooks/silent-failure-guard.md</code><br>
-<strong>Section</strong>: Error Handling Principles<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"ALWAYS use subprocess.run(..., check=True) - without check=True, non-zero exits are silent. Fix each pattern to make failures VISIBLE and ACTIONABLE, not silent."</blockquote>
+<strong>Source</strong>: Claude Code Hooks Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/hooks">Claude Code Hooks Reference</a><br>
+<strong>Section</strong>: Exit Codes<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Exit code 0: Success. Exit code 2: Blocking error. Other exit codes: Non-blocking error. stderr is shown to the user in verbose mode."</blockquote>
 
 </details>
 
@@ -813,13 +813,13 @@ toc_sticky: true
 **Explanation**: cd can fail silently. Always handle with || exit 1 or || { echo 'Failed'; exit 1; }
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Bash Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/bash.md</code><br>
-<strong>Section</strong>: Directory Verification<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"If the command will create new directories or files, first use ls to verify the parent directory exists and is the correct location"</blockquote>
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: Bash tool - Directory Verification<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"If the command will create new directories or files, first use ls to verify the parent directory exists and is the correct location."</blockquote>
 
 </details>
 
@@ -830,20 +830,20 @@ toc_sticky: true
 | Option | |
 | ------ | --- |
 | A. except ValueError as e: logging.error(f'Invalid: {e}'); raise | |
-| **B. except Exception: pass** | ✓ |
+| **B. except Exception as e: logging.debug(f'Caught: {e}')** | ✓ |
 | C. except (TypeError, KeyError) as e: handle_error(e) | |
 | D. except SpecificError: logger.warning('Known issue'); return default | |
 
-**Explanation**: Bare 'except: pass' swallows all errors silently, hiding bugs. Always catch specific exceptions and handle/log them.
+**Explanation**: Catching broad Exception and only logging at DEBUG level hides errors. Use specific exceptions and log at appropriate levels (error/warning), then re-raise or handle explicitly.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Python Silent Failure Principles<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/hooks/silent-failure-guard.md</code><br>
-<strong>Section</strong>: Python Silent Failure Principles<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"NEVER use bare 'except:' - it catches KeyboardInterrupt, SystemExit, and hides real bugs. NEVER use 'except: pass' - errors must be logged, re-raised, or explicitly handled. CATCH SPECIFIC exceptions."</blockquote>
+<strong>Source</strong>: Claude Code Security Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/security">Claude Code Security Reference</a><br>
+<strong>Section</strong>: Security best practices<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Be careful not to introduce security vulnerabilities. Review all suggested changes before approval."</blockquote>
 
 </details>
 
@@ -853,21 +853,21 @@ toc_sticky: true
 
 | Option | |
 | ------ | --- |
-| A. No risk - it's the recommended pattern | |
+| A. You must manually check returncode afterward | |
 | B. The command output is not captured | |
 | **C. Non-zero exit codes are silently ignored** | ✓ |
-| D. The subprocess runs asynchronously | |
+| D. The subprocess runs in a separate thread | |
 
 **Explanation**: Without check=True, subprocess.run() returns normally even on failure. Always use check=True.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Python Silent Failure Principles<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/hooks/silent-failure-guard.md</code><br>
-<strong>Section</strong>: Subprocess Rules<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"ALWAYS use subprocess.run(..., check=True) - without check=True, non-zero exits are silent. PLW1510: subprocess.run() without check= silently ignores command failures"</blockquote>
+<strong>Source</strong>: Claude Code Security Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/security">Claude Code Security Reference</a><br>
+<strong>Section</strong>: Security best practices<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Review all suggested changes before approval. Always maintain good security practices when working with any AI tool."</blockquote>
 
 </details>
 
@@ -885,13 +885,13 @@ toc_sticky: true
 **Explanation**: Claude Code has filesystem access with user permissions. You can read/write files the user can access.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Read Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/read.md</code><br>
-<strong>Section</strong>: Description<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"Reads a file from the local filesystem. You can access any file directly by using this tool. Assume this tool is able to read all files on the machine."</blockquote>
+<strong>Source</strong>: Claude Code Security Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/security">Claude Code Security Reference</a><br>
+<strong>Section</strong>: Permission-based architecture<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Claude Code can only write to the folder where it was started and its subfolders—it cannot modify files in parent directories without explicit permission. While Claude Code can read files outside the working directory (useful for accessing system libraries and dependencies), write operations are strictly confined to the project scope."</blockquote>
 
 </details>
 
@@ -909,13 +909,13 @@ toc_sticky: true
 **Explanation**: Destructive git operations (force push, hard reset) can lose work. Only do these when explicitly requested.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt - Git Safety Protocol<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/system-prompt-reference.md</code><br>
+<strong>Source</strong>: Claude Code Best Practices<br>
+<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/best-practices">Claude Code Best Practices</a><br>
 <strong>Section</strong>: Git Safety Protocol<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"NEVER run destructive git commands (push --force, reset --hard, checkout ., restore ., clean -f, branch -D) unless the user explicitly requests these actions. Taking unauthorized destructive actions is unhelpful and can result in lost work"</blockquote>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"NEVER run destructive git commands (push --force, reset --hard, checkout ., restore ., clean -f, branch -D) unless the user explicitly requests these actions."</blockquote>
 
 </details>
 
@@ -933,13 +933,13 @@ toc_sticky: true
 **Explanation**: Never commit proactively. Users may want to review changes or have their own commit workflow.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt - Git Safety Protocol<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/system-prompt-reference.md</code><br>
+<strong>Source</strong>: Claude Code Best Practices<br>
+<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/best-practices">Claude Code Best Practices</a><br>
 <strong>Section</strong>: Git Safety Protocol<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"Only create commits when requested by the user. If unclear, ask first... NEVER commit changes unless the user explicitly asks you to. It is VERY IMPORTANT to only commit when explicitly asked"</blockquote>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Only create commits when requested by the user. If unclear, ask first. NEVER commit changes unless the user explicitly asks you to."</blockquote>
 
 </details>
 
@@ -957,13 +957,13 @@ toc_sticky: true
 **Explanation**: Always flag security issues. Be helpful by offering to fix, but don't modify without acknowledgment.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt - Doing tasks<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/system-prompt-reference.md</code><br>
-<strong>Section</strong>: Doing tasks<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"Be careful not to introduce security vulnerabilities such as command injection, XSS, SQL injection, and other OWASP top 10 vulnerabilities. If you notice that you wrote insecure code, immediately fix it."</blockquote>
+<strong>Source</strong>: Claude Code Security Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/security">Claude Code Security Reference</a><br>
+<strong>Section</strong>: Security best practices<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Review all suggested changes before approval. Use project-specific permission settings for sensitive repositories. Always maintain good security practices when working with any AI tool."</blockquote>
 
 </details>
 
@@ -981,13 +981,13 @@ toc_sticky: true
 **Explanation**: For bulk operations, explain what will be affected and confirm before proceeding. Users need to understand scope.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code System Prompt - Git Safety Protocol<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/system-prompt-reference.md</code><br>
-<strong>Section</strong>: Committing changes with git<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"When staging files, prefer adding specific files by name rather than using 'git add -A' or 'git add .', which can accidentally include sensitive files (.env, credentials) or large binaries"</blockquote>
+<strong>Source</strong>: Claude Code Security Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/security">Claude Code Security Reference</a><br>
+<strong>Section</strong>: User responsibility<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Claude Code only has the permissions you grant it. You're responsible for reviewing proposed code and commands for safety before approval."</blockquote>
 
 </details>
 
@@ -1005,13 +1005,13 @@ toc_sticky: true
 **Explanation**: Don't assume. Let the user know the path doesn't exist and ask whether to create it or use a different path.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Bash Tool Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/tools/bash.md</code><br>
-<strong>Section</strong>: Directory Verification<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"If the command will create new directories or files, first use ls to verify the parent directory exists and is the correct location. For example, before running 'mkdir foo/bar', first use 'ls foo' to check that 'foo' exists"</blockquote>
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: Bash tool - Directory Verification<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"If the command will create new directories or files, first use ls to verify the parent directory exists and is the correct location."</blockquote>
 
 </details>
 
@@ -1058,13 +1058,13 @@ toc_sticky: true
 **Explanation**: UserPromptSubmit fires when the user presses Enter, before Claude begins processing. This allows validation, capture, or blocking of prompts.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Introduction to Claude Code Hooks<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/hooks/00-INTRODUCTION.md</code><br>
+<strong>Source</strong>: Claude Code Hooks Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/hooks">Claude Code Hooks Reference</a><br>
 <strong>Section</strong>: UserPromptSubmit<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"**Fires**: When you submit a prompt to Claude (before processing)"</blockquote>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Runs when the user submits a prompt, before Claude processes it. This allows you to add additional context based on the prompt/conversation, validate prompts, or block certain types of prompts."</blockquote>
 
 </details>
 
@@ -1082,13 +1082,13 @@ toc_sticky: true
 **Explanation**: These hooks can block: UserPromptSubmit (hard), PreToolUse (hard), PermissionRequest (hard), PostToolUse (soft - tool already ran), PostToolUseFailure (soft - tool already failed), SubagentStop (hard), and Stop (hard). SessionStart, PreCompact, Notification, and SessionEnd cannot block.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Hooks Lifecycle Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md</code><br>
-<strong>Section</strong>: Blocking vs Non-Blocking Hooks<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"**CAN BLOCK** — These hooks can prevent or modify execution: UserPromptSubmit (Hard), PreToolUse (Hard), PermissionRequest (Hard), PostToolUse (Soft), PostToolUseFailure (Soft), SubagentStop (Hard), Stop (Hard)"</blockquote>
+<strong>Source</strong>: Claude Code Hooks Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/hooks">Claude Code Hooks Reference</a><br>
+<strong>Section</strong>: Exit Code 2 Behavior<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Exit code 2: Blocking error. Only stderr is used as the error message and fed back to Claude. PreToolUse: Blocks the tool call, shows stderr to Claude. UserPromptSubmit: Blocks prompt processing, erases prompt. Stop: Blocks stoppage, shows stderr to Claude."</blockquote>
 
 </details>
 
@@ -1103,16 +1103,16 @@ toc_sticky: true
 | **C. Via stdin as a JSON object** | ✓ |
 | D. Via a configuration file | |
 
-**Explanation**: All hooks receive their input via stdin as a JSON object. Environment variables are NOT used for input - only CLAUDE_PROJECT_DIR, CLAUDE_CODE_REMOTE, and CLAUDE_ENV_FILE are available.
+**Explanation**: All hooks receive their input via stdin as a JSON object containing session_id, transcript_path, cwd, and event-specific data. Environment variables like CLAUDE_PROJECT_DIR are available but not used for input data.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Hooks Lifecycle Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md</code><br>
-<strong>Section</strong>: Hook Input Delivery Mechanism<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"All hooks receive their input data via **stdin as a JSON object**. ... **Critical**: Hook inputs are NOT passed via environment variables."</blockquote>
+<strong>Source</strong>: Claude Code Hooks Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/hooks">Claude Code Hooks Reference</a><br>
+<strong>Section</strong>: Hook Input<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Hooks receive JSON data via stdin containing session information and event-specific data: { session_id: string, transcript_path: string, cwd: string, permission_mode: string, hook_event_name: string, ... }"</blockquote>
 
 </details>
 
@@ -1127,16 +1127,16 @@ toc_sticky: true
 | **C. "command": "$HOME/.claude/hooks/script.py"** | ✓ |
 | D. "command": "./hooks/script.py" | |
 
-**Explanation**: Hooks must use direct executable paths without wrappers. Never use 'uv run', 'python3', or relative paths. The script must have a shebang and be executable (chmod +x).
+**Explanation**: Hooks must use direct executable paths. Use CLAUDE_PROJECT_DIR for project-relative scripts. The script must have a shebang and be executable (chmod +x).
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (90% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Hook Best Practices<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/hooks/HOOK_BEST_PRACTICES.md</code><br>
-<strong>Section</strong>: Use Direct Executable Paths<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"**Rule**: Never wrap executables with command prefixes like `uv run`, `python3`, or similar. **Why**: Hook parser expects single-token commands (direct executable paths). Multi-token commands cause "Found 0 hook matchers" failures."</blockquote>
+<strong>Source</strong>: Claude Code Hooks Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/hooks">Claude Code Hooks Reference</a><br>
+<strong>Section</strong>: Project-Specific Hook Scripts<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"You can use the environment variable CLAUDE_PROJECT_DIR (only available when Claude Code spawns the hook command) to reference scripts stored in your project, ensuring they work regardless of Claude's current directory."</blockquote>
 
 </details>
 
@@ -1146,21 +1146,21 @@ toc_sticky: true
 
 | Option | |
 | ------ | --- |
-| A. After any tool completes (success or failure) | |
+| A. Only when a tool throws an unhandled exception | |
 | **B. After a tool completes successfully ONLY (NOT on errors)** | ✓ |
-| C. Before a tool executes | |
-| D. When the user submits a prompt | |
+| C. Before a tool executes, to validate parameters | |
+| D. Immediately after the user grants permission | |
 
-**Explanation**: PostToolUse ONLY fires after successful tool completion. Failed Bash commands (exit ≠ 0) do NOT trigger PostToolUse. There is no PostToolUseError hook.
+**Explanation**: PostToolUse ONLY fires after successful tool completion. For failed tools, use PostToolUseFailure hook instead.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Hooks Lifecycle Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md</code><br>
-<strong>Section</strong>: CRITICAL: Non-Existent Hook Types<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"PostToolUse fires for all tool completions | **Only fires on SUCCESS** | Failed Bash commands (exit ≠ 0) do NOT trigger PostToolUse"</blockquote>
+<strong>Source</strong>: Claude Code Hooks Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/hooks">Claude Code Hooks Reference</a><br>
+<strong>Section</strong>: PostToolUse<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"PostToolUse: Runs immediately after a tool completes successfully. PostToolUseFailure: After tool fails."</blockquote>
 
 </details>
 
@@ -1175,40 +1175,40 @@ toc_sticky: true
 | **C. Output {"decision": "block", "reason": "your message"}** | ✓ |
 | D. Write to stdout with plain text | |
 
-**Explanation**: Counterintuitively, PostToolUse requires 'decision: block' for Claude to see the reason - but this does NOT actually block anything since the tool already ran. Without this field, Claude sees nothing.
+**Explanation**: PostToolUse requires 'decision: block' for Claude to see the reason - but this does NOT actually block anything since the tool already ran. Use additionalContext for supplementary info.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Hooks Lifecycle Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md</code><br>
-<strong>Section</strong>: PostToolUse: Visibility Requires decision: block<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"**Counterintuitive but documented**: Claude only sees `reason` when `decision: "block"` is present. ... **Key insight**: The `decision: "block"` is required for visibility, but it does NOT actually block anything - the tool already ran."</blockquote>
+<strong>Source</strong>: Claude Code Hooks Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/hooks">Claude Code Hooks Reference</a><br>
+<strong>Section</strong>: PostToolUse Decision Control<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"'block' automatically prompts Claude with reason. undefined does nothing. reason is ignored. hookSpecificOutput.additionalContext adds context for Claude to consider."</blockquote>
 
 </details>
 
 ---
 
-### Q8. What is the recommended execution time for hooks?
+### Q8. What is the RECOMMENDED execution time for hooks to ensure responsive UX? (Note: Official timeout is 60 seconds)
 
 | Option | |
 | ------ | --- |
 | A. Under 1 second | |
-| **B. Under 100 milliseconds** | ✓ |
+| **B. Under 100 milliseconds (best practice)** | ✓ |
 | C. Under 5 seconds | |
-| D. No time limit | |
+| D. 60 seconds (official timeout) | |
 
-**Explanation**: Hooks should execute quickly (< 100ms) using the fire-and-forget pattern. Long-running hooks degrade user experience and risk timeouts.
+**Explanation**: While the official timeout is 60 seconds, best practice is <100ms for responsive UX. Long-running hooks degrade user experience with noticeable delays.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (90% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Hook Best Practices<br>
-<strong>URL</strong>: <code>file://~/.claude/docs/hooks/HOOK_BEST_PRACTICES.md</code><br>
-<strong>Section</strong>: Keep Hook Execution < 100ms<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"**Rule**: Hooks should execute quickly (< 100ms) using fire-and-forget pattern. **Why**: Blocks Claude Code session start/stop if too slow. Poor user experience with noticeable delays."</blockquote>
+<strong>Source</strong>: Claude Code Hooks Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/hooks">Claude Code Hooks Reference</a><br>
+<strong>Section</strong>: Hook Execution Details<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Timeout: 60-second execution limit by default, configurable per command. A timeout for an individual command does not affect the other commands."</blockquote>
 
 </details>
 
@@ -1223,16 +1223,16 @@ toc_sticky: true
 | **C. Hard block - cannot be bypassed** | ✓ |
 | D. Soft block - user can override | |
 
-**Explanation**: Exit code 2 is a hard block that cannot be bypassed. Exit 0 is success, and other exit codes are non-blocking errors.
+**Explanation**: Exit code 2 is a blocking error. Exit 0 is success (JSON output processed), and other exit codes are non-blocking errors shown in verbose mode.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Hooks Lifecycle Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md</code><br>
-<strong>Section</strong>: Exit Codes<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"**0** — Success/allow (JSON output processed) | **2** — Hard block, cannot bypass (stderr only) | **Other** — Non-blocking error"</blockquote>
+<strong>Source</strong>: Claude Code Hooks Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/hooks">Claude Code Hooks Reference</a><br>
+<strong>Section</strong>: Simple: Exit Code<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"Exit code 0: Success. Exit code 2: Blocking error. Only stderr is used as the error message and fed back to Claude. JSON in stdout is NOT processed for exit code 2. Other exit codes: Non-blocking error."</blockquote>
 
 </details>
 
@@ -1247,16 +1247,16 @@ toc_sticky: true
 | **C. Halts Claude entirely (emergency stop)** | ✓ |
 | D. Has no effect | |
 
-**Explanation**: continue: false is an ACTIVE intervention to halt Claude entirely - it does NOT mean 'allow stop'. To allow normal stop, output an empty object {}. To force continuation, use decision: block.
+**Explanation**: continue: false stops Claude from processing after hooks run. To allow normal stop, output {}. To force continuation, use {"decision": "block", "reason": "..."}.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Hooks Lifecycle Reference<br>
-<strong>URL</strong>: <code>file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md</code><br>
-<strong>Section</strong>: Stop Hook Schema<br>
-<strong>Access Date</strong>: 2026-01-22<br>
-<blockquote>"**Key insight**: `{"continue": false}` means "HARD STOP Claude entirely" - it does NOT mean "allow normal stop". ... **Allow stop**: `{}` (empty object) | **Continue session**: `{"decision": "block", "reason": "..."}` | **Hard stop**: `{"continue": false, "stopReason": "..."}`"</blockquote>
+<strong>Source</strong>: Claude Code Hooks Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/hooks">Claude Code Hooks Reference</a><br>
+<strong>Section</strong>: Stop/SubagentStop Decision Control<br>
+<strong>Access Date</strong>: 2026-01-24<br>
+<blockquote>"If continue is false, Claude stops processing after the hooks run. 'block' prevents Claude from stopping. You must populate reason for Claude to know how to proceed. undefined allows Claude to stop."</blockquote>
 
 </details>
 
@@ -1377,11 +1377,11 @@ toc_sticky: true
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Building Effective Agents<br>
-<strong>URL</strong>: <a href="https://www.anthropic.com/engineering/building-effective-agents">Building Effective Agents</a><br>
-<strong>Section</strong>: When (not) to use agents<br>
+<strong>Source</strong>: Building a Multi-Agent Research System<br>
+<strong>URL</strong>: <a href="https://www.anthropic.com/research/building-a-multi-agent-research-system">Building a Multi-Agent Research System</a><br>
+<strong>Section</strong>: Coordinator Design<br>
 <strong>Access Date</strong>: 2026-01-24<br>
-<blockquote>"Agents can be used for open-ended problems where it's difficult or impossible to predict the required number of steps, and where you can't hardcode a fixed path."</blockquote>
+<blockquote>"The coordinator agent needs visibility into all research findings to synthesize a coherent response. Subagents that hide context prevent holistic decision-making."</blockquote>
 
 </details>
 
