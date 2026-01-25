@@ -18,6 +18,7 @@ Complete all quizzes below. Each quiz has 10 questions and tests different aspec
 | **Best Practices**          | Efficiency Patterns   | [Start Quiz](https://docs.google.com/forms/d/1SvUJtz-iHjhzvCEpIQhkPqVaJLjIZl9fbdEU0I1atvg/viewform) |
 | **Error Handling & Safety** | Recovery & Boundaries | [Start Quiz](https://docs.google.com/forms/d/1S1k8kESnWUBnVb7rL99WaxVflaL6iPYLpgJ9UxvSm5E/viewform) |
 | **Hooks Lifecycle**         | Automation            | [Start Quiz](https://docs.google.com/forms/d/1GHjBGgrWbaPC6vqFZCGMQgPERf94Yz4NG1nEh1-PqSE/viewform) |
+| **Agents Deep Dive**        | Advanced Architecture | [Start Quiz](https://docs.google.com/forms/d/1DVNld_pc7MukwhMWFKVt3zRotRCXHBWeEePZdzZ2cGw/viewform) |
 
 ## Instructions
 

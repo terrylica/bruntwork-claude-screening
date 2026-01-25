@@ -1,0 +1,779 @@
+{
+  "title": "Claude Code Agents Deep Dive Assessment",
+  "description": "Advanced assessment covering pre-defined vs on-demand agents, context gatekeeping anti-patterns, skills vs subagents architecture, agent consolidation criteria, and Anthropic's core principles for effective agents.",
+  "isQuiz": true,
+  "domain": "Advanced Architecture",
+  "weight": 0.20,
+  "questions": [
+    {
+      "questionNumber": 0,
+      "questionText": "What distinguishes pre-defined agents from on-demand subagents in Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Pre-defined agents are faster to execute",
+        "Pre-defined agents auto-trigger based on patterns, on-demand subagents are explicitly spawned",
+        "Pre-defined agents have access to more tools",
+        "Pre-defined agents run in the background"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Pre-defined agents auto-trigger based on patterns, on-demand subagents are explicitly spawned",
+      "explanation": "Pre-defined agents in .claude/agents/ directory auto-activate when their trigger patterns match user requests, without explicit invocation. On-demand subagents are spawned explicitly via the Task tool during execution.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Sub-agents",
+              "url": "https://docs.anthropic.com/en/docs/claude-code/sub-agents",
+              "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/sub-agents",
+              "section": "Pre-defined agents",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Pre-defined agents are stored in your project's .claude/agents/ directory. When Claude detects that a task matches an agent's capabilities, it automatically activates that agent."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 1,
+      "questionText": "Where are Claude Code pre-defined agents stored?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "~/.claude/skills/",
+        "~/.claude/plugins/",
+        ".claude/agents/ in project root",
+        "~/.config/claude/agents/"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": ".claude/agents/ in project root",
+      "explanation": "Pre-defined agents are stored in the .claude/agents/ directory within the project root, not in user-level directories. This allows project-specific agent configurations.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Sub-agents",
+              "url": "https://docs.anthropic.com/en/docs/claude-code/sub-agents",
+              "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/sub-agents",
+              "section": "Pre-defined agents",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Pre-defined agents are stored in your project's .claude/agents/ directory."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "What happens when a pre-defined agent's trigger pattern matches a user request?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "User is prompted to approve activation",
+        "Agent auto-activates without explicit user request",
+        "Main agent pauses execution",
+        "Session terminates for safety"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Agent auto-activates without explicit user request",
+      "explanation": "When Claude detects that a task matches an agent's capabilities based on trigger patterns, it automatically activates that agent without requiring explicit user invocation.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Sub-agents",
+              "url": "https://docs.anthropic.com/en/docs/claude-code/sub-agents",
+              "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/sub-agents",
+              "section": "Pre-defined agents",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "When Claude detects that a task matches an agent's capabilities, it automatically activates that agent."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "When should you convert a pre-defined agent to an on-demand subagent?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "When it runs frequently",
+        "When it rarely triggers or has narrow scope",
+        "When it uses many tools",
+        "When it accesses external APIs"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "When it rarely triggers or has narrow scope",
+      "explanation": "Pre-defined agents that rarely trigger or have very narrow scope should be converted to on-demand subagents to reduce cognitive overhead and avoid agent sprawl. Keep pre-defined agents for frequently-used, domain-specific capabilities.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "RFC: Reduce Pre-Defined Subagent Count",
+              "url": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
+              "onlineUrl": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
+              "section": "Agent Analysis Criteria",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "alpha-forge",
+              "confidence": 0.90
+            },
+            "quotedText": "DELETE (0-2): Generic agents that duplicate built-in capabilities or rarely trigger. KEEP (9-10): Domain-specific, irreplaceable agents with unique value."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "What is the 'context gatekeeping' anti-pattern in multi-agent systems?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Limiting token usage to save costs",
+        "Restricting tool access for security",
+        "Subagents hiding context from the main orchestrator",
+        "Caching conversation history for performance"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Subagents hiding context from the main orchestrator",
+      "explanation": "Context gatekeeping occurs when subagents process information but don't share full context with the parent agent. This prevents the orchestrator from making holistic decisions across domain boundaries.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Building Effective Agents",
+              "url": "https://www.anthropic.com/engineering/building-effective-agents",
+              "onlineUrl": "https://www.anthropic.com/engineering/building-effective-agents",
+              "section": "When (not) to use agents",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Agents can be used for open-ended problems where it's difficult or impossible to predict the required number of steps, and where you can't hardcode a fixed path."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "Why does context gatekeeping reduce agent effectiveness?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Increases latency significantly",
+        "Uses more tokens than necessary",
+        "Prevents holistic reasoning across domain boundaries",
+        "Causes memory leaks in long sessions"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Prevents holistic reasoning across domain boundaries",
+      "explanation": "When subagents hide context, the parent agent cannot synthesize information across different domains, leading to fragmented decision-making and missed connections between related findings.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "research",
+              "title": "Building a Multi-Agent Research System",
+              "url": "https://www.anthropic.com/research/building-a-multi-agent-research-system",
+              "onlineUrl": "https://www.anthropic.com/research/building-a-multi-agent-research-system",
+              "section": "Coordinator Design",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "The coordinator agent needs visibility into all research findings to synthesize a coherent response that draws connections across domains."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "What is the recommended alternative to context gatekeeping?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Use more subagents for parallelism",
+        "Keep context in main agent, use subagents only for isolated subtasks",
+        "Increase context window size",
+        "Implement caching layers between agents"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Keep context in main agent, use subagents only for isolated subtasks",
+      "explanation": "The main agent should retain full context and use subagents only for truly isolated, parallelizable subtasks where the parent doesn't need intermediate visibility. Results flow back to the main agent for synthesis.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Building Effective Agents",
+              "url": "https://www.anthropic.com/engineering/building-effective-agents",
+              "onlineUrl": "https://www.anthropic.com/engineering/building-effective-agents",
+              "section": "Agent architectures",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "The simplest architecture is a single agent that handles all tasks. For more complex scenarios, use orchestrator patterns where subagents handle isolated subtasks and report back."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "In the Multi-Agent Research System design, what was the key insight about subagent coordination?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Parent agent must see and synthesize all findings",
+        "Each subagent should operate independently without coordination",
+        "Subagents should communicate directly with each other",
+        "Results should be aggregated externally"
+      ],
+      "correctAnswerIndex": 0,
+      "correctAnswer": "Parent agent must see and synthesize all findings",
+      "explanation": "The research system demonstrated that the coordinator/parent agent needs visibility into all findings to synthesize coherent responses that draw connections across different research domains.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "research",
+              "title": "Building a Multi-Agent Research System",
+              "url": "https://www.anthropic.com/research/building-a-multi-agent-research-system",
+              "onlineUrl": "https://www.anthropic.com/research/building-a-multi-agent-research-system",
+              "section": "System Architecture",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "The coordinator agent synthesizes findings from all research agents to produce a coherent final answer."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "What is the fundamental difference between skills and subagents in Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Skills are faster to execute",
+        "Skills use fewer tokens",
+        "Skills run in main context, subagents have isolated context windows",
+        "Skills require user approval"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Skills run in main context, subagents have isolated context windows",
+      "explanation": "Skills execute within the main conversation context, keeping all information visible to Claude. Subagents run in isolated context windows, receiving only what's passed to them and returning only their output.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Skills",
+              "url": "https://docs.anthropic.com/en/docs/claude-code/skills",
+              "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/skills",
+              "section": "Skills vs Subagents",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Skills run within the main conversation context, while subagents operate in isolated context windows with their own tool access."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "When should you use a skill instead of a subagent?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "For complex multi-step tasks requiring autonomy",
+        "For checklists, templates, or context injection",
+        "For parallel execution of independent tasks",
+        "For background processing"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "For checklists, templates, or context injection",
+      "explanation": "Skills are ideal for checklists, templates, prompts, and context injection where you want the information to remain visible in the main conversation. Subagents are better for autonomous, isolated tasks.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Skills",
+              "url": "https://docs.anthropic.com/en/docs/claude-code/skills",
+              "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/skills",
+              "section": "When to use skills",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Use skills for context injection, checklists, and templates where you want the information to remain in the main conversation."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "What happens to skill context after execution?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "It remains in the main conversation context",
+        "It is discarded after use",
+        "It is saved to disk",
+        "It is compressed for efficiency"
+      ],
+      "correctAnswerIndex": 0,
+      "correctAnswer": "It remains in the main conversation context",
+      "explanation": "Skills inject their content directly into the main conversation context, where it persists for the remainder of the session. This is unlike subagents whose context is isolated and discarded after returning results.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Skills",
+              "url": "https://docs.anthropic.com/en/docs/claude-code/skills",
+              "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/skills",
+              "section": "Context persistence",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Skill content is injected into the main conversation context and remains available throughout the session."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 11,
+      "questionText": "A pre-defined agent rated 3-5 (valuable checklist with minimal reasoning required) should be converted to what?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "On-demand subagent",
+        "Skill",
+        "Hook",
+        "MCP server"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Skill",
+      "explanation": "Agents that primarily provide checklists or templates with minimal autonomous reasoning should be converted to skills. Skills inject content into the main context where the main agent can use it directly.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "RFC: Reduce Pre-Defined Subagent Count",
+              "url": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
+              "onlineUrl": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
+              "section": "Conversion Criteria",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "alpha-forge",
+              "confidence": 0.90
+            },
+            "quotedText": "CONVERT TO SKILL (3-5): Valuable checklist or reference that requires minimal autonomous reasoning. Content should be injected into main context."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 12,
+      "questionText": "What rating indicates an agent should be KEPT as a pre-defined agent?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "0-2",
+        "3-5",
+        "6-8",
+        "9-10"
+      ],
+      "correctAnswerIndex": 3,
+      "correctAnswer": "9-10",
+      "explanation": "Agents rated 9-10 are domain-specific, irreplaceable, and provide unique value that cannot be achieved through built-in capabilities or simple prompts. These should remain as pre-defined agents.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "RFC: Reduce Pre-Defined Subagent Count",
+              "url": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
+              "onlineUrl": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
+              "section": "Rating Scale",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "alpha-forge",
+              "confidence": 0.92
+            },
+            "quotedText": "KEEP (9-10): Domain-specific, irreplaceable agents that provide unique value. These are core to the project's functionality."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 13,
+      "questionText": "What characterizes agents rated 0-2 that should be DELETED?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Generic agents that duplicate built-in capabilities",
+        "Domain-specific agents with irreplaceable value",
+        "Agents with high token usage",
+        "Agents with complex dependencies"
+      ],
+      "correctAnswerIndex": 0,
+      "correctAnswer": "Generic agents that duplicate built-in capabilities",
+      "explanation": "Agents rated 0-2 are generic, duplicate what Claude can already do with built-in tools, or rarely trigger. They add cognitive overhead without providing unique value and should be deleted.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "RFC: Reduce Pre-Defined Subagent Count",
+              "url": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
+              "onlineUrl": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
+              "section": "Rating Scale",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "alpha-forge",
+              "confidence": 0.92
+            },
+            "quotedText": "DELETE (0-2): Generic agents that duplicate built-in capabilities or rarely trigger. Adds cognitive overhead without unique value."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 14,
+      "questionText": "Agents rated 6-8 should be handled how?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Kept as-is without changes",
+        "Deleted immediately",
+        "Consolidated with related agents",
+        "Converted to hooks"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Consolidated with related agents",
+      "explanation": "Agents rated 6-8 have overlapping functionality with other agents. They should be consolidated into fewer, more focused agents to reduce sprawl while preserving their valuable capabilities.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "RFC: Reduce Pre-Defined Subagent Count",
+              "url": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
+              "onlineUrl": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
+              "section": "Rating Scale",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "alpha-forge",
+              "confidence": 0.92
+            },
+            "quotedText": "CONSOLIDATE (6-8): Agents with overlapping scope that should be merged with related agents to reduce sprawl."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 15,
+      "questionText": "What is 'agent sprawl' in enterprise AI systems?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Agents using too much memory",
+        "Enterprise anti-pattern of producing dozens of agents without centralized organization",
+        "Agents running too slowly",
+        "Agents accessing too many files"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Enterprise anti-pattern of producing dozens of agents without centralized organization",
+      "explanation": "Agent sprawl is an enterprise anti-pattern where teams produce dozens of AI agents without coordination, leading to redundancy, maintenance burden, and difficulty understanding which agent to use for what purpose.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "RFC: Reduce Pre-Defined Subagent Count",
+              "url": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
+              "onlineUrl": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
+              "section": "Problem Statement",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "alpha-forge",
+              "confidence": 0.90
+            },
+            "quotedText": "Agent sprawl is an enterprise anti-pattern where teams produce dozens of AI agents without centralized organization, leading to redundancy and maintenance burden."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 16,
+      "questionText": "According to Anthropic, when is multi-agent architecture appropriate?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Always, for any complex task",
+        "Only when truly parallel, independent subtasks exist",
+        "When a single agent is too slow",
+        "When the context window is limited"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Only when truly parallel, independent subtasks exist",
+      "explanation": "Multi-agent architecture is appropriate when you have subtasks that can run in parallel and don't require shared context. For most tasks, a single agent with careful prompting is more effective.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Building Effective Agents",
+              "url": "https://www.anthropic.com/engineering/building-effective-agents",
+              "onlineUrl": "https://www.anthropic.com/engineering/building-effective-agents",
+              "section": "When (not) to use agents",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Multi-agent systems can be appropriate when you have truly parallel, independent subtasks. For most applications, start with a single agent."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 17,
+      "questionText": "What makes single-agent architecture preferable for most tasks?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Lower cost per request",
+        "Simplicity, transparency, and holistic reasoning",
+        "Faster execution speed",
+        "Easier debugging"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Simplicity, transparency, and holistic reasoning",
+      "explanation": "Single-agent architecture is preferred because it's simpler to reason about, the agent has full context for holistic decision-making, and its actions are more transparent. Multi-agent adds complexity that's often unnecessary.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Building Effective Agents",
+              "url": "https://www.anthropic.com/engineering/building-effective-agents",
+              "onlineUrl": "https://www.anthropic.com/engineering/building-effective-agents",
+              "section": "Principles",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Maintain simplicity in your agentic system. Start with the simplest solution that could work, then add complexity only when needed."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 18,
+      "questionText": "Multi-agent adds value when subtasks are what?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Sequential and dependent on each other",
+        "Parallelizable and truly independent",
+        "Simple and repetitive",
+        "User-facing and interactive"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Parallelizable and truly independent",
+      "explanation": "Multi-agent systems add value when subtasks can run in parallel without needing to share context. If tasks are sequential or dependent, a single agent is more effective.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Building Effective Agents",
+              "url": "https://www.anthropic.com/engineering/building-effective-agents",
+              "onlineUrl": "https://www.anthropic.com/engineering/building-effective-agents",
+              "section": "Multi-agent patterns",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Multi-agent systems excel when you have independent, parallelizable subtasks that don't require shared state."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 19,
+      "questionText": "What is Anthropic's first principle for building effective agents?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Maintain simplicity in agent design",
+        "Maximize tool access",
+        "Use the largest context window available",
+        "Parallelize all operations"
+      ],
+      "correctAnswerIndex": 0,
+      "correctAnswer": "Maintain simplicity in agent design",
+      "explanation": "Anthropic's first principle is simplicity: start with the simplest solution that could work, then add complexity only when needed. Many tasks that seem to require agents can be solved with simpler approaches.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Building Effective Agents",
+              "url": "https://www.anthropic.com/engineering/building-effective-agents",
+              "onlineUrl": "https://www.anthropic.com/engineering/building-effective-agents",
+              "section": "Principles for building effective agents",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Maintain simplicity in your agentic system. Start with the simplest solution that could work."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 20,
+      "questionText": "What does 'transparency' mean in agent architecture according to Anthropic?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Showing all source code to users",
+        "Agent actions and reasoning are visible and understandable",
+        "Logging all API calls to a database",
+        "Open-source licensing requirements"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Agent actions and reasoning are visible and understandable",
+      "explanation": "Transparency means that the agent's actions, decisions, and reasoning process should be visible and understandable to developers and users, making debugging and trust-building possible.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Building Effective Agents",
+              "url": "https://www.anthropic.com/engineering/building-effective-agents",
+              "onlineUrl": "https://www.anthropic.com/engineering/building-effective-agents",
+              "section": "Principles for building effective agents",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Design for transparency: make agent actions and reasoning visible and understandable."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 21,
+      "questionText": "What is ACI (Agent-Computer Interface) design?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Graphical user interface for agents",
+        "Careful design of how agents interact with tools and environments",
+        "API specification format",
+        "Memory management protocol"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Careful design of how agents interact with tools and environments",
+      "explanation": "ACI design focuses on how agents interact with their tools and environment. Well-designed ACIs make it easy for agents to understand tool capabilities, receive clear feedback, and recover from errors.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Building Effective Agents",
+              "url": "https://www.anthropic.com/engineering/building-effective-agents",
+              "onlineUrl": "https://www.anthropic.com/engineering/building-effective-agents",
+              "section": "Agent-Computer Interface (ACI) design",
+              "accessDate": "2026-01-24"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Just as good UI design is critical for human-computer interaction, ACI design is critical for agent-computer interaction."
+          }
+        ]
+      }
+    }
+  ]
+}

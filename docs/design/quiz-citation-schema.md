@@ -66,7 +66,8 @@ This schema extends the base quiz JSON format to include authoritative reference
   "source": {
     "type": "documentation | api | adr | blog | official",
     "title": "Human-readable source name",
-    "url": "https://...",
+    "url": "https://... or file://~/.claude/...",
+    "onlineUrl": "https://... (optional, for public review page)",
     "section": "Optional: specific section heading",
     "accessDate": "ISO-8601 date"
   },
@@ -79,6 +80,18 @@ This schema extends the base quiz JSON format to include authoritative reference
   "context": "Optional: surrounding context for the quote"
 }
 ```
+
+### Dual URL Support
+
+| Field       | Required | Description                                             |
+| ----------- | -------- | ------------------------------------------------------- |
+| `url`       | Yes      | Primary URL (local `file://` or online `https://`)      |
+| `onlineUrl` | No       | Public HTTPS URL for review page (clickable hyperlinks) |
+
+**Rendering rules:**
+
+- If `onlineUrl` present: Review page renders as clickable link
+- If only `url`: Review page renders as code block (not clickable)
 
 ## Authority Tiers
 

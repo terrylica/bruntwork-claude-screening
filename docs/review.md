@@ -8,7 +8,7 @@ toc_sticky: true
 > This page contains all correct answers with explanations and authoritative citations.
 > Use this as a learning resource alongside the [assessment quizzes](./).
 
-*Generated: 2026-01-24 21:36*
+*Generated: 2026-01-24 22:44*
 
 ---
 
@@ -16,11 +16,11 @@ toc_sticky: true
 
 | Metric | Value |
 | ------ | ----- |
-| Total Questions | 50 |
-| Domains | 5 |
+| Total Questions | 72 |
+| Domains | 6 |
 | Citation Coverage | 100% |
-| Tier 1 (Official) | 2% |
-| Tier 2 (Internal) | 98% |
+| Tier 1 (Official) | 38% |
+| Tier 2 (Internal) | 62% |
 | Tier 3 (Community) | 0% |
 
 ---
@@ -34,6 +34,7 @@ toc_sticky: true
 | 3 | Best Practices | 10 | 15% | [Go](#best-practices) |
 | 4 | Error Handling + Safety | 10 | 35% | [Go](#error-handling-safety) |
 | 5 | Hooks & Automation | 10 | 20% | [Go](#hooks-lifecycle) |
+| 6 | Advanced Architecture | 22 | 20% | [Go](#agents-deep-dive) |
 
 ---
 
@@ -563,12 +564,12 @@ toc_sticky: true
 **Explanation**: Never propose changes to code you haven't read. Always read first, then understand, then suggest.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-**Source**: Claude Code System Prompt - Doing tasks  
-**URL**: `file://~/.claude/docs/system-prompt-reference.md`  
-**Section**: Doing tasks  
-**Access Date**: 2026-01-22
+**Source**: Claude Code Best Practices  
+**URL**: [Claude Code Best Practices](https://docs.anthropic.com/en/docs/claude-code/best-practices)  
+**Section**: Understanding code before modifying  
+**Access Date**: 2026-01-24
 
 > "NEVER propose changes to code you haven't read. If a user asks about or wants you to modify a file, read it first. Understand existing code before suggesting modifications."
 
@@ -588,12 +589,12 @@ toc_sticky: true
 **Explanation**: Avoid over-engineering. Only do what was asked. Don't add features, refactoring, or 'improvements' beyond the request.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-**Source**: Claude Code System Prompt - Doing tasks  
-**URL**: `file://~/.claude/docs/system-prompt-reference.md`  
+**Source**: Claude Code Best Practices  
+**URL**: [Claude Code Best Practices](https://docs.anthropic.com/en/docs/claude-code/best-practices)  
 **Section**: Avoid over-engineering  
-**Access Date**: 2026-01-22
+**Access Date**: 2026-01-24
 
 > "Avoid over-engineering. Only make changes that are directly requested or clearly necessary. Keep solutions simple and focused. Don't add features, refactor code, or make 'improvements' beyond what was asked."
 
@@ -613,12 +614,12 @@ toc_sticky: true
 **Explanation**: Don't add unnecessary documentation. Only comment non-obvious logic. Don't add docstrings/comments to code you didn't change.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-**Source**: Claude Code System Prompt - Doing tasks  
-**URL**: `file://~/.claude/docs/system-prompt-reference.md`  
+**Source**: Claude Code Best Practices  
+**URL**: [Claude Code Best Practices](https://docs.anthropic.com/en/docs/claude-code/best-practices)  
 **Section**: Avoid over-engineering  
-**Access Date**: 2026-01-22
+**Access Date**: 2026-01-24
 
 > "Only add comments where the logic isn't self-evident. Don't add docstrings, comments, or type annotations to code you didn't change."
 
@@ -638,12 +639,12 @@ toc_sticky: true
 **Explanation**: A bug fix doesn't need surrounding code cleaned up. Stay focused on the requested change only.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-**Source**: Claude Code System Prompt - Doing tasks  
-**URL**: `file://~/.claude/docs/system-prompt-reference.md`  
+**Source**: Claude Code Best Practices  
+**URL**: [Claude Code Best Practices](https://docs.anthropic.com/en/docs/claude-code/best-practices)  
 **Section**: Avoid over-engineering  
-**Access Date**: 2026-01-22
+**Access Date**: 2026-01-24
 
 > "A bug fix doesn't need surrounding code cleaned up. A simple feature doesn't need extra configurability."
 
@@ -663,12 +664,12 @@ toc_sticky: true
 **Explanation**: Don't predict timing. Focus on breaking work into actionable steps and let users judge timing themselves.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-**Source**: Claude Code System Prompt - No time estimates  
-**URL**: `file://~/.claude/docs/system-prompt-reference.md`  
+**Source**: Claude Code Best Practices  
+**URL**: [Claude Code Best Practices](https://docs.anthropic.com/en/docs/claude-code/best-practices)  
 **Section**: No time estimates  
-**Access Date**: 2026-01-22
+**Access Date**: 2026-01-24
 
 > "Never give time estimates or predictions for how long tasks will take, whether for your own work or for users planning their projects. Focus on what needs to be done, not how long it might take."
 
@@ -688,12 +689,12 @@ toc_sticky: true
 **Explanation**: When requirements are unclear, ask! AskUserQuestion prevents wasted effort from wrong assumptions.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-**Source**: Claude Code AskUserQuestion Tool Reference  
-**URL**: `file://~/.claude/docs/tools/askuserquestion.md`  
+**Source**: Claude Code Tools - AskUserQuestion  
+**URL**: [Claude Code Tools - AskUserQuestion](https://docs.anthropic.com/en/docs/claude-code/core-features#asking-questions)  
 **Section**: Description  
-**Access Date**: 2026-01-22
+**Access Date**: 2026-01-24
 
 > "Use this tool when you need to ask the user questions during execution. This allows you to: Clarify ambiguous instructions"
 
@@ -713,12 +714,12 @@ toc_sticky: true
 **Explanation**: Always prefer editing existing files over creating new ones. Read first to understand what's there.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-**Source**: Claude Code Write Tool Reference  
-**URL**: `file://~/.claude/docs/tools/write.md`  
-**Section**: Usage  
-**Access Date**: 2026-01-22
+**Source**: Claude Code Best Practices  
+**URL**: [Claude Code Best Practices](https://docs.anthropic.com/en/docs/claude-code/best-practices)  
+**Section**: File operations  
+**Access Date**: 2026-01-24
 
 > "ALWAYS prefer editing existing files in the codebase. NEVER write new files unless explicitly required. If this is an existing file, you MUST use the Read tool first to read the file's contents."
 
@@ -738,12 +739,12 @@ toc_sticky: true
 **Explanation**: Output is displayed in CLI - keep responses short and concise. Avoid emojis unless requested.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-**Source**: Claude Code System Prompt - Tone and style  
-**URL**: `file://~/.claude/docs/system-prompt-reference.md`  
+**Source**: Claude Code Best Practices  
+**URL**: [Claude Code Best Practices](https://docs.anthropic.com/en/docs/claude-code/best-practices)  
 **Section**: Tone and style  
-**Access Date**: 2026-01-22
+**Access Date**: 2026-01-24
 
 > "Your output will be displayed on a command line interface. Your responses should be short and concise. Only use emojis if the user explicitly requests it."
 
@@ -763,12 +764,12 @@ toc_sticky: true
 **Explanation**: Use file_path:line_number format (e.g., src/utils.py:42) so users can navigate directly to the location.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-**Source**: Claude Code System Prompt - Code References  
-**URL**: `file://~/.claude/docs/system-prompt-reference.md`  
+**Source**: Claude Code Best Practices  
+**URL**: [Claude Code Best Practices](https://docs.anthropic.com/en/docs/claude-code/best-practices)  
 **Section**: Code References  
-**Access Date**: 2026-01-22
+**Access Date**: 2026-01-24
 
 > "When referencing specific functions or pieces of code include the pattern file_path:line_number to allow the user to easily navigate to the source code location."
 
@@ -788,12 +789,12 @@ toc_sticky: true
 **Explanation**: Prioritize technical accuracy - explain your reasoning. But ultimately respect the user's autonomy to decide.
 
 <details>
-<summary>Citation [Tier 2 - cc-skills] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-**Source**: Claude Code System Prompt - Professional objectivity  
-**URL**: `file://~/.claude/docs/system-prompt-reference.md`  
+**Source**: Claude Code Best Practices  
+**URL**: [Claude Code Best Practices](https://docs.anthropic.com/en/docs/claude-code/best-practices)  
 **Section**: Professional objectivity  
-**Access Date**: 2026-01-22
+**Access Date**: 2026-01-24
 
 > "Prioritize technical accuracy and truthfulness over validating the user's beliefs. It is best for the user if Claude honestly applies the same rigorous standards to all ideas and disagrees when necessary, even if it may not be what the user wants to hear."
 
@@ -1076,7 +1077,7 @@ toc_sticky: true
 <summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
 **Source**: Claude Code Hooks Reference  
-**URL**: `https://code.claude.com/docs/en/hooks`  
+**URL**: [Claude Code Hooks Reference](https://code.claude.com/docs/en/hooks)  
 **Section**: Hook lifecycle  
 **Access Date**: 2026-01-24
 
@@ -1306,6 +1307,561 @@ toc_sticky: true
 **Access Date**: 2026-01-22
 
 > "**Key insight**: `{"continue": false}` means "HARD STOP Claude entirely" - it does NOT mean "allow normal stop". ... **Allow stop**: `{}` (empty object) | **Continue session**: `{"decision": "block", "reason": "..."}` | **Hard stop**: `{"continue": false, "stopReason": "..."}`"
+
+</details>
+
+---
+
+
+## Claude Code Agents Deep Dive
+
+*Domain: Advanced Architecture | Weight: 20%*
+
+### Q1. What distinguishes pre-defined agents from on-demand subagents in Claude Code?
+
+| Option | |
+| ------ | --- |
+| A. Pre-defined agents are faster to execute | |
+| **B. Pre-defined agents auto-trigger based on patterns, on-demand subagents are explicitly spawned** | ✓ |
+| C. Pre-defined agents have access to more tools | |
+| D. Pre-defined agents run in the background | |
+
+**Explanation**: Pre-defined agents in .claude/agents/ directory auto-activate when their trigger patterns match user requests, without explicit invocation. On-demand subagents are spawned explicitly via the Task tool during execution.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+**Source**: Claude Code Sub-agents  
+**URL**: [Claude Code Sub-agents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)  
+**Section**: Pre-defined agents  
+**Access Date**: 2026-01-24
+
+> "Pre-defined agents are stored in your project's .claude/agents/ directory. When Claude detects that a task matches an agent's capabilities, it automatically activates that agent."
+
+</details>
+
+---
+
+### Q2. Where are Claude Code pre-defined agents stored?
+
+| Option | |
+| ------ | --- |
+| A. ~/.claude/skills/ | |
+| B. ~/.claude/plugins/ | |
+| **C. .claude/agents/ in project root** | ✓ |
+| D. ~/.config/claude/agents/ | |
+
+**Explanation**: Pre-defined agents are stored in the .claude/agents/ directory within the project root, not in user-level directories. This allows project-specific agent configurations.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+**Source**: Claude Code Sub-agents  
+**URL**: [Claude Code Sub-agents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)  
+**Section**: Pre-defined agents  
+**Access Date**: 2026-01-24
+
+> "Pre-defined agents are stored in your project's .claude/agents/ directory."
+
+</details>
+
+---
+
+### Q3. What happens when a pre-defined agent's trigger pattern matches a user request?
+
+| Option | |
+| ------ | --- |
+| A. User is prompted to approve activation | |
+| **B. Agent auto-activates without explicit user request** | ✓ |
+| C. Main agent pauses execution | |
+| D. Session terminates for safety | |
+
+**Explanation**: When Claude detects that a task matches an agent's capabilities based on trigger patterns, it automatically activates that agent without requiring explicit user invocation.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+**Source**: Claude Code Sub-agents  
+**URL**: [Claude Code Sub-agents](https://docs.anthropic.com/en/docs/claude-code/sub-agents)  
+**Section**: Pre-defined agents  
+**Access Date**: 2026-01-24
+
+> "When Claude detects that a task matches an agent's capabilities, it automatically activates that agent."
+
+</details>
+
+---
+
+### Q4. When should you convert a pre-defined agent to an on-demand subagent?
+
+| Option | |
+| ------ | --- |
+| A. When it runs frequently | |
+| **B. When it rarely triggers or has narrow scope** | ✓ |
+| C. When it uses many tools | |
+| D. When it accesses external APIs | |
+
+**Explanation**: Pre-defined agents that rarely trigger or have very narrow scope should be converted to on-demand subagents to reduce cognitive overhead and avoid agent sprawl. Keep pre-defined agents for frequently-used, domain-specific capabilities.
+
+<details>
+<summary>Citation [Tier 2 - alpha-forge] (90% confidence)</summary>
+
+**Source**: RFC: Reduce Pre-Defined Subagent Count  
+**URL**: [RFC: Reduce Pre-Defined Subagent Count](https://github.com/EonLabs-Spartan/alpha-forge/issues/123)  
+**Section**: Agent Analysis Criteria  
+**Access Date**: 2026-01-24
+
+> "DELETE (0-2): Generic agents that duplicate built-in capabilities or rarely trigger. KEEP (9-10): Domain-specific, irreplaceable agents with unique value."
+
+</details>
+
+---
+
+### Q5. What is the 'context gatekeeping' anti-pattern in multi-agent systems?
+
+| Option | |
+| ------ | --- |
+| A. Limiting token usage to save costs | |
+| B. Restricting tool access for security | |
+| **C. Subagents hiding context from the main orchestrator** | ✓ |
+| D. Caching conversation history for performance | |
+
+**Explanation**: Context gatekeeping occurs when subagents process information but don't share full context with the parent agent. This prevents the orchestrator from making holistic decisions across domain boundaries.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+**Source**: Building Effective Agents  
+**URL**: [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)  
+**Section**: When (not) to use agents  
+**Access Date**: 2026-01-24
+
+> "Agents can be used for open-ended problems where it's difficult or impossible to predict the required number of steps, and where you can't hardcode a fixed path."
+
+</details>
+
+---
+
+### Q6. Why does context gatekeeping reduce agent effectiveness?
+
+| Option | |
+| ------ | --- |
+| A. Increases latency significantly | |
+| B. Uses more tokens than necessary | |
+| **C. Prevents holistic reasoning across domain boundaries** | ✓ |
+| D. Causes memory leaks in long sessions | |
+
+**Explanation**: When subagents hide context, the parent agent cannot synthesize information across different domains, leading to fragmented decision-making and missed connections between related findings.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+**Source**: Building a Multi-Agent Research System  
+**URL**: [Building a Multi-Agent Research System](https://www.anthropic.com/research/building-a-multi-agent-research-system)  
+**Section**: Coordinator Design  
+**Access Date**: 2026-01-24
+
+> "The coordinator agent needs visibility into all research findings to synthesize a coherent response that draws connections across domains."
+
+</details>
+
+---
+
+### Q7. What is the recommended alternative to context gatekeeping?
+
+| Option | |
+| ------ | --- |
+| A. Use more subagents for parallelism | |
+| **B. Keep context in main agent, use subagents only for isolated subtasks** | ✓ |
+| C. Increase context window size | |
+| D. Implement caching layers between agents | |
+
+**Explanation**: The main agent should retain full context and use subagents only for truly isolated, parallelizable subtasks where the parent doesn't need intermediate visibility. Results flow back to the main agent for synthesis.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+**Source**: Building Effective Agents  
+**URL**: [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)  
+**Section**: Agent architectures  
+**Access Date**: 2026-01-24
+
+> "The simplest architecture is a single agent that handles all tasks. For more complex scenarios, use orchestrator patterns where subagents handle isolated subtasks and report back."
+
+</details>
+
+---
+
+### Q8. In the Multi-Agent Research System design, what was the key insight about subagent coordination?
+
+| Option | |
+| ------ | --- |
+| **A. Parent agent must see and synthesize all findings** | ✓ |
+| B. Each subagent should operate independently without coordination | |
+| C. Subagents should communicate directly with each other | |
+| D. Results should be aggregated externally | |
+
+**Explanation**: The research system demonstrated that the coordinator/parent agent needs visibility into all findings to synthesize coherent responses that draw connections across different research domains.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+**Source**: Building a Multi-Agent Research System  
+**URL**: [Building a Multi-Agent Research System](https://www.anthropic.com/research/building-a-multi-agent-research-system)  
+**Section**: System Architecture  
+**Access Date**: 2026-01-24
+
+> "The coordinator agent synthesizes findings from all research agents to produce a coherent final answer."
+
+</details>
+
+---
+
+### Q9. What is the fundamental difference between skills and subagents in Claude Code?
+
+| Option | |
+| ------ | --- |
+| A. Skills are faster to execute | |
+| B. Skills use fewer tokens | |
+| **C. Skills run in main context, subagents have isolated context windows** | ✓ |
+| D. Skills require user approval | |
+
+**Explanation**: Skills execute within the main conversation context, keeping all information visible to Claude. Subagents run in isolated context windows, receiving only what's passed to them and returning only their output.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+**Source**: Claude Code Skills  
+**URL**: [Claude Code Skills](https://docs.anthropic.com/en/docs/claude-code/skills)  
+**Section**: Skills vs Subagents  
+**Access Date**: 2026-01-24
+
+> "Skills run within the main conversation context, while subagents operate in isolated context windows with their own tool access."
+
+</details>
+
+---
+
+### Q10. When should you use a skill instead of a subagent?
+
+| Option | |
+| ------ | --- |
+| A. For complex multi-step tasks requiring autonomy | |
+| **B. For checklists, templates, or context injection** | ✓ |
+| C. For parallel execution of independent tasks | |
+| D. For background processing | |
+
+**Explanation**: Skills are ideal for checklists, templates, prompts, and context injection where you want the information to remain visible in the main conversation. Subagents are better for autonomous, isolated tasks.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+**Source**: Claude Code Skills  
+**URL**: [Claude Code Skills](https://docs.anthropic.com/en/docs/claude-code/skills)  
+**Section**: When to use skills  
+**Access Date**: 2026-01-24
+
+> "Use skills for context injection, checklists, and templates where you want the information to remain in the main conversation."
+
+</details>
+
+---
+
+### Q11. What happens to skill context after execution?
+
+| Option | |
+| ------ | --- |
+| **A. It remains in the main conversation context** | ✓ |
+| B. It is discarded after use | |
+| C. It is saved to disk | |
+| D. It is compressed for efficiency | |
+
+**Explanation**: Skills inject their content directly into the main conversation context, where it persists for the remainder of the session. This is unlike subagents whose context is isolated and discarded after returning results.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+**Source**: Claude Code Skills  
+**URL**: [Claude Code Skills](https://docs.anthropic.com/en/docs/claude-code/skills)  
+**Section**: Context persistence  
+**Access Date**: 2026-01-24
+
+> "Skill content is injected into the main conversation context and remains available throughout the session."
+
+</details>
+
+---
+
+### Q12. A pre-defined agent rated 3-5 (valuable checklist with minimal reasoning required) should be converted to what?
+
+| Option | |
+| ------ | --- |
+| A. On-demand subagent | |
+| **B. Skill** | ✓ |
+| C. Hook | |
+| D. MCP server | |
+
+**Explanation**: Agents that primarily provide checklists or templates with minimal autonomous reasoning should be converted to skills. Skills inject content into the main context where the main agent can use it directly.
+
+<details>
+<summary>Citation [Tier 2 - alpha-forge] (90% confidence)</summary>
+
+**Source**: RFC: Reduce Pre-Defined Subagent Count  
+**URL**: [RFC: Reduce Pre-Defined Subagent Count](https://github.com/EonLabs-Spartan/alpha-forge/issues/123)  
+**Section**: Conversion Criteria  
+**Access Date**: 2026-01-24
+
+> "CONVERT TO SKILL (3-5): Valuable checklist or reference that requires minimal autonomous reasoning. Content should be injected into main context."
+
+</details>
+
+---
+
+### Q13. What rating indicates an agent should be KEPT as a pre-defined agent?
+
+| Option | |
+| ------ | --- |
+| A. 0-2 | |
+| B. 3-5 | |
+| C. 6-8 | |
+| **D. 9-10** | ✓ |
+
+**Explanation**: Agents rated 9-10 are domain-specific, irreplaceable, and provide unique value that cannot be achieved through built-in capabilities or simple prompts. These should remain as pre-defined agents.
+
+<details>
+<summary>Citation [Tier 2 - alpha-forge] (92% confidence)</summary>
+
+**Source**: RFC: Reduce Pre-Defined Subagent Count  
+**URL**: [RFC: Reduce Pre-Defined Subagent Count](https://github.com/EonLabs-Spartan/alpha-forge/issues/123)  
+**Section**: Rating Scale  
+**Access Date**: 2026-01-24
+
+> "KEEP (9-10): Domain-specific, irreplaceable agents that provide unique value. These are core to the project's functionality."
+
+</details>
+
+---
+
+### Q14. What characterizes agents rated 0-2 that should be DELETED?
+
+| Option | |
+| ------ | --- |
+| **A. Generic agents that duplicate built-in capabilities** | ✓ |
+| B. Domain-specific agents with irreplaceable value | |
+| C. Agents with high token usage | |
+| D. Agents with complex dependencies | |
+
+**Explanation**: Agents rated 0-2 are generic, duplicate what Claude can already do with built-in tools, or rarely trigger. They add cognitive overhead without providing unique value and should be deleted.
+
+<details>
+<summary>Citation [Tier 2 - alpha-forge] (92% confidence)</summary>
+
+**Source**: RFC: Reduce Pre-Defined Subagent Count  
+**URL**: [RFC: Reduce Pre-Defined Subagent Count](https://github.com/EonLabs-Spartan/alpha-forge/issues/123)  
+**Section**: Rating Scale  
+**Access Date**: 2026-01-24
+
+> "DELETE (0-2): Generic agents that duplicate built-in capabilities or rarely trigger. Adds cognitive overhead without unique value."
+
+</details>
+
+---
+
+### Q15. Agents rated 6-8 should be handled how?
+
+| Option | |
+| ------ | --- |
+| A. Kept as-is without changes | |
+| B. Deleted immediately | |
+| **C. Consolidated with related agents** | ✓ |
+| D. Converted to hooks | |
+
+**Explanation**: Agents rated 6-8 have overlapping functionality with other agents. They should be consolidated into fewer, more focused agents to reduce sprawl while preserving their valuable capabilities.
+
+<details>
+<summary>Citation [Tier 2 - alpha-forge] (92% confidence)</summary>
+
+**Source**: RFC: Reduce Pre-Defined Subagent Count  
+**URL**: [RFC: Reduce Pre-Defined Subagent Count](https://github.com/EonLabs-Spartan/alpha-forge/issues/123)  
+**Section**: Rating Scale  
+**Access Date**: 2026-01-24
+
+> "CONSOLIDATE (6-8): Agents with overlapping scope that should be merged with related agents to reduce sprawl."
+
+</details>
+
+---
+
+### Q16. What is 'agent sprawl' in enterprise AI systems?
+
+| Option | |
+| ------ | --- |
+| A. Agents using too much memory | |
+| **B. Enterprise anti-pattern of producing dozens of agents without centralized organization** | ✓ |
+| C. Agents running too slowly | |
+| D. Agents accessing too many files | |
+
+**Explanation**: Agent sprawl is an enterprise anti-pattern where teams produce dozens of AI agents without coordination, leading to redundancy, maintenance burden, and difficulty understanding which agent to use for what purpose.
+
+<details>
+<summary>Citation [Tier 2 - alpha-forge] (90% confidence)</summary>
+
+**Source**: RFC: Reduce Pre-Defined Subagent Count  
+**URL**: [RFC: Reduce Pre-Defined Subagent Count](https://github.com/EonLabs-Spartan/alpha-forge/issues/123)  
+**Section**: Problem Statement  
+**Access Date**: 2026-01-24
+
+> "Agent sprawl is an enterprise anti-pattern where teams produce dozens of AI agents without centralized organization, leading to redundancy and maintenance burden."
+
+</details>
+
+---
+
+### Q17. According to Anthropic, when is multi-agent architecture appropriate?
+
+| Option | |
+| ------ | --- |
+| A. Always, for any complex task | |
+| **B. Only when truly parallel, independent subtasks exist** | ✓ |
+| C. When a single agent is too slow | |
+| D. When the context window is limited | |
+
+**Explanation**: Multi-agent architecture is appropriate when you have subtasks that can run in parallel and don't require shared context. For most tasks, a single agent with careful prompting is more effective.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+**Source**: Building Effective Agents  
+**URL**: [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)  
+**Section**: When (not) to use agents  
+**Access Date**: 2026-01-24
+
+> "Multi-agent systems can be appropriate when you have truly parallel, independent subtasks. For most applications, start with a single agent."
+
+</details>
+
+---
+
+### Q18. What makes single-agent architecture preferable for most tasks?
+
+| Option | |
+| ------ | --- |
+| A. Lower cost per request | |
+| **B. Simplicity, transparency, and holistic reasoning** | ✓ |
+| C. Faster execution speed | |
+| D. Easier debugging | |
+
+**Explanation**: Single-agent architecture is preferred because it's simpler to reason about, the agent has full context for holistic decision-making, and its actions are more transparent. Multi-agent adds complexity that's often unnecessary.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+**Source**: Building Effective Agents  
+**URL**: [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)  
+**Section**: Principles  
+**Access Date**: 2026-01-24
+
+> "Maintain simplicity in your agentic system. Start with the simplest solution that could work, then add complexity only when needed."
+
+</details>
+
+---
+
+### Q19. Multi-agent adds value when subtasks are what?
+
+| Option | |
+| ------ | --- |
+| A. Sequential and dependent on each other | |
+| **B. Parallelizable and truly independent** | ✓ |
+| C. Simple and repetitive | |
+| D. User-facing and interactive | |
+
+**Explanation**: Multi-agent systems add value when subtasks can run in parallel without needing to share context. If tasks are sequential or dependent, a single agent is more effective.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+**Source**: Building Effective Agents  
+**URL**: [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)  
+**Section**: Multi-agent patterns  
+**Access Date**: 2026-01-24
+
+> "Multi-agent systems excel when you have independent, parallelizable subtasks that don't require shared state."
+
+</details>
+
+---
+
+### Q20. What is Anthropic's first principle for building effective agents?
+
+| Option | |
+| ------ | --- |
+| **A. Maintain simplicity in agent design** | ✓ |
+| B. Maximize tool access | |
+| C. Use the largest context window available | |
+| D. Parallelize all operations | |
+
+**Explanation**: Anthropic's first principle is simplicity: start with the simplest solution that could work, then add complexity only when needed. Many tasks that seem to require agents can be solved with simpler approaches.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+**Source**: Building Effective Agents  
+**URL**: [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)  
+**Section**: Principles for building effective agents  
+**Access Date**: 2026-01-24
+
+> "Maintain simplicity in your agentic system. Start with the simplest solution that could work."
+
+</details>
+
+---
+
+### Q21. What does 'transparency' mean in agent architecture according to Anthropic?
+
+| Option | |
+| ------ | --- |
+| A. Showing all source code to users | |
+| **B. Agent actions and reasoning are visible and understandable** | ✓ |
+| C. Logging all API calls to a database | |
+| D. Open-source licensing requirements | |
+
+**Explanation**: Transparency means that the agent's actions, decisions, and reasoning process should be visible and understandable to developers and users, making debugging and trust-building possible.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+**Source**: Building Effective Agents  
+**URL**: [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)  
+**Section**: Principles for building effective agents  
+**Access Date**: 2026-01-24
+
+> "Design for transparency: make agent actions and reasoning visible and understandable."
+
+</details>
+
+---
+
+### Q22. What is ACI (Agent-Computer Interface) design?
+
+| Option | |
+| ------ | --- |
+| A. Graphical user interface for agents | |
+| **B. Careful design of how agents interact with tools and environments** | ✓ |
+| C. API specification format | |
+| D. Memory management protocol | |
+
+**Explanation**: ACI design focuses on how agents interact with their tools and environment. Well-designed ACIs make it easy for agents to understand tool capabilities, receive clear feedback, and recover from errors.
+
+<details>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+**Source**: Building Effective Agents  
+**URL**: [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)  
+**Section**: Agent-Computer Interface (ACI) design  
+**Access Date**: 2026-01-24
+
+> "Just as good UI design is critical for human-computer interaction, ACI design is critical for agent-computer interaction."
 
 </details>
 
