@@ -28,6 +28,7 @@ QUIZ_ORDER = [
     "best-practices.json",
     "error-handling-safety.json",
     "hooks-lifecycle.json",
+    "agents-deep-dive.json",
 ]
 
 
@@ -87,17 +88,26 @@ def format_citation_block(citation: dict) -> str:
 
     title = source.get("title", "Unknown Source")
     url = source.get("url", "")
+    online_url = source.get("onlineUrl", "")
     section = source.get("section", "")
     access_date = source.get("accessDate", "")
 
     quoted_text = citation.get("quotedText", "")
+
+    # Use onlineUrl for clickable link if available, otherwise show url as code
+    if online_url and online_url.startswith("https://"):
+        url_line = f"**URL**: [{title}]({online_url})  "
+    elif url.startswith("https://"):
+        url_line = f"**URL**: [{title}]({url})  "
+    else:
+        url_line = f"**URL**: `{url}`  "
 
     lines = [
         "<details>",
         f"<summary>Citation [Tier {tier} - {org}] ({confidence:.0%} confidence)</summary>",
         "",
         f"**Source**: {title}  ",
-        f"**URL**: `{url}`  ",
+        url_line,
     ]
 
     if section:

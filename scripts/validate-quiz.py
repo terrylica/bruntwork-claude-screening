@@ -18,6 +18,42 @@ from typing import Literal
 from pydantic import BaseModel, Field, ValidationError
 
 
+class Source(BaseModel):
+    """Citation source schema."""
+
+    type: str | None = None
+    title: str
+    url: str
+    onlineUrl: str | None = None  # Optional public URL for review page
+    section: str | None = None
+    accessDate: str | None = None
+
+
+class Authority(BaseModel):
+    """Citation authority schema."""
+
+    tier: int = Field(ge=1, le=3)
+    organization: str
+    confidence: float = Field(ge=0.0, le=1.0)
+
+
+class Citation(BaseModel):
+    """Citation schema."""
+
+    source: Source
+    authority: Authority
+    quotedText: str
+    context: str | None = None
+
+
+class Citations(BaseModel):
+    """Question citations schema."""
+
+    question: list[Citation] | None = None
+    correctAnswer: list[Citation] | None = None
+    incorrectOptions: dict[str, list[Citation]] | None = None
+
+
 class Question(BaseModel):
     """Quiz question schema."""
 
@@ -30,6 +66,7 @@ class Question(BaseModel):
     correctAnswer: str | None = None
     explanation: str | None = None
     matchingPairs: list[dict] | None = None
+    citations: Citations | None = None
 
 
 class Quiz(BaseModel):
