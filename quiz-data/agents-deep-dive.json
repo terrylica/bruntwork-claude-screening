@@ -18,7 +18,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Pre-defined agents auto-trigger based on patterns, on-demand subagents are explicitly spawned",
-      "explanation": "Pre-defined agents in .claude/agents/ directory auto-activate when their trigger patterns match user requests, without explicit invocation. On-demand subagents are spawned explicitly via the Task tool during execution.",
+      "explanation": "WHY THIS MATTERS: This distinction affects how you design your workflow. Pre-defined agents are like 'specialists on call' - when the right situation arises, they activate automatically. On-demand subagents are like 'contracted help' - you explicitly spawn them for specific tasks. Pre-defined agents reduce cognitive load (you don't have to remember to invoke them), while on-demand gives precise control. Choose based on how predictable your needs are.",
       "citations": {
         "correctAnswer": [
           {
@@ -53,7 +53,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": ".claude/agents/ in project root",
-      "explanation": "Pre-defined agents are stored in the .claude/agents/ directory within the project root, not in user-level directories. This allows project-specific agent configurations.",
+      "explanation": "WHY THIS MATTERS: Project-root storage (.claude/agents/) means agents are version-controlled with your code. When teammates clone the repo, they get the same specialized agents. This is intentionally different from skills (which can be global). Project-specific agents encode project-specific knowledge that shouldn't leak to other codebases.",
       "citations": {
         "correctAnswer": [
           {
@@ -88,7 +88,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Agent auto-activates without explicit user request",
-      "explanation": "When Claude detects that a task matches an agent's capabilities based on trigger patterns, it automatically activates that agent without requiring explicit user invocation.",
+      "explanation": "WHY THIS MATTERS: Auto-activation creates seamless experiences. Instead of 'please use the migration agent,' you just say 'migrate the database schema' and Claude recognizes the pattern. This reduces friction and cognitive load - you describe what you want, and the right specialist appears. The magic is in the trigger patterns, which let you define precisely when each agent should activate.",
       "citations": {
         "correctAnswer": [
           {
@@ -123,7 +123,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Subagents hiding context from the main orchestrator",
-      "explanation": "Context gatekeeping occurs when subagents process information but don't share full context with the parent agent. This prevents the orchestrator from making holistic decisions across domain boundaries.",
+      "explanation": "WHY THIS MATTERS: This is the #1 anti-pattern in multi-agent systems. Imagine a research agent finding a security vulnerability but summarizing it as 'minor issues found.' The orchestrator never learns the severity, so the final response downplays a critical problem. Context gatekeeping happens accidentally when subagents over-summarize. The fix: subagents should report findings with enough detail for the parent to make informed decisions.",
       "citations": {
         "correctAnswer": [
           {
@@ -158,7 +158,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Prevents holistic reasoning across domain boundaries",
-      "explanation": "When subagents hide context, the parent agent cannot synthesize information across different domains, leading to fragmented decision-making and missed connections between related findings.",
+      "explanation": "WHY THIS MATTERS: The value of a coordinator is drawing connections across domains - 'the auth system and the payment system both have this vulnerability.' If subagents only report isolated findings, the coordinator becomes a dumb aggregator. Holistic reasoning requires holistic visibility. This is why simpler architectures (single agent with full context) often outperform complex multi-agent systems with context loss.",
       "citations": {
         "correctAnswer": [
           {
@@ -193,7 +193,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Keep context in main agent, use subagents only for isolated subtasks",
-      "explanation": "The main agent should retain full context and use subagents only for truly isolated, parallelizable subtasks where the parent doesn't need intermediate visibility. Results flow back to the main agent for synthesis.",
+      "explanation": "WHY THIS MATTERS: The key word is 'isolated.' If subtasks are truly independent (scan these 5 repos for vulnerabilities), parallelization helps without context loss. But if subtasks inform each other (understand the architecture THEN plan the migration), running them in parallel loses the dependency. Default to keeping context in the main agent; only split when tasks are genuinely independent.",
       "citations": {
         "correctAnswer": [
           {
@@ -228,7 +228,7 @@
       ],
       "correctAnswerIndex": 0,
       "correctAnswer": "Parent agent must see and synthesize all findings",
-      "explanation": "The research system demonstrated that the coordinator/parent agent needs visibility into all findings to synthesize coherent responses that draw connections across different research domains.",
+      "explanation": "WHY THIS MATTERS: Anthropic's multi-agent research system was their proving ground for these principles. The key insight: the coordinator seeing raw findings (not just summaries) let it connect dots that specialized agents missed individually. This is the architectural principle that should guide your multi-agent designs - synthesis happens at the top, not distributed across components.",
       "citations": {
         "correctAnswer": [
           {
@@ -263,7 +263,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Skills run in main context, subagents have isolated context windows",
-      "explanation": "Skills execute within the main conversation context, keeping all information visible to Claude. Subagents run in isolated context windows, receiving only what's passed to them and returning only their output.",
+      "explanation": "WHY THIS MATTERS: This is the most important architectural distinction in Claude Code. Skills EXPAND your main context (the checklist stays visible, the template persists). Subagents ISOLATE work (the exploration noise goes away, only results return). Choose skills when visibility matters; choose subagents when clean context matters. Most users overuse subagents when skills would work better.",
       "citations": {
         "correctAnswer": [
           {
@@ -298,7 +298,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "For checklists, templates, or context injection",
-      "explanation": "Skills are ideal for checklists, templates, prompts, and context injection where you want the information to remain visible in the main conversation. Subagents are better for autonomous, isolated tasks.",
+      "explanation": "WHY THIS MATTERS: Think about what happens AFTER the skill/subagent runs. Checklists need to stay visible so Claude (and you) can check items off. Templates need to persist for reference. But exploration output? You don't want 50 file reads cluttering your context - just the insights. Match the mechanism to the persistence need: skills for reference material, subagents for working memory.",
       "citations": {
         "correctAnswer": [
           {
@@ -333,7 +333,7 @@
       ],
       "correctAnswerIndex": 0,
       "correctAnswer": "It remains in the main conversation context",
-      "explanation": "Skills inject their content directly into the main conversation context, where it persists for the remainder of the session. This is unlike subagents whose context is isolated and discarded after returning results.",
+      "explanation": "WHY THIS MATTERS: Persistence has cost and benefit. Skill content consumes your context window for the entire session - good when you need ongoing reference, bad when it's one-time information. Subagent context disappears after the task - good for keeping main context clean, bad when you need to reference intermediate findings later. Design accordingly: inject what you'll reference repeatedly, isolate what you'll use once.",
       "citations": {
         "correctAnswer": [
           {
@@ -368,7 +368,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Only when truly parallel, independent subtasks exist",
-      "explanation": "Multi-agent architecture is appropriate when you have subtasks that can run in parallel and don't require shared context. For most tasks, a single agent with careful prompting is more effective.",
+      "explanation": "WHY THIS MATTERS: Multi-agent adds complexity: coordination overhead, context synchronization challenges, harder debugging. The payoff is parallelism and specialization. For most Claude Code tasks, a single agent is faster and more reliable because it maintains full context and doesn't need coordination. Reserve multi-agent for genuinely parallel tasks (scan 10 repos) or extreme specialization needs.",
       "citations": {
         "correctAnswer": [
           {
@@ -403,7 +403,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Simplicity, transparency, and holistic reasoning",
-      "explanation": "Single-agent architecture is preferred because it's simpler to reason about, the agent has full context for holistic decision-making, and its actions are more transparent. Multi-agent adds complexity that's often unnecessary.",
+      "explanation": "WHY THIS MATTERS: This is Anthropic's hard-won wisdom. They tried complex multi-agent systems and often found simpler single-agent approaches worked better. Why? Full context enables holistic reasoning (seeing connections), transparency makes debugging possible (one context to inspect), and simplicity reduces failure modes (no coordination bugs). Start simple, add complexity only when proven necessary.",
       "citations": {
         "correctAnswer": [
           {
@@ -438,7 +438,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Parallelizable and truly independent",
-      "explanation": "Multi-agent systems add value when subtasks can run in parallel without needing to share context. If tasks are sequential or dependent, a single agent is more effective.",
+      "explanation": "WHY THIS MATTERS: The test for multi-agent is simple: can these tasks run at the exact same time without talking to each other? If yes (scan 5 independent codebases), parallelize. If no (understand the code, THEN plan the refactor), don't. Forcing parallel execution on dependent tasks creates worse results than sequential single-agent work because you lose the dependency information.",
       "citations": {
         "correctAnswer": [
           {
@@ -473,7 +473,7 @@
       ],
       "correctAnswerIndex": 0,
       "correctAnswer": "Maintain simplicity in agent design",
-      "explanation": "Anthropic's first principle is simplicity: start with the simplest solution that could work, then add complexity only when needed. Many tasks that seem to require agents can be solved with simpler approaches.",
+      "explanation": "WHY THIS MATTERS: This principle fights the tendency to over-architect. 'I need a multi-agent system with specialized coordinators' often loses to 'I need a single Claude with a good CLAUDE.md file.' Complexity has costs: harder debugging, more failure modes, longer development time. Start simple. If it doesn't work, you've learned WHY you need complexity. If it does work, you've saved yourself massive overhead.",
       "citations": {
         "correctAnswer": [
           {
@@ -508,7 +508,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Agent actions and reasoning are visible and understandable",
-      "explanation": "Transparency means that the agent's actions, decisions, and reasoning process should be visible and understandable to developers and users, making debugging and trust-building possible.",
+      "explanation": "WHY THIS MATTERS: Transparency enables debugging and builds trust. When something goes wrong, can you see WHY the agent made that decision? When it works, can you understand HOW so you can replicate it? Black-box agents that 'just work' become unmaintainable when they stop working. Claude Code's task tracking, verbose mode, and transcript logs all serve transparency - use them.",
       "citations": {
         "correctAnswer": [
           {
@@ -543,7 +543,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Careful design of how agents interact with tools and environments",
-      "explanation": "ACI design focuses on how agents interact with their tools and environment. Well-designed ACIs make it easy for agents to understand tool capabilities, receive clear feedback, and recover from errors.",
+      "explanation": "WHY THIS MATTERS: Just as bad UX frustrates humans, bad ACI frustrates agents. If a tool returns cryptic errors, the agent can't recover. If tool descriptions are vague, the agent misuses them. Claude Code's tools are designed with ACI principles: clear error messages, consistent output formats, predictable behavior. When building custom tools or MCP servers, apply the same care you'd apply to human UX.",
       "citations": {
         "correctAnswer": [
           {

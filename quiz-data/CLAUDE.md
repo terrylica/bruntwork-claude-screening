@@ -106,15 +106,35 @@ mise run quiz:validate
 mise run quiz:validate-citations
 ```
 
+## Quiz Philosophy (v2.0)
+
+**Focus on principles, not tool micromanagement.** Claude Code v2.1+ autonomously selects tools based on context. Users should describe WHAT they want, not HOW to do it.
+
+### What to Test
+
+| Topic                   | Why It Matters                                       |
+| ----------------------- | ---------------------------------------------------- |
+| Clear prompting         | Context determines Claude's effectiveness            |
+| Safety boundaries       | Permissions, destructive operations, autonomy levels |
+| Architecture principles | Skills vs subagents, context gatekeeping, simplicity |
+| Hooks (advanced)        | Deterministic control for power users                |
+
+### What NOT to Test
+
+| Topic                     | Why It's Obsolete              |
+| ------------------------- | ------------------------------ |
+| "Which tool to use for X" | Claude decides autonomously    |
+| Tool-specific syntax      | Internal implementation detail |
+| Specific command patterns | Changes between versions       |
+
 ## Current Quiz Files
 
-| File                         | Domain             |
-| ---------------------------- | ------------------ |
-| `claude-code-basics.json`    | Tool Mastery       |
-| `agentic-workflows.json`     | Agentic Patterns   |
-| `best-practices.json`        | Best Practices     |
-| `error-handling-safety.json` | Error Handling     |
-| `hooks-lifecycle.json`       | Hooks & Automation |
+| File                       | Domain                | Questions | Focus                                         |
+| -------------------------- | --------------------- | --------- | --------------------------------------------- |
+| `effective-prompting.json` | Prompting & Context   | 10        | CLAUDE.md, clear instructions, vibe coding    |
+| `safety-autonomy.json`     | Safety & Control      | 10        | Permissions, destructive ops, autonomy levels |
+| `agents-deep-dive.json`    | Advanced Architecture | 16        | Skills vs subagents, context gatekeeping      |
+| `hooks-lifecycle.json`     | Hooks & Automation    | 10        | Exit codes, blocking, visibility patterns     |
 
 ## Related
 

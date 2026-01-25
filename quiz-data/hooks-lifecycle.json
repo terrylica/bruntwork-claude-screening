@@ -18,7 +18,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "To execute shell commands at specific lifecycle events for validation, automation, and control",
-      "explanation": "Hooks are user-defined shell commands that execute automatically at specific points in Claude Code's lifecycle. They provide deterministic control for validation, automation, blocking dangerous operations, and injecting context.",
+      "explanation": "WHY THIS MATTERS: Hooks are Claude Code's extension mechanism for power users. Unlike prompting (which guides Claude's decisions), hooks provide deterministic control - they execute YOUR code at specific lifecycle points. This enables validation that AI can't bypass, automated logging that survives context resets, and safety guardrails enforced by your infrastructure. Think of hooks as the 'hard rules' layer beneath Claude's 'soft reasoning' layer.",
       "citations": {
         "correctAnswer": [
           {
@@ -52,7 +52,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "When you submit a prompt, BEFORE Claude processes it",
-      "explanation": "UserPromptSubmit fires when the user presses Enter, before Claude begins processing. This allows validation, capture, or blocking of prompts.",
+      "explanation": "WHY THIS MATTERS: This hook intercepts user input BEFORE Claude sees it. This timing is critical - you can validate prompts (block certain keywords), inject context (add today's date automatically), or log everything for compliance. The 'before processing' timing means you're modifying what Claude receives, not reacting to what it does. It's your first line of defense and customization.",
       "citations": {
         "correctAnswer": [
           {
@@ -87,7 +87,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "UserPromptSubmit, PreToolUse, PermissionRequest, PostToolUse, PostToolUseFailure, SubagentStop, and Stop",
-      "explanation": "These hooks can block: UserPromptSubmit (hard), PreToolUse (hard), PermissionRequest (hard), PostToolUse (soft - tool already ran), PostToolUseFailure (soft - tool already failed), SubagentStop (hard), and Stop (hard). SessionStart, PreCompact, Notification, and SessionEnd cannot block.",
+      "explanation": "WHY THIS MATTERS: Understanding which hooks CAN block is fundamental to hook architecture. 'Hard' blocks prevent actions entirely (PreToolUse can stop rm -rf before it runs). 'Soft' blocks (PostToolUse) can only alert Claude after the fact - the damage is done. Know the difference: put safety checks in PreToolUse, put logging in PostToolUse. The hooks that CAN'T block (SessionStart, SessionEnd) are for observation only.",
       "citations": {
         "correctAnswer": [
           {
@@ -122,7 +122,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Via stdin as a JSON object",
-      "explanation": "All hooks receive their input via stdin as a JSON object containing session_id, transcript_path, cwd, and event-specific data. Environment variables like CLAUDE_PROJECT_DIR are available but not used for input data.",
+      "explanation": "WHY THIS MATTERS: stdin JSON is the standard Unix pattern for passing structured data to processes. This design means hooks can be written in any language (Python, Node, Bash with jq), and they receive rich context (session ID for logging, transcript path for analysis, cwd for relative operations). The JSON structure is stable across Claude Code versions, making hooks future-proof.",
       "citations": {
         "correctAnswer": [
           {
@@ -157,7 +157,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "\"command\": \"$HOME/.claude/hooks/script.py\"",
-      "explanation": "Hooks must use direct executable paths. Use CLAUDE_PROJECT_DIR for project-relative scripts. The script must have a shebang and be executable (chmod +x).",
+      "explanation": "WHY THIS MATTERS: Direct paths with shebangs ensure hooks work regardless of environment (no PATH issues, no virtual environment confusion). CLAUDE_PROJECT_DIR lets you ship hooks with your project that work when teammates clone the repo. The chmod +x requirement catches permission errors at development time, not during critical operations. These patterns come from hard-won debugging sessions.",
       "citations": {
         "correctAnswer": [
           {
@@ -192,7 +192,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "After a tool completes successfully ONLY (NOT on errors)",
-      "explanation": "PostToolUse ONLY fires after successful tool completion. For failed tools, use PostToolUseFailure hook instead.",
+      "explanation": "WHY THIS MATTERS: The split between PostToolUse (success) and PostToolUseFailure (failure) lets you handle outcomes differently. Log successful file edits to an audit trail in PostToolUse; alert on failed commands in PostToolUseFailure. If these were merged, you'd need conditional logic in every hook. The separation reflects that success and failure often require completely different handling.",
       "citations": {
         "correctAnswer": [
           {
@@ -227,7 +227,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Output {\"decision\": \"block\", \"reason\": \"your message\"}",
-      "explanation": "PostToolUse requires 'decision: block' for Claude to see the reason - but this does NOT actually block anything since the tool already ran. Use additionalContext for supplementary info.",
+      "explanation": "WHY THIS MATTERS: This is a common source of confusion. 'decision: block' in PostToolUse doesn't undo the tool call - the file is already edited. What it does is make Claude NOTICE your message (the 'reason' field). Without 'block', your output is silently ignored. Use 'additionalContext' for info Claude should consider but doesn't require acknowledgment. This visibility pattern evolved from hooks whose warnings were lost.",
       "citations": {
         "correctAnswer": [
           {
@@ -262,7 +262,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Under 100 milliseconds (best practice)",
-      "explanation": "While the official timeout is 60 seconds, best practice is <100ms for responsive UX. Long-running hooks degrade user experience with noticeable delays.",
+      "explanation": "WHY THIS MATTERS: The 60-second timeout is a safety net, not a target. Every millisecond your hook runs is a millisecond the user waits with a frozen UI. At 100ms, delays are imperceptible; at 500ms, users notice; at 2 seconds, they think something's broken. Fast hooks maintain the 'vibe coding' flow. If you need heavy processing, consider async patterns: write to a file and have a background process handle it.",
       "citations": {
         "correctAnswer": [
           {
@@ -297,7 +297,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Hard block - cannot be bypassed",
-      "explanation": "Exit code 2 is a blocking error. Exit 0 is success (JSON output processed), and other exit codes are non-blocking errors shown in verbose mode.",
+      "explanation": "WHY THIS MATTERS: Exit codes are your hook's primary communication channel. Exit 0 = 'proceed, here's optional JSON data.' Exit 2 = 'STOP, something is wrong, here's why (in stderr).' Other codes = 'there was an issue but don't stop everything.' This convention lets hooks enforce hard constraints (exit 2 for dangerous operations) while gracefully handling recoverable errors (exit 1 for warnings).",
       "citations": {
         "correctAnswer": [
           {
@@ -332,7 +332,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Halts Claude entirely (emergency stop)",
-      "explanation": "continue: false stops Claude from processing after hooks run. To allow normal stop, output {}. To force continuation, use {\"decision\": \"block\", \"reason\": \"...\"}.",
+      "explanation": "WHY THIS MATTERS: The Stop hook controls session termination. 'continue: false' is an emergency brake - use it when you detect something critically wrong that needs human attention before ANY more AI actions. 'decision: block' with a reason keeps Claude working - useful for 'you're not done yet, the tests still fail.' Empty JSON {} allows normal completion. This granularity lets you implement sophisticated session management.",
       "citations": {
         "correctAnswer": [
           {

@@ -49,13 +49,12 @@ bruntwork-claude-screening/
 │   ├── CLAUDE.md                ← Documentation spoke
 │   ├── adr/                     ← Architecture decisions
 │   └── design/                  ← Quiz design specs
-├── quiz-data/                   ← JSON quiz definitions
+├── quiz-data/                   ← JSON quiz definitions (46 questions)
 │   ├── CLAUDE.md                ← Quiz authoring guide
-│   ├── claude-code-basics.json
-│   ├── agentic-workflows.json
-│   ├── best-practices.json
-│   ├── error-handling-safety.json
-│   └── hooks-lifecycle.json
+│   ├── effective-prompting.json ← Context & CLAUDE.md (10 Q)
+│   ├── safety-autonomy.json     ← Permissions & safety (10 Q)
+│   ├── agents-deep-dive.json    ← Architecture principles (16 Q)
+│   └── hooks-lifecycle.json     ← Advanced hooks (10 Q)
 ├── google-forms-setup/          ← Forms API integration spoke
 │   ├── CLAUDE.md                ← Setup guide
 │   ├── create_forms.py          ← Form creation
@@ -70,18 +69,18 @@ bruntwork-claude-screening/
 └── logs/                        ← Local logs (gitignored)
 ```
 
-## Quiz Domains
+## Quiz Domains (v2.0)
 
-Assessment covers multiple domains for Claude Code VA proficiency:
+**Philosophy**: Focus on principles, not tool micromanagement. Claude Code v2.1+ autonomously selects tools - users should describe WHAT they want, not HOW.
 
-| Domain                 | Weight | Focus Areas                                |
-| ---------------------- | ------ | ------------------------------------------ |
-| **Tool Mastery**       | 20%    | Read, Edit, Write, Bash, Grep, Glob usage  |
-| **Agentic Patterns**   | 20%    | Task delegation, multi-agent coordination  |
-| **Error Handling**     | 15%    | Recovery strategies, debugging workflows   |
-| **Best Practices**     | 15%    | Context management, efficiency patterns    |
-| **Safety**             | 10%    | Sandbox awareness, permission boundaries   |
-| **Hooks & Automation** | 20%    | Lifecycle events, blocking, implementation |
+| Domain                    | Weight | Questions | Focus Areas                                          |
+| ------------------------- | ------ | --------- | ---------------------------------------------------- |
+| **Prompting & Context**   | 35%    | 10        | CLAUDE.md, clear instructions, vibe coding patterns  |
+| **Safety & Control**      | 30%    | 10        | Permissions, destructive ops, autonomy levels        |
+| **Advanced Architecture** | 20%    | 16        | Skills vs subagents, context gatekeeping, simplicity |
+| **Hooks & Automation**    | 15%    | 10        | Exit codes, blocking patterns, visibility            |
+
+**Total**: 46 questions across 4 assessments
 
 ### Citation Schema
 

@@ -1,0 +1,359 @@
+{
+  "title": "Safety & Autonomy Assessment",
+  "description": "Assessment covering permission boundaries, destructive operations, autonomy levels, and safety guardrails in Claude Code v2.1+.",
+  "isQuiz": true,
+  "domain": "Safety & Control",
+  "weight": 0.30,
+  "questions": [
+    {
+      "questionNumber": 0,
+      "questionText": "What is Claude Code's default permission behavior?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "All operations are allowed automatically",
+        "Asks permission for each action, with pre-approval available for known-safe operations",
+        "No operations are allowed without admin approval",
+        "Permissions depend on your subscription tier"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Asks permission for each action, with pre-approval available for known-safe operations",
+      "explanation": "WHY THIS MATTERS: Claude Code's permission system balances safety with usability. By default, you approve each action, maintaining full control. As you build trust, use /permissions to pre-approve safe operations without constant interruption. This isn't about distrust - it's about visibility. Even experienced users appreciate knowing what's happening before irreversible changes occur.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Security Reference",
+              "url": "https://code.claude.com/docs/en/security",
+              "onlineUrl": "https://code.claude.com/docs/en/security",
+              "section": "Permission-based architecture",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Claude Code uses strict read-only permissions by default. When additional actions are needed, Claude Code requests explicit permission. You can customize the allowlist to permit additional tools that you know are safe."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 1,
+      "questionText": "What directory restriction applies to Claude Code write operations?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Can write anywhere on the system",
+        "Can only write to the folder where it was started and subfolders",
+        "Can only write to /tmp",
+        "Cannot write any files"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Can only write to the folder where it was started and subfolders",
+      "explanation": "WHY THIS MATTERS: This sandbox prevents accidental damage outside your project. Claude can read system libraries and other projects (useful for understanding patterns), but writes are confined to the working directory. This means a bug in Claude's reasoning can't corrupt unrelated projects or system files. The asymmetry is intentional: broad read access for context, narrow write access for safety.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Security Reference",
+              "url": "https://code.claude.com/docs/en/security",
+              "onlineUrl": "https://code.claude.com/docs/en/security",
+              "section": "Permission-based architecture",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Claude Code can only write to the folder where it was started and its subfolders—it cannot modify files in parent directories without explicit permission. While Claude Code can read files outside the working directory (useful for accessing system libraries), write operations are strictly confined to the project scope."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "Which git operations should NEVER be done without explicit user request?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "git status, git diff",
+        "git add, git log",
+        "git push --force, git reset --hard, git clean -f",
+        "git branch, git checkout"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "git push --force, git reset --hard, git clean -f",
+      "explanation": "WHY THIS MATTERS: These commands are destructive and often irreversible. 'git push --force' can overwrite teammates' work. 'git reset --hard' discards uncommitted changes permanently. 'git clean -f' deletes untracked files. AI should never make these decisions autonomously - the consequences are too severe. Even experienced developers pause before running these commands.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code Best Practices",
+              "url": "https://docs.anthropic.com/en/docs/claude-code/best-practices",
+              "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/best-practices",
+              "section": "Git Safety Protocol",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "NEVER run destructive git commands (push --force, reset --hard, checkout ., restore ., clean -f, branch -D) unless the user explicitly requests these actions."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "When should Claude Code commit changes to git?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Automatically after every file change",
+        "At the end of each session",
+        "Only when the user explicitly asks",
+        "After completing each feature"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Only when the user explicitly asks",
+      "explanation": "WHY THIS MATTERS: Commits are checkpoints in your project's history. Users have different workflows - some squash commits, some use conventional commits, some want to review changes before committing. AI auto-committing creates messy history and removes user control. The rule is simple: if you're unsure whether to commit, ask. This feedback evolved from users who found proactive commits invasive.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code Best Practices",
+              "url": "https://docs.anthropic.com/en/docs/claude-code/best-practices",
+              "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/best-practices",
+              "section": "Git Safety Protocol",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Only create commits when requested by the user. If unclear, ask first. NEVER commit changes unless the user explicitly asks you to."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "What should happen BEFORE running a command that modifies many files?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Just run it - Claude Code has undo capability",
+        "Explain the scope and get confirmation from the user",
+        "Create a backup of every file first",
+        "Test on one file then automatically do the rest"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Explain the scope and get confirmation from the user",
+      "explanation": "WHY THIS MATTERS: Bulk operations multiply risk. A typo in a regex could rename hundreds of files incorrectly. Before any mass operation, clearly state: 'This will affect N files matching pattern X.' Let the user confirm scope. This transparency prevents the 'wait, I didn't want THAT' moment. The user bears responsibility for approving scope; AI bears responsibility for clearly communicating it.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Security Reference",
+              "url": "https://code.claude.com/docs/en/security",
+              "onlineUrl": "https://code.claude.com/docs/en/security",
+              "section": "User responsibility",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Claude Code only has the permissions you grant it. You're responsible for reviewing proposed code and commands for safety before approval."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "You notice code with a potential SQL injection vulnerability. What should you do?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Fix it silently to avoid alarming the user",
+        "Point it out and offer to fix it",
+        "Ignore it - security is not Claude's concern",
+        "Stop all work until it's addressed"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Point it out and offer to fix it",
+      "explanation": "WHY THIS MATTERS: Security vulnerabilities need visibility, not silent fixes. If you fix SQL injection without telling the user, they won't understand the risk, won't audit for similar issues, and won't learn to prevent them. Flag it clearly, explain the risk, offer to fix, but let the user acknowledge the issue. This creates teachable moments and maintains user awareness of their codebase's security.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Security Reference",
+              "url": "https://code.claude.com/docs/en/security",
+              "onlineUrl": "https://code.claude.com/docs/en/security",
+              "section": "Security best practices",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Review all suggested changes before approval. Use project-specific permission settings for sensitive repositories. Always maintain good security practices when working with any AI tool."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "What are the 3 levels of Claude Code autonomy control?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Free, Standard, Premium",
+        "Approve each action, Pre-approve safe tools, Skip permissions entirely",
+        "Read, Write, Execute",
+        "View, Edit, Admin"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Approve each action, Pre-approve safe tools, Skip permissions entirely",
+      "explanation": "WHY THIS MATTERS: You control how much autonomy Claude has. Default: approve each action (maximum safety). Intermediate: pre-approve known-safe tools via /permissions (balanced). Maximum: --dangerously-skip-permissions for isolated/trusted environments (use with caution). Choose based on your risk tolerance and environment. Higher autonomy = faster workflows but less oversight.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code: Best practices for agentic coding",
+              "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "onlineUrl": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "section": "Controlling autonomy",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Users can toggle between: Asking permission for each tool use (default), Pre-approving safe tools via /permissions, Using --dangerously-skip-permissions for trusted workflows in isolated environments."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "What does 'supervised autonomy' mean for AI coding tools?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "A human watches every action in real-time",
+        "You provide goals and guardrails, Claude executes, you approve/reject at decision points",
+        "Claude asks permission for every single operation",
+        "Multiple humans review all AI-generated code"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "You provide goals and guardrails, Claude executes, you approve/reject at decision points",
+      "explanation": "WHY THIS MATTERS: Supervised autonomy is the sweet spot for productivity. You're not watching every file read, but you're approving destructive actions. You set the goal ('fix authentication'), Claude executes independently, and you review at checkpoints. This balance preserves safety while delivering substantial productivity gains - you're steering, not typing.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code 2.0 Best Practices",
+              "url": "https://skywork.ai/blog/claude-code-2-0-best-practices-ai-coding-workflow-2025/",
+              "onlineUrl": "https://skywork.ai/blog/claude-code-2-0-best-practices-ai-coding-workflow-2025/",
+              "section": "2025 Updates",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "Community",
+              "confidence": 0.90
+            },
+            "quotedText": "The most interesting practical tools in 2025 cluster around Level 3-4: supervised autonomy where you provide goals and guardrails, the agent executes independently, and you approve/reject at decision points. This balance preserves safety while delivering substantial productivity gains."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "What is the user's responsibility when using Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "None - Claude handles everything safely",
+        "Review proposed code and commands for safety before approval",
+        "Only verify syntax correctness",
+        "Write all the code manually"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Review proposed code and commands for safety before approval",
+      "explanation": "WHY THIS MATTERS: AI is a powerful tool, not a replacement for human judgment. You approve what gets executed. You verify the logic makes sense. You catch the edge cases AI might miss. This isn't about distrust - it's about accountability. When you approve a command, you're taking responsibility for its effects. This shared responsibility model is what makes human-AI collaboration safe and effective.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Security Reference",
+              "url": "https://code.claude.com/docs/en/security",
+              "onlineUrl": "https://code.claude.com/docs/en/security",
+              "section": "User responsibility",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Claude Code only has the permissions you grant it. You're responsible for reviewing proposed code and commands for safety before approval."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "What does Claude Code 4.5's 'overeagerness' tendency mean, and how should you address it?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "It runs too slowly - request faster execution",
+        "It tends to overengineer by adding extra files and unnecessary abstractions",
+        "It asks too many questions - tell it to proceed without asking",
+        "It refuses to make changes - grant more permissions"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "It tends to overengineer by adding extra files and unnecessary abstractions",
+      "explanation": "WHY THIS MATTERS: Claude Opus 4.5 sometimes creates extra files, adds unnecessary abstractions, or builds in flexibility that wasn't requested. This 'helpful' overengineering creates bloat and maintenance burden. Address it by being explicit: 'Keep solutions simple. Only make changes that are directly requested. Don't add features beyond what was asked.' The fix is prompt engineering, not configuration.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude 4.x Prompting Best Practices",
+              "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices",
+              "onlineUrl": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-4-best-practices",
+              "section": "Overeagerness and file creation",
+              "accessDate": "2026-01-25"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Claude Opus 4.5 has a tendency to overengineer by creating extra files, adding unnecessary abstractions, or building in flexibility that wasn't requested. If you're seeing this undesired behavior, add explicit prompting to keep solutions minimal: 'Avoid over-engineering. Only make changes that are directly requested.'"
+          }
+        ]
+      }
+    }
+  ]
+}
