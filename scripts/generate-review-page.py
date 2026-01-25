@@ -222,8 +222,10 @@ def generate_review_page(quizzes: list[dict]) -> str:
 
     lines = [
         "---",
-        "layout: default",
         "title: Quiz Answer Key & Review",
+        "permalink: /review/",
+        "toc: true",
+        "toc_sticky: true",
         "---",
         "",
         "# Quiz Answer Key & Review",

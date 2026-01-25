@@ -1,6 +1,8 @@
 ---
-layout: default
 title: Quiz Answer Key & Review
+permalink: /review/
+toc: true
+toc_sticky: true
 ---
 
 # Quiz Answer Key & Review
@@ -8,7 +10,7 @@ title: Quiz Answer Key & Review
 > This page contains all correct answers with explanations and authoritative citations.
 > Use this as a learning resource alongside the [assessment quizzes](./).
 
-*Generated: 2026-01-24 21:11*
+*Generated: 2026-01-24 21:23*
 
 ---
 
