@@ -28,6 +28,7 @@ Complete all quizzes below. Each quiz has 10 questions and tests different aspec
 
 ## Resources
 
+- [Quiz Answer Key & Review](./review) — Full answer key with explanations and citations
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
 - [Claude Code Hooks Reference](https://code.claude.com/docs/en/hooks)
 

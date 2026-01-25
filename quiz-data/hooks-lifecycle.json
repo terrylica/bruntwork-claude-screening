@@ -7,34 +7,34 @@
   "questions": [
     {
       "questionNumber": 0,
-      "questionText": "How many hook event types does Claude Code support?",
+      "questionText": "What is the primary purpose of Claude Code hooks?",
       "type": "multiple_choice",
       "required": true,
       "options": [
-        "5 hook types",
-        "7 hook types",
-        "10 hook types",
-        "12 hook types"
+        "To replace Claude's built-in tools with custom implementations",
+        "To execute shell commands at specific lifecycle events for validation, automation, and control",
+        "To modify Claude's underlying language model behavior",
+        "To disable Claude Code's security features"
       ],
-      "correctAnswerIndex": 2,
-      "correctAnswer": "10 hook types",
-      "explanation": "Claude Code supports exactly 10 hook event types: SessionStart, UserPromptSubmit, PreToolUse, PermissionRequest, PostToolUse, Notification, SubagentStop, Stop, PreCompact, and SessionEnd.",
+      "correctAnswerIndex": 1,
+      "correctAnswer": "To execute shell commands at specific lifecycle events for validation, automation, and control",
+      "explanation": "Hooks are user-defined shell commands that execute automatically at specific points in Claude Code's lifecycle. They provide deterministic control for validation, automation, blocking dangerous operations, and injecting context.",
       "citations": {
         "correctAnswer": [
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Hooks Lifecycle Reference",
-              "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
-              "section": "Hook Events Reference",
-              "accessDate": "2026-01-22"
+              "title": "Claude Code Hooks Reference",
+              "url": "https://code.claude.com/docs/en/hooks",
+              "section": "Hook lifecycle",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "Valid hook types (exhaustive list): SessionStart, UserPromptSubmit, PreToolUse, PermissionRequest, PostToolUse, Notification, SubagentStop, Stop, PreCompact, SessionEnd"
+            "quotedText": "Hooks fire at specific points during a Claude Code session."
           }
         ]
       }
@@ -80,13 +80,13 @@
       "required": true,
       "options": [
         "Only PreToolUse and PostToolUse",
-        "UserPromptSubmit, PreToolUse, PermissionRequest, PostToolUse, SubagentStop, and Stop",
-        "All 10 hook types can block",
+        "UserPromptSubmit, PreToolUse, PermissionRequest, PostToolUse, PostToolUseFailure, SubagentStop, and Stop",
+        "All hook types can block",
         "Only Stop and SessionEnd"
       ],
       "correctAnswerIndex": 1,
-      "correctAnswer": "UserPromptSubmit, PreToolUse, PermissionRequest, PostToolUse, SubagentStop, and Stop",
-      "explanation": "Six hooks can block: UserPromptSubmit (hard), PreToolUse (hard), PermissionRequest (hard), PostToolUse (soft - tool already ran), SubagentStop (hard), and Stop (hard). SessionStart, PreCompact, Notification, and SessionEnd cannot block.",
+      "correctAnswer": "UserPromptSubmit, PreToolUse, PermissionRequest, PostToolUse, PostToolUseFailure, SubagentStop, and Stop",
+      "explanation": "These hooks can block: UserPromptSubmit (hard), PreToolUse (hard), PermissionRequest (hard), PostToolUse (soft - tool already ran), PostToolUseFailure (soft - tool already failed), SubagentStop (hard), and Stop (hard). SessionStart, PreCompact, Notification, and SessionEnd cannot block.",
       "citations": {
         "correctAnswer": [
           {
@@ -102,7 +102,7 @@
               "organization": "cc-skills",
               "confidence": 0.95
             },
-            "quotedText": "**CAN BLOCK** — These hooks can prevent or modify execution: UserPromptSubmit (Hard), PreToolUse (Hard), PermissionRequest (Hard), PostToolUse (Soft), SubagentStop (Hard), Stop (Hard)"
+            "quotedText": "**CAN BLOCK** — These hooks can prevent or modify execution: UserPromptSubmit (Hard), PreToolUse (Hard), PermissionRequest (Hard), PostToolUse (Soft), PostToolUseFailure (Soft), SubagentStop (Hard), Stop (Hard)"
           }
         ]
       }
