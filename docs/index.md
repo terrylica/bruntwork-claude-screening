@@ -1,6 +1,6 @@
 ---
-layout: default
 title: BruntWork Claude Code VA Screening
+permalink: /
 ---
 
 # BruntWork Claude Code VA Screening
