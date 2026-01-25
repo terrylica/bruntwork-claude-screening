@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/terrylica/bruntwork-claude-screening/compare/v1.0.0...v1.1.0) (2026-01-25)
+
+
+### Bug Fixes
+
+* **docs:** properly configure Minimal Mistakes dark skin ([77b0053](https://github.com/terrylica/bruntwork-claude-screening/commit/77b0053233a276c1b4db226830ae9bcb52b5adaa))
+* **docs:** remove left margin for full-width layout ([3298258](https://github.com/terrylica/bruntwork-claude-screening/commit/329825894e596f5a76a76d551d71d20173e2c591))
+
+
+### Features
+
+* **docs:** switch to Minimal Mistakes theme with dark skin and full-width layout ([3ae05e0](https://github.com/terrylica/bruntwork-claude-screening/commit/3ae05e0b60de68f9eb3ecf07c0210e6fb78b1a86))
+
 # 1.0.0 (2026-01-25)
 
 
