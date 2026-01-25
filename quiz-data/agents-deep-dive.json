@@ -1,6 +1,6 @@
 {
   "title": "Claude Code Agents Deep Dive Assessment",
-  "description": "Advanced assessment covering pre-defined vs on-demand agents, context gatekeeping anti-patterns, skills vs subagents architecture, agent consolidation criteria, and Anthropic's core principles for effective agents.",
+  "description": "Advanced assessment covering pre-defined vs on-demand agents, context gatekeeping anti-patterns, skills vs subagents architecture, and Anthropic's core principles for effective agents.",
   "isQuiz": true,
   "domain": "Advanced Architecture",
   "weight": 0.20,
@@ -112,41 +112,6 @@
     },
     {
       "questionNumber": 3,
-      "questionText": "When should you convert a pre-defined agent to an on-demand subagent?",
-      "type": "multiple_choice",
-      "required": true,
-      "options": [
-        "When it runs frequently",
-        "When it rarely triggers or has narrow scope",
-        "When it uses many tools",
-        "When it accesses external APIs"
-      ],
-      "correctAnswerIndex": 1,
-      "correctAnswer": "When it rarely triggers or has narrow scope",
-      "explanation": "Pre-defined agents that rarely trigger or have very narrow scope should be converted to on-demand subagents to reduce cognitive overhead and avoid agent sprawl. Keep pre-defined agents for frequently-used, domain-specific capabilities.",
-      "citations": {
-        "correctAnswer": [
-          {
-            "source": {
-              "type": "documentation",
-              "title": "RFC: Reduce Pre-Defined Subagent Count",
-              "url": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
-              "onlineUrl": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
-              "section": "Agent Analysis Criteria",
-              "accessDate": "2026-01-24"
-            },
-            "authority": {
-              "tier": 2,
-              "organization": "alpha-forge",
-              "confidence": 0.90
-            },
-            "quotedText": "DELETE (0-2): Generic agents that duplicate built-in capabilities or rarely trigger. KEEP (9-10): Domain-specific, irreplaceable agents with unique value."
-          }
-        ]
-      }
-    },
-    {
-      "questionNumber": 4,
       "questionText": "What is the 'context gatekeeping' anti-pattern in multi-agent systems?",
       "type": "multiple_choice",
       "required": true,
@@ -181,7 +146,7 @@
       }
     },
     {
-      "questionNumber": 5,
+      "questionNumber": 4,
       "questionText": "Why does context gatekeeping reduce agent effectiveness?",
       "type": "multiple_choice",
       "required": true,
@@ -216,7 +181,7 @@
       }
     },
     {
-      "questionNumber": 6,
+      "questionNumber": 5,
       "questionText": "What is the recommended alternative to context gatekeeping?",
       "type": "multiple_choice",
       "required": true,
@@ -251,7 +216,7 @@
       }
     },
     {
-      "questionNumber": 7,
+      "questionNumber": 6,
       "questionText": "In the Multi-Agent Research System design, what was the key insight about subagent coordination?",
       "type": "multiple_choice",
       "required": true,
@@ -286,7 +251,7 @@
       }
     },
     {
-      "questionNumber": 8,
+      "questionNumber": 7,
       "questionText": "What is the fundamental difference between skills and subagents in Claude Code?",
       "type": "multiple_choice",
       "required": true,
@@ -321,7 +286,7 @@
       }
     },
     {
-      "questionNumber": 9,
+      "questionNumber": 8,
       "questionText": "When should you use a skill instead of a subagent?",
       "type": "multiple_choice",
       "required": true,
@@ -356,7 +321,7 @@
       }
     },
     {
-      "questionNumber": 10,
+      "questionNumber": 9,
       "questionText": "What happens to skill context after execution?",
       "type": "multiple_choice",
       "required": true,
@@ -391,182 +356,7 @@
       }
     },
     {
-      "questionNumber": 11,
-      "questionText": "A pre-defined agent rated 3-5 (valuable checklist with minimal reasoning required) should be converted to what?",
-      "type": "multiple_choice",
-      "required": true,
-      "options": [
-        "On-demand subagent",
-        "Skill",
-        "Hook",
-        "MCP server"
-      ],
-      "correctAnswerIndex": 1,
-      "correctAnswer": "Skill",
-      "explanation": "Agents that primarily provide checklists or templates with minimal autonomous reasoning should be converted to skills. Skills inject content into the main context where the main agent can use it directly.",
-      "citations": {
-        "correctAnswer": [
-          {
-            "source": {
-              "type": "documentation",
-              "title": "RFC: Reduce Pre-Defined Subagent Count",
-              "url": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
-              "onlineUrl": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
-              "section": "Conversion Criteria",
-              "accessDate": "2026-01-24"
-            },
-            "authority": {
-              "tier": 2,
-              "organization": "alpha-forge",
-              "confidence": 0.90
-            },
-            "quotedText": "CONVERT TO SKILL (3-5): Valuable checklist or reference that requires minimal autonomous reasoning. Content should be injected into main context."
-          }
-        ]
-      }
-    },
-    {
-      "questionNumber": 12,
-      "questionText": "What rating indicates an agent should be KEPT as a pre-defined agent?",
-      "type": "multiple_choice",
-      "required": true,
-      "options": [
-        "0-2",
-        "3-5",
-        "6-8",
-        "9-10"
-      ],
-      "correctAnswerIndex": 3,
-      "correctAnswer": "9-10",
-      "explanation": "Agents rated 9-10 are domain-specific, irreplaceable, and provide unique value that cannot be achieved through built-in capabilities or simple prompts. These should remain as pre-defined agents.",
-      "citations": {
-        "correctAnswer": [
-          {
-            "source": {
-              "type": "documentation",
-              "title": "RFC: Reduce Pre-Defined Subagent Count",
-              "url": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
-              "onlineUrl": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
-              "section": "Rating Scale",
-              "accessDate": "2026-01-24"
-            },
-            "authority": {
-              "tier": 2,
-              "organization": "alpha-forge",
-              "confidence": 0.92
-            },
-            "quotedText": "KEEP (9-10): Domain-specific, irreplaceable agents that provide unique value. These are core to the project's functionality."
-          }
-        ]
-      }
-    },
-    {
-      "questionNumber": 13,
-      "questionText": "What characterizes agents rated 0-2 that should be DELETED?",
-      "type": "multiple_choice",
-      "required": true,
-      "options": [
-        "Generic agents that duplicate built-in capabilities",
-        "Domain-specific agents with irreplaceable value",
-        "Agents with high token usage",
-        "Agents with complex dependencies"
-      ],
-      "correctAnswerIndex": 0,
-      "correctAnswer": "Generic agents that duplicate built-in capabilities",
-      "explanation": "Agents rated 0-2 are generic, duplicate what Claude can already do with built-in tools, or rarely trigger. They add cognitive overhead without providing unique value and should be deleted.",
-      "citations": {
-        "correctAnswer": [
-          {
-            "source": {
-              "type": "documentation",
-              "title": "RFC: Reduce Pre-Defined Subagent Count",
-              "url": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
-              "onlineUrl": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
-              "section": "Rating Scale",
-              "accessDate": "2026-01-24"
-            },
-            "authority": {
-              "tier": 2,
-              "organization": "alpha-forge",
-              "confidence": 0.92
-            },
-            "quotedText": "DELETE (0-2): Generic agents that duplicate built-in capabilities or rarely trigger. Adds cognitive overhead without unique value."
-          }
-        ]
-      }
-    },
-    {
-      "questionNumber": 14,
-      "questionText": "Agents rated 6-8 should be handled how?",
-      "type": "multiple_choice",
-      "required": true,
-      "options": [
-        "Kept as-is without changes",
-        "Deleted immediately",
-        "Consolidated with related agents",
-        "Converted to hooks"
-      ],
-      "correctAnswerIndex": 2,
-      "correctAnswer": "Consolidated with related agents",
-      "explanation": "Agents rated 6-8 have overlapping functionality with other agents. They should be consolidated into fewer, more focused agents to reduce sprawl while preserving their valuable capabilities.",
-      "citations": {
-        "correctAnswer": [
-          {
-            "source": {
-              "type": "documentation",
-              "title": "RFC: Reduce Pre-Defined Subagent Count",
-              "url": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
-              "onlineUrl": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
-              "section": "Rating Scale",
-              "accessDate": "2026-01-24"
-            },
-            "authority": {
-              "tier": 2,
-              "organization": "alpha-forge",
-              "confidence": 0.92
-            },
-            "quotedText": "CONSOLIDATE (6-8): Agents with overlapping scope that should be merged with related agents to reduce sprawl."
-          }
-        ]
-      }
-    },
-    {
-      "questionNumber": 15,
-      "questionText": "What is 'agent sprawl' in enterprise AI systems?",
-      "type": "multiple_choice",
-      "required": true,
-      "options": [
-        "Agents using too much memory",
-        "Enterprise anti-pattern of producing dozens of agents without centralized organization",
-        "Agents running too slowly",
-        "Agents accessing too many files"
-      ],
-      "correctAnswerIndex": 1,
-      "correctAnswer": "Enterprise anti-pattern of producing dozens of agents without centralized organization",
-      "explanation": "Agent sprawl is an enterprise anti-pattern where teams produce dozens of AI agents without coordination, leading to redundancy, maintenance burden, and difficulty understanding which agent to use for what purpose.",
-      "citations": {
-        "correctAnswer": [
-          {
-            "source": {
-              "type": "documentation",
-              "title": "RFC: Reduce Pre-Defined Subagent Count",
-              "url": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
-              "onlineUrl": "https://github.com/EonLabs-Spartan/alpha-forge/issues/123",
-              "section": "Problem Statement",
-              "accessDate": "2026-01-24"
-            },
-            "authority": {
-              "tier": 2,
-              "organization": "alpha-forge",
-              "confidence": 0.90
-            },
-            "quotedText": "Agent sprawl is an enterprise anti-pattern where teams produce dozens of AI agents without centralized organization, leading to redundancy and maintenance burden."
-          }
-        ]
-      }
-    },
-    {
-      "questionNumber": 16,
+      "questionNumber": 10,
       "questionText": "According to Anthropic, when is multi-agent architecture appropriate?",
       "type": "multiple_choice",
       "required": true,
@@ -601,7 +391,7 @@
       }
     },
     {
-      "questionNumber": 17,
+      "questionNumber": 11,
       "questionText": "What makes single-agent architecture preferable for most tasks?",
       "type": "multiple_choice",
       "required": true,
@@ -636,7 +426,7 @@
       }
     },
     {
-      "questionNumber": 18,
+      "questionNumber": 12,
       "questionText": "Multi-agent adds value when subtasks are what?",
       "type": "multiple_choice",
       "required": true,
@@ -671,7 +461,7 @@
       }
     },
     {
-      "questionNumber": 19,
+      "questionNumber": 13,
       "questionText": "What is Anthropic's first principle for building effective agents?",
       "type": "multiple_choice",
       "required": true,
@@ -706,7 +496,7 @@
       }
     },
     {
-      "questionNumber": 20,
+      "questionNumber": 14,
       "questionText": "What does 'transparency' mean in agent architecture according to Anthropic?",
       "type": "multiple_choice",
       "required": true,
@@ -741,7 +531,7 @@
       }
     },
     {
-      "questionNumber": 21,
+      "questionNumber": 15,
       "questionText": "What is ACI (Agent-Computer Interface) design?",
       "type": "multiple_choice",
       "required": true,
