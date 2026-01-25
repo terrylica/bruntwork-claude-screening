@@ -7,37 +7,78 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
 
-// Full-width layout - remove left sidebar margin
-.page {
-  float: none !important;
-  width: 100% !important;
-  padding-right: 0 !important;
-}
+// ============================================
+// FULL-WIDTH LAYOUT OVERRIDES
+// ============================================
 
-.page__content {
+// Remove the max-width constraint on the entire layout
+.initial-content,
+.page,
+.archive {
   max-width: 100% !important;
+  width: 100% !important;
+  float: none !important;
 }
 
-// Remove sidebar completely
+// Override the grid that reserves space for sidebar
+@media (min-width: 64em) {
+  .page {
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+
+  .archive {
+    width: 100% !important;
+  }
+}
+
+// Remove left sidebar
 .sidebar {
   display: none !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-// Make content area wider
-.wide .page {
-  max-width: 100% !important;
-  padding-left: 1em !important;
-  padding-right: 1em !important;
-}
-
-// Center the main content
+// Main content full width
 #main {
   max-width: 100% !important;
-  padding-left: 2em;
-  padding-right: 2em;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.5em !important;
+  padding-right: 1.5em !important;
 }
 
-// Keep TOC on the right side but allow content to use full width
+// Inner wrap full width
+.page__inner-wrap {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+// Content area
+.page__content {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+// Keep sticky TOC on right if present
 .sidebar__right {
-  margin-left: 0 !important;
+  position: relative !important;
+  float: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+// Masthead full width
+.masthead {
+  max-width: 100% !important;
+}
+
+.masthead__inner-wrap {
+  max-width: 100% !important;
+  padding-left: 1.5em !important;
+  padding-right: 1.5em !important;
 }
