@@ -120,9 +120,9 @@ def format_citation_block(citation: dict) -> str:
     content = "\n".join(content_lines)
 
     # 'open' attribute makes details expanded by default
-    # font-size: 0.85em makes citation text smaller
-    return f"""<details open style="font-size: 0.85em; margin: 0.5em 0; padding: 0.5em; background: rgba(128,128,128,0.1); border-radius: 4px;">
-<summary style="cursor: pointer; font-weight: 500;">Citation [Tier {tier} - {org}] ({confidence:.0%} confidence)</summary>
+    # 'citation' class provides styling via CSS block at top of page
+    return f"""<details open class="citation">
+<summary>Citation [Tier {tier} - {org}] ({confidence:.0%} confidence)</summary>
 
 {content}
 
@@ -233,6 +233,28 @@ def generate_review_page(quizzes: list[dict]) -> str:
     stats = generate_statistics(quizzes)
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
 
+    # CSS for citation styling (inline styles stripped by Jekyll)
+    css_block = """<style>
+.citation {
+  font-size: 0.8em;
+  margin: 0.5em 0;
+  padding: 0.75em;
+  background: rgba(128,128,128,0.1);
+  border-radius: 4px;
+  border-left: 3px solid #666;
+}
+.citation summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #888;
+}
+.citation blockquote {
+  font-size: 0.95em;
+  margin: 0.5em 0;
+  font-style: italic;
+}
+</style>"""
+
     lines = [
         "---",
         "title: Quiz Answer Key & Review",
@@ -240,6 +262,8 @@ def generate_review_page(quizzes: list[dict]) -> str:
         "toc: true",
         "toc_sticky: true",
         "---",
+        "",
+        css_block,
         "",
         "> This page contains all correct answers with explanations and authoritative citations.",
         "> Use this as a learning resource alongside the [assessment quizzes](./).",
