@@ -24,9 +24,9 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
-              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Tool usage policy",
               "accessDate": "2026-01-24"
             },
@@ -59,9 +59,9 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/tools/edit.md",
-              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Edit tool",
               "accessDate": "2026-01-24"
             },
@@ -94,9 +94,9 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/tools/edit.md",
-              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Edit tool",
               "accessDate": "2026-01-24"
             },
@@ -129,9 +129,9 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/tools/glob.md",
-              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Glob tool",
               "accessDate": "2026-01-24"
             },
@@ -163,19 +163,19 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/tools/grep.md",
-              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
-              "section": "Grep tool",
-              "accessDate": "2026-01-24"
+              "type": "community",
+              "title": "Claude Code GitHub Issue #6971",
+              "url": "https://github.com/anthropics/claude-code/issues/6971",
+              "onlineUrl": "https://github.com/anthropics/claude-code/issues/6971",
+              "section": "Problem Description",
+              "accessDate": "2026-01-25"
             },
             "authority": {
-              "tier": 1,
-              "organization": "Anthropic",
-              "confidence": 0.95
+              "tier": 3,
+              "organization": "Community",
+              "confidence": 0.90
             },
-            "quotedText": "ALWAYS use Grep for search tasks. NEVER invoke grep or rg as a Bash command."
+            "quotedText": "USAGE: ALWAYS use Grep for search tasks. NEVER invoke grep or rg as a Bash command. The Grep tool has been optimized for correct permissions and access."
           }
         ]
       }
@@ -198,19 +198,19 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/tools/bash.md",
-              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
-              "section": "Bash tool",
-              "accessDate": "2026-01-24"
+              "type": "community",
+              "title": "Claude Code GitHub Issue #6971",
+              "url": "https://github.com/anthropics/claude-code/issues/6971",
+              "onlineUrl": "https://github.com/anthropics/claude-code/issues/6971",
+              "section": "Problem Description",
+              "accessDate": "2026-01-25"
             },
             "authority": {
-              "tier": 1,
-              "organization": "Anthropic",
-              "confidence": 0.95
+              "tier": 3,
+              "organization": "Community",
+              "confidence": 0.90
             },
-            "quotedText": "This tool is for terminal operations like git, npm, docker, etc. DO NOT use it for file operations."
+            "quotedText": "VERY IMPORTANT: You MUST avoid using search commands like find and grep. Instead use Grep, Glob, or Task to search."
           }
         ]
       }
@@ -234,9 +234,9 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/tools/edit.md",
-              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Edit tool",
               "accessDate": "2026-01-24"
             },
@@ -269,9 +269,9 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code System Prompt",
-              "url": "file://~/.claude/docs/tools/write.md",
-              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "title": "Claude Code System Prompt Archive",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
+              "onlineUrl": "https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-main-system-prompt.md",
               "section": "Write tool",
               "accessDate": "2026-01-24"
             },
@@ -305,7 +305,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Subagents Reference",
-              "url": "file://~/.claude/docs/tools/task.md",
+              "url": "https://code.claude.com/docs/en/sub-agents",
               "onlineUrl": "https://code.claude.com/docs/en/sub-agents",
               "section": "Built-in subagents",
               "accessDate": "2026-01-24"
@@ -340,7 +340,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Subagents Reference",
-              "url": "file://~/.claude/docs/tools/task.md",
+              "url": "https://code.claude.com/docs/en/sub-agents",
               "onlineUrl": "https://code.claude.com/docs/en/sub-agents",
               "section": "Built-in subagents - Explore",
               "accessDate": "2026-01-24"

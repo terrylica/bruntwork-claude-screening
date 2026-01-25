@@ -25,7 +25,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Hooks Reference",
-              "url": "file://~/.claude/docs/hooks/silent-failure-guard.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/hooks",
               "section": "Exit Codes",
               "accessDate": "2026-01-24"
@@ -60,7 +60,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code CLI Reference",
-              "url": "file://~/.claude/docs/tools/bash.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
               "section": "Bash tool - Directory Verification",
               "accessDate": "2026-01-24"
@@ -95,7 +95,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Security Reference",
-              "url": "file://~/.claude/docs/hooks/silent-failure-guard.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/security",
               "section": "Security best practices",
               "accessDate": "2026-01-24"
@@ -130,7 +130,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Security Reference",
-              "url": "file://~/.claude/docs/hooks/silent-failure-guard.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/security",
               "section": "Security best practices",
               "accessDate": "2026-01-24"
@@ -165,7 +165,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Security Reference",
-              "url": "file://~/.claude/docs/tools/read.md",
+              "url": "https://code.claude.com/docs/en/security",
               "onlineUrl": "https://code.claude.com/docs/en/security",
               "section": "Permission-based architecture",
               "accessDate": "2026-01-24"
@@ -200,7 +200,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Best Practices",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/best-practices",
               "section": "Git Safety Protocol",
               "accessDate": "2026-01-24"
@@ -235,7 +235,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Best Practices",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/best-practices",
               "section": "Git Safety Protocol",
               "accessDate": "2026-01-24"
@@ -270,7 +270,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Security Reference",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/security",
               "section": "Security best practices",
               "accessDate": "2026-01-24"
@@ -305,7 +305,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code Security Reference",
-              "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/security",
               "section": "User responsibility",
               "accessDate": "2026-01-24"
@@ -340,7 +340,7 @@
             "source": {
               "type": "documentation",
               "title": "Claude Code CLI Reference",
-              "url": "file://~/.claude/docs/tools/bash.md",
+              "url": "https://github.com/Piebald-AI/claude-code-system-prompts",
               "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
               "section": "Bash tool - Directory Verification",
               "accessDate": "2026-01-24"
