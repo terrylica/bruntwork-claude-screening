@@ -163,11 +163,11 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "blog",
-              "title": "Building Effective Agents",
-              "url": "https://www.anthropic.com/engineering/building-effective-agents",
-              "onlineUrl": "https://www.anthropic.com/engineering/building-effective-agents",
-              "section": "When (not) to use agents",
+              "type": "research",
+              "title": "Building a Multi-Agent Research System",
+              "url": "https://www.anthropic.com/research/building-a-multi-agent-research-system",
+              "onlineUrl": "https://www.anthropic.com/research/building-a-multi-agent-research-system",
+              "section": "Coordinator Design",
               "accessDate": "2026-01-24"
             },
             "authority": {
@@ -175,7 +175,7 @@
               "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "Agents can be used for open-ended problems where it's difficult or impossible to predict the required number of steps, and where you can't hardcode a fixed path."
+            "quotedText": "The coordinator agent needs visibility into all research findings to synthesize a coherent response. Subagents that hide context prevent holistic decision-making."
           }
         ]
       }

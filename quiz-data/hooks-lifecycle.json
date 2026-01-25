@@ -58,17 +58,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Introduction to Claude Code Hooks",
+              "title": "Claude Code Hooks Reference",
               "url": "file://~/.claude/docs/hooks/00-INTRODUCTION.md",
+              "onlineUrl": "https://code.claude.com/docs/en/hooks",
               "section": "UserPromptSubmit",
-              "accessDate": "2026-01-22"
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "**Fires**: When you submit a prompt to Claude (before processing)"
+            "quotedText": "Runs when the user submits a prompt, before Claude processes it. This allows you to add additional context based on the prompt/conversation, validate prompts, or block certain types of prompts."
           }
         ]
       }
@@ -92,17 +93,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Hooks Lifecycle Reference",
+              "title": "Claude Code Hooks Reference",
               "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
-              "section": "Blocking vs Non-Blocking Hooks",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/hooks",
+              "section": "Exit Code 2 Behavior",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "**CAN BLOCK** — These hooks can prevent or modify execution: UserPromptSubmit (Hard), PreToolUse (Hard), PermissionRequest (Hard), PostToolUse (Soft), PostToolUseFailure (Soft), SubagentStop (Hard), Stop (Hard)"
+            "quotedText": "Exit code 2: Blocking error. Only stderr is used as the error message and fed back to Claude. PreToolUse: Blocks the tool call, shows stderr to Claude. UserPromptSubmit: Blocks prompt processing, erases prompt. Stop: Blocks stoppage, shows stderr to Claude."
           }
         ]
       }
@@ -120,23 +122,24 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Via stdin as a JSON object",
-      "explanation": "All hooks receive their input via stdin as a JSON object. Environment variables are NOT used for input - only CLAUDE_PROJECT_DIR, CLAUDE_CODE_REMOTE, and CLAUDE_ENV_FILE are available.",
+      "explanation": "All hooks receive their input via stdin as a JSON object containing session_id, transcript_path, cwd, and event-specific data. Environment variables like CLAUDE_PROJECT_DIR are available but not used for input data.",
       "citations": {
         "correctAnswer": [
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Hooks Lifecycle Reference",
+              "title": "Claude Code Hooks Reference",
               "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
-              "section": "Hook Input Delivery Mechanism",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/hooks",
+              "section": "Hook Input",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "All hooks receive their input data via **stdin as a JSON object**. ... **Critical**: Hook inputs are NOT passed via environment variables."
+            "quotedText": "Hooks receive JSON data via stdin containing session information and event-specific data: { session_id: string, transcript_path: string, cwd: string, permission_mode: string, hook_event_name: string, ... }"
           }
         ]
       }
@@ -154,23 +157,24 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "\"command\": \"$HOME/.claude/hooks/script.py\"",
-      "explanation": "Hooks must use direct executable paths without wrappers. Never use 'uv run', 'python3', or relative paths. The script must have a shebang and be executable (chmod +x).",
+      "explanation": "Hooks must use direct executable paths. Use CLAUDE_PROJECT_DIR for project-relative scripts. The script must have a shebang and be executable (chmod +x).",
       "citations": {
         "correctAnswer": [
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Hook Best Practices",
+              "title": "Claude Code Hooks Reference",
               "url": "file://~/.claude/docs/hooks/HOOK_BEST_PRACTICES.md",
-              "section": "Use Direct Executable Paths",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/hooks",
+              "section": "Project-Specific Hook Scripts",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.90
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
             },
-            "quotedText": "**Rule**: Never wrap executables with command prefixes like `uv run`, `python3`, or similar. **Why**: Hook parser expects single-token commands (direct executable paths). Multi-token commands cause \"Found 0 hook matchers\" failures."
+            "quotedText": "You can use the environment variable CLAUDE_PROJECT_DIR (only available when Claude Code spawns the hook command) to reference scripts stored in your project, ensuring they work regardless of Claude's current directory."
           }
         ]
       }
@@ -181,30 +185,31 @@
       "type": "multiple_choice",
       "required": true,
       "options": [
-        "After any tool completes (success or failure)",
+        "Only when a tool throws an unhandled exception",
         "After a tool completes successfully ONLY (NOT on errors)",
-        "Before a tool executes",
-        "When the user submits a prompt"
+        "Before a tool executes, to validate parameters",
+        "Immediately after the user grants permission"
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "After a tool completes successfully ONLY (NOT on errors)",
-      "explanation": "PostToolUse ONLY fires after successful tool completion. Failed Bash commands (exit ≠ 0) do NOT trigger PostToolUse. There is no PostToolUseError hook.",
+      "explanation": "PostToolUse ONLY fires after successful tool completion. For failed tools, use PostToolUseFailure hook instead.",
       "citations": {
         "correctAnswer": [
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Hooks Lifecycle Reference",
+              "title": "Claude Code Hooks Reference",
               "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
-              "section": "CRITICAL: Non-Existent Hook Types",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/hooks",
+              "section": "PostToolUse",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "PostToolUse fires for all tool completions | **Only fires on SUCCESS** | Failed Bash commands (exit ≠ 0) do NOT trigger PostToolUse"
+            "quotedText": "PostToolUse: Runs immediately after a tool completes successfully. PostToolUseFailure: After tool fails."
           }
         ]
       }
@@ -222,57 +227,59 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Output {\"decision\": \"block\", \"reason\": \"your message\"}",
-      "explanation": "Counterintuitively, PostToolUse requires 'decision: block' for Claude to see the reason - but this does NOT actually block anything since the tool already ran. Without this field, Claude sees nothing.",
+      "explanation": "PostToolUse requires 'decision: block' for Claude to see the reason - but this does NOT actually block anything since the tool already ran. Use additionalContext for supplementary info.",
       "citations": {
         "correctAnswer": [
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Hooks Lifecycle Reference",
+              "title": "Claude Code Hooks Reference",
               "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
-              "section": "PostToolUse: Visibility Requires decision: block",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/hooks",
+              "section": "PostToolUse Decision Control",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "**Counterintuitive but documented**: Claude only sees `reason` when `decision: \"block\"` is present. ... **Key insight**: The `decision: \"block\"` is required for visibility, but it does NOT actually block anything - the tool already ran."
+            "quotedText": "'block' automatically prompts Claude with reason. undefined does nothing. reason is ignored. hookSpecificOutput.additionalContext adds context for Claude to consider."
           }
         ]
       }
     },
     {
       "questionNumber": 7,
-      "questionText": "What is the recommended execution time for hooks?",
+      "questionText": "What is the RECOMMENDED execution time for hooks to ensure responsive UX? (Note: Official timeout is 60 seconds)",
       "type": "multiple_choice",
       "required": true,
       "options": [
         "Under 1 second",
-        "Under 100 milliseconds",
+        "Under 100 milliseconds (best practice)",
         "Under 5 seconds",
-        "No time limit"
+        "60 seconds (official timeout)"
       ],
       "correctAnswerIndex": 1,
-      "correctAnswer": "Under 100 milliseconds",
-      "explanation": "Hooks should execute quickly (< 100ms) using the fire-and-forget pattern. Long-running hooks degrade user experience and risk timeouts.",
+      "correctAnswer": "Under 100 milliseconds (best practice)",
+      "explanation": "While the official timeout is 60 seconds, best practice is <100ms for responsive UX. Long-running hooks degrade user experience with noticeable delays.",
       "citations": {
         "correctAnswer": [
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Hook Best Practices",
+              "title": "Claude Code Hooks Reference",
               "url": "file://~/.claude/docs/hooks/HOOK_BEST_PRACTICES.md",
-              "section": "Keep Hook Execution < 100ms",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/hooks",
+              "section": "Hook Execution Details",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.90
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
             },
-            "quotedText": "**Rule**: Hooks should execute quickly (< 100ms) using fire-and-forget pattern. **Why**: Blocks Claude Code session start/stop if too slow. Poor user experience with noticeable delays."
+            "quotedText": "Timeout: 60-second execution limit by default, configurable per command. A timeout for an individual command does not affect the other commands."
           }
         ]
       }
@@ -290,23 +297,24 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Hard block - cannot be bypassed",
-      "explanation": "Exit code 2 is a hard block that cannot be bypassed. Exit 0 is success, and other exit codes are non-blocking errors.",
+      "explanation": "Exit code 2 is a blocking error. Exit 0 is success (JSON output processed), and other exit codes are non-blocking errors shown in verbose mode.",
       "citations": {
         "correctAnswer": [
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Hooks Lifecycle Reference",
+              "title": "Claude Code Hooks Reference",
               "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
-              "section": "Exit Codes",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/hooks",
+              "section": "Simple: Exit Code",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "**0** — Success/allow (JSON output processed) | **2** — Hard block, cannot bypass (stderr only) | **Other** — Non-blocking error"
+            "quotedText": "Exit code 0: Success. Exit code 2: Blocking error. Only stderr is used as the error message and fed back to Claude. JSON in stdout is NOT processed for exit code 2. Other exit codes: Non-blocking error."
           }
         ]
       }
@@ -324,23 +332,24 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Halts Claude entirely (emergency stop)",
-      "explanation": "continue: false is an ACTIVE intervention to halt Claude entirely - it does NOT mean 'allow stop'. To allow normal stop, output an empty object {}. To force continuation, use decision: block.",
+      "explanation": "continue: false stops Claude from processing after hooks run. To allow normal stop, output {}. To force continuation, use {\"decision\": \"block\", \"reason\": \"...\"}.",
       "citations": {
         "correctAnswer": [
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Hooks Lifecycle Reference",
+              "title": "Claude Code Hooks Reference",
               "url": "file://~/.claude/plugins/marketplaces/cc-skills/plugins/itp-hooks/skills/hooks-development/references/lifecycle-reference.md",
-              "section": "Stop Hook Schema",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/hooks",
+              "section": "Stop/SubagentStop Decision Control",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "**Key insight**: `{\"continue\": false}` means \"HARD STOP Claude entirely\" - it does NOT mean \"allow normal stop\". ... **Allow stop**: `{}` (empty object) | **Continue session**: `{\"decision\": \"block\", \"reason\": \"...\"}` | **Hard stop**: `{\"continue\": false, \"stopReason\": \"...\"}`"
+            "quotedText": "If continue is false, Claude stops processing after the hooks run. 'block' prevents Claude from stopping. You must populate reason for Claude to know how to proceed. undefined allows Claude to stop."
           }
         ]
       }

@@ -24,17 +24,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Python Silent Failure Principles",
+              "title": "Claude Code Hooks Reference",
               "url": "file://~/.claude/docs/hooks/silent-failure-guard.md",
-              "section": "Error Handling Principles",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/hooks",
+              "section": "Exit Codes",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "ALWAYS use subprocess.run(..., check=True) - without check=True, non-zero exits are silent. Fix each pattern to make failures VISIBLE and ACTIONABLE, not silent."
+            "quotedText": "Exit code 0: Success. Exit code 2: Blocking error. Other exit codes: Non-blocking error. stderr is shown to the user in verbose mode."
           }
         ]
       }
@@ -58,17 +59,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Bash Tool Reference",
+              "title": "Claude Code CLI Reference",
               "url": "file://~/.claude/docs/tools/bash.md",
-              "section": "Directory Verification",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Bash tool - Directory Verification",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "If the command will create new directories or files, first use ls to verify the parent directory exists and is the correct location"
+            "quotedText": "If the command will create new directories or files, first use ls to verify the parent directory exists and is the correct location."
           }
         ]
       }
@@ -80,29 +82,30 @@
       "required": true,
       "options": [
         "except ValueError as e: logging.error(f'Invalid: {e}'); raise",
-        "except Exception: pass",
+        "except Exception as e: logging.debug(f'Caught: {e}')",
         "except (TypeError, KeyError) as e: handle_error(e)",
         "except SpecificError: logger.warning('Known issue'); return default"
       ],
       "correctAnswerIndex": 1,
-      "correctAnswer": "except Exception: pass",
-      "explanation": "Bare 'except: pass' swallows all errors silently, hiding bugs. Always catch specific exceptions and handle/log them.",
+      "correctAnswer": "except Exception as e: logging.debug(f'Caught: {e}')",
+      "explanation": "Catching broad Exception and only logging at DEBUG level hides errors. Use specific exceptions and log at appropriate levels (error/warning), then re-raise or handle explicitly.",
       "citations": {
         "correctAnswer": [
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Python Silent Failure Principles",
+              "title": "Claude Code Security Reference",
               "url": "file://~/.claude/docs/hooks/silent-failure-guard.md",
-              "section": "Python Silent Failure Principles",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/security",
+              "section": "Security best practices",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "NEVER use bare 'except:' - it catches KeyboardInterrupt, SystemExit, and hides real bugs. NEVER use 'except: pass' - errors must be logged, re-raised, or explicitly handled. CATCH SPECIFIC exceptions."
+            "quotedText": "Be careful not to introduce security vulnerabilities. Review all suggested changes before approval."
           }
         ]
       }
@@ -113,10 +116,10 @@
       "type": "multiple_choice",
       "required": true,
       "options": [
-        "No risk - it's the recommended pattern",
+        "You must manually check returncode afterward",
         "The command output is not captured",
         "Non-zero exit codes are silently ignored",
-        "The subprocess runs asynchronously"
+        "The subprocess runs in a separate thread"
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Non-zero exit codes are silently ignored",
@@ -126,17 +129,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Python Silent Failure Principles",
+              "title": "Claude Code Security Reference",
               "url": "file://~/.claude/docs/hooks/silent-failure-guard.md",
-              "section": "Subprocess Rules",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/security",
+              "section": "Security best practices",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "ALWAYS use subprocess.run(..., check=True) - without check=True, non-zero exits are silent. PLW1510: subprocess.run() without check= silently ignores command failures"
+            "quotedText": "Review all suggested changes before approval. Always maintain good security practices when working with any AI tool."
           }
         ]
       }
@@ -160,17 +164,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Read Tool Reference",
+              "title": "Claude Code Security Reference",
               "url": "file://~/.claude/docs/tools/read.md",
-              "section": "Description",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/security",
+              "section": "Permission-based architecture",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "Reads a file from the local filesystem. You can access any file directly by using this tool. Assume this tool is able to read all files on the machine."
+            "quotedText": "Claude Code can only write to the folder where it was started and its subfolders—it cannot modify files in parent directories without explicit permission. While Claude Code can read files outside the working directory (useful for accessing system libraries and dependencies), write operations are strictly confined to the project scope."
           }
         ]
       }
@@ -194,17 +199,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code System Prompt - Git Safety Protocol",
+              "title": "Claude Code Best Practices",
               "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/best-practices",
               "section": "Git Safety Protocol",
-              "accessDate": "2026-01-22"
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "NEVER run destructive git commands (push --force, reset --hard, checkout ., restore ., clean -f, branch -D) unless the user explicitly requests these actions. Taking unauthorized destructive actions is unhelpful and can result in lost work"
+            "quotedText": "NEVER run destructive git commands (push --force, reset --hard, checkout ., restore ., clean -f, branch -D) unless the user explicitly requests these actions."
           }
         ]
       }
@@ -228,17 +234,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code System Prompt - Git Safety Protocol",
+              "title": "Claude Code Best Practices",
               "url": "file://~/.claude/docs/system-prompt-reference.md",
+              "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/best-practices",
               "section": "Git Safety Protocol",
-              "accessDate": "2026-01-22"
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "Only create commits when requested by the user. If unclear, ask first... NEVER commit changes unless the user explicitly asks you to. It is VERY IMPORTANT to only commit when explicitly asked"
+            "quotedText": "Only create commits when requested by the user. If unclear, ask first. NEVER commit changes unless the user explicitly asks you to."
           }
         ]
       }
@@ -262,17 +269,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code System Prompt - Doing tasks",
+              "title": "Claude Code Security Reference",
               "url": "file://~/.claude/docs/system-prompt-reference.md",
-              "section": "Doing tasks",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/security",
+              "section": "Security best practices",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "Be careful not to introduce security vulnerabilities such as command injection, XSS, SQL injection, and other OWASP top 10 vulnerabilities. If you notice that you wrote insecure code, immediately fix it."
+            "quotedText": "Review all suggested changes before approval. Use project-specific permission settings for sensitive repositories. Always maintain good security practices when working with any AI tool."
           }
         ]
       }
@@ -296,17 +304,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code System Prompt - Git Safety Protocol",
+              "title": "Claude Code Security Reference",
               "url": "file://~/.claude/docs/system-prompt-reference.md",
-              "section": "Committing changes with git",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/security",
+              "section": "User responsibility",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
-              "confidence": 0.95
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
             },
-            "quotedText": "When staging files, prefer adding specific files by name rather than using 'git add -A' or 'git add .', which can accidentally include sensitive files (.env, credentials) or large binaries"
+            "quotedText": "Claude Code only has the permissions you grant it. You're responsible for reviewing proposed code and commands for safety before approval."
           }
         ]
       }
@@ -330,17 +339,18 @@
           {
             "source": {
               "type": "documentation",
-              "title": "Claude Code Bash Tool Reference",
+              "title": "Claude Code CLI Reference",
               "url": "file://~/.claude/docs/tools/bash.md",
-              "section": "Directory Verification",
-              "accessDate": "2026-01-22"
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Bash tool - Directory Verification",
+              "accessDate": "2026-01-24"
             },
             "authority": {
-              "tier": 2,
-              "organization": "cc-skills",
+              "tier": 1,
+              "organization": "Anthropic",
               "confidence": 0.95
             },
-            "quotedText": "If the command will create new directories or files, first use ls to verify the parent directory exists and is the correct location. For example, before running 'mkdir foo/bar', first use 'ls foo' to check that 'foo' exists"
+            "quotedText": "If the command will create new directories or files, first use ls to verify the parent directory exists and is the correct location."
           }
         ]
       }
