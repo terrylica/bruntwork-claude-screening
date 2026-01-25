@@ -76,13 +76,18 @@ depends = ["quiz:validate"]
 description = "Phase 1: Validate prerequisites for release"
 run = "bash .mise/tasks/release/preflight"
 
+[tasks."release:generate"]
+description = "Phase 2: Auto-generate review page and forms"
+depends = ["quiz:validate"]
+run = "bash .mise/tasks/release/generate"
+
 [tasks."release:version"]
-description = "Phase 2: Run semantic-release"
+description = "Phase 3: Run semantic-release"
 run = "bash .mise/tasks/release/version"
 
 [tasks."release:full"]
-description = "Complete release workflow"
-depends = ["release:preflight"]
+description = "Complete release workflow: preflight → generate → version"
+depends = ["release:preflight", "release:generate"]
 run = "mise run release:version"
 
 # === Development Tasks ===
@@ -93,11 +98,21 @@ run = """
 echo "📋 BruntWork Claude Code Screening"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
-echo "Available commands:"
-echo "  mise run quiz:validate   - Validate quiz JSON files"
-echo "  mise run forms:create    - Deploy quizzes to Google Forms"
-echo "  mise run forms:audit     - Generate audit reports"
-echo "  mise run release:full    - Release new version"
+echo "Quiz Management:"
+echo "  mise run quiz:validate         - Validate quiz JSON files"
+echo "  mise run quiz:validate-citations - Validate citation URLs"
+echo "  mise run review:generate       - Regenerate docs/review.md"
+echo ""
+echo "Google Forms:"
+echo "  mise run forms:create          - Deploy quizzes to Google Forms"
+echo "  mise run forms:add-fields      - Add Name/Role fields"
+echo "  mise run forms:audit           - Generate audit reports"
+echo ""
+echo "Release (full pipeline):"
+echo "  mise run release:preflight     - Phase 1: Validate prerequisites"
+echo "  mise run release:generate      - Phase 2: SSoT → docs + forms"
+echo "  mise run release:version       - Phase 3: semantic-release"
+echo "  mise run release:full          - Complete workflow (all phases)"
 echo ""
 """
 
