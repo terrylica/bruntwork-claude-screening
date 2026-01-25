@@ -78,7 +78,11 @@ def generate_statistics(quizzes: list[dict]) -> dict:
 
 
 def format_citation_block(citation: dict) -> str:
-    """Format a single citation as a collapsible details block."""
+    """Format a single citation as a collapsible details block.
+
+    Uses markdown="1" attribute to enable kramdown markdown processing
+    inside the HTML details element for Jekyll/GitHub Pages.
+    """
     source = citation.get("source", {})
     authority = citation.get("authority", {})
 
@@ -96,34 +100,32 @@ def format_citation_block(citation: dict) -> str:
 
     # Use onlineUrl for clickable link if available, otherwise show url as code
     if online_url and online_url.startswith("https://"):
-        url_line = f"**URL**: [{title}]({online_url})  "
+        url_line = f'<a href="{online_url}">{title}</a>'
     elif url.startswith("https://"):
-        url_line = f"**URL**: [{title}]({url})  "
+        url_line = f'<a href="{url}">{title}</a>'
     else:
-        url_line = f"**URL**: `{url}`  "
+        url_line = f"<code>{url}</code>"
 
-    lines = [
-        "<details>",
-        f"<summary>Citation [Tier {tier} - {org}] ({confidence:.0%} confidence)</summary>",
-        "",
-        f"**Source**: {title}  ",
-        url_line,
-    ]
+    # Build HTML content for proper rendering in Jekyll
+    content_lines = [f"<strong>Source</strong>: {title}<br>"]
+    content_lines.append(f"<strong>URL</strong>: {url_line}<br>")
 
     if section:
-        lines.append(f"**Section**: {section}  ")
+        content_lines.append(f"<strong>Section</strong>: {section}<br>")
     if access_date:
-        lines.append(f"**Access Date**: {access_date}")
-
-    lines.append("")
+        content_lines.append(f"<strong>Access Date</strong>: {access_date}<br>")
 
     if quoted_text:
-        lines.append(f"> \"{quoted_text}\"")
+        content_lines.append(f'<blockquote>"{quoted_text}"</blockquote>')
 
-    lines.append("")
-    lines.append("</details>")
+    content = "\n".join(content_lines)
 
-    return "\n".join(lines)
+    return f"""<details>
+<summary>Citation [Tier {tier} - {org}] ({confidence:.0%} confidence)</summary>
+
+{content}
+
+</details>"""
 
 
 def format_question(question: dict, quiz_question_num: int) -> str:
