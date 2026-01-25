@@ -1,3 +1,13 @@
+## [1.1.1](https://github.com/terrylica/bruntwork-claude-screening/compare/v1.1.0...v1.1.1) (2026-01-25)
+
+
+### Bug Fixes
+
+* **docs:** aggressive full-width CSS overrides for Minimal Mistakes ([c6f4a5e](https://github.com/terrylica/bruntwork-claude-screening/commit/c6f4a5e1e4e06ec824887075790cad8759701be8))
+* **docs:** override 80em breakpoint max-width constraint ([c490cb7](https://github.com/terrylica/bruntwork-claude-screening/commit/c490cb74955691d6be2a7edcaf2bcb3f051b6242))
+* **docs:** remove duplicate H1 titles from markdown ([a3f5859](https://github.com/terrylica/bruntwork-claude-screening/commit/a3f5859c3e5a75d6a3db7820630b98a69d3c81c5))
+* **docs:** use html body selector for highest CSS specificity ([eeb2397](https://github.com/terrylica/bruntwork-claude-screening/commit/eeb23979a54ad9341d40a6270cf5f196b2e1fd1b))
+
 # [1.1.0](https://github.com/terrylica/bruntwork-claude-screening/compare/v1.0.0...v1.1.0) (2026-01-25)
 
 
