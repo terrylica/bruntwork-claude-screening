@@ -6,3 +6,38 @@
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
+
+// Full-width layout - remove left sidebar margin
+.page {
+  float: none !important;
+  width: 100% !important;
+  padding-right: 0 !important;
+}
+
+.page__content {
+  max-width: 100% !important;
+}
+
+// Remove sidebar completely
+.sidebar {
+  display: none !important;
+}
+
+// Make content area wider
+.wide .page {
+  max-width: 100% !important;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+}
+
+// Center the main content
+#main {
+  max-width: 100% !important;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+// Keep TOC on the right side but allow content to use full width
+.sidebar__right {
+  margin-left: 0 !important;
+}
