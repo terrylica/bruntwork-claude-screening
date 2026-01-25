@@ -63,6 +63,13 @@ description = "Validate citation URLs and access dates"
 sources = ["quiz-data/*.json", "scripts/validate-citations.py"]
 run = "uv run scripts/validate-citations.py"
 
+[tasks."review:generate"]
+description = "Generate quiz review page with full answer key"
+sources = ["quiz-data/*.json", "scripts/generate-review-page.py"]
+outputs = ["docs/review.md"]
+run = "uv run scripts/generate-review-page.py"
+depends = ["quiz:validate"]
+
 # === Release Tasks (file-based in .mise/tasks/release/) ===
 
 [tasks."release:preflight"]

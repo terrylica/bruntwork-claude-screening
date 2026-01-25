@@ -1,6 +1,6 @@
 # BruntWork Claude Code VA Screening
 
-**Navigation**: [docs/](docs/CLAUDE.md) | [google-forms-setup/](google-forms-setup/README.md) | [scripts/](scripts/README.md) | [quiz-data/](quiz-data/)
+**Navigation**: [docs/](docs/CLAUDE.md) | [google-forms-setup/](google-forms-setup/CLAUDE.md) | [scripts/](scripts/CLAUDE.md) | [quiz-data/](quiz-data/CLAUDE.md)
 
 ---
 
@@ -9,9 +9,9 @@
 | I need to...                  | Go to                                                                      |
 | ----------------------------- | -------------------------------------------------------------------------- |
 | Understand quiz design        | [docs/design/quiz-citation-schema.md](docs/design/quiz-citation-schema.md) |
-| Set up Google Forms API       | [google-forms-setup/README.md](google-forms-setup/README.md)               |
+| Set up Google Forms API       | [google-forms-setup/CLAUDE.md](google-forms-setup/CLAUDE.md)               |
 | Review architecture decisions | [docs/adr/](docs/adr/)                                                     |
-| Understand automation scripts | [scripts/README.md](scripts/README.md)                                     |
+| Understand automation scripts | [scripts/CLAUDE.md](scripts/CLAUDE.md)                                     |
 | View quiz JSON files          | [quiz-data/](quiz-data/)                                                   |
 
 ---
@@ -49,21 +49,22 @@ bruntwork-claude-screening/
 │   ├── CLAUDE.md                ← Documentation spoke
 │   ├── adr/                     ← Architecture decisions
 │   └── design/                  ← Quiz design specs
-├── quiz-data/                   ← JSON quiz definitions (5 files, 50 questions)
+├── quiz-data/                   ← JSON quiz definitions
+│   ├── CLAUDE.md                ← Quiz authoring guide
 │   ├── claude-code-basics.json
 │   ├── agentic-workflows.json
 │   ├── best-practices.json
 │   ├── error-handling-safety.json
 │   └── hooks-lifecycle.json
 ├── google-forms-setup/          ← Forms API integration spoke
-│   ├── README.md                ← Setup guide
+│   ├── CLAUDE.md                ← Setup guide
 │   ├── create_forms.py          ← Form creation
 │   ├── audit_forms.py           ← Form auditing
 │   ├── fetch_responses.py       ← Response fetching
 │   ├── add_candidate_fields.py  ← Add Name/Role fields
 │   └── audit-reports/           ← Validation reports
 ├── scripts/                     ← Automation scripts spoke
-│   ├── README.md                ← Scripts guide
+│   ├── CLAUDE.md                ← Scripts guide
 │   ├── validate-quiz.py         ← Pydantic quiz validator
 │   └── validate-citations.py    ← Citation validation
 └── logs/                        ← Local logs (gitignored)
@@ -71,16 +72,16 @@ bruntwork-claude-screening/
 
 ## Quiz Domains
 
-Assessment covers 6 domains for Claude Code VA proficiency (50 questions total):
+Assessment covers multiple domains for Claude Code VA proficiency:
 
-| Domain                 | Weight | Questions | Focus Areas                                |
-| ---------------------- | ------ | --------- | ------------------------------------------ |
-| **Tool Mastery**       | 20%    | 10        | Read, Edit, Write, Bash, Grep, Glob usage  |
-| **Agentic Patterns**   | 20%    | 10        | Task delegation, multi-agent coordination  |
-| **Error Handling**     | 15%    | 10        | Recovery strategies, debugging workflows   |
-| **Best Practices**     | 15%    | 10        | Context management, efficiency patterns    |
-| **Safety**             | 10%    | 10        | Sandbox awareness, permission boundaries   |
-| **Hooks & Automation** | 20%    | 10        | Lifecycle events, blocking, implementation |
+| Domain                 | Weight | Focus Areas                                |
+| ---------------------- | ------ | ------------------------------------------ |
+| **Tool Mastery**       | 20%    | Read, Edit, Write, Bash, Grep, Glob usage  |
+| **Agentic Patterns**   | 20%    | Task delegation, multi-agent coordination  |
+| **Error Handling**     | 15%    | Recovery strategies, debugging workflows   |
+| **Best Practices**     | 15%    | Context management, efficiency patterns    |
+| **Safety**             | 10%    | Sandbox awareness, permission boundaries   |
+| **Hooks & Automation** | 20%    | Lifecycle events, blocking, implementation |
 
 ### Citation Schema
 
@@ -92,6 +93,21 @@ All questions include embedded authoritative citations with:
 - Access date for validation
 
 → Deep dive: [docs/design/quiz-citation-schema.md](docs/design/quiz-citation-schema.md)
+
+## Quiz Design Principles
+
+**Avoid ephemeral content in questions.** Questions must remain valid as Claude Code evolves.
+
+| Ephemeral (Avoid)                         | Stable (Preferred)                                 |
+| ----------------------------------------- | -------------------------------------------------- |
+| "How many hook types does Claude support" | "What is the purpose of hooks"                     |
+| "Which 10 hooks can block execution"      | "Which hooks CAN block execution" (list in answer) |
+| Specific version numbers                  | "Check `claude --version` for current"             |
+| Feature counts that change                | Conceptual understanding of feature purpose        |
+
+**Why**: Feature counts change with each release. Questions about counts become incorrect, requiring constant maintenance. Questions about purpose, behavior, and concepts remain stable.
+
+→ Deep dive: [quiz-data/CLAUDE.md](quiz-data/CLAUDE.md)
 
 ## Workflow Protocol
 
