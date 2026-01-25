@@ -9,9 +9,11 @@
 
 // ============================================
 // FULL-WIDTH LAYOUT OVERRIDES
+// Must use media queries to override theme's
+// responsive breakpoints
 // ============================================
 
-// Remove the max-width constraint on the entire layout
+// Base overrides
 .initial-content,
 .page,
 .archive {
@@ -20,36 +22,42 @@
   float: none !important;
 }
 
-// Override the grid that reserves space for sidebar
-@media (min-width: 64em) {
-  .page {
-    width: 100% !important;
-    padding-left: 0 !important;
-  }
-
-  .archive {
-    width: 100% !important;
-  }
-}
-
-// Remove left sidebar
+// Remove left sidebar completely
 .sidebar {
   display: none !important;
   opacity: 0 !important;
   width: 0 !important;
-  min-width: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
 }
 
-// Main content full width
-#main {
-  max-width: 100% !important;
-  width: 100% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: 1.5em !important;
-  padding-right: 1.5em !important;
+// Override at 64em breakpoint
+@media (min-width: 64em) {
+  #main {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 2em !important;
+    padding-right: 2em !important;
+  }
+
+  .page {
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+}
+
+// Override at 80em breakpoint (this is where 1280px max-width is set)
+@media (min-width: 80em) {
+  #main {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 3em !important;
+    padding-right: 3em !important;
+  }
+
+  .masthead__inner-wrap {
+    max-width: 100% !important;
+    padding-left: 3em !important;
+    padding-right: 3em !important;
+  }
 }
 
 // Inner wrap full width
@@ -64,12 +72,13 @@
   width: 100% !important;
 }
 
-// Keep sticky TOC on right if present
+// Sticky TOC - keep on right but inline
 .sidebar__right {
   position: relative !important;
-  float: none !important;
-  width: 100% !important;
-  margin: 0 !important;
+  float: right !important;
+  width: 300px !important;
+  margin-left: 1em !important;
+  margin-bottom: 1em !important;
 }
 
 // Masthead full width
@@ -79,6 +88,4 @@
 
 .masthead__inner-wrap {
   max-width: 100% !important;
-  padding-left: 1.5em !important;
-  padding-right: 1.5em !important;
 }
