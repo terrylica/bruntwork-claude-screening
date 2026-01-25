@@ -18,7 +18,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Use the Read tool to view the file contents",
-      "explanation": "Never propose changes to code you haven't read. Always read first, then understand, then suggest.",
+      "explanation": "WHY THIS MATTERS: Early AI coding tools would confidently suggest changes to files they'd never seen, causing broken code and frustrated users. Claude Code evolved to enforce 'read before write'—you cannot propose changes to code you haven't actually examined in the current session. This prevents hallucinated fixes based on assumed file contents. In vibe coding, this discipline keeps you grounded in reality rather than AI imagination.",
       "citations": {
         "correctAnswer": [
           {
@@ -53,7 +53,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Add logging only to the specific area mentioned",
-      "explanation": "Avoid over-engineering. Only do what was asked. Don't add features, refactoring, or 'improvements' beyond the request.",
+      "explanation": "WHY THIS MATTERS: AI has a tendency to 'help' by adding logging frameworks, comprehensive error handling, and refactoring while doing a simple task. This scope creep creates bloated PRs, introduces bugs in code that was working, and wastes time reviewing unwanted changes. Claude Code trains against this by focusing strictly on what was requested. The user is the architect—AI is the implementer. Don't redesign the house when asked to fix a doorknob.",
       "citations": {
         "correctAnswer": [
           {
@@ -88,7 +88,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Only add comments where logic isn't self-evident",
-      "explanation": "Don't add unnecessary documentation. Only comment non-obvious logic. Don't add docstrings/comments to code you didn't change.",
+      "explanation": "WHY THIS MATTERS: AI loves to add docstrings and comments—it feels helpful. But excessive documentation creates maintenance burden and clutters code reviews. More critically, adding comments to code you didn't modify creates confusing git blame history and suggests you changed functionality when you didn't. Let code speak for itself; reserve comments for genuinely non-obvious logic. This differs from traditional 'document everything' advice because AI can explain code on demand.",
       "citations": {
         "correctAnswer": [
           {
@@ -123,7 +123,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "No, only change what was requested",
-      "explanation": "A bug fix doesn't need surrounding code cleaned up. Stay focused on the requested change only.",
+      "explanation": "WHY THIS MATTERS: 'While I'm in here, let me also clean up...' is a classic developer trap that AI amplifies. A focused bug fix touches 3 lines; a 'helpful' cleanup touches 50, making the PR harder to review and increasing risk of regressions. Clean PRs = easy reviews = faster merges. In vibe coding, restraint is a virtue. Fix what was asked. If you notice something else, mention it separately—don't bundle it into the current task.",
       "citations": {
         "correctAnswer": [
           {
@@ -158,7 +158,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Never give time estimates - focus on what needs to be done",
-      "explanation": "Don't predict timing. Focus on breaking work into actionable steps and let users judge timing themselves.",
+      "explanation": "WHY THIS MATTERS: AI time estimates are notoriously unreliable—they don't account for context switching, debugging surprises, or real-world interruptions. Worse, saying 'this will take 5 minutes' creates pressure and disappointment when it takes 20. Claude Code shifted to describing WHAT needs to happen, not WHEN. This respects user autonomy (they know their schedule) and avoids false promises. Focus on the work breakdown, not the crystal ball.",
       "citations": {
         "correctAnswer": [
           {
@@ -193,7 +193,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Use AskUserQuestion to clarify before acting",
-      "explanation": "When requirements are unclear, ask! AskUserQuestion prevents wasted effort from wrong assumptions.",
+      "explanation": "WHY THIS MATTERS: The old approach was 'make reasonable assumptions and proceed.' This led to AI confidently building the wrong thing. AskUserQuestion is Claude Code's evolved solution: structured prompts with clear options that get you aligned BEFORE spending tokens on implementation. A 30-second clarification beats a 30-minute redo. This is a mindset shift—uncertainty should trigger questions, not assumptions. The user has context you don't.",
       "citations": {
         "correctAnswer": [
           {
@@ -228,7 +228,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Read it first to understand if it should be modified vs replaced",
-      "explanation": "Always prefer editing existing files over creating new ones. Read first to understand what's there.",
+      "explanation": "WHY THIS MATTERS: Creating a new file when one already exists is a common AI mistake that leads to duplicate code, config conflicts, and confused users wondering why their changes disappeared. The 'read first' discipline catches this—if the file exists and has relevant content, you should edit it, not replace it. This preserves user's existing work and maintains project consistency. Only create new files when there's genuinely nothing to extend.",
       "citations": {
         "correctAnswer": [
           {
@@ -263,7 +263,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Short, concise responses focused on the task",
-      "explanation": "Output is displayed in CLI - keep responses short and concise. Avoid emojis unless requested.",
+      "explanation": "WHY THIS MATTERS: Claude Code runs in a terminal, not a chat UI. Long-winded responses with emojis and enthusiasm feel out of place and slow down workflows. The evolved style is professional and efficient—like a senior engineer communicating with a colleague. Save the emojis for Slack. In the CLI, clarity and brevity respect the user's time and terminal real estate. This is a key differentiator from chatbot-style AI assistants.",
       "citations": {
         "correctAnswer": [
           {
@@ -298,7 +298,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "file_path:line_number",
-      "explanation": "Use file_path:line_number format (e.g., src/utils.py:42) so users can navigate directly to the location.",
+      "explanation": "WHY THIS MATTERS: Modern IDEs and terminals recognize 'file:line' format and make it clickable. Saying 'the connectDatabase function' forces users to search; saying 'src/db/connection.ts:47' lets them jump directly there. This small convention dramatically improves workflow efficiency. It's borrowed from compiler error formats—a proven UX pattern. In vibe coding, reducing friction between 'AI shows issue' and 'human fixes issue' is critical.",
       "citations": {
         "correctAnswer": [
           {
@@ -333,7 +333,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Explain your reasoning objectively, but respect their decision",
-      "explanation": "Prioritize technical accuracy - explain your reasoning. But ultimately respect the user's autonomy to decide.",
+      "explanation": "WHY THIS MATTERS: Early AI assistants would either stubbornly insist on being right (frustrating) or immediately cave to any pushback (useless). Claude Code's evolved stance: provide honest technical assessment with clear reasoning, but ultimately defer to the user's decision. You might know best practices, but the user knows their constraints, deadlines, and context. Respectful disagreement builds trust; sycophantic agreement or arrogant insistence destroys it.",
       "citations": {
         "correctAnswer": [
           {

@@ -18,7 +18,7 @@
       ],
       "correctAnswerIndex": 0,
       "correctAnswer": "Read tool",
-      "explanation": "The Read tool is the dedicated file reading tool in Claude Code. Using Bash with cat is discouraged.",
+      "explanation": "WHY THIS MATTERS: Claude Code's built-in Read tool integrates with its permission system, enabling cached approvals and faster workflows. Using 'cat' via Bash bypasses these optimizations, requiring manual approval for each unique command. In vibe coding sessions where you're rapidly iterating, the Read tool keeps you in flow. This is a key differentiator from traditional scripting—Claude Code's specialized tools are designed for AI-assisted workflows, not human typing.",
       "citations": {
         "correctAnswer": [
           {
@@ -53,7 +53,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Edit tool (targeted replacement)",
-      "explanation": "Edit tool performs targeted string replacements, preserving the rest of the file. More efficient than rewriting.",
+      "explanation": "WHY THIS MATTERS: In traditional programming, you'd rewrite entire files or use sed/awk. Claude Code's Edit tool evolved specifically for AI-assisted coding where precision matters. It performs surgical replacements while preserving indentation, line endings, and surrounding code. This prevents accidental changes that can break working code—a critical concern when an AI is making changes at scale. The Edit tool also shows you exactly what changed, maintaining transparency in vibe coding sessions.",
       "citations": {
         "correctAnswer": [
           {
@@ -88,7 +88,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Read the file using the Read tool",
-      "explanation": "Edit tool requires that you've read the file first in the conversation to ensure you know the current contents.",
+      "explanation": "WHY THIS MATTERS: This safeguard prevents 'blind edits'—a dangerous anti-pattern where AI makes changes to code it hasn't seen. By requiring Read-before-Edit, Claude Code ensures the AI has current context about the file's state. This evolved from early failures where AI assistants would propose changes based on outdated assumptions. The rule enforces 'see before you change,' which is even more critical than in human programming since AI can't rely on memory of files it read in previous sessions.",
       "citations": {
         "correctAnswer": [
           {
@@ -123,7 +123,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Glob tool",
-      "explanation": "Glob tool is the dedicated file pattern matching tool. Avoid using find via Bash.",
+      "explanation": "WHY THIS MATTERS: The Glob tool was built for the scale of modern codebases. Unlike 'find' which can hang on large directories or node_modules, Glob is optimized for speed and respects .gitignore patterns. In vibe coding, you need instant file discovery—waiting for a slow 'find' command breaks the creative flow. Glob also integrates with Claude Code's context management, so results can be efficiently passed to other operations without permission overhead.",
       "citations": {
         "correctAnswer": [
           {
@@ -158,7 +158,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Grep tool",
-      "explanation": "Grep tool is optimized for content searching with proper permissions. Don't use grep via Bash.",
+      "explanation": "WHY THIS MATTERS: Claude Code's Grep tool uses ripgrep under the hood but adds critical features for AI workflows: permission caching, .gitignore respect, and configurable output modes (files only, content, or counts). The old practice of using 'grep' or 'rg' via Bash creates permission friction and inconsistent output parsing. This tool optimization represents Anthropic's evolution toward purpose-built AI development tools rather than wrapping legacy CLI commands.",
       "citations": {
         "correctAnswer": [
           {
@@ -193,7 +193,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Terminal operations like git, npm, docker",
-      "explanation": "Bash tool is for actual system commands. File operations have dedicated tools (Read, Write, Edit, Glob, Grep).",
+      "explanation": "WHY THIS MATTERS: This principle—'Bash for system operations, specialized tools for file operations'—reflects a fundamental shift from traditional scripting. In shell scripting, everything goes through bash. In Claude Code, file operations have dedicated tools optimized for AI workflows. Reserve Bash for what it does best: git, package managers, build tools, and system commands. This separation makes Claude Code faster, safer, and more predictable than a general-purpose shell wrapper.",
       "citations": {
         "correctAnswer": [
           {
@@ -228,7 +228,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "The edit fails - old_string must be unique",
-      "explanation": "Edit requires unique old_string. Provide more context to make it unique, or use replace_all parameter.",
+      "explanation": "WHY THIS MATTERS: The uniqueness requirement is a safety feature that prevents ambiguous edits. Imagine asking to change 'function()' when it appears 50 times—which one did you mean? Rather than guess (and potentially break code), Claude Code fails fast and asks you to be more specific. This 'explicit over implicit' philosophy differs from sed's 'replace all by default' behavior. Use replace_all=true only when you intentionally want to change every occurrence.",
       "citations": {
         "correctAnswer": [
           {
@@ -263,7 +263,7 @@
       ],
       "correctAnswerIndex": 3,
       "correctAnswer": "Both A and C",
-      "explanation": "Write overwrites existing files. Always verify the parent directory exists and the file doesn't exist (unless intentional overwrite).",
+      "explanation": "WHY THIS MATTERS: Write is destructive by design—it replaces entire file contents. This makes verification critical before creation. The two checks (parent exists + file doesn't exist) prevent common AI mistakes: creating orphaned files in non-existent directories, or accidentally overwriting important files. In vibe coding, where you're moving fast, these guardrails prevent costly 'oops I deleted your config' moments. Always prefer Edit for existing files.",
       "citations": {
         "correctAnswer": [
           {
@@ -298,7 +298,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Spawning specialized subagents for complex tasks",
-      "explanation": "Task tool launches specialized agents (Explore, Plan, Bash, etc.) for complex, multi-step operations.",
+      "explanation": "WHY THIS MATTERS: Subagents are Claude Code's solution to context management—the biggest challenge in AI-assisted coding. Rather than filling your main conversation with exploration noise, Task spawns a specialized agent that works in isolation and returns a summary. This keeps your primary context clean for implementation work. Think of it as 'delegation'—just as a senior developer assigns research tasks to juniors, you assign exploration to subagents.",
       "citations": {
         "correctAnswer": [
           {
@@ -333,7 +333,7 @@
       ],
       "correctAnswerIndex": 1,
       "correctAnswer": "Use Task tool with subagent_type=Explore",
-      "explanation": "For open-ended exploration, the Explore agent is optimized to search across the codebase efficiently.",
+      "explanation": "WHY THIS MATTERS: The Explore subagent uses Haiku (fast, cheap) and has read-only access—perfect for 'understanding' tasks where you don't need to change anything. Running exploration in your main conversation wastes expensive context tokens and clutters your session with intermediate results. The Explore agent can do multiple searches, read dozens of files, and return just the insights you need. This pattern—'explore in subagent, implement in main'—is core to efficient vibe coding.",
       "citations": {
         "correctAnswer": [
           {

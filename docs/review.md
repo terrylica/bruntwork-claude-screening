@@ -8,7 +8,7 @@ toc_sticky: true
 > This page contains all correct answers with explanations and authoritative citations.
 > Use this as a learning resource alongside the [assessment quizzes](./).
 
-*Generated: 2026-01-25 11:55*
+*Generated: 2026-01-25 12:09*
 
 ---
 
@@ -51,7 +51,7 @@ toc_sticky: true
 | C. Open tool | |
 | D. File tool | |
 
-**Explanation**: The Read tool is the dedicated file reading tool in Claude Code. Using Bash with cat is discouraged.
+**Explanation**: WHY THIS MATTERS: Claude Code's built-in Read tool integrates with its permission system, enabling cached approvals and faster workflows. Using 'cat' via Bash bypasses these optimizations, requiring manual approval for each unique command. In vibe coding sessions where you're rapidly iterating, the Read tool keeps you in flow. This is a key differentiator from traditional scripting—Claude Code's specialized tools are designed for AI-assisted workflows, not human typing.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
@@ -75,7 +75,7 @@ toc_sticky: true
 | C. Bash with sed | |
 | D. Create a new file and delete the old one | |
 
-**Explanation**: Edit tool performs targeted string replacements, preserving the rest of the file. More efficient than rewriting.
+**Explanation**: WHY THIS MATTERS: In traditional programming, you'd rewrite entire files or use sed/awk. Claude Code's Edit tool evolved specifically for AI-assisted coding where precision matters. It performs surgical replacements while preserving indentation, line endings, and surrounding code. This prevents accidental changes that can break working code—a critical concern when an AI is making changes at scale. The Edit tool also shows you exactly what changed, maintaining transparency in vibe coding sessions.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
@@ -99,7 +99,7 @@ toc_sticky: true
 | **C. Read the file using the Read tool** | ✓ |
 | D. Check file permissions | |
 
-**Explanation**: Edit tool requires that you've read the file first in the conversation to ensure you know the current contents.
+**Explanation**: WHY THIS MATTERS: This safeguard prevents 'blind edits'—a dangerous anti-pattern where AI makes changes to code it hasn't seen. By requiring Read-before-Edit, Claude Code ensures the AI has current context about the file's state. This evolved from early failures where AI assistants would propose changes based on outdated assumptions. The rule enforces 'see before you change,' which is even more critical than in human programming since AI can't rely on memory of files it read in previous sessions.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
@@ -123,7 +123,7 @@ toc_sticky: true
 | **C. Glob tool** | ✓ |
 | D. Search tool | |
 
-**Explanation**: Glob tool is the dedicated file pattern matching tool. Avoid using find via Bash.
+**Explanation**: WHY THIS MATTERS: The Glob tool was built for the scale of modern codebases. Unlike 'find' which can hang on large directories or node_modules, Glob is optimized for speed and respects .gitignore patterns. In vibe coding, you need instant file discovery—waiting for a slow 'find' command breaks the creative flow. Glob also integrates with Claude Code's context management, so results can be efficiently passed to other operations without permission overhead.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
@@ -147,7 +147,7 @@ toc_sticky: true
 | C. Find tool | |
 | D. Search tool | |
 
-**Explanation**: Grep tool is optimized for content searching with proper permissions. Don't use grep via Bash.
+**Explanation**: WHY THIS MATTERS: Claude Code's Grep tool uses ripgrep under the hood but adds critical features for AI workflows: permission caching, .gitignore respect, and configurable output modes (files only, content, or counts). The old practice of using 'grep' or 'rg' via Bash creates permission friction and inconsistent output parsing. This tool optimization represents Anthropic's evolution toward purpose-built AI development tools rather than wrapping legacy CLI commands.
 
 <details>
 <summary>Citation [Tier 3 - Community] (90% confidence)</summary>
@@ -171,7 +171,7 @@ toc_sticky: true
 | **C. Terminal operations like git, npm, docker** | ✓ |
 | D. Editing files | |
 
-**Explanation**: Bash tool is for actual system commands. File operations have dedicated tools (Read, Write, Edit, Glob, Grep).
+**Explanation**: WHY THIS MATTERS: This principle—'Bash for system operations, specialized tools for file operations'—reflects a fundamental shift from traditional scripting. In shell scripting, everything goes through bash. In Claude Code, file operations have dedicated tools optimized for AI workflows. Reserve Bash for what it does best: git, package managers, build tools, and system commands. This separation makes Claude Code faster, safer, and more predictable than a general-purpose shell wrapper.
 
 <details>
 <summary>Citation [Tier 3 - Community] (90% confidence)</summary>
@@ -195,7 +195,7 @@ toc_sticky: true
 | **C. The edit fails - old_string must be unique** | ✓ |
 | D. You're prompted to select which occurrence | |
 
-**Explanation**: Edit requires unique old_string. Provide more context to make it unique, or use replace_all parameter.
+**Explanation**: WHY THIS MATTERS: The uniqueness requirement is a safety feature that prevents ambiguous edits. Imagine asking to change 'function()' when it appears 50 times—which one did you mean? Rather than guess (and potentially break code), Claude Code fails fast and asks you to be more specific. This 'explicit over implicit' philosophy differs from sed's 'replace all by default' behavior. Use replace_all=true only when you intentionally want to change every occurrence.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
@@ -219,7 +219,7 @@ toc_sticky: true
 | C. That the file doesn't already exist | |
 | **D. Both A and C** | ✓ |
 
-**Explanation**: Write overwrites existing files. Always verify the parent directory exists and the file doesn't exist (unless intentional overwrite).
+**Explanation**: WHY THIS MATTERS: Write is destructive by design—it replaces entire file contents. This makes verification critical before creation. The two checks (parent exists + file doesn't exist) prevent common AI mistakes: creating orphaned files in non-existent directories, or accidentally overwriting important files. In vibe coding, where you're moving fast, these guardrails prevent costly 'oops I deleted your config' moments. Always prefer Edit for existing files.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
@@ -243,7 +243,7 @@ toc_sticky: true
 | C. Scheduling commands to run later | |
 | D. Managing background processes | |
 
-**Explanation**: Task tool launches specialized agents (Explore, Plan, Bash, etc.) for complex, multi-step operations.
+**Explanation**: WHY THIS MATTERS: Subagents are Claude Code's solution to context management—the biggest challenge in AI-assisted coding. Rather than filling your main conversation with exploration noise, Task spawns a specialized agent that works in isolation and returns a summary. This keeps your primary context clean for implementation work. Think of it as 'delegation'—just as a senior developer assigns research tasks to juniors, you assign exploration to subagents.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
@@ -267,7 +267,7 @@ toc_sticky: true
 | C. Ask the user where to look | |
 | D. Read every file in the directory | |
 
-**Explanation**: For open-ended exploration, the Explore agent is optimized to search across the codebase efficiently.
+**Explanation**: WHY THIS MATTERS: The Explore subagent uses Haiku (fast, cheap) and has read-only access—perfect for 'understanding' tasks where you don't need to change anything. Running exploration in your main conversation wastes expensive context tokens and clutters your session with intermediate results. The Explore agent can do multiple searches, read dozens of files, and return just the insights you need. This pattern—'explore in subagent, implement in main'—is core to efficient vibe coding.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
@@ -541,7 +541,7 @@ toc_sticky: true
 | C. Ask the user to paste the relevant code | |
 | D. Make assumptions based on common patterns | |
 
-**Explanation**: Never propose changes to code you haven't read. Always read first, then understand, then suggest.
+**Explanation**: WHY THIS MATTERS: Early AI coding tools would confidently suggest changes to files they'd never seen, causing broken code and frustrated users. Claude Code evolved to enforce 'read before write'—you cannot propose changes to code you haven't actually examined in the current session. This prevents hallucinated fixes based on assumed file contents. In vibe coding, this discipline keeps you grounded in reality rather than AI imagination.
 
 <details>
 <summary>Citation [Tier 3 - Community] (90% confidence)</summary>
@@ -565,7 +565,7 @@ toc_sticky: true
 | C. Refactor the code to use a logging framework first | |
 | D. Add logging plus docstrings and comments for clarity | |
 
-**Explanation**: Avoid over-engineering. Only do what was asked. Don't add features, refactoring, or 'improvements' beyond the request.
+**Explanation**: WHY THIS MATTERS: AI has a tendency to 'help' by adding logging frameworks, comprehensive error handling, and refactoring while doing a simple task. This scope creep creates bloated PRs, introduces bugs in code that was working, and wastes time reviewing unwanted changes. Claude Code trains against this by focusing strictly on what was requested. The user is the architect—AI is the implementer. Don't redesign the house when asked to fix a doorknob.
 
 <details>
 <summary>Citation [Tier 3 - Community] (90% confidence)</summary>
@@ -589,7 +589,7 @@ toc_sticky: true
 | C. Never - let the code speak for itself | |
 | D. Only if the user specifically requests it | |
 
-**Explanation**: Don't add unnecessary documentation. Only comment non-obvious logic. Don't add docstrings/comments to code you didn't change.
+**Explanation**: WHY THIS MATTERS: AI loves to add docstrings and comments—it feels helpful. But excessive documentation creates maintenance burden and clutters code reviews. More critically, adding comments to code you didn't modify creates confusing git blame history and suggests you changed functionality when you didn't. Let code speak for itself; reserve comments for genuinely non-obvious logic. This differs from traditional 'document everything' advice because AI can explain code on demand.
 
 <details>
 <summary>Citation [Tier 3 - Community] (90% confidence)</summary>
@@ -613,7 +613,7 @@ toc_sticky: true
 | C. Ask the user if they want you to fix it | |
 | D. Fix it silently - they'll appreciate the polish | |
 
-**Explanation**: A bug fix doesn't need surrounding code cleaned up. Stay focused on the requested change only.
+**Explanation**: WHY THIS MATTERS: 'While I'm in here, let me also clean up...' is a classic developer trap that AI amplifies. A focused bug fix touches 3 lines; a 'helpful' cleanup touches 50, making the PR harder to review and increasing risk of regressions. Clean PRs = easy reviews = faster merges. In vibe coding, restraint is a virtue. Fix what was asked. If you notice something else, mention it separately—don't bundle it into the current task.
 
 <details>
 <summary>Citation [Tier 3 - Community] (90% confidence)</summary>
@@ -637,7 +637,7 @@ toc_sticky: true
 | **C. Never give time estimates - focus on what needs to be done** | ✓ |
 | D. Only estimate when the user asks directly | |
 
-**Explanation**: Don't predict timing. Focus on breaking work into actionable steps and let users judge timing themselves.
+**Explanation**: WHY THIS MATTERS: AI time estimates are notoriously unreliable—they don't account for context switching, debugging surprises, or real-world interruptions. Worse, saying 'this will take 5 minutes' creates pressure and disappointment when it takes 20. Claude Code shifted to describing WHAT needs to happen, not WHEN. This respects user autonomy (they know their schedule) and avoids false promises. Focus on the work breakdown, not the crystal ball.
 
 <details>
 <summary>Citation [Tier 3 - Community] (90% confidence)</summary>
@@ -661,7 +661,7 @@ toc_sticky: true
 | C. Implement multiple options and let them choose | |
 | D. Do the most common interpretation | |
 
-**Explanation**: When requirements are unclear, ask! AskUserQuestion prevents wasted effort from wrong assumptions.
+**Explanation**: WHY THIS MATTERS: The old approach was 'make reasonable assumptions and proceed.' This led to AI confidently building the wrong thing. AskUserQuestion is Claude Code's evolved solution: structured prompts with clear options that get you aligned BEFORE spending tokens on implementation. A 30-second clarification beats a 30-minute redo. This is a mindset shift—uncertainty should trigger questions, not assumptions. The user has context you don't.
 
 <details>
 <summary>Citation [Tier 3 - Community] (90% confidence)</summary>
@@ -685,7 +685,7 @@ toc_sticky: true
 | C. Create a backup automatically before overwriting | |
 | D. Use a different filename to avoid conflict | |
 
-**Explanation**: Always prefer editing existing files over creating new ones. Read first to understand what's there.
+**Explanation**: WHY THIS MATTERS: Creating a new file when one already exists is a common AI mistake that leads to duplicate code, config conflicts, and confused users wondering why their changes disappeared. The 'read first' discipline catches this—if the file exists and has relevant content, you should edit it, not replace it. This preserves user's existing work and maintains project consistency. Only create new files when there's genuinely nothing to extend.
 
 <details>
 <summary>Citation [Tier 3 - Community] (90% confidence)</summary>
@@ -709,7 +709,7 @@ toc_sticky: true
 | C. Technical jargon to demonstrate expertise | |
 | D. Formal language with lots of caveats | |
 
-**Explanation**: Output is displayed in CLI - keep responses short and concise. Avoid emojis unless requested.
+**Explanation**: WHY THIS MATTERS: Claude Code runs in a terminal, not a chat UI. Long-winded responses with emojis and enthusiasm feel out of place and slow down workflows. The evolved style is professional and efficient—like a senior engineer communicating with a colleague. Save the emojis for Slack. In the CLI, clarity and brevity respect the user's time and terminal real estate. This is a key differentiator from chatbot-style AI assistants.
 
 <details>
 <summary>Citation [Tier 3 - Community] (90% confidence)</summary>
@@ -733,7 +733,7 @@ toc_sticky: true
 | C. A code snippet with the relevant lines | |
 | D. The function name only | |
 
-**Explanation**: Use file_path:line_number format (e.g., src/utils.py:42) so users can navigate directly to the location.
+**Explanation**: WHY THIS MATTERS: Modern IDEs and terminals recognize 'file:line' format and make it clickable. Saying 'the connectDatabase function' forces users to search; saying 'src/db/connection.ts:47' lets them jump directly there. This small convention dramatically improves workflow efficiency. It's borrowed from compiler error formats—a proven UX pattern. In vibe coding, reducing friction between 'AI shows issue' and 'human fixes issue' is critical.
 
 <details>
 <summary>Citation [Tier 3 - Community] (90% confidence)</summary>
@@ -757,7 +757,7 @@ toc_sticky: true
 | **C. Explain your reasoning objectively, but respect their decision** | ✓ |
 | D. Change the subject to avoid conflict | |
 
-**Explanation**: Prioritize technical accuracy - explain your reasoning. But ultimately respect the user's autonomy to decide.
+**Explanation**: WHY THIS MATTERS: Early AI assistants would either stubbornly insist on being right (frustrating) or immediately cave to any pushback (useless). Claude Code's evolved stance: provide honest technical assessment with clear reasoning, but ultimately defer to the user's decision. You might know best practices, but the user knows their constraints, deadlines, and context. Respectful disagreement builds trust; sycophantic agreement or arrogant insistence destroys it.
 
 <details>
 <summary>Citation [Tier 3 - Community] (90% confidence)</summary>
@@ -786,7 +786,7 @@ toc_sticky: true
 | C. Retry the same command automatically | |
 | D. Report to the user and wait for instructions | |
 
-**Explanation**: Never ignore non-zero exits. Acknowledge, diagnose from stderr, fix the root cause, then verify success.
+**Explanation**: WHY THIS MATTERS: Silent failures are the enemy of vibe coding. If a command fails and you proceed as if it succeeded, you build on a broken foundation. Claude Code's approach—stop, acknowledge, diagnose, fix—mirrors how senior engineers handle errors: never assume success, always verify. This is especially critical in AI-assisted workflows where errors can cascade quickly. The stderr output contains clues; use them before moving on.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
@@ -810,7 +810,7 @@ toc_sticky: true
 | C. cd /path/to/dir 2>/dev/null | |
 | D. if cd /path/to/dir; then echo 'ok'; fi | |
 
-**Explanation**: cd can fail silently. Always handle with || exit 1 or || { echo 'Failed'; exit 1; }
+**Explanation**: WHY THIS MATTERS: 'cd' is notoriously dangerous in scripts—it can fail silently, and all subsequent commands run in the wrong directory. Imagine 'rm -rf *' executing in your home directory instead of a temp folder. The '|| exit 1' pattern is defensive programming that says 'if this fails, stop everything.' In vibe coding, where AI generates shell commands rapidly, these guardrails prevent catastrophic mistakes from compounding.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
@@ -834,7 +834,7 @@ toc_sticky: true
 | C. except (TypeError, KeyError) as e: handle_error(e) | |
 | D. except SpecificError: logger.warning('Known issue'); return default | |
 
-**Explanation**: Catching broad Exception and only logging at DEBUG level hides errors. Use specific exceptions and log at appropriate levels (error/warning), then re-raise or handle explicitly.
+**Explanation**: WHY THIS MATTERS: 'except Exception: pass' and 'except Exception: log.debug()' are silent failure patterns that hide bugs. The error happened, but you'll never know because DEBUG logs are often filtered out. AI-generated code sometimes introduces these anti-patterns to appear 'robust.' Real robustness means catching SPECIFIC exceptions you can handle, logging at appropriate levels (error for errors!), and re-raising what you can't handle. Silent failures are technical debt.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
@@ -858,7 +858,7 @@ toc_sticky: true
 | **C. Non-zero exit codes are silently ignored** | ✓ |
 | D. The subprocess runs in a separate thread | |
 
-**Explanation**: Without check=True, subprocess.run() returns normally even on failure. Always use check=True.
+**Explanation**: WHY THIS MATTERS: Python's subprocess.run() has a dangerous default: it returns success even when the command fails. Your code happily continues, unaware that the build failed, the test crashed, or the deployment bombed. The check=True parameter changes this—failures raise CalledProcessError, forcing you to handle them. This is a classic silent failure pattern that Claude Code hooks can detect. Always use check=True unless you have a specific reason to handle failures manually.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
@@ -882,7 +882,7 @@ toc_sticky: true
 | **C. You can access the filesystem but with user-level permissions** | ✓ |
 | D. All file operations require explicit user approval | |
 
-**Explanation**: Claude Code has filesystem access with user permissions. You can read/write files the user can access.
+**Explanation**: WHY THIS MATTERS: Claude Code's security model is 'user-level permissions with write restrictions.' You can READ anywhere the user can (system libs, other projects), but WRITES are confined to the working directory. This prevents accidental system-wide damage while enabling useful cross-project reading. Understanding this boundary is critical—don't assume you can modify files outside the project, but DO leverage read access for context gathering. It's a pragmatic balance between safety and usefulness.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
@@ -906,7 +906,7 @@ toc_sticky: true
 | **C. git push --force, git reset --hard** | ✓ |
 | D. git branch, git checkout | |
 
-**Explanation**: Destructive git operations (force push, hard reset) can lose work. Only do these when explicitly requested.
+**Explanation**: WHY THIS MATTERS: 'git push --force' rewrites history and can destroy teammates' work. 'git reset --hard' discards uncommitted changes forever. These operations are irreversible and have caused countless lost hours. AI making these decisions autonomously would be catastrophic. Claude Code's rule is absolute: destructive git operations require explicit user request. This isn't about capability—it's about respecting that some actions have consequences AI shouldn't decide unilaterally.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
@@ -930,7 +930,7 @@ toc_sticky: true
 | **C. Only when the user explicitly asks** | ✓ |
 | D. After completing each feature | |
 
-**Explanation**: Never commit proactively. Users may want to review changes or have their own commit workflow.
+**Explanation**: WHY THIS MATTERS: Commits are checkpoints in history—they should be intentional, not automatic. Users have different workflows: some squash commits, some use conventional commits, some want to test before committing. AI auto-committing after every change creates messy history and removes user control. The 'only commit when asked' rule respects user autonomy. If you're unsure whether to commit, ask. This evolved from feedback that proactive commits felt invasive.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
@@ -954,7 +954,7 @@ toc_sticky: true
 | C. Ignore it - security is not your concern | |
 | D. Stop all work until it's addressed | |
 
-**Explanation**: Always flag security issues. Be helpful by offering to fix, but don't modify without acknowledgment.
+**Explanation**: WHY THIS MATTERS: Security vulnerabilities need visibility, not silent fixes. If you fix SQL injection without telling the user, they won't understand the risk their code had, won't audit for similar issues, and won't learn to prevent them. The correct approach: flag it clearly, explain the risk, offer to fix, but let the user acknowledge the issue. This creates teachable moments and maintains user awareness. Silent fixes, while well-intentioned, keep users in the dark about their codebase's security posture.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
@@ -978,7 +978,7 @@ toc_sticky: true
 | C. Create a backup of every file first | |
 | D. Test on one file then automatically do the rest | |
 
-**Explanation**: For bulk operations, explain what will be affected and confirm before proceeding. Users need to understand scope.
+**Explanation**: WHY THIS MATTERS: Bulk operations are high-risk—a typo in a regex could rename hundreds of files incorrectly. Unlike single-file edits where mistakes are contained, mass operations can create chaos that's hard to untangle. Before running any bulk operation, clearly state: 'This will affect N files matching pattern X.' Let the user confirm. This transparency prevents the 'wait, I didn't want THAT' moment. The user bears responsibility for approving scope; AI bears responsibility for clearly communicating it.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
@@ -1002,7 +1002,7 @@ toc_sticky: true
 | **C. Inform the user and ask how to proceed** | ✓ |
 | D. Guess what they meant and use a similar path | |
 
-**Explanation**: Don't assume. Let the user know the path doesn't exist and ask whether to create it or use a different path.
+**Explanation**: WHY THIS MATTERS: Path typos happen. If the user says '/src/componenets/' (misspelled), auto-creating that directory means their code ends up in the wrong place and they waste time wondering why imports fail. The correct approach: surface the issue immediately. 'That path doesn't exist. Did you mean /src/components/? Or should I create /src/componenets/?' This catches mistakes early. Never guess or silently create—what seems helpful often causes confusion down the line.
 
 <details>
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
