@@ -3,7 +3,7 @@ description: Assessment quizzes for virtual assistant candidates
 remote_theme: mmistakes/minimal-mistakes@4.26.2
 
 # Dark theme only
-minimal_mistakes_skin: dark
+minimal_mistakes_skin: "dark"
 
 # Site settings
 locale: "en-US"
