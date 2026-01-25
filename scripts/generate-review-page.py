@@ -77,10 +77,10 @@ def generate_statistics(quizzes: list[dict]) -> dict:
 
 
 def format_citation_block(citation: dict) -> str:
-    """Format a single citation as a collapsible details block.
+    """Format a single citation as an open details block with smaller font.
 
-    Uses markdown="1" attribute to enable kramdown markdown processing
-    inside the HTML details element for Jekyll/GitHub Pages.
+    Uses 'open' attribute to show expanded by default.
+    Uses inline styles for smaller font size.
     """
     source = citation.get("source", {})
     authority = citation.get("authority", {})
@@ -105,7 +105,7 @@ def format_citation_block(citation: dict) -> str:
     else:
         url_line = f"<code>{url}</code>"
 
-    # Build HTML content for proper rendering in Jekyll
+    # Build HTML content with smaller font
     content_lines = [f"<strong>Source</strong>: {title}<br>"]
     content_lines.append(f"<strong>URL</strong>: {url_line}<br>")
 
@@ -115,12 +115,14 @@ def format_citation_block(citation: dict) -> str:
         content_lines.append(f"<strong>Access Date</strong>: {access_date}<br>")
 
     if quoted_text:
-        content_lines.append(f'<blockquote>"{quoted_text}"</blockquote>')
+        content_lines.append(f'<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"{quoted_text}"</blockquote>')
 
     content = "\n".join(content_lines)
 
-    return f"""<details>
-<summary>Citation [Tier {tier} - {org}] ({confidence:.0%} confidence)</summary>
+    # 'open' attribute makes details expanded by default
+    # font-size: 0.85em makes citation text smaller
+    return f"""<details open style="font-size: 0.85em; margin: 0.5em 0; padding: 0.5em; background: rgba(128,128,128,0.1); border-radius: 4px;">
+<summary style="cursor: pointer; font-weight: 500;">Citation [Tier {tier} - {org}] ({confidence:.0%} confidence)</summary>
 
 {content}
 
