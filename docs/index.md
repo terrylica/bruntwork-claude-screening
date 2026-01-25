@@ -1,6 +1,8 @@
 ---
 title: BruntWork Claude Code VA Screening
 permalink: /
+toc: true
+toc_sticky: true
 ---
 
 Assessment quizzes for virtual assistant candidates to demonstrate Claude Code proficiency.
