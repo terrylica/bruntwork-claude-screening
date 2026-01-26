@@ -1,13 +1,15 @@
 ---
-title: BruntWork Claude Code VA Screening
+title: Claude Code VA Screening
 permalink: /
 toc: true
 toc_sticky: true
 ---
 
-Assessment quizzes for virtual assistant candidates to demonstrate Claude Code proficiency.
+## Position
 
-> **v2.0 Update**: Quizzes have been consolidated from 6 tool-focused assessments to 4 principle-based assessments. Claude Code v2.1+ autonomously selects tools—you describe WHAT, Claude decides HOW.
+**Remote Vibe Coder** — Anthropic's Claude Code CLI for Financial Time Series Forecasting
+
+This screening assesses your proficiency with Claude Code, Anthropic's agentic coding tool. The role involves using Claude Code to develop and maintain financial time series forecasting systems.
 
 ## Take the Assessments
 
@@ -23,8 +25,8 @@ Complete all quizzes below to demonstrate your understanding of effective Claude
 ## Instructions
 
 1. Complete each quiz in order
-2. Enter your **full name** and **role** when prompted
-3. Answer all questions - there is no time limit
+2. Enter your **full name** when prompted
+3. Answer all questions — there is no time limit
 4. Results are submitted automatically
 
 ## Resources
