@@ -37,4 +37,4 @@ Complete all quizzes below to demonstrate your understanding of effective Claude
 
 ---
 
-_Questions? Contact your BruntWork coordinator._
+_Questions? Contact your hiring coordinator._
