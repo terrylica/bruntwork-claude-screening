@@ -10,8 +10,10 @@
 # ]
 # ///
 """
-Add candidate info fields (Name, Role) to all Google Forms.
+Add candidate info fields (Name) to all Google Forms.
 Email is collected via form settings (must be enabled manually in Google Forms UI).
+
+Position: Remote Vibe Coder - Claude Code CLI for Financial Time Series Forecasting
 
 Usage:
     uv run add_candidate_fields.py           # Add fields to all forms
@@ -103,7 +105,7 @@ def add_fields_to_form(forms_service, form_id: str, form_title: str) -> bool:
         forms_service.forms().batchUpdate(
             formId=form_id, body={"requests": requests}
         ).execute()
-        print(f"   [OK] Added 'Full Name' and 'VA Role Applying For' fields")
+        print("   [OK] Added 'Full Name' and 'VA Role Applying For' fields")
         return True
     except HttpError as e:
         print(f"   [FAIL] HTTP {e.resp.status}: {e.reason}")
