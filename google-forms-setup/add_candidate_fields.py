@@ -37,18 +37,6 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive",
 ]
 
-# VA Role options for BruntWork screening
-VA_ROLES = [
-    "Executive Virtual Assistant",
-    "Customer Support VA",
-    "Technical Support VA",
-    "Data Entry VA",
-    "Social Media VA",
-    "Bookkeeping VA",
-    "Other",
-]
-
-
 def authenticate():
     """Load saved credentials."""
     if not TOKEN_FILE.exists():
@@ -58,12 +46,11 @@ def authenticate():
 
 
 def add_fields_to_form(forms_service, form_id: str, form_title: str) -> bool:
-    """Add Name and Role fields to the beginning of a form."""
+    """Add Name field to the beginning of a form."""
     print(f"\nUpdating: {form_title}")
 
-    # Create requests to add fields at the beginning (index 0)
+    # Create request to add Full Name field at the beginning (index 0)
     requests = [
-        # Add Full Name field at index 0
         {
             "createItem": {
                 "item": {
@@ -79,33 +66,13 @@ def add_fields_to_form(forms_service, form_id: str, form_title: str) -> bool:
                 "location": {"index": 0},
             }
         },
-        # Add VA Role field at index 1
-        {
-            "createItem": {
-                "item": {
-                    "title": "VA Role Applying For",
-                    "description": "Select the virtual assistant role you are applying for.",
-                    "questionItem": {
-                        "question": {
-                            "required": True,
-                            "choiceQuestion": {
-                                "type": "DROP_DOWN",
-                                "options": [{"value": role} for role in VA_ROLES],
-                                "shuffle": False,
-                            },
-                        }
-                    },
-                },
-                "location": {"index": 1},
-            }
-        },
     ]
 
     try:
         forms_service.forms().batchUpdate(
             formId=form_id, body={"requests": requests}
         ).execute()
-        print("   [OK] Added 'Full Name' and 'VA Role Applying For' fields")
+        print("   [OK] Added 'Full Name' field")
         return True
     except HttpError as e:
         print(f"   [FAIL] HTTP {e.resp.status}: {e.reason}")
