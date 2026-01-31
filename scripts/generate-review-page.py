@@ -28,6 +28,7 @@ QUIZ_ORDER = [
     "safety-autonomy.json",
     "agents-deep-dive.json",
     "hooks-lifecycle.json",
+    "integration-tools.json",
 ]
 
 
