@@ -29,7 +29,7 @@ toc_sticky: true
 > This page contains all correct answers with explanations and authoritative citations.
 > Use this as a learning resource alongside the [assessment quizzes](./).
 
-*Generated: 2026-01-25 17:08*
+*Generated: 2026-01-30 18:23*
 
 ---
 
@@ -37,11 +37,11 @@ toc_sticky: true
 
 | Metric | Value |
 | ------ | ----- |
-| Total Questions | 46 |
-| Domains | 4 |
+| Total Questions | 63 |
+| Domains | 5 |
 | Citation Coverage | 100% |
-| Tier 1 (Official) | 96% |
-| Tier 2 (Internal) | 4% |
+| Tier 1 (Official) | 94% |
+| Tier 2 (Internal) | 6% |
 | Tier 3 (Community) | 0% |
 
 ---
@@ -52,8 +52,9 @@ toc_sticky: true
 | - | ------ | --------- | ------ | ---- |
 | 1 | Prompting & Context | 10 | 35% | [Go](#effective-prompting) |
 | 2 | Safety & Control | 10 | 30% | [Go](#safety-autonomy) |
-| 3 | Advanced Architecture | 16 | 20% | [Go](#agents-deep-dive) |
-| 4 | Hooks & Automation | 10 | 20% | [Go](#hooks-lifecycle) |
+| 3 | Advanced Architecture | 24 | 20% | [Go](#agents-deep-dive) |
+| 4 | Hooks & Automation | 13 | 20% | [Go](#hooks-lifecycle) |
+| 5 | Integration & Workflows | 6 | 15% | [Go](#integration-tools) |
 
 ---
 
@@ -935,6 +936,198 @@ toc_sticky: true
 
 ---
 
+### Q17. How do you toggle the task list view in Claude Code?
+
+| Option | |
+| ------ | --- |
+| A. Type /tasks in the prompt | |
+| **B. Press Ctrl+T (or Cmd+T on Mac)** | ✓ |
+| C. Click the Tasks icon in the sidebar | |
+| D. Run claude --tasks from the terminal | |
+
+**Explanation**: WHY THIS MATTERS: The task list is Claude Code's project management interface, showing up to 10 tasks with their status. Ctrl+T gives instant visibility into what Claude is tracking. This is especially valuable during complex multi-step work - you can see the plan, what's done, and what's blocked. It transforms Claude from a chat interface into a project dashboard.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Interactive Mode<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/interactive-mode">Claude Code Interactive Mode</a><br>
+<strong>Section</strong>: Task Management<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Press Ctrl+T to toggle the task list view, which displays up to 10 tasks with their current status."</blockquote>
+
+</details>
+
+---
+
+### Q18. What is the correct format for TaskCreate's 'subject' vs 'activeForm' fields?
+
+| Option | |
+| ------ | --- |
+| A. Both should use past tense (e.g., 'Fixed the bug') | |
+| **B. Subject: imperative (e.g., 'Fix the bug'), activeForm: present continuous (e.g., 'Fixing the bug')** | ✓ |
+| C. Subject: noun phrase (e.g., 'Bug fix'), activeForm: imperative (e.g., 'Fix the bug') | |
+| D. Both should use present continuous (e.g., 'Fixing the bug') | |
+
+**Explanation**: WHY THIS MATTERS: This distinction serves different UI purposes. The 'subject' is the permanent task label - imperative verbs ('Add', 'Fix', 'Refactor') clearly state what needs doing. The 'activeForm' appears in the spinner while the task runs - present continuous ('Adding', 'Fixing') shows ongoing work. Getting this right makes the task list readable and the spinner informative.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Task Management<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/interactive-mode">Claude Code Task Management</a><br>
+<strong>Section</strong>: TaskCreate<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Subject field uses imperative form ('Implement X', 'Add Y'), while activeForm uses present continuous ('Implementing X') for the spinner display."</blockquote>
+
+</details>
+
+---
+
+### Q19. How do you share a task list across multiple Claude Code sessions?
+
+| Option | |
+| ------ | --- |
+| A. Export tasks to a JSON file and import in each session | |
+| **B. Set CLAUDE_CODE_TASK_LIST_ID environment variable before launching** | ✓ |
+| C. Use the /share command within Claude Code | |
+| D. Tasks are automatically shared across all sessions | |
+
+**Explanation**: WHY THIS MATTERS: Cross-session task sharing enables team workflows and persistent project tracking. By setting CLAUDE_CODE_TASK_LIST_ID=my-project before running claude, all sessions share the same task list. This is powerful for long-running projects where you work across multiple terminal windows or days. Tasks persist even when context is compacted.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Interactive Mode<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/interactive-mode">Claude Code Interactive Mode</a><br>
+<strong>Section</strong>: Cross-Session Tasks<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Share task lists across sessions with CLAUDE_CODE_TASK_LIST_ID=my-project claude."</blockquote>
+
+</details>
+
+---
+
+### Q20. When should you NOT use the Task system in Claude Code?
+
+| Option | |
+| ------ | --- |
+| A. For multi-step implementation projects | |
+| **B. For single trivial fixes like typos or one-line changes** | ✓ |
+| C. When tracking dependencies between tasks | |
+| D. During plan mode workflows | |
+
+**Explanation**: WHY THIS MATTERS: Tasks add overhead - creation, status updates, visibility in the UI. For a typo fix, this overhead exceeds the benefit. Use tasks when work benefits from tracking: multi-step projects, dependency chains, cross-session continuity. Skip tasks for quick fixes that complete in under 3 steps. The tool exists to organize complexity, not to bureaucratize simplicity.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Task Management<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/interactive-mode">Claude Code Task Management</a><br>
+<strong>Section</strong>: When to Use Tasks<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Do not use tasks for single trivial fixes, pure research/exploration, or tasks completable in fewer than 3 steps."</blockquote>
+
+</details>
+
+---
+
+### Q21. What happens when a skill and a slash command share the same name?
+
+| Option | |
+| ------ | --- |
+| A. An error is thrown and neither runs | |
+| B. The slash command takes precedence | |
+| **C. The skill takes precedence** | ✓ |
+| D. The user is prompted to choose | |
+
+**Explanation**: WHY THIS MATTERS: This precedence rule lets you override built-in behavior with custom skills. If you create a /commit skill, it runs instead of any built-in commit command. This design choice enables progressive customization - start with defaults, replace them as your workflow matures. It's the extensibility pattern that makes Claude Code adaptable to any team's conventions.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Skills<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/skills">Claude Code Skills</a><br>
+<strong>Section</strong>: Skills vs Commands<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"If a skill and a command share the same name, the skill takes precedence."</blockquote>
+
+</details>
+
+---
+
+### Q22. Where are project-specific skills stored so teammates get them when cloning?
+
+| Option | |
+| ------ | --- |
+| A. ~/.claude/skills/ (global home directory) | |
+| **B. .claude/skills/ (project root, version-controlled)** | ✓ |
+| C. ~/.config/claude/skills/ (XDG config) | |
+| D. package.json skills section | |
+
+**Explanation**: WHY THIS MATTERS: Project-root storage means skills travel with your code. When teammates clone, they get your custom /deploy, /test, and /review skills automatically. No manual setup, no drift between team members. This is 'team-shared commands via Git' - encode your workflow once, distribute it through your normal version control process.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Skills<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/skills">Claude Code Skills</a><br>
+<strong>Section</strong>: Skill Locations<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Project-specific skills in .claude/skills/ are version-controlled with your code, enabling team-shared commands via Git."</blockquote>
+
+</details>
+
+---
+
+### Q23. What is the difference between global skills (~/.claude/skills/) and project skills (.claude/skills/)?
+
+| Option | |
+| ------ | --- |
+| A. Global skills run faster | |
+| **B. Global skills apply to all projects, project skills only to the current repository** | ✓ |
+| C. Global skills have more permissions | |
+| D. There is no functional difference | |
+
+**Explanation**: WHY THIS MATTERS: This scoping matches how developers think about tooling. Personal preferences (your /fmt skill for formatting) go global. Project conventions (your team's /deploy skill) go in the project. Global skills let you carry your workflow everywhere; project skills ensure everyone on the team follows the same procedures. Use both layers intentionally.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Skills<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/skills">Claude Code Skills</a><br>
+<strong>Section</strong>: Skill Scopes<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Global skills in ~/.claude/skills/ apply to all projects. Project skills in .claude/skills/ are scoped to the repository."</blockquote>
+
+</details>
+
+---
+
+### Q24. How are slash commands and skills related in recent Claude Code versions?
+
+| Option | |
+| ------ | --- |
+| A. They are completely separate systems | |
+| B. Slash commands call skills internally | |
+| **C. Skills and commands were merged - both create slash commands** | ✓ |
+| D. Skills replaced slash commands entirely | |
+
+**Explanation**: WHY THIS MATTERS: This merge simplified the mental model. Previously, you had to know whether something was a 'command' or a 'skill.' Now, everything is a slash command - some are built-in, some come from skills. You invoke them the same way (/name), they appear in the same autocomplete list, and skills can override built-ins. One concept instead of two.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Skills<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/skills">Claude Code Skills</a><br>
+<strong>Section</strong>: Skills Overview<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Skills create slash commands that can be invoked with /skill-name. Built-in commands and skill-defined commands share the same invocation pattern."</blockquote>
+
+</details>
+
+---
+
 
 ## Claude Code Hooks Lifecycle
 
@@ -1175,6 +1368,227 @@ toc_sticky: true
 <strong>Section</strong>: Stop/SubagentStop Decision Control<br>
 <strong>Access Date</strong>: 2026-01-24<br>
 <blockquote style="font-size: 0.85em; margin: 0.5em 0;">"If continue is false, Claude stops processing after the hooks run. 'block' prevents Claude from stopping. You must populate reason for Claude to know how to proceed. undefined allows Claude to stop."</blockquote>
+
+</details>
+
+---
+
+### Q11. What is headless mode in Claude Code and when would you use it?
+
+| Option | |
+| ------ | --- |
+| A. Running Claude without a display for accessibility | |
+| **B. Non-interactive mode for CI/CD pipelines and automation scripts** | ✓ |
+| C. A low-resource mode for slow computers | |
+| D. Running multiple Claude instances simultaneously | |
+
+**Explanation**: WHY THIS MATTERS: Headless mode transforms Claude Code from an interactive assistant into an automation tool. In CI/CD, you can have Claude review PRs, generate documentation, or run code analysis - all without human interaction. This enables 'Claude as a service' patterns where automated workflows invoke Claude for specific tasks. It's the bridge between interactive coding and automated pipelines.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: Headless Mode<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Headless mode enables non-interactive execution for CI/CD pipelines, automation scripts, and programmatic access to Claude Code capabilities."</blockquote>
+
+</details>
+
+---
+
+### Q12. How do you run Claude Code in headless mode with a prompt?
+
+| Option | |
+| ------ | --- |
+| A. claude --headless "your prompt" | |
+| **B. claude -p "your prompt"** | ✓ |
+| C. echo "your prompt" | claude --no-interactive | |
+| D. claude run "your prompt" | |
+
+**Explanation**: WHY THIS MATTERS: The -p flag is the gateway to automation. Combined with --output-format json, you get structured results for parsing. Combined with --allowedTools, you control exactly what Claude can do. This simple flag unlocks use cases from automated code review to scheduled documentation updates to integration testing. Master -p and you unlock Claude as a programmable service.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: Command Line Options<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Use -p or --prompt to run Claude Code in headless mode with a specified prompt, without starting the interactive interface."</blockquote>
+
+</details>
+
+---
+
+### Q13. What output format option is most useful for parsing Claude Code results in scripts?
+
+| Option | |
+| ------ | --- |
+| A. --output-format text (human readable) | |
+| **B. --output-format json (structured, machine parseable)** | ✓ |
+| C. --output-format markdown (documentation ready) | |
+| D. --output-format xml (legacy compatibility) | |
+
+**Explanation**: WHY THIS MATTERS: JSON output turns Claude's responses into data you can programmatically process. Extract specific fields, check for errors, feed results into other tools. In a CI pipeline, you might parse JSON to determine if Claude found issues, what files were modified, or whether tests passed. This is the interface between Claude's intelligence and your automation infrastructure.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: Output Formats<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Use --output-format json for structured output that can be parsed by scripts and automation tools."</blockquote>
+
+</details>
+
+---
+
+
+## Claude Code Integration Tools
+
+*Domain: Integration & Workflows | Weight: 15%*
+
+### Q1. What is MCP (Model Context Protocol) in Claude Code?
+
+| Option | |
+| ------ | --- |
+| A. A compression algorithm for context windows | |
+| **B. A protocol for connecting external tools and data sources to Claude** | ✓ |
+| C. A security mechanism for permission management | |
+| D. A caching layer for faster responses | |
+
+**Explanation**: WHY THIS MATTERS: MCP extends Claude Code beyond its built-in tools. Database connectors, API integrations, custom search engines - MCP servers provide these capabilities through a standardized protocol. This is how you make Claude Code domain-specific: connect it to your internal tools, your company's APIs, your specialized data sources. It transforms Claude from a general assistant into a specialized team member.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code MCP Integration<br>
+<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/mcp">Claude Code MCP Integration</a><br>
+<strong>Section</strong>: Overview<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Model Context Protocol (MCP) is a protocol for connecting external tools and data sources to Claude, extending its capabilities beyond built-in tools."</blockquote>
+
+</details>
+
+---
+
+### Q2. What is Tool Search in Claude Code and why is it valuable?
+
+| Option | |
+| ------ | --- |
+| A. A way to find files by name | |
+| **B. A feature that reduces token usage by lazy-loading tool descriptions only when needed** | ✓ |
+| C. A search engine for finding community tools | |
+| D. A debugging tool for inspecting tool calls | |
+
+**Explanation**: WHY THIS MATTERS: Every tool description consumes context tokens. With many MCP servers, you could spend 40%+ of your context just describing available tools. Tool Search solves this by loading tool descriptions on-demand - Claude sees a tool index initially, then fetches full descriptions only for tools it might use. This optimization enables large tool libraries without context bloat.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: Claude Code MCP Integration<br>
+<strong>URL</strong>: <a href="https://docs.anthropic.com/en/docs/claude-code/mcp">Claude Code MCP Integration</a><br>
+<strong>Section</strong>: Tool Search<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Tool Search provides significant token reduction by lazy-loading tool descriptions only when Claude determines they may be relevant to the current task."</blockquote>
+
+</details>
+
+---
+
+### Q3. What security consideration is important when configuring MCP servers?
+
+| Option | |
+| ------ | --- |
+| A. MCP servers run in a sandbox and cannot access the network | |
+| **B. MCP servers have full system access - only use trusted servers** | ✓ |
+| C. MCP servers are automatically audited by Anthropic | |
+| D. MCP servers can only read data, not write | |
+
+**Explanation**: WHY THIS MATTERS: MCP servers execute code on your machine with your permissions. A malicious or buggy server could read your files, make network requests, or modify data. Only install MCP servers from trusted sources, audit their code if possible, and understand what permissions they need. The power of MCP comes with responsibility for vetting what you connect.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Security<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/security">Claude Code Security</a><br>
+<strong>Section</strong>: MCP Security<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"MCP servers run with your user permissions. Only install MCP servers from trusted sources and review their capabilities before enabling."</blockquote>
+
+</details>
+
+---
+
+### Q4. What are git worktrees and why are they useful with Claude Code?
+
+| Option | |
+| ------ | --- |
+| A. A visualization of git history | |
+| **B. Multiple working directories from one repo, enabling parallel Claude sessions on different branches** | ✓ |
+| C. A backup mechanism for git repositories | |
+| D. A way to merge branches faster | |
+
+**Explanation**: WHY THIS MATTERS: Worktrees let you have multiple checked-out copies of your repo, each on a different branch. Run one Claude session exploring a refactor in worktree A while another implements a feature in worktree B. No context switching, no stashing, no branch conflicts. This is the power-user pattern for parallel exploration - multiple Claudes, multiple branches, all progressing simultaneously.
+
+<details open class="citation">
+<summary>Citation [Tier 2 - Community] (90% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Advanced Workflows<br>
+<strong>URL</strong>: <a href="https://www.anthropic.com/engineering/claude-code-best-practices">Claude Code Advanced Workflows</a><br>
+<strong>Section</strong>: Parallel Development<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Git worktrees enable parallel Claude Code sessions by providing separate working directories for different branches of the same repository."</blockquote>
+
+</details>
+
+---
+
+### Q5. How does CLAUDE.md work across git worktrees?
+
+| Option | |
+| ------ | --- |
+| A. Each worktree needs its own CLAUDE.md | |
+| **B. CLAUDE.md is shared because it's in the repo - changes in one worktree appear in others after commit** | ✓ |
+| C. CLAUDE.md is ignored in worktrees | |
+| D. Worktrees use the global ~/.claude/CLAUDE.md only | |
+
+**Explanation**: WHY THIS MATTERS: CLAUDE.md is version-controlled, so it travels with your code. When you improve CLAUDE.md in one worktree and commit, other worktrees get the update when they pull. This creates a shared 'team memory' that evolves with your project. Pro tip: designate one branch as the CLAUDE.md improvement branch and periodically merge those insights to all feature branches.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Best Practices<br>
+<strong>URL</strong>: <a href="https://www.anthropic.com/engineering/claude-code-best-practices">Claude Code Best Practices</a><br>
+<strong>Section</strong>: Using CLAUDE.md<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"CLAUDE.md is version-controlled with your code, so improvements made in one branch propagate to others through normal git workflows."</blockquote>
+
+</details>
+
+---
+
+### Q6. What is the recommended workflow for parallel Claude sessions using worktrees?
+
+| Option | |
+| ------ | --- |
+| A. Run all sessions in the same directory with different terminals | |
+| **B. Create worktrees for independent tasks, run separate Claude sessions in each** | ✓ |
+| C. Use a single Claude session and rapidly switch branches | |
+| D. Parallel sessions are not recommended | |
+
+**Explanation**: WHY THIS MATTERS: This workflow maximizes parallelism while maintaining isolation. Each worktree has its own file state, so Claude sessions don't interfere with each other. You can have Claude exploring architecture options in one worktree while implementing a known feature in another. The key is 'independent tasks' - parallel work that doesn't need to coordinate minute-by-minute.
+
+<details open class="citation">
+<summary>Citation [Tier 2 - Community] (90% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Advanced Workflows<br>
+<strong>URL</strong>: <a href="https://www.anthropic.com/engineering/claude-code-best-practices">Claude Code Advanced Workflows</a><br>
+<strong>Section</strong>: Parallel Development<br>
+<strong>Access Date</strong>: 2026-01-30<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"For parallel development, create worktrees for independent tasks and run separate Claude Code sessions in each, allowing simultaneous progress without interference."</blockquote>
 
 </details>
 
