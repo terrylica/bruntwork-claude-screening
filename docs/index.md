@@ -15,12 +15,13 @@ This screening assesses your proficiency with Claude Code, Anthropic's agentic c
 
 Complete all quizzes below to demonstrate your understanding of effective Claude Code usage.
 
-| Assessment              | Domain                | Questions | Take Quiz                                                                                           |
-| ----------------------- | --------------------- | --------- | --------------------------------------------------------------------------------------------------- |
-| **Effective Prompting** | Prompting & Context   | 10        | [Start Quiz](https://docs.google.com/forms/d/1bMyJZ2dBN7K5Ygr3EycXpz_xjVWMHRrUvZHzhrHMvOM/viewform) |
-| **Safety & Autonomy**   | Safety & Control      | 10        | [Start Quiz](https://docs.google.com/forms/d/1x3-mRvHhoQ8dXTrCXYZ8GWdiZ4c8io62qJdRA65D-OQ/viewform) |
-| **Agents Deep Dive**    | Advanced Architecture | 16        | [Start Quiz](https://docs.google.com/forms/d/1LPnXuvgMBhOIbpCnIN3pAfRQBNkYq_R2wuKZ4okpbV8/viewform) |
-| **Hooks Lifecycle**     | Hooks & Automation    | 10        | [Start Quiz](https://docs.google.com/forms/d/17Hi3-GHYe2zj_oc0ooqIqlS_dfT_-IEW1iI8H3ptsDc/viewform) |
+| Assessment              | Domain                  | Questions | Take Quiz                                                                                           |
+| ----------------------- | ----------------------- | --------- | --------------------------------------------------------------------------------------------------- |
+| **Effective Prompting** | Prompting & Context     | 10        | [Start Quiz](https://docs.google.com/forms/d/1bMyJZ2dBN7K5Ygr3EycXpz_xjVWMHRrUvZHzhrHMvOM/viewform) |
+| **Safety & Autonomy**   | Safety & Control        | 10        | [Start Quiz](https://docs.google.com/forms/d/1x3-mRvHhoQ8dXTrCXYZ8GWdiZ4c8io62qJdRA65D-OQ/viewform) |
+| **Agents Deep Dive**    | Advanced Architecture   | 24        | [Start Quiz](https://docs.google.com/forms/d/1LPnXuvgMBhOIbpCnIN3pAfRQBNkYq_R2wuKZ4okpbV8/viewform) |
+| **Hooks Lifecycle**     | Hooks & Automation      | 13        | [Start Quiz](https://docs.google.com/forms/d/17Hi3-GHYe2zj_oc0ooqIqlS_dfT_-IEW1iI8H3ptsDc/viewform) |
+| **Integration Tools**   | Integration & Workflows | 6         | _(Form pending)_                                                                                    |
 
 ## Instructions
 

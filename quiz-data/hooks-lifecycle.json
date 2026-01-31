@@ -353,6 +353,111 @@
           }
         ]
       }
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "What is headless mode in Claude Code and when would you use it?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Running Claude without a display for accessibility",
+        "Non-interactive mode for CI/CD pipelines and automation scripts",
+        "A low-resource mode for slow computers",
+        "Running multiple Claude instances simultaneously"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Non-interactive mode for CI/CD pipelines and automation scripts",
+      "explanation": "WHY THIS MATTERS: Headless mode transforms Claude Code from an interactive assistant into an automation tool. In CI/CD, you can have Claude review PRs, generate documentation, or run code analysis - all without human interaction. This enables 'Claude as a service' patterns where automated workflows invoke Claude for specific tasks. It's the bridge between interactive coding and automated pipelines.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code CLI Reference",
+              "url": "https://code.claude.com/docs/en/cli-reference",
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Headless Mode",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Headless mode enables non-interactive execution for CI/CD pipelines, automation scripts, and programmatic access to Claude Code capabilities."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 11,
+      "questionText": "How do you run Claude Code in headless mode with a prompt?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "claude --headless \"your prompt\"",
+        "claude -p \"your prompt\"",
+        "echo \"your prompt\" | claude --no-interactive",
+        "claude run \"your prompt\""
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "claude -p \"your prompt\"",
+      "explanation": "WHY THIS MATTERS: The -p flag is the gateway to automation. Combined with --output-format json, you get structured results for parsing. Combined with --allowedTools, you control exactly what Claude can do. This simple flag unlocks use cases from automated code review to scheduled documentation updates to integration testing. Master -p and you unlock Claude as a programmable service.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code CLI Reference",
+              "url": "https://code.claude.com/docs/en/cli-reference",
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Command Line Options",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Use -p or --prompt to run Claude Code in headless mode with a specified prompt, without starting the interactive interface."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 12,
+      "questionText": "What output format option is most useful for parsing Claude Code results in scripts?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "--output-format text (human readable)",
+        "--output-format json (structured, machine parseable)",
+        "--output-format markdown (documentation ready)",
+        "--output-format xml (legacy compatibility)"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "--output-format json (structured, machine parseable)",
+      "explanation": "WHY THIS MATTERS: JSON output turns Claude's responses into data you can programmatically process. Extract specific fields, check for errors, feed results into other tools. In a CI pipeline, you might parse JSON to determine if Claude found issues, what files were modified, or whether tests passed. This is the interface between Claude's intelligence and your automation infrastructure.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code CLI Reference",
+              "url": "https://code.claude.com/docs/en/cli-reference",
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Output Formats",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Use --output-format json for structured output that can be parsed by scripts and automation tools."
+          }
+        ]
+      }
     }
   ]
 }

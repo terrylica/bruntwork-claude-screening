@@ -49,12 +49,13 @@ bruntwork-claude-screening/
 │   ├── CLAUDE.md                ← Documentation spoke
 │   ├── adr/                     ← Architecture decisions
 │   └── design/                  ← Quiz design specs
-├── quiz-data/                   ← JSON quiz definitions (46 questions)
+├── quiz-data/                   ← JSON quiz definitions (63 questions)
 │   ├── CLAUDE.md                ← Quiz authoring guide
 │   ├── effective-prompting.json ← Context & CLAUDE.md (10 Q)
 │   ├── safety-autonomy.json     ← Permissions & safety (10 Q)
-│   ├── agents-deep-dive.json    ← Architecture principles (16 Q)
-│   └── hooks-lifecycle.json     ← Advanced hooks (10 Q)
+│   ├── agents-deep-dive.json    ← Architecture + Tasks + Skills (24 Q)
+│   ├── hooks-lifecycle.json     ← Hooks + Headless mode (13 Q)
+│   └── integration-tools.json   ← MCP + Git Worktrees (6 Q)
 ├── google-forms-setup/          ← Forms API integration spoke
 │   ├── CLAUDE.md                ← Setup guide
 │   ├── create_forms.py          ← Form creation
@@ -73,14 +74,15 @@ bruntwork-claude-screening/
 
 **Philosophy**: Focus on principles, not tool micromanagement. Claude Code v2.1+ autonomously selects tools - users should describe WHAT they want, not HOW.
 
-| Domain                    | Weight | Questions | Focus Areas                                          |
-| ------------------------- | ------ | --------- | ---------------------------------------------------- |
-| **Prompting & Context**   | 35%    | 10        | CLAUDE.md, clear instructions, vibe coding patterns  |
-| **Safety & Control**      | 30%    | 10        | Permissions, destructive ops, autonomy levels        |
-| **Advanced Architecture** | 20%    | 16        | Skills vs subagents, context gatekeeping, simplicity |
-| **Hooks & Automation**    | 15%    | 10        | Exit codes, blocking patterns, visibility            |
+| Domain                      | Weight | Questions | Focus Areas                                         |
+| --------------------------- | ------ | --------- | --------------------------------------------------- |
+| **Prompting & Context**     | 25%    | 10        | CLAUDE.md, clear instructions, vibe coding patterns |
+| **Safety & Control**        | 20%    | 10        | Permissions, destructive ops, autonomy levels       |
+| **Advanced Architecture**   | 30%    | 24        | Skills vs subagents, Tasks, context gatekeeping     |
+| **Hooks & Automation**      | 15%    | 13        | Exit codes, blocking patterns, headless mode        |
+| **Integration & Workflows** | 10%    | 6         | MCP, Tool Search, git worktrees, parallel sessions  |
 
-**Total**: 46 questions across 4 assessments
+**Total**: 63 questions across 5 assessments
 
 ### Citation Schema
 

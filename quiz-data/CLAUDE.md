@@ -129,12 +129,13 @@ mise run quiz:validate-citations
 
 ## Current Quiz Files
 
-| File                       | Domain                | Questions | Focus                                         |
-| -------------------------- | --------------------- | --------- | --------------------------------------------- |
-| `effective-prompting.json` | Prompting & Context   | 10        | CLAUDE.md, clear instructions, vibe coding    |
-| `safety-autonomy.json`     | Safety & Control      | 10        | Permissions, destructive ops, autonomy levels |
-| `agents-deep-dive.json`    | Advanced Architecture | 16        | Skills vs subagents, context gatekeeping      |
-| `hooks-lifecycle.json`     | Hooks & Automation    | 10        | Exit codes, blocking, visibility patterns     |
+| File                       | Domain                  | Questions | Focus                                              |
+| -------------------------- | ----------------------- | --------- | -------------------------------------------------- |
+| `effective-prompting.json` | Prompting & Context     | 10        | CLAUDE.md, clear instructions, vibe coding         |
+| `safety-autonomy.json`     | Safety & Control        | 10        | Permissions, destructive ops, autonomy levels      |
+| `agents-deep-dive.json`    | Advanced Architecture   | 24        | Skills vs subagents, Tasks, context gatekeeping    |
+| `hooks-lifecycle.json`     | Hooks & Automation      | 13        | Exit codes, blocking, headless mode                |
+| `integration-tools.json`   | Integration & Workflows | 6         | MCP, Tool Search, git worktrees, parallel sessions |
 
 ## Related
 
