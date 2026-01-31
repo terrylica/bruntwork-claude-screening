@@ -1,0 +1,219 @@
+{
+  "title": "Claude Code Integration Tools Assessment",
+  "description": "Assessment covering MCP (Model Context Protocol) integration, Tool Search optimization, and git worktree workflows for parallel Claude Code sessions.",
+  "isQuiz": true,
+  "domain": "Integration & Workflows",
+  "weight": 0.15,
+  "questions": [
+    {
+      "questionNumber": 0,
+      "questionText": "What is MCP (Model Context Protocol) in Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "A compression algorithm for context windows",
+        "A protocol for connecting external tools and data sources to Claude",
+        "A security mechanism for permission management",
+        "A caching layer for faster responses"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "A protocol for connecting external tools and data sources to Claude",
+      "explanation": "WHY THIS MATTERS: MCP extends Claude Code beyond its built-in tools. Database connectors, API integrations, custom search engines - MCP servers provide these capabilities through a standardized protocol. This is how you make Claude Code domain-specific: connect it to your internal tools, your company's APIs, your specialized data sources. It transforms Claude from a general assistant into a specialized team member.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code MCP Integration",
+              "url": "https://docs.anthropic.com/en/docs/claude-code/mcp",
+              "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/mcp",
+              "section": "Overview",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Model Context Protocol (MCP) is a protocol for connecting external tools and data sources to Claude, extending its capabilities beyond built-in tools."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 1,
+      "questionText": "What is Tool Search in Claude Code and why is it valuable?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "A way to find files by name",
+        "A feature that reduces token usage by lazy-loading tool descriptions only when needed",
+        "A search engine for finding community tools",
+        "A debugging tool for inspecting tool calls"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "A feature that reduces token usage by lazy-loading tool descriptions only when needed",
+      "explanation": "WHY THIS MATTERS: Every tool description consumes context tokens. With many MCP servers, you could spend 40%+ of your context just describing available tools. Tool Search solves this by loading tool descriptions on-demand - Claude sees a tool index initially, then fetches full descriptions only for tools it might use. This optimization enables large tool libraries without context bloat.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code MCP Integration",
+              "url": "https://docs.anthropic.com/en/docs/claude-code/mcp",
+              "onlineUrl": "https://docs.anthropic.com/en/docs/claude-code/mcp",
+              "section": "Tool Search",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Tool Search provides significant token reduction by lazy-loading tool descriptions only when Claude determines they may be relevant to the current task."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "What security consideration is important when configuring MCP servers?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "MCP servers run in a sandbox and cannot access the network",
+        "MCP servers have full system access - only use trusted servers",
+        "MCP servers are automatically audited by Anthropic",
+        "MCP servers can only read data, not write"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "MCP servers have full system access - only use trusted servers",
+      "explanation": "WHY THIS MATTERS: MCP servers execute code on your machine with your permissions. A malicious or buggy server could read your files, make network requests, or modify data. Only install MCP servers from trusted sources, audit their code if possible, and understand what permissions they need. The power of MCP comes with responsibility for vetting what you connect.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Security",
+              "url": "https://code.claude.com/docs/en/security",
+              "onlineUrl": "https://code.claude.com/docs/en/security",
+              "section": "MCP Security",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "MCP servers run with your user permissions. Only install MCP servers from trusted sources and review their capabilities before enabling."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "What are git worktrees and why are they useful with Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "A visualization of git history",
+        "Multiple working directories from one repo, enabling parallel Claude sessions on different branches",
+        "A backup mechanism for git repositories",
+        "A way to merge branches faster"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Multiple working directories from one repo, enabling parallel Claude sessions on different branches",
+      "explanation": "WHY THIS MATTERS: Worktrees let you have multiple checked-out copies of your repo, each on a different branch. Run one Claude session exploring a refactor in worktree A while another implements a feature in worktree B. No context switching, no stashing, no branch conflicts. This is the power-user pattern for parallel exploration - multiple Claudes, multiple branches, all progressing simultaneously.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code Advanced Workflows",
+              "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "onlineUrl": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "section": "Parallel Development",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "Community",
+              "confidence": 0.90
+            },
+            "quotedText": "Git worktrees enable parallel Claude Code sessions by providing separate working directories for different branches of the same repository."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "How does CLAUDE.md work across git worktrees?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Each worktree needs its own CLAUDE.md",
+        "CLAUDE.md is shared because it's in the repo - changes in one worktree appear in others after commit",
+        "CLAUDE.md is ignored in worktrees",
+        "Worktrees use the global ~/.claude/CLAUDE.md only"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "CLAUDE.md is shared because it's in the repo - changes in one worktree appear in others after commit",
+      "explanation": "WHY THIS MATTERS: CLAUDE.md is version-controlled, so it travels with your code. When you improve CLAUDE.md in one worktree and commit, other worktrees get the update when they pull. This creates a shared 'team memory' that evolves with your project. Pro tip: designate one branch as the CLAUDE.md improvement branch and periodically merge those insights to all feature branches.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code Best Practices",
+              "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "onlineUrl": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "section": "Using CLAUDE.md",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "CLAUDE.md is version-controlled with your code, so improvements made in one branch propagate to others through normal git workflows."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "What is the recommended workflow for parallel Claude sessions using worktrees?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Run all sessions in the same directory with different terminals",
+        "Create worktrees for independent tasks, run separate Claude sessions in each",
+        "Use a single Claude session and rapidly switch branches",
+        "Parallel sessions are not recommended"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Create worktrees for independent tasks, run separate Claude sessions in each",
+      "explanation": "WHY THIS MATTERS: This workflow maximizes parallelism while maintaining isolation. Each worktree has its own file state, so Claude sessions don't interfere with each other. You can have Claude exploring architecture options in one worktree while implementing a known feature in another. The key is 'independent tasks' - parallel work that doesn't need to coordinate minute-by-minute.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code Advanced Workflows",
+              "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "onlineUrl": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "section": "Parallel Development",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "Community",
+              "confidence": 0.90
+            },
+            "quotedText": "For parallel development, create worktrees for independent tasks and run separate Claude Code sessions in each, allowing simultaneous progress without interference."
+          }
+        ]
+      }
+    }
+  ]
+}

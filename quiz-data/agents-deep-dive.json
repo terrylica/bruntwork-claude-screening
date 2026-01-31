@@ -564,6 +564,286 @@
           }
         ]
       }
+    },
+    {
+      "questionNumber": 16,
+      "questionText": "How do you toggle the task list view in Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Type /tasks in the prompt",
+        "Press Ctrl+T (or Cmd+T on Mac)",
+        "Click the Tasks icon in the sidebar",
+        "Run claude --tasks from the terminal"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Press Ctrl+T (or Cmd+T on Mac)",
+      "explanation": "WHY THIS MATTERS: The task list is Claude Code's project management interface, showing up to 10 tasks with their status. Ctrl+T gives instant visibility into what Claude is tracking. This is especially valuable during complex multi-step work - you can see the plan, what's done, and what's blocked. It transforms Claude from a chat interface into a project dashboard.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Interactive Mode",
+              "url": "https://code.claude.com/docs/en/interactive-mode",
+              "onlineUrl": "https://code.claude.com/docs/en/interactive-mode",
+              "section": "Task Management",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Press Ctrl+T to toggle the task list view, which displays up to 10 tasks with their current status."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 17,
+      "questionText": "What is the correct format for TaskCreate's 'subject' vs 'activeForm' fields?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Both should use past tense (e.g., 'Fixed the bug')",
+        "Subject: imperative (e.g., 'Fix the bug'), activeForm: present continuous (e.g., 'Fixing the bug')",
+        "Subject: noun phrase (e.g., 'Bug fix'), activeForm: imperative (e.g., 'Fix the bug')",
+        "Both should use present continuous (e.g., 'Fixing the bug')"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Subject: imperative (e.g., 'Fix the bug'), activeForm: present continuous (e.g., 'Fixing the bug')",
+      "explanation": "WHY THIS MATTERS: This distinction serves different UI purposes. The 'subject' is the permanent task label - imperative verbs ('Add', 'Fix', 'Refactor') clearly state what needs doing. The 'activeForm' appears in the spinner while the task runs - present continuous ('Adding', 'Fixing') shows ongoing work. Getting this right makes the task list readable and the spinner informative.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Task Management",
+              "url": "https://code.claude.com/docs/en/interactive-mode",
+              "onlineUrl": "https://code.claude.com/docs/en/interactive-mode",
+              "section": "TaskCreate",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Subject field uses imperative form ('Implement X', 'Add Y'), while activeForm uses present continuous ('Implementing X') for the spinner display."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 18,
+      "questionText": "How do you share a task list across multiple Claude Code sessions?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Export tasks to a JSON file and import in each session",
+        "Set CLAUDE_CODE_TASK_LIST_ID environment variable before launching",
+        "Use the /share command within Claude Code",
+        "Tasks are automatically shared across all sessions"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Set CLAUDE_CODE_TASK_LIST_ID environment variable before launching",
+      "explanation": "WHY THIS MATTERS: Cross-session task sharing enables team workflows and persistent project tracking. By setting CLAUDE_CODE_TASK_LIST_ID=my-project before running claude, all sessions share the same task list. This is powerful for long-running projects where you work across multiple terminal windows or days. Tasks persist even when context is compacted.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Interactive Mode",
+              "url": "https://code.claude.com/docs/en/interactive-mode",
+              "onlineUrl": "https://code.claude.com/docs/en/interactive-mode",
+              "section": "Cross-Session Tasks",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Share task lists across sessions with CLAUDE_CODE_TASK_LIST_ID=my-project claude."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 19,
+      "questionText": "When should you NOT use the Task system in Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "For multi-step implementation projects",
+        "For single trivial fixes like typos or one-line changes",
+        "When tracking dependencies between tasks",
+        "During plan mode workflows"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "For single trivial fixes like typos or one-line changes",
+      "explanation": "WHY THIS MATTERS: Tasks add overhead - creation, status updates, visibility in the UI. For a typo fix, this overhead exceeds the benefit. Use tasks when work benefits from tracking: multi-step projects, dependency chains, cross-session continuity. Skip tasks for quick fixes that complete in under 3 steps. The tool exists to organize complexity, not to bureaucratize simplicity.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Task Management",
+              "url": "https://code.claude.com/docs/en/interactive-mode",
+              "onlineUrl": "https://code.claude.com/docs/en/interactive-mode",
+              "section": "When to Use Tasks",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Do not use tasks for single trivial fixes, pure research/exploration, or tasks completable in fewer than 3 steps."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 20,
+      "questionText": "What happens when a skill and a slash command share the same name?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "An error is thrown and neither runs",
+        "The slash command takes precedence",
+        "The skill takes precedence",
+        "The user is prompted to choose"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "The skill takes precedence",
+      "explanation": "WHY THIS MATTERS: This precedence rule lets you override built-in behavior with custom skills. If you create a /commit skill, it runs instead of any built-in commit command. This design choice enables progressive customization - start with defaults, replace them as your workflow matures. It's the extensibility pattern that makes Claude Code adaptable to any team's conventions.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Skills",
+              "url": "https://code.claude.com/docs/en/skills",
+              "onlineUrl": "https://code.claude.com/docs/en/skills",
+              "section": "Skills vs Commands",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "If a skill and a command share the same name, the skill takes precedence."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 21,
+      "questionText": "Where are project-specific skills stored so teammates get them when cloning?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "~/.claude/skills/ (global home directory)",
+        ".claude/skills/ (project root, version-controlled)",
+        "~/.config/claude/skills/ (XDG config)",
+        "package.json skills section"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": ".claude/skills/ (project root, version-controlled)",
+      "explanation": "WHY THIS MATTERS: Project-root storage means skills travel with your code. When teammates clone, they get your custom /deploy, /test, and /review skills automatically. No manual setup, no drift between team members. This is 'team-shared commands via Git' - encode your workflow once, distribute it through your normal version control process.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Skills",
+              "url": "https://code.claude.com/docs/en/skills",
+              "onlineUrl": "https://code.claude.com/docs/en/skills",
+              "section": "Skill Locations",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Project-specific skills in .claude/skills/ are version-controlled with your code, enabling team-shared commands via Git."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 22,
+      "questionText": "What is the difference between global skills (~/.claude/skills/) and project skills (.claude/skills/)?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Global skills run faster",
+        "Global skills apply to all projects, project skills only to the current repository",
+        "Global skills have more permissions",
+        "There is no functional difference"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Global skills apply to all projects, project skills only to the current repository",
+      "explanation": "WHY THIS MATTERS: This scoping matches how developers think about tooling. Personal preferences (your /fmt skill for formatting) go global. Project conventions (your team's /deploy skill) go in the project. Global skills let you carry your workflow everywhere; project skills ensure everyone on the team follows the same procedures. Use both layers intentionally.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Skills",
+              "url": "https://code.claude.com/docs/en/skills",
+              "onlineUrl": "https://code.claude.com/docs/en/skills",
+              "section": "Skill Scopes",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Global skills in ~/.claude/skills/ apply to all projects. Project skills in .claude/skills/ are scoped to the repository."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 23,
+      "questionText": "How are slash commands and skills related in recent Claude Code versions?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "They are completely separate systems",
+        "Slash commands call skills internally",
+        "Skills and commands were merged - both create slash commands",
+        "Skills replaced slash commands entirely"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Skills and commands were merged - both create slash commands",
+      "explanation": "WHY THIS MATTERS: This merge simplified the mental model. Previously, you had to know whether something was a 'command' or a 'skill.' Now, everything is a slash command - some are built-in, some come from skills. You invoke them the same way (/name), they appear in the same autocomplete list, and skills can override built-ins. One concept instead of two.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Skills",
+              "url": "https://code.claude.com/docs/en/skills",
+              "onlineUrl": "https://code.claude.com/docs/en/skills",
+              "section": "Skills Overview",
+              "accessDate": "2026-01-30"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Skills create slash commands that can be invoked with /skill-name. Built-in commands and skill-defined commands share the same invocation pattern."
+          }
+        ]
+      }
     }
   ]
 }
