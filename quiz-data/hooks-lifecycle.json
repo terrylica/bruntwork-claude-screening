@@ -3,7 +3,7 @@
   "description": "Assessment covering Claude Code hooks architecture, lifecycle events, blocking mechanisms, and implementation best practices for virtual assistant candidates.",
   "isQuiz": true,
   "domain": "Hooks & Automation",
-  "weight": 0.20,
+  "weight": 0.15,
   "questions": [
     {
       "questionNumber": 0,
@@ -251,18 +251,18 @@
     },
     {
       "questionNumber": 7,
-      "questionText": "What is the RECOMMENDED execution time for hooks to ensure responsive UX? (Note: Official timeout is 60 seconds)",
+      "questionText": "What are the default timeout values for different hook types?",
       "type": "multiple_choice",
       "required": true,
       "options": [
-        "Under 1 second",
-        "Under 100 milliseconds (best practice)",
-        "Under 5 seconds",
-        "60 seconds (official timeout)"
+        "60 seconds for all hook types",
+        "Command hooks: 600 seconds (10 min), Prompt hooks: 30 seconds, Agent hooks: 60 seconds",
+        "30 seconds for all hook types",
+        "No timeout - hooks run until completion"
       ],
       "correctAnswerIndex": 1,
-      "correctAnswer": "Under 100 milliseconds (best practice)",
-      "explanation": "WHY THIS MATTERS: The 60-second timeout is a safety net, not a target. Every millisecond your hook runs is a millisecond the user waits with a frozen UI. At 100ms, delays are imperceptible; at 500ms, users notice; at 2 seconds, they think something's broken. Fast hooks maintain the 'vibe coding' flow. If you need heavy processing, consider async patterns: write to a file and have a background process handle it.",
+      "correctAnswer": "Command hooks: 600 seconds (10 min), Prompt hooks: 30 seconds, Agent hooks: 60 seconds",
+      "explanation": "WHY THIS MATTERS: Different hook types have different timeout defaults based on their expected complexity. Command hooks get 10 minutes for potentially complex shell operations. Prompt hooks (single LLM call) get 30 seconds. Agent hooks (multi-turn subagent) get 60 seconds. These are configurable per-command. Understanding these defaults helps you design hooks that won't unexpectedly timeout.",
       "citations": {
         "correctAnswer": [
           {
@@ -272,14 +272,14 @@
               "url": "https://code.claude.com/docs/en/hooks",
               "onlineUrl": "https://code.claude.com/docs/en/hooks",
               "section": "Hook Execution Details",
-              "accessDate": "2026-01-24"
+              "accessDate": "2026-02-03"
             },
             "authority": {
               "tier": 1,
               "organization": "Anthropic",
-              "confidence": 0.95
+              "confidence": 0.98
             },
-            "quotedText": "Timeout: 60-second execution limit by default, configurable per command. A timeout for an individual command does not affect the other commands."
+            "quotedText": "Default timeouts: Command hooks 600 seconds (10 minutes), Prompt hooks 30 seconds, Agent hooks 60 seconds. Configurable per command."
           }
         ]
       }
@@ -455,6 +455,146 @@
               "confidence": 0.95
             },
             "quotedText": "Use --output-format json for structured output that can be parsed by scripts and automation tools."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 13,
+      "questionText": "What is the difference between command hooks and prompt hooks in Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Command hooks are faster",
+        "Command hooks run shell scripts; prompt hooks use an LLM to evaluate decisions",
+        "Prompt hooks have higher priority",
+        "Command hooks require admin permissions"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Command hooks run shell scripts; prompt hooks use an LLM to evaluate decisions",
+      "explanation": "WHY THIS MATTERS: This is a fundamental architectural choice. Command hooks (type: 'command') execute deterministic shell scripts - fast, predictable, no API cost. Prompt hooks (type: 'prompt') send context to an LLM for intelligent evaluation - flexible but slower and costs tokens. Use command hooks for rule-based checks, prompt hooks for nuanced decisions that need reasoning.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Hooks Reference",
+              "url": "https://code.claude.com/docs/en/hooks",
+              "onlineUrl": "https://code.claude.com/docs/en/hooks",
+              "section": "Hook Types",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Command hooks run shell scripts. Prompt hooks use an LLM to evaluate decisions with single-turn reasoning."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 14,
+      "questionText": "What happens when you set async: true on a command hook?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "The hook runs faster",
+        "The hook runs in background - cannot block or return decisions",
+        "The hook gets more CPU resources",
+        "The hook retries on failure"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "The hook runs in background - cannot block or return decisions",
+      "explanation": "WHY THIS MATTERS: Async hooks fire-and-forget - they can't block execution because the action has already proceeded by the time they run. Use async for logging, notifications, or background processing where you don't need to influence the outcome. The output is delivered on the next conversation turn. This is perfect for audit trails that shouldn't slow down the user.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Hooks Reference",
+              "url": "https://code.claude.com/docs/en/hooks",
+              "onlineUrl": "https://code.claude.com/docs/en/hooks",
+              "section": "Async Hooks",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "async: true runs hooks in background without blocking. Cannot return decisions. Output delivered on next conversation turn."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 15,
+      "questionText": "How do you restrict Claude Code to read-only operations in a CI pipeline?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Set CLAUDE_READ_ONLY=true environment variable",
+        "Use --allowedTools Read,Grep,Glob to whitelist specific tools",
+        "Run with --safe-mode flag",
+        "CI automatically restricts write access"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Use --allowedTools Read,Grep,Glob to whitelist specific tools",
+      "explanation": "WHY THIS MATTERS: Controlling tool access is essential for safe automation. --allowedTools lets you whitelist exactly what Claude can do, following principle of least privilege. For code review pipelines, 'Read,Grep,Glob' enables analysis without modification risk. For documentation generation, add 'Write'. This granular control makes Claude safe for automated environments.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code CLI Reference",
+              "url": "https://code.claude.com/docs/en/cli-reference",
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Headless Mode Options",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Use --allowedTools to explicitly list only the tools needed for the task, enabling read-only analysis without modification risk."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 16,
+      "questionText": "How do you stop Claude mid-action without exiting the application?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Press Ctrl+C",
+        "Press Escape",
+        "Press Ctrl+Z",
+        "Type 'stop' and press Enter"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Press Escape",
+      "explanation": "WHY THIS MATTERS: This is a common gotcha. Ctrl+C exits Claude Code entirely, losing your session. Escape stops the current action while keeping the session alive - you can then redirect, clarify, or start something else. This is essential for 'vibe coding' flow when Claude heads in the wrong direction. Stop early, redirect, continue - don't lose your whole session.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "How I Use Claude Code",
+              "url": "https://www.builder.io/blog/claude-code",
+              "onlineUrl": "https://www.builder.io/blog/claude-code",
+              "section": "Keyboard Shortcuts",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "Community",
+              "confidence": 0.95
+            },
+            "quotedText": "Stopping Claude isn't Control+C (that just exits entirely). Use Escape to actually stop Claude mid-action."
           }
         ]
       }

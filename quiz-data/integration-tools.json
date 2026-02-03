@@ -214,6 +214,216 @@
           }
         ]
       }
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "What are the three MCP server configuration scopes in Claude Code, and what is their precedence order?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Global > User > Project (global settings override all)",
+        "Local > Project > User (local settings have highest priority)",
+        "User > Project > Local (user settings always win)",
+        "Project > Local > User (team settings override personal)"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Local > Project > User (local settings have highest priority)",
+      "explanation": "WHY THIS MATTERS: Understanding scope precedence prevents the #1 MCP configuration error - 'server not found'. Local scope (personal, current project) overrides Project scope (team-shared .mcp.json), which overrides User scope (cross-project personal). This lets you override team configurations when needed while maintaining shared defaults.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code MCP Integration",
+              "url": "https://code.claude.com/docs/en/mcp",
+              "onlineUrl": "https://code.claude.com/docs/en/mcp",
+              "section": "Configuration Scopes",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "MCP configuration scopes: Local > Project > User. Local settings have highest priority and override project and user settings."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "What specific security risk does Anthropic warn about when using MCP servers that fetch untrusted content?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Slower response times due to network latency",
+        "Higher API costs from additional token usage",
+        "Exposure to prompt injection attacks",
+        "Memory leaks from poorly written servers"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Exposure to prompt injection attacks",
+      "explanation": "WHY THIS MATTERS: MCP servers that fetch content from external sources (web scrapers, email readers, issue trackers) can inadvertently inject malicious prompts into Claude's context. An attacker could embed hidden instructions in a GitHub issue or email that manipulates Claude's behavior. This is why Anthropic specifically warns: 'Be especially careful when using MCP servers that could fetch untrusted content.'",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code MCP Integration",
+              "url": "https://code.claude.com/docs/en/mcp",
+              "onlineUrl": "https://code.claude.com/docs/en/mcp",
+              "section": "Security Considerations",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Be especially careful when using MCP servers that could fetch untrusted content, as these can expose you to prompt injection risk."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "When does Claude Code's MCP Tool Search automatically activate?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Always enabled when any MCP server is connected",
+        "When MCP tool descriptions would exceed 10% of the context window",
+        "Only when manually enabled with /tool-search command",
+        "When using more than 5 MCP servers simultaneously"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "When MCP tool descriptions would exceed 10% of the context window",
+      "explanation": "WHY THIS MATTERS: Tool Search runs in 'auto' mode by default - it activates only when your MCP tool definitions would consume more than 10% of context. This prevents context bloat while maintaining access to all tools. With many servers, tool definitions can consume 40%+ of context before you even start. Tool Search reduced Anthropic's internal tool definitions from 134K tokens to on-demand lookups.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code MCP Integration",
+              "url": "https://code.claude.com/docs/en/mcp",
+              "onlineUrl": "https://code.claude.com/docs/en/mcp",
+              "section": "Tool Search",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Tool Search activates in auto mode when tool descriptions would exceed 10% of context window. Configurable threshold with auto:N syntax."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "How should teams share MCP server configurations across all team members?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Email the configuration to each team member",
+        "Create a .mcp.json file at the project root and check it into version control",
+        "Each team member must configure MCP servers individually",
+        "MCP servers cannot be shared between team members"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Create a .mcp.json file at the project root and check it into version control",
+      "explanation": "WHY THIS MATTERS: Project-scoped MCP configurations in .mcp.json are automatically picked up by all team members when they clone the repository. This ensures everyone has access to the same tools - database connectors, API integrations, internal services. One central configuration, distributed through normal version control.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code MCP Integration",
+              "url": "https://code.claude.com/docs/en/mcp",
+              "onlineUrl": "https://code.claude.com/docs/en/mcp",
+              "section": "Project Configuration",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Project-scoped MCP configurations in .mcp.json are version-controlled and automatically apply to all team members."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "Why was the Claude Code SDK renamed to Claude Agent SDK?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "To indicate it's only for automated agents, not human interaction",
+        "Because the agent harness powering Claude Code is useful for many non-coding applications",
+        "To separate coding tools from general AI capabilities",
+        "Due to trademark concerns"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Because the agent harness powering Claude Code is useful for many non-coding applications",
+      "explanation": "WHY THIS MATTERS: The rename reflects that Claude Code's underlying agent architecture is general-purpose. Teams at Anthropic use it as a general agent, not just for code. The SDK lets you build custom agents for any domain - customer support, research, data analysis - using the same battle-tested infrastructure that powers Claude Code.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "social",
+              "title": "Thariq (Claude Code team) on Twitter",
+              "url": "https://x.com/trq212/status/1975243734083379662",
+              "onlineUrl": "https://x.com/trq212/status/1975243734083379662",
+              "section": "Thread",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Claude Code SDK renamed to Claude Agent SDK. Claude Code is All You Need - the team uses it as a general agent, not just for code."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 11,
+      "questionText": "What is a Claude Code plugin?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "A browser extension for Claude.ai",
+        "A collection of related skills, agents, and hooks bundled together",
+        "A paid add-on from Anthropic",
+        "A security scanning tool"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "A collection of related skills, agents, and hooks bundled together",
+      "explanation": "WHY THIS MATTERS: Plugins bundle related capabilities for distribution. A 'deployment' plugin might include a /deploy skill, pre-deployment validation hooks, and specialized agents for infrastructure analysis. The /plugin command lets you add marketplaces and discover community-built extensions, rapidly expanding Claude's capabilities without manual configuration.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Plugins",
+              "url": "https://code.claude.com/docs/en/plugins",
+              "onlineUrl": "https://code.claude.com/docs/en/plugins",
+              "section": "Overview",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Plugins bundle related skills, agents, and hooks together for distribution via the marketplace."
+          }
+        ]
+      }
     }
   ]
 }

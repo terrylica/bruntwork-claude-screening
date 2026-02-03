@@ -3,7 +3,7 @@
   "description": "Assessment covering context clarity, CLAUDE.md best practices, autonomy levels, and effective prompting patterns for vibe coding with Claude Code v2.1+.",
   "isQuiz": true,
   "domain": "Prompting & Context",
-  "weight": 0.35,
+  "weight": 0.25,
   "questions": [
     {
       "questionNumber": 0,
@@ -351,6 +351,181 @@
               "confidence": 0.98
             },
             "quotedText": "CLAUDE.md is an ideal place for documenting repository etiquette (branch naming, merge vs. rebase), developer environment setup (pyenv use, which compilers work), common bash commands, core files and utility functions, code style guidelines, and testing instructions."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "What should you do when Claude's responses start 'forgetting' earlier instructions or making repeated mistakes?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Report a bug to Anthropic",
+        "Keep correcting in the same session until it works",
+        "Use /clear to reset context and start fresh with a better prompt",
+        "Switch to a different AI model"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Use /clear to reset context and start fresh with a better prompt",
+      "explanation": "WHY THIS MATTERS: As context fills, Claude's performance degrades - this is the 'Lost in the Middle' effect where instructions in long contexts get less attention. A session cluttered with failed approaches is less effective than a fresh start. After two failed corrections, /clear and rewrite your prompt incorporating what you learned. Clean context + better prompt almost always outperforms accumulated corrections.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Best Practices",
+              "url": "https://code.claude.com/docs/en/best-practices",
+              "onlineUrl": "https://code.claude.com/docs/en/best-practices",
+              "section": "Context Management",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "LLM performance degrades as context fills. When the context window is getting full, Claude may start 'forgetting' earlier instructions. After two failed corrections, /clear and write a better initial prompt incorporating what you learned."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 11,
+      "questionText": "What does the /init command do in Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Initializes a new git repository",
+        "Scans the codebase and generates a starter CLAUDE.md file",
+        "Resets all Claude Code settings to defaults",
+        "Creates a new project from a template"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Scans the codebase and generates a starter CLAUDE.md file",
+      "explanation": "WHY THIS MATTERS: /init is the fastest path to context-aware Claude sessions. It automatically detects your tech stack, project structure, build commands, and common patterns, creating a CLAUDE.md foundation you can customize. This is universally recommended as the first step in any new project - it gives Claude immediate understanding of your codebase without manual documentation.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code CLI Reference",
+              "url": "https://code.claude.com/docs/en/cli-reference",
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Commands",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "The /init command scans your codebase and generates a starter CLAUDE.md file with detected project conventions, build commands, and structure."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 12,
+      "questionText": "According to Anthropic, what is the 'single highest-leverage thing' you can do to improve Claude Code's performance?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Use the latest model version",
+        "Provide tests, screenshots, or expected outputs so Claude can verify its own work",
+        "Write detailed step-by-step instructions",
+        "Grant maximum permissions for faster execution"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Provide tests, screenshots, or expected outputs so Claude can verify its own work",
+      "explanation": "WHY THIS MATTERS: Claude performs dramatically better when it can verify its own work. Without clear success criteria, it might produce something that looks right but doesn't work. Tests, linters, type checkers, and screenshots create objective feedback loops - the write-test cycle (write code, run it, check output, repeat) is what enables reliable autonomous operation. You become the reviewer, not the only feedback mechanism.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code: Best practices for agentic coding",
+              "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "onlineUrl": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "section": "Verification",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "This is the single highest-leverage thing you can do. Claude performs dramatically better when it can verify its own work."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 13,
+      "questionText": "How do you resume your most recent Claude Code conversation?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Run 'claude --last'",
+        "Run 'claude --continue' or 'claude -c'",
+        "Press Ctrl+R in the terminal",
+        "Sessions cannot be resumed"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Run 'claude --continue' or 'claude -c'",
+      "explanation": "WHY THIS MATTERS: Session continuity prevents losing context between work sessions. The --continue flag (or -c shorthand) picks up exactly where you left off, including conversation history, file context, and any in-progress tasks. This is essential for long-running projects where you work across multiple terminal sessions or days.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code CLI Reference",
+              "url": "https://code.claude.com/docs/en/cli-reference",
+              "onlineUrl": "https://code.claude.com/docs/en/cli-reference",
+              "section": "Session Management",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Use --continue or -c to resume the most recent conversation in the current directory."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 14,
+      "questionText": "What happens when your CLAUDE.md file becomes too long with too many instructions?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Claude processes it faster due to more context",
+        "Claude ignores important rules because they get lost in the noise",
+        "Claude automatically summarizes the content",
+        "Nothing - Claude handles any length equally well"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Claude ignores important rules because they get lost in the noise",
+      "explanation": "WHY THIS MATTERS: A bloated CLAUDE.md causes Claude to overlook important instructions due to the 'Lost in the Middle' attention pattern. Research suggests LLMs can follow ~150-200 instructions consistently. For each line, ask: 'Would removing this cause Claude to make mistakes?' If not, cut it. If Claude keeps doing something wrong despite having a rule against it, your file is probably too long.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code: Best practices for agentic coding",
+              "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "onlineUrl": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "section": "CLAUDE.md Best Practices",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Bloated CLAUDE.md files cause Claude to ignore your actual instructions! If Claude keeps doing something you don't want despite having a rule against it, the file is probably too long."
           }
         ]
       }

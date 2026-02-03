@@ -17,11 +17,11 @@ Complete all quizzes below to demonstrate your understanding of effective Claude
 
 | Assessment              | Domain                  | Questions | Take Quiz                                                                                           |
 | ----------------------- | ----------------------- | --------- | --------------------------------------------------------------------------------------------------- |
-| **Effective Prompting** | Prompting & Context     | 10        | [Start Quiz](https://docs.google.com/forms/d/1ENfkLOMk4ulMw4HhVUJwNZS1IrtJ5Ns7vLzMtJ1esUc/viewform) |
-| **Safety & Autonomy**   | Safety & Control        | 10        | [Start Quiz](https://docs.google.com/forms/d/1k-GxzlEQ4E81HrLQZp6pVlUTL45mQI7VXw6YuQuRv-U/viewform) |
-| **Agents Deep Dive**    | Advanced Architecture   | 24        | [Start Quiz](https://docs.google.com/forms/d/1GT3Cd0lfVvEraYwD3C0DBlFELd-Xu_P1O7EvOLH_cOQ/viewform) |
-| **Hooks Lifecycle**     | Hooks & Automation      | 13        | [Start Quiz](https://docs.google.com/forms/d/1kSKjnTSGi3EEmXC0h49XOW6BJGVIIvrsg5XtCb22kY8/viewform) |
-| **Integration Tools**   | Integration & Workflows | 6         | [Start Quiz](https://docs.google.com/forms/d/1FzCS914ytIQtzB2e-AiGHHTV3LKaCDk-L1L18n0DfmQ/viewform) |
+| **Effective Prompting** | Prompting & Context     | 15        | [Start Quiz](https://docs.google.com/forms/d/143ZSsrR05Ln7C-iE4oDQOsssbS6asbG0i3jtK4TnU5c/viewform) |
+| **Safety & Autonomy**   | Safety & Control        | 16        | [Start Quiz](https://docs.google.com/forms/d/1xtz-TAsK7yOkT_ezCr8lUMXqX3zH2ytrRPL7yhsbdEs/viewform) |
+| **Agents Deep Dive**    | Advanced Architecture   | 29        | [Start Quiz](https://docs.google.com/forms/d/1SlTOcEmvBTn4dEx_LcwFDa_G9cQ6UOyQFBDB1qc5RWU/viewform) |
+| **Hooks Lifecycle**     | Hooks & Automation      | 17        | [Start Quiz](https://docs.google.com/forms/d/1aduAUp62v_svhXlTyjvpLpEVWYja6ygE9fZPJ77BgCM/viewform) |
+| **Integration Tools**   | Integration & Workflows | 12        | [Start Quiz](https://docs.google.com/forms/d/1git74ESTX-lbZ05RCtTN5lv0xtbVIE64Z1lpzOKyhFI/viewform) |
 
 ## Instructions
 

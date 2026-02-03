@@ -74,15 +74,15 @@ bruntwork-claude-screening/
 
 **Philosophy**: Focus on principles, not tool micromanagement. Claude Code v2.1+ autonomously selects tools - users should describe WHAT they want, not HOW.
 
-| Domain                      | Weight | Questions | Focus Areas                                         |
-| --------------------------- | ------ | --------- | --------------------------------------------------- |
-| **Prompting & Context**     | 25%    | 10        | CLAUDE.md, clear instructions, vibe coding patterns |
-| **Safety & Control**        | 20%    | 10        | Permissions, destructive ops, autonomy levels       |
-| **Advanced Architecture**   | 30%    | 24        | Skills vs subagents, Tasks, context gatekeeping     |
-| **Hooks & Automation**      | 15%    | 13        | Exit codes, blocking patterns, headless mode        |
-| **Integration & Workflows** | 10%    | 6         | MCP, Tool Search, git worktrees, parallel sessions  |
+| Domain                      | Weight | Questions | Focus Areas                                                      |
+| --------------------------- | ------ | --------- | ---------------------------------------------------------------- |
+| **Prompting & Context**     | 25%    | 15        | CLAUDE.md, /init, /clear, verification loops, session continuity |
+| **Safety & Control**        | 20%    | 16        | Permissions, sandboxing, checkpoints, test manipulation warning  |
+| **Advanced Architecture**   | 20%    | 29        | Skills vs subagents, Tasks, spec-based workflow, Writer/Reviewer |
+| **Hooks & Automation**      | 15%    | 17        | Hook types, async hooks, timeouts, --allowedTools for CI         |
+| **Integration & Workflows** | 20%    | 12        | MCP scopes, prompt injection, Tool Search, plugins, Agent SDK    |
 
-**Total**: 63 questions across 5 assessments
+**Total**: 89 questions across 5 assessments
 
 ### Citation Schema
 
