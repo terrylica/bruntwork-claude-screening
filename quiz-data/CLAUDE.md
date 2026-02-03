@@ -129,13 +129,13 @@ mise run quiz:validate-citations
 
 ## Current Quiz Files
 
-| File                       | Domain                  | Questions | Focus                                              |
-| -------------------------- | ----------------------- | --------- | -------------------------------------------------- |
-| `effective-prompting.json` | Prompting & Context     | 10        | CLAUDE.md, clear instructions, vibe coding         |
-| `safety-autonomy.json`     | Safety & Control        | 10        | Permissions, destructive ops, autonomy levels      |
-| `agents-deep-dive.json`    | Advanced Architecture   | 24        | Skills vs subagents, Tasks, context gatekeeping    |
-| `hooks-lifecycle.json`     | Hooks & Automation      | 13        | Exit codes, blocking, headless mode                |
-| `integration-tools.json`   | Integration & Workflows | 6         | MCP, Tool Search, git worktrees, parallel sessions |
+| File                       | Domain                  | Questions | Focus                                                      |
+| -------------------------- | ----------------------- | --------- | ---------------------------------------------------------- |
+| `effective-prompting.json` | Prompting & Context     | 15        | CLAUDE.md, /init, /clear, verification, session continuity |
+| `safety-autonomy.json`     | Safety & Control        | 16        | Permissions, sandboxing, checkpoints, test manipulation    |
+| `agents-deep-dive.json`    | Advanced Architecture   | 29        | Skills vs subagents, Tasks, spec workflow, Writer/Reviewer |
+| `hooks-lifecycle.json`     | Hooks & Automation      | 17        | Hook types, async hooks, timeouts, --allowedTools          |
+| `integration-tools.json`   | Integration & Workflows | 12        | MCP scopes, prompt injection, plugins, Agent SDK           |
 
 ## Related
 

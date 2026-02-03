@@ -844,6 +844,181 @@
           }
         ]
       }
+    },
+    {
+      "questionNumber": 24,
+      "questionText": "Why would you use a subagent for codebase research instead of having Claude read files directly?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Subagents are faster at reading files",
+        "Subagents run in separate context windows and report back summaries, keeping your main conversation clean",
+        "Subagents have special file permissions",
+        "Direct file reading is not supported"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Subagents run in separate context windows and report back summaries, keeping your main conversation clean",
+      "explanation": "WHY THIS MATTERS: When Claude researches a codebase, it reads many files that consume your context window. Subagents explore in their own context and report back findings as summaries. This preserves your main conversation's context for implementation while still getting comprehensive research. It's like having a research assistant who summarizes instead of reading aloud - you get the insights without the noise.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Building Effective Agents",
+              "url": "https://www.anthropic.com/engineering/building-effective-agents",
+              "onlineUrl": "https://www.anthropic.com/engineering/building-effective-agents",
+              "section": "Subagent patterns",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Use subagents to investigate in a separate context, keeping your main conversation clean for implementation. They explore and report back findings."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 25,
+      "questionText": "What workflow pattern does the Claude Code team recommend for building large features?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Start coding immediately and iterate based on errors",
+        "Write comprehensive documentation before any code",
+        "Start with a minimal spec, have Claude interview you for requirements, then execute in a new session",
+        "Use parallel Claude instances to write all components simultaneously"
+      ],
+      "correctAnswerIndex": 2,
+      "correctAnswer": "Start with a minimal spec, have Claude interview you for requirements, then execute in a new session",
+      "explanation": "WHY THIS MATTERS: This spec-based workflow uses AskUserQuestionTool to gather requirements iteratively. Claude interviews you about edge cases, constraints, and preferences you might not have considered. Then a fresh session executes the refined spec with clean context. This prevents the common pattern of accumulated context pollution during lengthy requirement discussions.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "social",
+              "title": "Thariq (Claude Code team) on Twitter",
+              "url": "https://x.com/trq212/status/2005315275026260309",
+              "onlineUrl": "https://x.com/trq212/status/2005315275026260309",
+              "section": "Thread",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Start with a minimal spec, ask Claude to interview you using AskUserQuestionTool, then make a new session to execute the spec."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 26,
+      "questionText": "Why is the 'Writer/Reviewer' pattern with two Claude sessions effective for code quality?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Two sessions can process code twice as fast",
+        "A fresh context avoids bias toward code the reviewing Claude didn't write",
+        "Two Claude instances share the same memory and can collaborate",
+        "The pattern is required for all code reviews in Claude Code"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "A fresh context avoids bias toward code the reviewing Claude didn't write",
+      "explanation": "WHY THIS MATTERS: When Claude reviews code it just wrote, it's biased toward defending its own decisions. A fresh session with no memory of writing the code evaluates it objectively - like having a colleague review instead of self-review. This catches issues the writer-Claude rationalized away. Use separate worktrees or sessions for writing and reviewing.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code: Best practices for agentic coding",
+              "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "onlineUrl": "https://www.anthropic.com/engineering/claude-code-best-practices",
+              "section": "Code Review",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "A fresh context improves code review since Claude won't be biased toward code it just wrote."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 27,
+      "questionText": "What is the relationship between the 'Task' tool and 'TaskCreate' in Claude Code?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "They are the same tool with different names",
+        "Task spawns subagents; TaskCreate manages work item tracking - different systems",
+        "TaskCreate is a deprecated version of Task",
+        "Task is for background jobs; TaskCreate is for foreground tasks"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Task spawns subagents; TaskCreate manages work item tracking - different systems",
+      "explanation": "WHY THIS MATTERS: This naming collision causes common confusion. The Task tool spawns subagents with isolated context for parallel work. The Task* system (TaskCreate, TaskUpdate, TaskList, TaskGet) manages a visible work item list for tracking progress. They serve completely different purposes - one is for delegation, the other is for organization. Don't confuse launching a subagent with creating a todo item.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "github",
+              "title": "GitHub Issue #22695",
+              "url": "https://github.com/anthropics/claude-code/issues/22695",
+              "onlineUrl": "https://github.com/anthropics/claude-code/issues/22695",
+              "section": "Issue description",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Naming collision: Task tool vs Task* system. Task spawns subagents, while TaskCreate/TaskUpdate manage work item tracking."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 28,
+      "questionText": "When you spawn a subagent via the Task tool, what happens to your permission allowlist?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "The subagent inherits all permissions from the parent session",
+        "The subagent has NO inherited permissions - it operates with fresh permission state",
+        "Only Bash permissions are inherited",
+        "Permissions are inherited but with reduced scope"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "The subagent has NO inherited permissions - it operates with fresh permission state",
+      "explanation": "WHY THIS MATTERS: This is a common source of unexpected permission prompts. When you've pre-approved certain tools in your main session, subagents don't inherit those approvals - they start fresh. This is intentional for security (subagents shouldn't automatically get elevated permissions), but surprising when your pre-approved commands suddenly prompt again inside a subagent.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "github",
+              "title": "GitHub Issue #22665",
+              "url": "https://github.com/anthropics/claude-code/issues/22665",
+              "onlineUrl": "https://github.com/anthropics/claude-code/issues/22665",
+              "section": "Issue description",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.95
+            },
+            "quotedText": "Subagent (Task tool) does not inherit permission allowlist from settings.json. Subagents operate with fresh permission state."
+          }
+        ]
+      }
     }
   ]
 }

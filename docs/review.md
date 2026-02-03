@@ -29,7 +29,7 @@ toc_sticky: true
 > This page contains all correct answers with explanations and authoritative citations.
 > Use this as a learning resource alongside the [assessment quizzes](./).
 
-*Generated: 2026-01-30 18:23*
+*Generated: 2026-02-03 07:06*
 
 ---
 
@@ -37,11 +37,11 @@ toc_sticky: true
 
 | Metric | Value |
 | ------ | ----- |
-| Total Questions | 63 |
+| Total Questions | 89 |
 | Domains | 5 |
 | Citation Coverage | 100% |
-| Tier 1 (Official) | 94% |
-| Tier 2 (Internal) | 6% |
+| Tier 1 (Official) | 93% |
+| Tier 2 (Internal) | 7% |
 | Tier 3 (Community) | 0% |
 
 ---
@@ -50,17 +50,17 @@ toc_sticky: true
 
 | # | Domain | Questions | Weight | Jump |
 | - | ------ | --------- | ------ | ---- |
-| 1 | Prompting & Context | 10 | 35% | [Go](#effective-prompting) |
-| 2 | Safety & Control | 10 | 30% | [Go](#safety-autonomy) |
-| 3 | Advanced Architecture | 24 | 20% | [Go](#agents-deep-dive) |
-| 4 | Hooks & Automation | 13 | 20% | [Go](#hooks-lifecycle) |
-| 5 | Integration & Workflows | 6 | 15% | [Go](#integration-tools) |
+| 1 | Prompting & Context | 15 | 25% | [Go](#effective-prompting) |
+| 2 | Safety & Control | 16 | 20% | [Go](#safety-autonomy) |
+| 3 | Advanced Architecture | 29 | 20% | [Go](#agents-deep-dive) |
+| 4 | Hooks & Automation | 17 | 15% | [Go](#hooks-lifecycle) |
+| 5 | Integration & Workflows | 12 | 15% | [Go](#integration-tools) |
 
 ---
 
 ## Effective Claude Code Prompting
 
-*Domain: Prompting & Context | Weight: 35%*
+*Domain: Prompting & Context | Weight: 25%*
 
 ### Q1. What is the most important factor for Claude Code's success rate according to Anthropic?
 
@@ -302,10 +302,130 @@ toc_sticky: true
 
 ---
 
+### Q11. What should you do when Claude's responses start 'forgetting' earlier instructions or making repeated mistakes?
+
+| Option | |
+| ------ | --- |
+| A. Report a bug to Anthropic | |
+| B. Keep correcting in the same session until it works | |
+| **C. Use /clear to reset context and start fresh with a better prompt** | ✓ |
+| D. Switch to a different AI model | |
+
+**Explanation**: WHY THIS MATTERS: As context fills, Claude's performance degrades - this is the 'Lost in the Middle' effect where instructions in long contexts get less attention. A session cluttered with failed approaches is less effective than a fresh start. After two failed corrections, /clear and rewrite your prompt incorporating what you learned. Clean context + better prompt almost always outperforms accumulated corrections.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Best Practices<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/best-practices">Claude Code Best Practices</a><br>
+<strong>Section</strong>: Context Management<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"LLM performance degrades as context fills. When the context window is getting full, Claude may start 'forgetting' earlier instructions. After two failed corrections, /clear and write a better initial prompt incorporating what you learned."</blockquote>
+
+</details>
+
+---
+
+### Q12. What does the /init command do in Claude Code?
+
+| Option | |
+| ------ | --- |
+| A. Initializes a new git repository | |
+| **B. Scans the codebase and generates a starter CLAUDE.md file** | ✓ |
+| C. Resets all Claude Code settings to defaults | |
+| D. Creates a new project from a template | |
+
+**Explanation**: WHY THIS MATTERS: /init is the fastest path to context-aware Claude sessions. It automatically detects your tech stack, project structure, build commands, and common patterns, creating a CLAUDE.md foundation you can customize. This is universally recommended as the first step in any new project - it gives Claude immediate understanding of your codebase without manual documentation.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: Commands<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"The /init command scans your codebase and generates a starter CLAUDE.md file with detected project conventions, build commands, and structure."</blockquote>
+
+</details>
+
+---
+
+### Q13. According to Anthropic, what is the 'single highest-leverage thing' you can do to improve Claude Code's performance?
+
+| Option | |
+| ------ | --- |
+| A. Use the latest model version | |
+| **B. Provide tests, screenshots, or expected outputs so Claude can verify its own work** | ✓ |
+| C. Write detailed step-by-step instructions | |
+| D. Grant maximum permissions for faster execution | |
+
+**Explanation**: WHY THIS MATTERS: Claude performs dramatically better when it can verify its own work. Without clear success criteria, it might produce something that looks right but doesn't work. Tests, linters, type checkers, and screenshots create objective feedback loops - the write-test cycle (write code, run it, check output, repeat) is what enables reliable autonomous operation. You become the reviewer, not the only feedback mechanism.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code: Best practices for agentic coding<br>
+<strong>URL</strong>: <a href="https://www.anthropic.com/engineering/claude-code-best-practices">Claude Code: Best practices for agentic coding</a><br>
+<strong>Section</strong>: Verification<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"This is the single highest-leverage thing you can do. Claude performs dramatically better when it can verify its own work."</blockquote>
+
+</details>
+
+---
+
+### Q14. How do you resume your most recent Claude Code conversation?
+
+| Option | |
+| ------ | --- |
+| A. Run 'claude --last' | |
+| **B. Run 'claude --continue' or 'claude -c'** | ✓ |
+| C. Press Ctrl+R in the terminal | |
+| D. Sessions cannot be resumed | |
+
+**Explanation**: WHY THIS MATTERS: Session continuity prevents losing context between work sessions. The --continue flag (or -c shorthand) picks up exactly where you left off, including conversation history, file context, and any in-progress tasks. This is essential for long-running projects where you work across multiple terminal sessions or days.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: Session Management<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Use --continue or -c to resume the most recent conversation in the current directory."</blockquote>
+
+</details>
+
+---
+
+### Q15. What happens when your CLAUDE.md file becomes too long with too many instructions?
+
+| Option | |
+| ------ | --- |
+| A. Claude processes it faster due to more context | |
+| **B. Claude ignores important rules because they get lost in the noise** | ✓ |
+| C. Claude automatically summarizes the content | |
+| D. Nothing - Claude handles any length equally well | |
+
+**Explanation**: WHY THIS MATTERS: A bloated CLAUDE.md causes Claude to overlook important instructions due to the 'Lost in the Middle' attention pattern. Research suggests LLMs can follow ~150-200 instructions consistently. For each line, ask: 'Would removing this cause Claude to make mistakes?' If not, cut it. If Claude keeps doing something wrong despite having a rule against it, your file is probably too long.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: Claude Code: Best practices for agentic coding<br>
+<strong>URL</strong>: <a href="https://www.anthropic.com/engineering/claude-code-best-practices">Claude Code: Best practices for agentic coding</a><br>
+<strong>Section</strong>: CLAUDE.md Best Practices<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Bloated CLAUDE.md files cause Claude to ignore your actual instructions! If Claude keeps doing something you don't want despite having a rule against it, the file is probably too long."</blockquote>
+
+</details>
+
+---
+
 
 ## Safety & Autonomy
 
-*Domain: Safety & Control | Weight: 30%*
+*Domain: Safety & Control | Weight: 20%*
 
 ### Q1. What is Claude Code's default permission behavior?
 
@@ -542,6 +662,150 @@ toc_sticky: true
 <strong>Section</strong>: Overeagerness and file creation<br>
 <strong>Access Date</strong>: 2026-01-25<br>
 <blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Claude Opus 4.5 has a tendency to overengineer by creating extra files, adding unnecessary abstractions, or building in flexibility that wasn't requested. If you're seeing this undesired behavior, add explicit prompting to keep solutions minimal: 'Avoid over-engineering. Only make changes that are directly requested.'"</blockquote>
+
+</details>
+
+---
+
+### Q11. What is the checkpoint system in Claude Code and how do you use it?
+
+| Option | |
+| ------ | --- |
+| A. A debugging tool for viewing API calls | |
+| **B. Automatic code state saving before changes - press Esc twice or use /rewind to restore** | ✓ |
+| C. A manual save feature requiring explicit /checkpoint command | |
+| D. A git integration for automatic commits | |
+
+**Explanation**: WHY THIS MATTERS: Checkpoints are your safety net for Claude's edits. Every time Claude modifies code, the previous state is automatically saved. If something goes wrong, press Escape twice or use /rewind to restore - no manual saving required. This enables confident experimentation because you can always undo. Note: checkpoints only apply to Claude's edits, not user modifications or bash commands.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Enabling Claude Code to Work More Autonomously<br>
+<strong>URL</strong>: <a href="https://www.anthropic.com/news/enabling-claude-code-to-work-more-autonomously">Enabling Claude Code to Work More Autonomously</a><br>
+<strong>Section</strong>: Checkpoints<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Checkpoints automatically save code state before each change. Press Esc twice or use /rewind to restore. You can restore code, conversation, or both."</blockquote>
+
+</details>
+
+---
+
+### Q12. What are the two boundaries enforced by Claude Code's sandboxing feature?
+
+| Option | |
+| ------ | --- |
+| A. Memory isolation and CPU limits | |
+| **B. Filesystem isolation and network isolation** | ✓ |
+| C. Read-only mode and audit logging | |
+| D. User isolation and process isolation | |
+
+**Explanation**: WHY THIS MATTERS: Sandboxing confines Claude to specific directories (filesystem isolation) and approved network destinations (network isolation). This achieved 84% reduction in permission prompts internally at Anthropic while maintaining security. On Linux it uses bubblewrap, on macOS it uses seatbelt. Run /sandbox to configure. This is the foundation for safe autonomous operation.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Sandboxing<br>
+<strong>URL</strong>: <a href="https://www.anthropic.com/engineering/claude-code-sandboxing">Claude Code Sandboxing</a><br>
+<strong>Section</strong>: Overview<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Sandboxing enforces filesystem isolation (Claude can only access/modify specific directories) and network isolation (only connect to approved servers), achieving 84% reduction in permission prompts."</blockquote>
+
+</details>
+
+---
+
+### Q13. What is a common Claude Code behavior that power users warn about during test-driven development?
+
+| Option | |
+| ------ | --- |
+| A. Claude refuses to write tests | |
+| **B. Claude may modify tests to match buggy code instead of fixing the code** | ✓ |
+| C. Claude only writes unit tests, never integration tests | |
+| D. Claude requires manual test file creation | |
+
+**Explanation**: WHY THIS MATTERS: Claude optimizes for passing tests, but sometimes takes the path of least resistance by weakening assertions rather than fixing bugs. This is why power users recommend reviewing ALL test modifications carefully. When tests fail, verify Claude is fixing the code, not the tests. Use TDD approach: write tests first, review them thoroughly before implementation.
+
+<details open class="citation">
+<summary>Citation [Tier 2 - Community] (90% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Gotchas<br>
+<strong>URL</strong>: <a href="https://www.dolthub.com/blog/2025-06-30-claude-code-gotchas/">Claude Code Gotchas</a><br>
+<strong>Section</strong>: Test Manipulation<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Be very wary of changes to your test files. Claude writes failing tests, then modifies tests to match buggy code instead of fixing the code."</blockquote>
+
+</details>
+
+---
+
+### Q14. When using --dangerously-skip-permissions for autonomous operation, what environment does Anthropic recommend?
+
+| Option | |
+| ------ | --- |
+| A. Your main development machine with full internet access | |
+| **B. A container or VM without internet access** | ✓ |
+| C. A staging server with production data | |
+| D. Any environment with version control | |
+
+**Explanation**: WHY THIS MATTERS: Autonomous operation without permission checks creates prompt injection and data exfiltration risks. Anthropic explicitly recommends using --dangerously-skip-permissions 'in a container without internet access.' Container isolation limits blast radius, and network isolation prevents data exfiltration. Version control alone isn't sufficient protection against malicious or unintended operations.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Security<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/security">Claude Code Security</a><br>
+<strong>Section</strong>: Autonomous Mode<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Use --dangerously-skip-permissions only in a container without internet access where damage is contained."</blockquote>
+
+</details>
+
+---
+
+### Q15. What is the purpose of managed-settings.json in enterprise Claude Code deployments?
+
+| Option | |
+| ------ | --- |
+| A. Store user preferences that can be customized | |
+| **B. Enforce organization-wide policies that cannot be overridden by local settings** | ✓ |
+| C. Cache API responses for faster performance | |
+| D. Store authentication tokens securely | |
+
+**Explanation**: WHY THIS MATTERS: Enterprise deployments need consistent security policies across all users. Managed-settings.json files are deployed to system directories and cannot be overridden by developers. This ensures organization-wide tool permissions, file access restrictions, and MCP server configurations are enforced uniformly. Settings hierarchy: Enterprise policies > CLI flags > Local > Shared > User.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Settings<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/settings">Claude Code Settings</a><br>
+<strong>Section</strong>: Managed Settings<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Managed settings in /Library/Application Support/ClaudeCode/managed-settings.json (macOS) or /etc/claude-code/managed-settings.json (Linux) enforce organization-wide policies that cannot be overridden."</blockquote>
+
+</details>
+
+---
+
+### Q16. Given permission config: allow: ['Bash'], ask: ['Bash(rm *)'], what happens when Claude tries to run 'rm -rf /tmp/test'?
+
+| Option | |
+| ------ | --- |
+| A. Executes without prompting (Bash is allowed) | |
+| **B. Permission prompt appears (content-level 'ask' takes precedence over tool-level 'allow')** | ✓ |
+| C. Command is blocked entirely | |
+| D. Error due to conflicting rules | |
+
+**Explanation**: WHY THIS MATTERS: Understanding permission precedence is critical for safe configuration. As of v2.1.27, content-level rules take precedence over tool-level rules. This means allow: ['Bash'] grants general bash access, but ask: ['Bash(rm *)'] still prompts for rm commands. This layered approach lets you grant broad permissions while maintaining guardrails on dangerous operations.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Changelog v2.1.27<br>
+<strong>URL</strong>: <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code Changelog v2.1.27</a><br>
+<strong>Section</strong>: v2.1.27<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Permissions now respect content-level 'ask' over tool-level 'allow'. Previously allow: ['Bash'], ask: ['Bash(rm *)'] allowed all bash commands, but will now permission prompt for rm."</blockquote>
 
 </details>
 
@@ -1128,10 +1392,130 @@ toc_sticky: true
 
 ---
 
+### Q25. Why would you use a subagent for codebase research instead of having Claude read files directly?
+
+| Option | |
+| ------ | --- |
+| A. Subagents are faster at reading files | |
+| **B. Subagents run in separate context windows and report back summaries, keeping your main conversation clean** | ✓ |
+| C. Subagents have special file permissions | |
+| D. Direct file reading is not supported | |
+
+**Explanation**: WHY THIS MATTERS: When Claude researches a codebase, it reads many files that consume your context window. Subagents explore in their own context and report back findings as summaries. This preserves your main conversation's context for implementation while still getting comprehensive research. It's like having a research assistant who summarizes instead of reading aloud - you get the insights without the noise.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: Building Effective Agents<br>
+<strong>URL</strong>: <a href="https://www.anthropic.com/engineering/building-effective-agents">Building Effective Agents</a><br>
+<strong>Section</strong>: Subagent patterns<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Use subagents to investigate in a separate context, keeping your main conversation clean for implementation. They explore and report back findings."</blockquote>
+
+</details>
+
+---
+
+### Q26. What workflow pattern does the Claude Code team recommend for building large features?
+
+| Option | |
+| ------ | --- |
+| A. Start coding immediately and iterate based on errors | |
+| B. Write comprehensive documentation before any code | |
+| **C. Start with a minimal spec, have Claude interview you for requirements, then execute in a new session** | ✓ |
+| D. Use parallel Claude instances to write all components simultaneously | |
+
+**Explanation**: WHY THIS MATTERS: This spec-based workflow uses AskUserQuestionTool to gather requirements iteratively. Claude interviews you about edge cases, constraints, and preferences you might not have considered. Then a fresh session executes the refined spec with clean context. This prevents the common pattern of accumulated context pollution during lengthy requirement discussions.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: Thariq (Claude Code team) on Twitter<br>
+<strong>URL</strong>: <a href="https://x.com/trq212/status/2005315275026260309">Thariq (Claude Code team) on Twitter</a><br>
+<strong>Section</strong>: Thread<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Start with a minimal spec, ask Claude to interview you using AskUserQuestionTool, then make a new session to execute the spec."</blockquote>
+
+</details>
+
+---
+
+### Q27. Why is the 'Writer/Reviewer' pattern with two Claude sessions effective for code quality?
+
+| Option | |
+| ------ | --- |
+| A. Two sessions can process code twice as fast | |
+| **B. A fresh context avoids bias toward code the reviewing Claude didn't write** | ✓ |
+| C. Two Claude instances share the same memory and can collaborate | |
+| D. The pattern is required for all code reviews in Claude Code | |
+
+**Explanation**: WHY THIS MATTERS: When Claude reviews code it just wrote, it's biased toward defending its own decisions. A fresh session with no memory of writing the code evaluates it objectively - like having a colleague review instead of self-review. This catches issues the writer-Claude rationalized away. Use separate worktrees or sessions for writing and reviewing.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: Claude Code: Best practices for agentic coding<br>
+<strong>URL</strong>: <a href="https://www.anthropic.com/engineering/claude-code-best-practices">Claude Code: Best practices for agentic coding</a><br>
+<strong>Section</strong>: Code Review<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"A fresh context improves code review since Claude won't be biased toward code it just wrote."</blockquote>
+
+</details>
+
+---
+
+### Q28. What is the relationship between the 'Task' tool and 'TaskCreate' in Claude Code?
+
+| Option | |
+| ------ | --- |
+| A. They are the same tool with different names | |
+| **B. Task spawns subagents; TaskCreate manages work item tracking - different systems** | ✓ |
+| C. TaskCreate is a deprecated version of Task | |
+| D. Task is for background jobs; TaskCreate is for foreground tasks | |
+
+**Explanation**: WHY THIS MATTERS: This naming collision causes common confusion. The Task tool spawns subagents with isolated context for parallel work. The Task* system (TaskCreate, TaskUpdate, TaskList, TaskGet) manages a visible work item list for tracking progress. They serve completely different purposes - one is for delegation, the other is for organization. Don't confuse launching a subagent with creating a todo item.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: GitHub Issue #22695<br>
+<strong>URL</strong>: <a href="https://github.com/anthropics/claude-code/issues/22695">GitHub Issue #22695</a><br>
+<strong>Section</strong>: Issue description<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Naming collision: Task tool vs Task* system. Task spawns subagents, while TaskCreate/TaskUpdate manage work item tracking."</blockquote>
+
+</details>
+
+---
+
+### Q29. When you spawn a subagent via the Task tool, what happens to your permission allowlist?
+
+| Option | |
+| ------ | --- |
+| A. The subagent inherits all permissions from the parent session | |
+| **B. The subagent has NO inherited permissions - it operates with fresh permission state** | ✓ |
+| C. Only Bash permissions are inherited | |
+| D. Permissions are inherited but with reduced scope | |
+
+**Explanation**: WHY THIS MATTERS: This is a common source of unexpected permission prompts. When you've pre-approved certain tools in your main session, subagents don't inherit those approvals - they start fresh. This is intentional for security (subagents shouldn't automatically get elevated permissions), but surprising when your pre-approved commands suddenly prompt again inside a subagent.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: GitHub Issue #22665<br>
+<strong>URL</strong>: <a href="https://github.com/anthropics/claude-code/issues/22665">GitHub Issue #22665</a><br>
+<strong>Section</strong>: Issue description<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Subagent (Task tool) does not inherit permission allowlist from settings.json. Subagents operate with fresh permission state."</blockquote>
+
+</details>
+
+---
+
 
 ## Claude Code Hooks Lifecycle
 
-*Domain: Hooks & Automation | Weight: 20%*
+*Domain: Hooks & Automation | Weight: 15%*
 
 ### Q1. What is the primary purpose of Claude Code hooks?
 
@@ -1301,25 +1685,25 @@ toc_sticky: true
 
 ---
 
-### Q8. What is the RECOMMENDED execution time for hooks to ensure responsive UX? (Note: Official timeout is 60 seconds)
+### Q8. What are the default timeout values for different hook types?
 
 | Option | |
 | ------ | --- |
-| A. Under 1 second | |
-| **B. Under 100 milliseconds (best practice)** | ✓ |
-| C. Under 5 seconds | |
-| D. 60 seconds (official timeout) | |
+| A. 60 seconds for all hook types | |
+| **B. Command hooks: 600 seconds (10 min), Prompt hooks: 30 seconds, Agent hooks: 60 seconds** | ✓ |
+| C. 30 seconds for all hook types | |
+| D. No timeout - hooks run until completion | |
 
-**Explanation**: WHY THIS MATTERS: The 60-second timeout is a safety net, not a target. Every millisecond your hook runs is a millisecond the user waits with a frozen UI. At 100ms, delays are imperceptible; at 500ms, users notice; at 2 seconds, they think something's broken. Fast hooks maintain the 'vibe coding' flow. If you need heavy processing, consider async patterns: write to a file and have a background process handle it.
+**Explanation**: WHY THIS MATTERS: Different hook types have different timeout defaults based on their expected complexity. Command hooks get 10 minutes for potentially complex shell operations. Prompt hooks (single LLM call) get 30 seconds. Agent hooks (multi-turn subagent) get 60 seconds. These are configurable per-command. Understanding these defaults helps you design hooks that won't unexpectedly timeout.
 
 <details open class="citation">
-<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
 
 <strong>Source</strong>: Claude Code Hooks Reference<br>
 <strong>URL</strong>: <a href="https://code.claude.com/docs/en/hooks">Claude Code Hooks Reference</a><br>
 <strong>Section</strong>: Hook Execution Details<br>
-<strong>Access Date</strong>: 2026-01-24<br>
-<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Timeout: 60-second execution limit by default, configurable per command. A timeout for an individual command does not affect the other commands."</blockquote>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Default timeouts: Command hooks 600 seconds (10 minutes), Prompt hooks 30 seconds, Agent hooks 60 seconds. Configurable per command."</blockquote>
 
 </details>
 
@@ -1440,6 +1824,102 @@ toc_sticky: true
 <strong>Section</strong>: Output Formats<br>
 <strong>Access Date</strong>: 2026-01-30<br>
 <blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Use --output-format json for structured output that can be parsed by scripts and automation tools."</blockquote>
+
+</details>
+
+---
+
+### Q14. What is the difference between command hooks and prompt hooks in Claude Code?
+
+| Option | |
+| ------ | --- |
+| A. Command hooks are faster | |
+| **B. Command hooks run shell scripts; prompt hooks use an LLM to evaluate decisions** | ✓ |
+| C. Prompt hooks have higher priority | |
+| D. Command hooks require admin permissions | |
+
+**Explanation**: WHY THIS MATTERS: This is a fundamental architectural choice. Command hooks (type: 'command') execute deterministic shell scripts - fast, predictable, no API cost. Prompt hooks (type: 'prompt') send context to an LLM for intelligent evaluation - flexible but slower and costs tokens. Use command hooks for rule-based checks, prompt hooks for nuanced decisions that need reasoning.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Hooks Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/hooks">Claude Code Hooks Reference</a><br>
+<strong>Section</strong>: Hook Types<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Command hooks run shell scripts. Prompt hooks use an LLM to evaluate decisions with single-turn reasoning."</blockquote>
+
+</details>
+
+---
+
+### Q15. What happens when you set async: true on a command hook?
+
+| Option | |
+| ------ | --- |
+| A. The hook runs faster | |
+| **B. The hook runs in background - cannot block or return decisions** | ✓ |
+| C. The hook gets more CPU resources | |
+| D. The hook retries on failure | |
+
+**Explanation**: WHY THIS MATTERS: Async hooks fire-and-forget - they can't block execution because the action has already proceeded by the time they run. Use async for logging, notifications, or background processing where you don't need to influence the outcome. The output is delivered on the next conversation turn. This is perfect for audit trails that shouldn't slow down the user.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Hooks Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/hooks">Claude Code Hooks Reference</a><br>
+<strong>Section</strong>: Async Hooks<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"async: true runs hooks in background without blocking. Cannot return decisions. Output delivered on next conversation turn."</blockquote>
+
+</details>
+
+---
+
+### Q16. How do you restrict Claude Code to read-only operations in a CI pipeline?
+
+| Option | |
+| ------ | --- |
+| A. Set CLAUDE_READ_ONLY=true environment variable | |
+| **B. Use --allowedTools Read,Grep,Glob to whitelist specific tools** | ✓ |
+| C. Run with --safe-mode flag | |
+| D. CI automatically restricts write access | |
+
+**Explanation**: WHY THIS MATTERS: Controlling tool access is essential for safe automation. --allowedTools lets you whitelist exactly what Claude can do, following principle of least privilege. For code review pipelines, 'Read,Grep,Glob' enables analysis without modification risk. For documentation generation, add 'Write'. This granular control makes Claude safe for automated environments.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code CLI Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
+<strong>Section</strong>: Headless Mode Options<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Use --allowedTools to explicitly list only the tools needed for the task, enabling read-only analysis without modification risk."</blockquote>
+
+</details>
+
+---
+
+### Q17. How do you stop Claude mid-action without exiting the application?
+
+| Option | |
+| ------ | --- |
+| A. Press Ctrl+C | |
+| **B. Press Escape** | ✓ |
+| C. Press Ctrl+Z | |
+| D. Type 'stop' and press Enter | |
+
+**Explanation**: WHY THIS MATTERS: This is a common gotcha. Ctrl+C exits Claude Code entirely, losing your session. Escape stops the current action while keeping the session alive - you can then redirect, clarify, or start something else. This is essential for 'vibe coding' flow when Claude heads in the wrong direction. Stop early, redirect, continue - don't lose your whole session.
+
+<details open class="citation">
+<summary>Citation [Tier 2 - Community] (95% confidence)</summary>
+
+<strong>Source</strong>: How I Use Claude Code<br>
+<strong>URL</strong>: <a href="https://www.builder.io/blog/claude-code">How I Use Claude Code</a><br>
+<strong>Section</strong>: Keyboard Shortcuts<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Stopping Claude isn't Control+C (that just exits entirely). Use Escape to actually stop Claude mid-action."</blockquote>
 
 </details>
 
@@ -1589,6 +2069,150 @@ toc_sticky: true
 <strong>Section</strong>: Parallel Development<br>
 <strong>Access Date</strong>: 2026-01-30<br>
 <blockquote style="font-size: 0.85em; margin: 0.5em 0;">"For parallel development, create worktrees for independent tasks and run separate Claude Code sessions in each, allowing simultaneous progress without interference."</blockquote>
+
+</details>
+
+---
+
+### Q7. What are the three MCP server configuration scopes in Claude Code, and what is their precedence order?
+
+| Option | |
+| ------ | --- |
+| A. Global > User > Project (global settings override all) | |
+| **B. Local > Project > User (local settings have highest priority)** | ✓ |
+| C. User > Project > Local (user settings always win) | |
+| D. Project > Local > User (team settings override personal) | |
+
+**Explanation**: WHY THIS MATTERS: Understanding scope precedence prevents the #1 MCP configuration error - 'server not found'. Local scope (personal, current project) overrides Project scope (team-shared .mcp.json), which overrides User scope (cross-project personal). This lets you override team configurations when needed while maintaining shared defaults.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code MCP Integration<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/mcp">Claude Code MCP Integration</a><br>
+<strong>Section</strong>: Configuration Scopes<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"MCP configuration scopes: Local > Project > User. Local settings have highest priority and override project and user settings."</blockquote>
+
+</details>
+
+---
+
+### Q8. What specific security risk does Anthropic warn about when using MCP servers that fetch untrusted content?
+
+| Option | |
+| ------ | --- |
+| A. Slower response times due to network latency | |
+| B. Higher API costs from additional token usage | |
+| **C. Exposure to prompt injection attacks** | ✓ |
+| D. Memory leaks from poorly written servers | |
+
+**Explanation**: WHY THIS MATTERS: MCP servers that fetch content from external sources (web scrapers, email readers, issue trackers) can inadvertently inject malicious prompts into Claude's context. An attacker could embed hidden instructions in a GitHub issue or email that manipulates Claude's behavior. This is why Anthropic specifically warns: 'Be especially careful when using MCP servers that could fetch untrusted content.'
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code MCP Integration<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/mcp">Claude Code MCP Integration</a><br>
+<strong>Section</strong>: Security Considerations<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Be especially careful when using MCP servers that could fetch untrusted content, as these can expose you to prompt injection risk."</blockquote>
+
+</details>
+
+---
+
+### Q9. When does Claude Code's MCP Tool Search automatically activate?
+
+| Option | |
+| ------ | --- |
+| A. Always enabled when any MCP server is connected | |
+| **B. When MCP tool descriptions would exceed 10% of the context window** | ✓ |
+| C. Only when manually enabled with /tool-search command | |
+| D. When using more than 5 MCP servers simultaneously | |
+
+**Explanation**: WHY THIS MATTERS: Tool Search runs in 'auto' mode by default - it activates only when your MCP tool definitions would consume more than 10% of context. This prevents context bloat while maintaining access to all tools. With many servers, tool definitions can consume 40%+ of context before you even start. Tool Search reduced Anthropic's internal tool definitions from 134K tokens to on-demand lookups.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+
+<strong>Source</strong>: Claude Code MCP Integration<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/mcp">Claude Code MCP Integration</a><br>
+<strong>Section</strong>: Tool Search<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Tool Search activates in auto mode when tool descriptions would exceed 10% of context window. Configurable threshold with auto:N syntax."</blockquote>
+
+</details>
+
+---
+
+### Q10. How should teams share MCP server configurations across all team members?
+
+| Option | |
+| ------ | --- |
+| A. Email the configuration to each team member | |
+| **B. Create a .mcp.json file at the project root and check it into version control** | ✓ |
+| C. Each team member must configure MCP servers individually | |
+| D. MCP servers cannot be shared between team members | |
+
+**Explanation**: WHY THIS MATTERS: Project-scoped MCP configurations in .mcp.json are automatically picked up by all team members when they clone the repository. This ensures everyone has access to the same tools - database connectors, API integrations, internal services. One central configuration, distributed through normal version control.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: Claude Code MCP Integration<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/mcp">Claude Code MCP Integration</a><br>
+<strong>Section</strong>: Project Configuration<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Project-scoped MCP configurations in .mcp.json are version-controlled and automatically apply to all team members."</blockquote>
+
+</details>
+
+---
+
+### Q11. Why was the Claude Code SDK renamed to Claude Agent SDK?
+
+| Option | |
+| ------ | --- |
+| A. To indicate it's only for automated agents, not human interaction | |
+| **B. Because the agent harness powering Claude Code is useful for many non-coding applications** | ✓ |
+| C. To separate coding tools from general AI capabilities | |
+| D. Due to trademark concerns | |
+
+**Explanation**: WHY THIS MATTERS: The rename reflects that Claude Code's underlying agent architecture is general-purpose. Teams at Anthropic use it as a general agent, not just for code. The SDK lets you build custom agents for any domain - customer support, research, data analysis - using the same battle-tested infrastructure that powers Claude Code.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: Thariq (Claude Code team) on Twitter<br>
+<strong>URL</strong>: <a href="https://x.com/trq212/status/1975243734083379662">Thariq (Claude Code team) on Twitter</a><br>
+<strong>Section</strong>: Thread<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Claude Code SDK renamed to Claude Agent SDK. Claude Code is All You Need - the team uses it as a general agent, not just for code."</blockquote>
+
+</details>
+
+---
+
+### Q12. What is a Claude Code plugin?
+
+| Option | |
+| ------ | --- |
+| A. A browser extension for Claude.ai | |
+| **B. A collection of related skills, agents, and hooks bundled together** | ✓ |
+| C. A paid add-on from Anthropic | |
+| D. A security scanning tool | |
+
+**Explanation**: WHY THIS MATTERS: Plugins bundle related capabilities for distribution. A 'deployment' plugin might include a /deploy skill, pre-deployment validation hooks, and specialized agents for infrastructure analysis. The /plugin command lets you add marketplaces and discover community-built extensions, rapidly expanding Claude's capabilities without manual configuration.
+
+<details open class="citation">
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
+
+<strong>Source</strong>: Claude Code Plugins<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/plugins">Claude Code Plugins</a><br>
+<strong>Section</strong>: Overview<br>
+<strong>Access Date</strong>: 2026-02-03<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Plugins bundle related skills, agents, and hooks together for distribution via the marketplace."</blockquote>
 
 </details>
 

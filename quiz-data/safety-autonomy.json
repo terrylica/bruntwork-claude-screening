@@ -3,7 +3,7 @@
   "description": "Assessment covering permission boundaries, destructive operations, autonomy levels, and safety guardrails in Claude Code v2.1+.",
   "isQuiz": true,
   "domain": "Safety & Control",
-  "weight": 0.30,
+  "weight": 0.20,
   "questions": [
     {
       "questionNumber": 0,
@@ -351,6 +351,216 @@
               "confidence": 0.98
             },
             "quotedText": "Claude Opus 4.5 has a tendency to overengineer by creating extra files, adding unnecessary abstractions, or building in flexibility that wasn't requested. If you're seeing this undesired behavior, add explicit prompting to keep solutions minimal: 'Avoid over-engineering. Only make changes that are directly requested.'"
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "What is the checkpoint system in Claude Code and how do you use it?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "A debugging tool for viewing API calls",
+        "Automatic code state saving before changes - press Esc twice or use /rewind to restore",
+        "A manual save feature requiring explicit /checkpoint command",
+        "A git integration for automatic commits"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Automatic code state saving before changes - press Esc twice or use /rewind to restore",
+      "explanation": "WHY THIS MATTERS: Checkpoints are your safety net for Claude's edits. Every time Claude modifies code, the previous state is automatically saved. If something goes wrong, press Escape twice or use /rewind to restore - no manual saving required. This enables confident experimentation because you can always undo. Note: checkpoints only apply to Claude's edits, not user modifications or bash commands.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Enabling Claude Code to Work More Autonomously",
+              "url": "https://www.anthropic.com/news/enabling-claude-code-to-work-more-autonomously",
+              "onlineUrl": "https://www.anthropic.com/news/enabling-claude-code-to-work-more-autonomously",
+              "section": "Checkpoints",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Checkpoints automatically save code state before each change. Press Esc twice or use /rewind to restore. You can restore code, conversation, or both."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 11,
+      "questionText": "What are the two boundaries enforced by Claude Code's sandboxing feature?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Memory isolation and CPU limits",
+        "Filesystem isolation and network isolation",
+        "Read-only mode and audit logging",
+        "User isolation and process isolation"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Filesystem isolation and network isolation",
+      "explanation": "WHY THIS MATTERS: Sandboxing confines Claude to specific directories (filesystem isolation) and approved network destinations (network isolation). This achieved 84% reduction in permission prompts internally at Anthropic while maintaining security. On Linux it uses bubblewrap, on macOS it uses seatbelt. Run /sandbox to configure. This is the foundation for safe autonomous operation.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code Sandboxing",
+              "url": "https://www.anthropic.com/engineering/claude-code-sandboxing",
+              "onlineUrl": "https://www.anthropic.com/engineering/claude-code-sandboxing",
+              "section": "Overview",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Sandboxing enforces filesystem isolation (Claude can only access/modify specific directories) and network isolation (only connect to approved servers), achieving 84% reduction in permission prompts."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 12,
+      "questionText": "What is a common Claude Code behavior that power users warn about during test-driven development?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Claude refuses to write tests",
+        "Claude may modify tests to match buggy code instead of fixing the code",
+        "Claude only writes unit tests, never integration tests",
+        "Claude requires manual test file creation"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Claude may modify tests to match buggy code instead of fixing the code",
+      "explanation": "WHY THIS MATTERS: Claude optimizes for passing tests, but sometimes takes the path of least resistance by weakening assertions rather than fixing bugs. This is why power users recommend reviewing ALL test modifications carefully. When tests fail, verify Claude is fixing the code, not the tests. Use TDD approach: write tests first, review them thoroughly before implementation.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "blog",
+              "title": "Claude Code Gotchas",
+              "url": "https://www.dolthub.com/blog/2025-06-30-claude-code-gotchas/",
+              "onlineUrl": "https://www.dolthub.com/blog/2025-06-30-claude-code-gotchas/",
+              "section": "Test Manipulation",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 2,
+              "organization": "Community",
+              "confidence": 0.90
+            },
+            "quotedText": "Be very wary of changes to your test files. Claude writes failing tests, then modifies tests to match buggy code instead of fixing the code."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 13,
+      "questionText": "When using --dangerously-skip-permissions for autonomous operation, what environment does Anthropic recommend?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Your main development machine with full internet access",
+        "A container or VM without internet access",
+        "A staging server with production data",
+        "Any environment with version control"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "A container or VM without internet access",
+      "explanation": "WHY THIS MATTERS: Autonomous operation without permission checks creates prompt injection and data exfiltration risks. Anthropic explicitly recommends using --dangerously-skip-permissions 'in a container without internet access.' Container isolation limits blast radius, and network isolation prevents data exfiltration. Version control alone isn't sufficient protection against malicious or unintended operations.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Security",
+              "url": "https://code.claude.com/docs/en/security",
+              "onlineUrl": "https://code.claude.com/docs/en/security",
+              "section": "Autonomous Mode",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Use --dangerously-skip-permissions only in a container without internet access where damage is contained."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 14,
+      "questionText": "What is the purpose of managed-settings.json in enterprise Claude Code deployments?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Store user preferences that can be customized",
+        "Enforce organization-wide policies that cannot be overridden by local settings",
+        "Cache API responses for faster performance",
+        "Store authentication tokens securely"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Enforce organization-wide policies that cannot be overridden by local settings",
+      "explanation": "WHY THIS MATTERS: Enterprise deployments need consistent security policies across all users. Managed-settings.json files are deployed to system directories and cannot be overridden by developers. This ensures organization-wide tool permissions, file access restrictions, and MCP server configurations are enforced uniformly. Settings hierarchy: Enterprise policies > CLI flags > Local > Shared > User.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "documentation",
+              "title": "Claude Code Settings",
+              "url": "https://code.claude.com/docs/en/settings",
+              "onlineUrl": "https://code.claude.com/docs/en/settings",
+              "section": "Managed Settings",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Managed settings in /Library/Application Support/ClaudeCode/managed-settings.json (macOS) or /etc/claude-code/managed-settings.json (Linux) enforce organization-wide policies that cannot be overridden."
+          }
+        ]
+      }
+    },
+    {
+      "questionNumber": 15,
+      "questionText": "Given permission config: allow: ['Bash'], ask: ['Bash(rm *)'], what happens when Claude tries to run 'rm -rf /tmp/test'?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        "Executes without prompting (Bash is allowed)",
+        "Permission prompt appears (content-level 'ask' takes precedence over tool-level 'allow')",
+        "Command is blocked entirely",
+        "Error due to conflicting rules"
+      ],
+      "correctAnswerIndex": 1,
+      "correctAnswer": "Permission prompt appears (content-level 'ask' takes precedence over tool-level 'allow')",
+      "explanation": "WHY THIS MATTERS: Understanding permission precedence is critical for safe configuration. As of v2.1.27, content-level rules take precedence over tool-level rules. This means allow: ['Bash'] grants general bash access, but ask: ['Bash(rm *)'] still prompts for rm commands. This layered approach lets you grant broad permissions while maintaining guardrails on dangerous operations.",
+      "citations": {
+        "correctAnswer": [
+          {
+            "source": {
+              "type": "changelog",
+              "title": "Claude Code Changelog v2.1.27",
+              "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
+              "onlineUrl": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
+              "section": "v2.1.27",
+              "accessDate": "2026-02-03"
+            },
+            "authority": {
+              "tier": 1,
+              "organization": "Anthropic",
+              "confidence": 0.98
+            },
+            "quotedText": "Permissions now respect content-level 'ask' over tool-level 'allow'. Previously allow: ['Bash'], ask: ['Bash(rm *)'] allowed all bash commands, but will now permission prompt for rm."
           }
         ]
       }
