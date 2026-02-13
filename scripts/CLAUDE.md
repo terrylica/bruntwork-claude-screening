@@ -1,20 +1,21 @@
 # Scripts
 
-**Navigation**: [← Root](../CLAUDE.md) | [validate-quiz.py](validate-quiz.py) | [validate-citations.py](validate-citations.py)
+**Navigation**: [← Root](../CLAUDE.md) | [validate-quiz.py](validate-quiz.py) | [validate-citations.py](validate-citations.py) | [generate-review-page.py](generate-review-page.py)
 
 ---
 
 ## Overview
 
-Automation scripts for quiz validation and maintenance.
+Automation scripts for quiz validation, citation verification, and review page generation.
 
 ## Directory Structure
 
 ```
 scripts/
-├── README.md              ← This file (spoke hub)
+├── CLAUDE.md              ← This file (spoke hub)
 ├── validate-quiz.py       ← Pydantic-based quiz validator
-└── validate-citations.py  ← Citation URL/date validator
+├── validate-citations.py  ← Citation URL/date validator
+└── generate-review-page.py ← Review page generator (docs/review.md)
 ```
 
 ## Available Scripts
@@ -24,10 +25,6 @@ scripts/
 Validates quiz JSON files against the Pydantic schema.
 
 ```bash
-# Via mise task
-mise run quiz:validate
-
-# Direct invocation
 uv run scripts/validate-quiz.py
 ```
 
@@ -48,8 +45,8 @@ uv run scripts/validate-quiz.py
 Validates citations in quiz JSON files.
 
 ```bash
-# Via mise task
-mise run quiz:validate-citations
+# Standard mode
+uv run scripts/validate-citations.py
 
 # Strict mode (fail on warnings)
 uv run scripts/validate-citations.py --strict
@@ -70,6 +67,22 @@ uv run scripts/validate-citations.py -v
 
 - `0` — Validation passed
 - `1` — Errors found (or warnings in strict mode)
+
+### generate-review-page.py
+
+Generates the `docs/review.md` answer key page from quiz JSON files.
+
+```bash
+uv run scripts/generate-review-page.py
+```
+
+**What it does:**
+
+- Reads all `quiz-data/*.json` files
+- Generates a markdown page with all questions, correct answers, explanations, and citations
+- Writes to `docs/review.md` (served as `/review` on GitHub Pages)
+
+**Run this after**: Any change to quiz JSON files (new questions, edited explanations, updated citations).
 
 ## Adding New Scripts
 
@@ -92,16 +105,18 @@ uv run scripts/validate-citations.py -v
    sources = ["scripts/name.py", "quiz-data/*.json"]
    ```
 
-3. Document in this README
+3. Document in this CLAUDE.md
 
 ## Scripts Reference
 
-| Script                  | Purpose                             | mise task                 |
-| ----------------------- | ----------------------------------- | ------------------------- |
-| `validate-quiz.py`      | Pydantic schema validation          | `quiz:validate`           |
-| `validate-citations.py` | Citation URL and access date checks | `quiz:validate-citations` |
+| Script                    | Purpose                             | mise task                 |
+| ------------------------- | ----------------------------------- | ------------------------- |
+| `validate-quiz.py`        | Pydantic schema validation          | `quiz:validate`           |
+| `validate-citations.py`   | Citation URL and access date checks | `quiz:validate-citations` |
+| `generate-review-page.py` | Generate docs/review.md answer key  | _(no mise task yet)_      |
 
 ## Related
 
-- [Quiz data files](../quiz-data/) — JSON quiz definitions
-- [Google Forms setup](../google-forms-setup/) — Form creation scripts
+- [Quiz data](../quiz-data/CLAUDE.md) — JSON quiz definitions
+- [Google Forms setup](../google-forms-setup/CLAUDE.md) — Form creation scripts
+- [Root hub](../CLAUDE.md) — Project overview and workflow

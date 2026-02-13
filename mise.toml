@@ -133,7 +133,5 @@ description = "Watch quiz-data for changes and validate"
 run = "mise watch quiz:validate"
 
 # === Hooks ===
-
-[hooks.enter]
-# Load secrets from .mise.local.toml on directory entry
-# .mise.local.toml is gitignored and contains 1Password references
+# Note: .mise.local.toml is loaded automatically by mise on directory entry.
+# No [hooks.enter] section needed for secret loading.
