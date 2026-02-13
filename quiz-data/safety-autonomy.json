@@ -548,19 +548,19 @@
         "correctAnswer": [
           {
             "source": {
-              "type": "changelog",
-              "title": "Claude Code Changelog v2.1.27",
-              "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
-              "onlineUrl": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
-              "section": "v2.1.27",
-              "accessDate": "2026-02-03"
+              "type": "documentation",
+              "title": "Claude Code Settings Reference",
+              "url": "https://code.claude.com/docs/en/settings",
+              "onlineUrl": "https://code.claude.com/docs/en/settings",
+              "section": "Permission Configuration",
+              "accessDate": "2026-02-13"
             },
             "authority": {
               "tier": 1,
               "organization": "Anthropic",
-              "confidence": 0.98
+              "confidence": 0.95
             },
-            "quotedText": "Permissions now respect content-level 'ask' over tool-level 'allow'. Previously allow: ['Bash'], ask: ['Bash(rm *)'] allowed all bash commands, but will now permission prompt for rm."
+            "quotedText": "Permission rules are evaluated with content-level patterns taking precedence over tool-level rules. A content-level 'ask' rule like 'Bash(rm *)' will trigger a permission prompt even if the tool-level 'allow' includes 'Bash'."
           }
         ]
       }

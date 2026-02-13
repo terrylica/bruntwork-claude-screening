@@ -146,18 +146,18 @@
     },
     {
       "questionNumber": 4,
-      "questionText": "What is the CORRECT way to reference a hook script in settings.json?",
+      "questionText": "What environment variable does Claude Code provide so hook scripts can reference project files portably?",
       "type": "multiple_choice",
       "required": true,
       "options": [
-        "\"command\": \"uv run $HOME/.claude/hooks/script.py\"",
-        "\"command\": \"python3 $HOME/.claude/hooks/script.py\"",
-        "\"command\": \"$HOME/.claude/hooks/script.py\"",
-        "\"command\": \"./hooks/script.py\""
+        "CLAUDE_HOME",
+        "CLAUDE_PROJECT_DIR",
+        "CLAUDE_HOOKS_PATH",
+        "CLAUDE_WORKING_DIR"
       ],
-      "correctAnswerIndex": 2,
-      "correctAnswer": "\"command\": \"$HOME/.claude/hooks/script.py\"",
-      "explanation": "WHY THIS MATTERS: Direct paths with shebangs ensure hooks work regardless of environment (no PATH issues, no virtual environment confusion). CLAUDE_PROJECT_DIR lets you ship hooks with your project that work when teammates clone the repo. The chmod +x requirement catches permission errors at development time, not during critical operations. These patterns come from hard-won debugging sessions.",
+      "correctAnswerIndex": 1,
+      "correctAnswer": "CLAUDE_PROJECT_DIR",
+      "explanation": "WHY THIS MATTERS: CLAUDE_PROJECT_DIR is set by Claude Code when spawning hook commands, enabling portable project-relative paths. For example, use \"command\": \"$CLAUDE_PROJECT_DIR/hooks/validate.sh\" so hooks work when teammates clone the repo regardless of where they checked it out. Both direct paths (with shebang) and explicit interpreter paths (python3 script.py) are valid approaches for hook commands.",
       "citations": {
         "correctAnswer": [
           {
@@ -216,7 +216,7 @@
     },
     {
       "questionNumber": 6,
-      "questionText": "For PostToolUse hooks, what is required for Claude to see your message?",
+      "questionText": "For PostToolUse hooks, what output GUARANTEES Claude will actively acknowledge your message (not just passively receive it)?",
       "type": "multiple_choice",
       "required": true,
       "options": [
@@ -227,7 +227,7 @@
       ],
       "correctAnswerIndex": 2,
       "correctAnswer": "Output {\"decision\": \"block\", \"reason\": \"your message\"}",
-      "explanation": "WHY THIS MATTERS: This is a common source of confusion. 'decision: block' in PostToolUse doesn't undo the tool call - the file is already edited. What it does is make Claude NOTICE your message (the 'reason' field). Without 'block', your output is silently ignored. Use 'additionalContext' for info Claude should consider but doesn't require acknowledgment. This visibility pattern evolved from hooks whose warnings were lost.",
+      "explanation": "WHY THIS MATTERS: There are two ways to communicate with Claude from PostToolUse hooks. 'additionalContext' passively adds context for Claude to consider - useful for background info. But 'decision: block' with 'reason' GUARANTEES Claude actively acknowledges your message by prompting it directly. The tool call already happened (PostToolUse fires after), so 'block' doesn't undo it - it ensures Claude sees and responds to your feedback.",
       "citations": {
         "correctAnswer": [
           {
@@ -419,7 +419,7 @@
               "organization": "Anthropic",
               "confidence": 0.98
             },
-            "quotedText": "Use -p or --prompt to run Claude Code in headless mode with a specified prompt, without starting the interactive interface."
+            "quotedText": "Use -p or --print to run Claude Code in non-interactive mode, printing the response without starting the interactive interface."
           }
         ]
       }
