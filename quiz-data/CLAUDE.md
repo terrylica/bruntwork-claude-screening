@@ -1,12 +1,22 @@
 # Quiz Data
 
-**Navigation**: [← Root](../CLAUDE.md) | [docs/design/quiz-citation-schema.md](../docs/design/quiz-citation-schema.md)
+**Navigation**: [← Root](../CLAUDE.md) | [Citation Schema](../docs/design/quiz-citation-schema.md) | [Form History](../google-forms-setup/form-history.json)
 
 ---
 
 ## Overview
 
-JSON quiz definitions for Claude Code VA screening assessments.
+JSON quiz definitions for Claude Code VA screening assessments. Currently 89 questions across 5 domains.
+
+## Quiz Files
+
+| File                       | Domain                  | Questions | Focus                                                      |
+| -------------------------- | ----------------------- | --------- | ---------------------------------------------------------- |
+| `effective-prompting.json` | Prompting & Context     | 15        | CLAUDE.md, /init, /clear, verification, session continuity |
+| `safety-autonomy.json`     | Safety & Control        | 16        | Permissions, sandboxing, checkpoints, test manipulation    |
+| `agents-deep-dive.json`    | Advanced Architecture   | 29        | Skills vs subagents, Tasks, spec workflow, Writer/Reviewer |
+| `hooks-lifecycle.json`     | Hooks & Automation      | 17        | Hook types, async hooks, timeouts, --allowedTools          |
+| `integration-tools.json`   | Integration & Workflows | 12        | MCP scopes, prompt injection, plugins, Agent SDK           |
 
 ## Quiz Design Principles
 
@@ -30,32 +40,26 @@ JSON quiz definitions for Claude Code VA screening assessments.
 | "How does X work?"              | Behavior is more stable than feature counts |
 | "What happens when X fails?"    | Error handling concepts remain stable       |
 
-### Example Refactoring
+### Lessons from Deep-Dive Analysis (2026-02-13)
 
-**Before** (ephemeral):
+After verifying every wrong answer from two candidates against authoritative sources, these quiz design issues were found and corrected:
 
-```json
-{
-  "questionText": "How many hook event types does Claude Code support?",
-  "options": ["5", "7", "10", "12"],
-  "correctAnswer": "10"
-}
-```
+| Issue                                                                    | Lesson                                                                              | Fix Applied                                      |
+| ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- | ------------------------------------------------ |
+| Hook script path: both `python3 script.py` and direct path are valid     | Don't mark one approach as "THE correct way" when docs show alternatives            | Replaced with CLAUDE_PROJECT_DIR question        |
+| `additionalContext` vs `decision: block` both make Claude "see" messages | Ask about specific behavior ("guarantees acknowledgment"), not vague "sees message" | Rephrased to ask about guaranteed acknowledgment |
+| Citation referenced fabricated changelog quote                           | Always verify `quotedText` against actual source URL before committing              | Replaced with settings docs citation             |
+| Citation said `--prompt` but flag is `--print`                           | Run `claude --help` to verify CLI flag names                                        | Fixed quotedText                                 |
 
-**After** (stable):
+### Citation Verification Protocol
 
-```json
-{
-  "questionText": "What is the primary purpose of Claude Code hooks?",
-  "options": [
-    "Replace built-in tools",
-    "Execute shell commands at lifecycle events for validation and control",
-    "Modify Claude's language model",
-    "Disable security features"
-  ],
-  "correctAnswer": "Execute shell commands at lifecycle events for validation and control"
-}
-```
+Before adding or modifying a citation:
+
+1. **Open the source URL** in a browser
+2. **Find the exact section** referenced
+3. **Verify the `quotedText`** matches (or closely paraphrases) the actual content
+4. **Check the access date** is current
+5. **Run** `uv run scripts/validate-citations.py` after changes
 
 ## File Schema
 
@@ -100,15 +104,18 @@ Every question must have at least one citation for the correct answer.
 
 ```bash
 # Validate all quiz files
-mise run quiz:validate
+uv run scripts/validate-quiz.py
 
 # Validate citations (URLs, dates)
-mise run quiz:validate-citations
+uv run scripts/validate-citations.py
+
+# Regenerate review page after changes
+uv run scripts/generate-review-page.py
 ```
 
-## Quiz Philosophy (v2.0)
+## Quiz Philosophy (v2.0+)
 
-**Focus on principles, not tool micromanagement.** Claude Code v2.1+ autonomously selects tools based on context. Users should describe WHAT they want, not HOW to do it.
+**Focus on principles, not tool micromanagement.** Claude Code autonomously selects tools based on context. Users should describe WHAT they want, not HOW to do it.
 
 ### What to Test
 
@@ -127,17 +134,8 @@ mise run quiz:validate-citations
 | Tool-specific syntax      | Internal implementation detail |
 | Specific command patterns | Changes between versions       |
 
-## Current Quiz Files
-
-| File                       | Domain                  | Questions | Focus                                                      |
-| -------------------------- | ----------------------- | --------- | ---------------------------------------------------------- |
-| `effective-prompting.json` | Prompting & Context     | 15        | CLAUDE.md, /init, /clear, verification, session continuity |
-| `safety-autonomy.json`     | Safety & Control        | 16        | Permissions, sandboxing, checkpoints, test manipulation    |
-| `agents-deep-dive.json`    | Advanced Architecture   | 29        | Skills vs subagents, Tasks, spec workflow, Writer/Reviewer |
-| `hooks-lifecycle.json`     | Hooks & Automation      | 17        | Hook types, async hooks, timeouts, --allowedTools          |
-| `integration-tools.json`   | Integration & Workflows | 12        | MCP scopes, prompt injection, plugins, Agent SDK           |
-
 ## Related
 
 - [Google Forms setup](../google-forms-setup/CLAUDE.md) — Deploy quizzes to Google Forms
 - [Validation scripts](../scripts/CLAUDE.md) — Quiz and citation validation
+- [Form history](../google-forms-setup/form-history.json) — All form versions with candidate data

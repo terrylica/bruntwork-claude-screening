@@ -43,3 +43,4 @@ package-lock.json
 
 # Generated files
 google-forms-setup/created_forms.json
+google-forms-setup/response_exports/

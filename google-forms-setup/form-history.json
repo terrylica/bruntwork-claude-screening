@@ -1,0 +1,222 @@
+{
+  "_description": "Archive of all Google Form versions. NEVER delete old entries. Append new versions when forms are recreated. This file is version-controlled (NOT gitignored) so we can always cross-reference past candidate responses.",
+  "_policy": "Forms are CREATED, never deleted. Old forms remain accessible on Google. New quiz versions get new form IDs. Response data lives on Google's servers tied to the form ID.",
+  "versions": [
+    {
+      "version": "v1.0",
+      "date": "2026-01-20",
+      "commit": "7288b21",
+      "description": "Initial 5-quiz tool-focused assessments",
+      "totalQuestions": 50,
+      "candidates": [],
+      "forms": [
+        {
+          "title": "Claude Code Basics",
+          "domain": "Tool Mastery",
+          "formId": "1bmavY8cAvM6LPMLNXXpYTuvKM16zy4R5WvlaqEsJf6g",
+          "responderUrl": "https://docs.google.com/forms/d/1bmavY8cAvM6LPMLNXXpYTuvKM16zy4R5WvlaqEsJf6g/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1bmavY8cAvM6LPMLNXXpYTuvKM16zy4R5WvlaqEsJf6g/edit"
+        },
+        {
+          "title": "Agentic Workflows",
+          "domain": "Task Delegation",
+          "formId": "10RLaUPSKu4t_PeYbndZQk-K702Z7BmPhgtjduvZWQFo",
+          "responderUrl": "https://docs.google.com/forms/d/10RLaUPSKu4t_PeYbndZQk-K702Z7BmPhgtjduvZWQFo/viewform",
+          "editUrl": "https://docs.google.com/forms/d/10RLaUPSKu4t_PeYbndZQk-K702Z7BmPhgtjduvZWQFo/edit"
+        },
+        {
+          "title": "Best Practices",
+          "domain": "Efficiency Patterns",
+          "formId": "1SvUJtz-iHjhzvCEpIQhkPqVaJLjIZl9fbdEU0I1atvg",
+          "responderUrl": "https://docs.google.com/forms/d/1SvUJtz-iHjhzvCEpIQhkPqVaJLjIZl9fbdEU0I1atvg/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1SvUJtz-iHjhzvCEpIQhkPqVaJLjIZl9fbdEU0I1atvg/edit"
+        },
+        {
+          "title": "Error Handling & Safety",
+          "domain": "Recovery & Boundaries",
+          "formId": "1S1k8kESnWUBnVb7rL99WaxVflaL6iPYLpgJ9UxvSm5E",
+          "responderUrl": "https://docs.google.com/forms/d/1S1k8kESnWUBnVb7rL99WaxVflaL6iPYLpgJ9UxvSm5E/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1S1k8kESnWUBnVb7rL99WaxVflaL6iPYLpgJ9UxvSm5E/edit"
+        },
+        {
+          "title": "Hooks Lifecycle",
+          "domain": "Automation",
+          "formId": "1GHjBGgrWbaPC6vqFZCGMQgPERf94Yz4NG1nEh1-PqSE",
+          "responderUrl": "https://docs.google.com/forms/d/1GHjBGgrWbaPC6vqFZCGMQgPERf94Yz4NG1nEh1-PqSE/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1GHjBGgrWbaPC6vqFZCGMQgPERf94Yz4NG1nEh1-PqSE/edit"
+        }
+      ]
+    },
+    {
+      "version": "v1.1",
+      "date": "2026-01-22",
+      "commit": "382c488",
+      "description": "Added Agents Deep Dive quiz (6th quiz)",
+      "totalQuestions": 66,
+      "candidates": [],
+      "forms": [
+        {
+          "title": "Agents Deep Dive",
+          "domain": "Advanced Architecture",
+          "formId": "1DVNld_pc7MukwhMWFKVt3zRotRCXHBWeEePZdzZ2cGw",
+          "responderUrl": "https://docs.google.com/forms/d/1DVNld_pc7MukwhMWFKVt3zRotRCXHBWeEePZdzZ2cGw/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1DVNld_pc7MukwhMWFKVt3zRotRCXHBWeEePZdzZ2cGw/edit",
+          "note": "Plus all v1.0 forms still active"
+        }
+      ]
+    },
+    {
+      "version": "v2.0",
+      "date": "2026-01-25",
+      "commit": "98df4fd",
+      "description": "Consolidated to 4 principle-based quizzes (removed tool-focused questions). See ADR: docs/adr/2026-01-25-quiz-consolidation-v2.md",
+      "totalQuestions": 46,
+      "candidates": [
+        {
+          "name": "MD NASIM",
+          "completedDate": "2026-02-08",
+          "completionTime": "42 minutes"
+        },
+        {
+          "name": "Koralegei Kavindya Nethmi Senali",
+          "completedDate": "2026-02-08",
+          "completionTime": "93 minutes"
+        }
+      ],
+      "forms": [
+        {
+          "title": "Effective Claude Code Prompting Assessment",
+          "domain": "Prompting & Context",
+          "questions": 10,
+          "formId": "1bMyJZ2dBN7K5Ygr3EycXpz_xjVWMHRrUvZHzhrHMvOM",
+          "responderUrl": "https://docs.google.com/forms/d/1bMyJZ2dBN7K5Ygr3EycXpz_xjVWMHRrUvZHzhrHMvOM/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1bMyJZ2dBN7K5Ygr3EycXpz_xjVWMHRrUvZHzhrHMvOM/edit"
+        },
+        {
+          "title": "Safety & Autonomy Assessment",
+          "domain": "Safety & Control",
+          "questions": 10,
+          "formId": "1x3-mRvHhoQ8dXTrCXYZ8GWdiZ4c8io62qJdRA65D-OQ",
+          "responderUrl": "https://docs.google.com/forms/d/1x3-mRvHhoQ8dXTrCXYZ8GWdiZ4c8io62qJdRA65D-OQ/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1x3-mRvHhoQ8dXTrCXYZ8GWdiZ4c8io62qJdRA65D-OQ/edit"
+        },
+        {
+          "title": "Claude Code Agents Deep Dive Assessment",
+          "domain": "Advanced Architecture",
+          "questions": 16,
+          "formId": "1LPnXuvgMBhOIbpCnIN3pAfRQBNkYq_R2wuKZ4okpbV8",
+          "responderUrl": "https://docs.google.com/forms/d/1LPnXuvgMBhOIbpCnIN3pAfRQBNkYq_R2wuKZ4okpbV8/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1LPnXuvgMBhOIbpCnIN3pAfRQBNkYq_R2wuKZ4okpbV8/edit"
+        },
+        {
+          "title": "Claude Code Hooks Lifecycle Assessment",
+          "domain": "Hooks & Automation",
+          "questions": 10,
+          "formId": "17Hi3-GHYe2zj_oc0ooqIqlS_dfT_-IEW1iI8H3ptsDc",
+          "responderUrl": "https://docs.google.com/forms/d/17Hi3-GHYe2zj_oc0ooqIqlS_dfT_-IEW1iI8H3ptsDc/viewform",
+          "editUrl": "https://docs.google.com/forms/d/17Hi3-GHYe2zj_oc0ooqIqlS_dfT_-IEW1iI8H3ptsDc/edit"
+        }
+      ]
+    },
+    {
+      "version": "v2.1",
+      "date": "2026-02-08",
+      "commit": "f12f61a",
+      "description": "Added 26 new questions from 9-agent research synthesis + Integration Tools quiz (5th quiz). Total 89 questions across 5 assessments.",
+      "totalQuestions": 89,
+      "candidates": [],
+      "forms": [
+        {
+          "title": "Effective Claude Code Prompting Assessment",
+          "domain": "Prompting & Context",
+          "questions": 15,
+          "formId": "143ZSsrR05Ln7C-iE4oDQOsssbS6asbG0i3jtK4TnU5c",
+          "responderUrl": "https://docs.google.com/forms/d/143ZSsrR05Ln7C-iE4oDQOsssbS6asbG0i3jtK4TnU5c/viewform",
+          "editUrl": "https://docs.google.com/forms/d/143ZSsrR05Ln7C-iE4oDQOsssbS6asbG0i3jtK4TnU5c/edit"
+        },
+        {
+          "title": "Safety & Autonomy Assessment",
+          "domain": "Safety & Control",
+          "questions": 16,
+          "formId": "1xtz-TAsK7yOkT_ezCr8lUMXqX3zH2ytrRPL7yhsbdEs",
+          "responderUrl": "https://docs.google.com/forms/d/1xtz-TAsK7yOkT_ezCr8lUMXqX3zH2ytrRPL7yhsbdEs/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1xtz-TAsK7yOkT_ezCr8lUMXqX3zH2ytrRPL7yhsbdEs/edit"
+        },
+        {
+          "title": "Claude Code Agents Deep Dive Assessment",
+          "domain": "Advanced Architecture",
+          "questions": 29,
+          "formId": "1SlTOcEmvBTn4dEx_LcwFDa_G9cQ6UOyQFBDB1qc5RWU",
+          "responderUrl": "https://docs.google.com/forms/d/1SlTOcEmvBTn4dEx_LcwFDa_G9cQ6UOyQFBDB1qc5RWU/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1SlTOcEmvBTn4dEx_LcwFDa_G9cQ6UOyQFBDB1qc5RWU/edit"
+        },
+        {
+          "title": "Claude Code Hooks Lifecycle Assessment",
+          "domain": "Hooks & Automation",
+          "questions": 17,
+          "formId": "1aduAUp62v_svhXlTyjvpLpEVWYja6ygE9fZPJ77BgCM",
+          "responderUrl": "https://docs.google.com/forms/d/1aduAUp62v_svhXlTyjvpLpEVWYja6ygE9fZPJ77BgCM/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1aduAUp62v_svhXlTyjvpLpEVWYja6ygE9fZPJ77BgCM/edit"
+        },
+        {
+          "title": "Claude Code Integration Tools Assessment",
+          "domain": "Integration & Workflows",
+          "questions": 12,
+          "formId": "1git74ESTX-lbZ05RCtTN5lv0xtbVIE64Z1lpzOKyhFI",
+          "responderUrl": "https://docs.google.com/forms/d/1git74ESTX-lbZ05RCtTN5lv0xtbVIE64Z1lpzOKyhFI/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1git74ESTX-lbZ05RCtTN5lv0xtbVIE64Z1lpzOKyhFI/edit"
+        }
+      ]
+    },
+    {
+      "version": "v2.2",
+      "date": "2026-02-13",
+      "commit": "f1efefc",
+      "description": "Fixed 4 quiz design issues found in candidate deep-dive analysis: hooks Q4 (script path), hooks Q6 (PostToolUse visibility), hooks Q11 (--print flag citation), safety Q15 (fabricated citation). Questions unchanged at 89.",
+      "totalQuestions": 89,
+      "candidates": [],
+      "forms": [
+        {
+          "title": "Effective Claude Code Prompting Assessment",
+          "domain": "Prompting & Context",
+          "questions": 15,
+          "formId": "1kr0wiK-gWVHBU3sAZy2Dj1VzQXS2391_GYU1rC0phbU",
+          "responderUrl": "https://docs.google.com/forms/d/1kr0wiK-gWVHBU3sAZy2Dj1VzQXS2391_GYU1rC0phbU/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1kr0wiK-gWVHBU3sAZy2Dj1VzQXS2391_GYU1rC0phbU/edit"
+        },
+        {
+          "title": "Safety & Autonomy Assessment",
+          "domain": "Safety & Control",
+          "questions": 16,
+          "formId": "1z2dfhCFIDvKdJtWoowUT3BDTWppoNgdShtUVXwGwGAA",
+          "responderUrl": "https://docs.google.com/forms/d/1z2dfhCFIDvKdJtWoowUT3BDTWppoNgdShtUVXwGwGAA/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1z2dfhCFIDvKdJtWoowUT3BDTWppoNgdShtUVXwGwGAA/edit"
+        },
+        {
+          "title": "Claude Code Agents Deep Dive Assessment",
+          "domain": "Advanced Architecture",
+          "questions": 29,
+          "formId": "1AUpnGimgGGK9vep4fkqbZJttNgHsQM5B4ANpLiDX7zk",
+          "responderUrl": "https://docs.google.com/forms/d/1AUpnGimgGGK9vep4fkqbZJttNgHsQM5B4ANpLiDX7zk/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1AUpnGimgGGK9vep4fkqbZJttNgHsQM5B4ANpLiDX7zk/edit"
+        },
+        {
+          "title": "Claude Code Hooks Lifecycle Assessment",
+          "domain": "Hooks & Automation",
+          "questions": 17,
+          "formId": "1EXe4psHSfz1NeXd3j4veFI7WNrIbzVxgtS-pTA-2kvo",
+          "responderUrl": "https://docs.google.com/forms/d/1EXe4psHSfz1NeXd3j4veFI7WNrIbzVxgtS-pTA-2kvo/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1EXe4psHSfz1NeXd3j4veFI7WNrIbzVxgtS-pTA-2kvo/edit"
+        },
+        {
+          "title": "Claude Code Integration Tools Assessment",
+          "domain": "Integration & Workflows",
+          "questions": 12,
+          "formId": "1KkaApnu6FqhqXosTSMZJaH8D3UCwF0kwv5DJWcbOMVc",
+          "responderUrl": "https://docs.google.com/forms/d/1KkaApnu6FqhqXosTSMZJaH8D3UCwF0kwv5DJWcbOMVc/viewform",
+          "editUrl": "https://docs.google.com/forms/d/1KkaApnu6FqhqXosTSMZJaH8D3UCwF0kwv5DJWcbOMVc/edit"
+        }
+      ]
+    }
+  ]
+}
