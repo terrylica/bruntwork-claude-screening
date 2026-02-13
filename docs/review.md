@@ -29,7 +29,7 @@ toc_sticky: true
 > This page contains all correct answers with explanations and authoritative citations.
 > Use this as a learning resource alongside the [assessment quizzes](./).
 
-*Generated: 2026-02-03 07:06*
+*Generated: 2026-02-13 14:42*
 
 ---
 
@@ -799,13 +799,13 @@ toc_sticky: true
 **Explanation**: WHY THIS MATTERS: Understanding permission precedence is critical for safe configuration. As of v2.1.27, content-level rules take precedence over tool-level rules. This means allow: ['Bash'] grants general bash access, but ask: ['Bash(rm *)'] still prompts for rm commands. This layered approach lets you grant broad permissions while maintaining guardrails on dangerous operations.
 
 <details open class="citation">
-<summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
+<summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
 
-<strong>Source</strong>: Claude Code Changelog v2.1.27<br>
-<strong>URL</strong>: <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">Claude Code Changelog v2.1.27</a><br>
-<strong>Section</strong>: v2.1.27<br>
-<strong>Access Date</strong>: 2026-02-03<br>
-<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Permissions now respect content-level 'ask' over tool-level 'allow'. Previously allow: ['Bash'], ask: ['Bash(rm *)'] allowed all bash commands, but will now permission prompt for rm."</blockquote>
+<strong>Source</strong>: Claude Code Settings Reference<br>
+<strong>URL</strong>: <a href="https://code.claude.com/docs/en/settings">Claude Code Settings Reference</a><br>
+<strong>Section</strong>: Permission Configuration<br>
+<strong>Access Date</strong>: 2026-02-13<br>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Permission rules are evaluated with content-level patterns taking precedence over tool-level rules. A content-level 'ask' rule like 'Bash(rm *)' will trigger a permission prompt even if the tool-level 'allow' includes 'Bash'."</blockquote>
 
 </details>
 
@@ -1613,16 +1613,16 @@ toc_sticky: true
 
 ---
 
-### Q5. What is the CORRECT way to reference a hook script in settings.json?
+### Q5. What environment variable does Claude Code provide so hook scripts can reference project files portably?
 
 | Option | |
 | ------ | --- |
-| A. "command": "uv run $HOME/.claude/hooks/script.py" | |
-| B. "command": "python3 $HOME/.claude/hooks/script.py" | |
-| **C. "command": "$HOME/.claude/hooks/script.py"** | ✓ |
-| D. "command": "./hooks/script.py" | |
+| A. CLAUDE_HOME | |
+| **B. CLAUDE_PROJECT_DIR** | ✓ |
+| C. CLAUDE_HOOKS_PATH | |
+| D. CLAUDE_WORKING_DIR | |
 
-**Explanation**: WHY THIS MATTERS: Direct paths with shebangs ensure hooks work regardless of environment (no PATH issues, no virtual environment confusion). CLAUDE_PROJECT_DIR lets you ship hooks with your project that work when teammates clone the repo. The chmod +x requirement catches permission errors at development time, not during critical operations. These patterns come from hard-won debugging sessions.
+**Explanation**: WHY THIS MATTERS: CLAUDE_PROJECT_DIR is set by Claude Code when spawning hook commands, enabling portable project-relative paths. For example, use "command": "$CLAUDE_PROJECT_DIR/hooks/validate.sh" so hooks work when teammates clone the repo regardless of where they checked it out. Both direct paths (with shebang) and explicit interpreter paths (python3 script.py) are valid approaches for hook commands.
 
 <details open class="citation">
 <summary>Citation [Tier 1 - Anthropic] (95% confidence)</summary>
@@ -1661,7 +1661,7 @@ toc_sticky: true
 
 ---
 
-### Q7. For PostToolUse hooks, what is required for Claude to see your message?
+### Q7. For PostToolUse hooks, what output GUARANTEES Claude will actively acknowledge your message (not just passively receive it)?
 
 | Option | |
 | ------ | --- |
@@ -1670,7 +1670,7 @@ toc_sticky: true
 | **C. Output {"decision": "block", "reason": "your message"}** | ✓ |
 | D. Write to stdout with plain text | |
 
-**Explanation**: WHY THIS MATTERS: This is a common source of confusion. 'decision: block' in PostToolUse doesn't undo the tool call - the file is already edited. What it does is make Claude NOTICE your message (the 'reason' field). Without 'block', your output is silently ignored. Use 'additionalContext' for info Claude should consider but doesn't require acknowledgment. This visibility pattern evolved from hooks whose warnings were lost.
+**Explanation**: WHY THIS MATTERS: There are two ways to communicate with Claude from PostToolUse hooks. 'additionalContext' passively adds context for Claude to consider - useful for background info. But 'decision: block' with 'reason' GUARANTEES Claude actively acknowledges your message by prompting it directly. The tool call already happened (PostToolUse fires after), so 'block' doesn't undo it - it ensures Claude sees and responds to your feedback.
 
 <details open class="citation">
 <summary>Citation [Tier 1 - Anthropic] (98% confidence)</summary>
@@ -1799,7 +1799,7 @@ toc_sticky: true
 <strong>URL</strong>: <a href="https://code.claude.com/docs/en/cli-reference">Claude Code CLI Reference</a><br>
 <strong>Section</strong>: Command Line Options<br>
 <strong>Access Date</strong>: 2026-01-30<br>
-<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Use -p or --prompt to run Claude Code in headless mode with a specified prompt, without starting the interactive interface."</blockquote>
+<blockquote style="font-size: 0.85em; margin: 0.5em 0;">"Use -p or --print to run Claude Code in non-interactive mode, printing the response without starting the interactive interface."</blockquote>
 
 </details>
 
