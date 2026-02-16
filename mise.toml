@@ -114,6 +114,9 @@ echo "  mise run release:generate      - Phase 2: SSoT → docs + forms"
 echo "  mise run release:version       - Phase 3: semantic-release"
 echo "  mise run release:full          - Complete workflow (all phases)"
 echo ""
+echo "Cal.com Booking:"
+echo "  mise run calcom:preflight      - Check GCP deployment readiness"
+echo ""
 """
 
 [tasks.clean]
@@ -131,6 +134,33 @@ echo "✓ Cleaned generated files"
 [tasks."watch:quiz"]
 description = "Watch quiz-data for changes and validate"
 run = "mise watch quiz:validate"
+
+# === Cal.com Booking Infrastructure ===
+
+[tasks."calcom:preflight"]
+description = "Preflight check for Cal.com GCP deployment (reads from .mise.local.toml)"
+run = """
+echo "Cal.com Booking - Preflight Check"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+if [ -z "$CALCOM_GCP_PROJECT" ] || [ -z "$CALCOM_GCP_ACCOUNT" ]; then
+  echo "ERROR: CALCOM_GCP_PROJECT or CALCOM_GCP_ACCOUNT not set."
+  echo "Ensure .mise.local.toml exists with Cal.com env vars."
+  exit 1
+fi
+echo "GCP Project:  $CALCOM_GCP_PROJECT"
+echo "GCP Account:  $CALCOM_GCP_ACCOUNT"
+echo "GCP Region:   ${CALCOM_GCP_REGION:-us-central1}"
+echo ""
+echo "Checking gcloud auth..."
+gcloud auth list --filter="account:$CALCOM_GCP_ACCOUNT" --format="value(status)" 2>/dev/null || echo "NOT AUTHENTICATED"
+echo ""
+echo "Checking enabled APIs..."
+gcloud services list --enabled --project="$CALCOM_GCP_PROJECT" --account="$CALCOM_GCP_ACCOUNT" 2>/dev/null | grep -E "run|artifact|build" || echo "APIs not enabled"
+echo ""
+echo "Checking Cloud Run services..."
+gcloud run services list --project="$CALCOM_GCP_PROJECT" --account="$CALCOM_GCP_ACCOUNT" --region="${CALCOM_GCP_REGION:-us-central1}" 2>/dev/null || echo "No Cloud Run services yet"
+"""
 
 # === Hooks ===
 # Note: .mise.local.toml is loaded automatically by mise on directory entry.

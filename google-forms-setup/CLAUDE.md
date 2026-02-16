@@ -80,14 +80,9 @@ uv run google-forms-setup/fetch_responses.py --export
 
 ### Credentials
 
-Credentials are stored in 1Password and referenced via `.env`:
-
-```bash
-GOOGLE_CLIENT_ID_REF="op://Employee/ptby3smss3sjnod4iacgdnhtoi/username"
-GOOGLE_CLIENT_SECRET_REF="op://Employee/ptby3smss3sjnod4iacgdnhtoi/password"
-GOOGLE_PROJECT_ID="eonlabs-data"
-NOTIFICATION_EMAIL="forms-owner@example.com"
-```
+Credentials are stored in 1Password and referenced via `.env` (gitignored).
+See `.env` for `GOOGLE_CLIENT_ID_REF`, `GOOGLE_CLIENT_SECRET_REF`, `GOOGLE_PROJECT_ID`, and `NOTIFICATION_EMAIL`.
+See `.mise.local.toml` for `GOOGLE_FORMS_ACCOUNT` and `GOOGLE_FORMS_PROJECT`.
 
 ### First-Time Setup
 

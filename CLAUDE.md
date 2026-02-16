@@ -178,18 +178,25 @@ All questions include embedded authoritative citations with:
 
 ## Credentials
 
-Google Forms API credentials managed via 1Password:
+### Google Forms API (quiz delivery)
 
-```bash
-# Set in .env (gitignored)
-GOOGLE_CLIENT_ID_REF="op://Employee/ptby3smss3sjnod4iacgdnhtoi/username"
-GOOGLE_CLIENT_SECRET_REF="op://Employee/ptby3smss3sjnod4iacgdnhtoi/password"
-```
-
-**Account**: `forms-owner@example.com`
-**GCP Project**: `eonlabs-data`
+Credentials managed via 1Password. References stored in `.env` (gitignored).
 
 → Deep dive: [google-forms-setup/CLAUDE.md](google-forms-setup/CLAUDE.md)
+
+### Cal.com Booking (candidate interview scheduling)
+
+Self-hosted [Cal.com](https://github.com/calcom/cal.com) on GCP Cloud Run for Calendly-like appointment booking.
+
+**All sensitive identifiers are in local-only files (gitignored):**
+
+| What                        | Where              | Tracked? |
+| --------------------------- | ------------------ | -------- |
+| GCP project/account/billing | `.mise.local.toml` | No       |
+| OAuth client ID/secret refs | `.env`             | No       |
+| Account credentials         | 1Password          | No       |
+
+**Preflight**: `mise run calcom:preflight`
 
 ## Local-Only Resources
 
@@ -200,8 +207,10 @@ GOOGLE_CLIENT_SECRET_REF="op://Employee/ptby3smss3sjnod4iacgdnhtoi/password"
 | Form archive    | `google-forms-setup/form-history.json`  | All form versions (tracked)   |
 | Response CSVs   | `google-forms-setup/response_exports/`  | Exported candidate data       |
 | Validation logs | `logs/quiz-validation.log`              | Validation run history        |
+| Cal.com fork    | `~/fork-tools/cal.com`                  | Self-hosted scheduling engine |
 
 ## Related Projects
 
 - [dental-career-opportunities](https://github.com/terrylica/dental-career-opportunities) — Original Google Forms implementation
 - [cc-skills](https://github.com/terrylica/cc-skills) — Claude Code skills reference
+- [cal.com](https://github.com/terrylica/cal.com) — Fork of Cal.com for self-hosted booking
