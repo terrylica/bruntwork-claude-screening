@@ -1,3 +1,51 @@
+# [2.0.0](https://github.com/terrylica/bruntwork-claude-screening/compare/v1.2.1...v2.0.0) (2026-02-16)
+
+
+### Bug Fixes
+
+* **citations:** align quotedText with verifiable public sources ([5576e03](https://github.com/terrylica/bruntwork-claude-screening/commit/5576e030f6fbfc8c6f20781e5e7deafa9375ad6f)), closes [#6971](https://github.com/terrylica/bruntwork-claude-screening/issues/6971)
+* **forms:** remove VA Role field - single position only ([d20efc8](https://github.com/terrylica/bruntwork-claude-screening/commit/d20efc8a6600678f3272fa154604d0d20d5826a9))
+* **quiz:** correct 4 quiz design issues found in candidate deep-dive analysis ([f1efefc](https://github.com/terrylica/bruntwork-claude-screening/commit/f1efefc9dce4d9c4e8f597350ca08aa36709eb88))
+
+
+### Features
+
+* **forms:** create v2.0 Google Forms for consolidated quizzes ([98df4fd](https://github.com/terrylica/bruntwork-claude-screening/commit/98df4fdc694bdde403ffc7143a7e8c32acff418e))
+* **quiz:** add 17 questions covering Task System, Skills, MCP, Headless Mode ([20f37f4](https://github.com/terrylica/bruntwork-claude-screening/commit/20f37f4df4aded5a9f1e968cf935a5492a67f3c2))
+* **quiz:** add 26 questions from 9-agent research synthesis ([f12f61a](https://github.com/terrylica/bruntwork-claude-screening/commit/f12f61a28455c331baada8e60f1f84b5de4145f8))
+* **quiz:** consolidate to principle-based assessments v2.0 ([a91aa1c](https://github.com/terrylica/bruntwork-claude-screening/commit/a91aa1c4c2b3b44ec606bbf8e0fc857194328b95))
+
+
+### BREAKING CHANGES
+
+* **quiz:** Quiz structure reorganized from 6 files (72 questions)
+to 4 files (46 questions) focusing on principles over tool micromanagement.
+
+Why: Claude Code v2.1+ autonomously selects tools. Teaching "which tool
+to use" is obsolete - users should describe WHAT they want, not HOW.
+
+Removed (legacy tool-focused):
+- claude-code-basics.json - tool selection micromanagement
+- agentic-workflows.json - internal orchestration details
+- best-practices.json - mixed useful/obsolete content
+- error-handling-safety.json - merged into safety-autonomy
+
+Added (principle-based):
+- effective-prompting.json (10 Q) - CLAUDE.md, vibe coding, context
+- safety-autonomy.json (10 Q) - permissions, destructive ops, autonomy
+
+Updated:
+- agents-deep-dive.json (16 Q) - enhanced WHY explanations
+- hooks-lifecycle.json (10 Q) - enhanced WHY explanations
+
+All explanations now follow "WHY THIS MATTERS" format with contextual
+meaning for vibe coding workflows per Anthropic best practices.
+
+Refs: ADR 2026-01-25-quiz-consolidation-v2.md
+
+SRED-Type: experimental-development
+SRED-Claim: QUIZ-CONSOLIDATION
+
 ## [1.2.1](https://github.com/terrylica/bruntwork-claude-screening/compare/v1.2.0...v1.2.1) (2026-01-25)
 
 
